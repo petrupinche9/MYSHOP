@@ -1,104 +1,124 @@
-import javax.swing.*;
 import java.util.Scanner;
 
 public class Product
 {
-    Scanner in = new Scanner(System.in);
-    private String risposta;
-    private String risposta2;
-    private String risposta3;
-    private String newproduct;
-    private int numero;
-    private String[] includes = new String[numero];
+
+    private String categoria;
+    private String sottocategoria;
     private double costo;
-    private String nomeproduttore;
-    private String sitowebproduttore;
-    private String cittàproduttore;
-    private String nazioneproduttore;
-    public void Insertitem()
-    {
-        System.out.println("Scelga la categoria di articoli che desidera inserire (si scriva il nome): ");
-        System.out.println("A = Mobili");
-        System.out.println("B = Illuminazione");
-        System.out.println("C = Tessili");
-        do
-        {
-            if (risposta==null)
-            {
-                risposta = in.next();
-            }
-            else
-            {
-                System.out.println("Risposta non valida: RIPROVARE");
-                risposta = in.next();
-            }
-        } while(risposta.equals("Mobili") || risposta.equals("Illuminazione") || risposta.equals("Tessili"));
-        System.out.println("Scelga ora una sottocategoria fra quelle elecante (si scriva il nome): ");
-        System.out.println("A = Cucina");
-        System.out.println("B = Soggiorno");
-        System.out.println("C = Camera");
-        System.out.println("D = Tappeti");
-        System.out.println("E = Tende");
-        System.out.println("F = Lampadari");
-        System.out.println("G = Lampade da esterno");
-        do
-        {
-            if (risposta2==null)
-            {
-                risposta2 = in.next();
-            }
-            else
-            {
-                System.out.println("Risposta non valida: RIPROVARE");
-                risposta2 = in.next();
-            }
-        } while(risposta2.equals("Cucina") || risposta2.equals("Soggiorno") || risposta2.equals("Camera")
-                || risposta2.equals("Tappeti") || risposta2.equals("Tende") || risposta2.equals("Lampadari")
-                || risposta2.equals("Lampade da esterno"));
-        System.out.println("Ha scelto " + risposta + " -> " + risposta2);
-        newproduct = JOptionPane.showInputDialog("Inserisca il prodotto:");
-        System.out.print("Il prodotto inserito è " + newproduct + ".");
-        System.out.print("Qual è il costo del prodotto da Lei inserito? (Inserisca un numero)");
-        costo = in.nextDouble();
-        System.out.print("Vuole includere altri prodotti? (Rispondere con Si o No)");
-        do
-        {
-            if (risposta3==null)
-            {
-                risposta3 = in.next();
-            }
-            else
-            {
-                System.out.println("Risposta non valida: RIPROVARE");
-                risposta3 = in.next();
-            }
-        } while(risposta3.equals("Si") || risposta3.equals("No"));
-        if (risposta3.equals("Si"))
-        {
-            System.out.println("Quanti articoli vuole includere? (Rispondere con un numero)");
-            numero = in.nextInt();
-            System.out.println("Scriva gli articoli che vuole includere");
-            for (int i = 0; i < numero; i++)
-            {
-                includes[i] = in.next();
-            }
-        }
-        System.out.println("Inserisca ora i dati del produttore dell'articolo da Lei inserito:");
-        System.out.print("Nome: ");
-        nomeproduttore = in.next();
-        System.out.print("Sito Web: ");
-        sitowebproduttore = in.next();
-        System.out.print("Città: ");
-        cittàproduttore = in.next();
-        System.out.print("Nazione: ");
-        nazioneproduttore = in.next();
-    }
-    public void DeleteItem()
-    {
+    private int[][] magazzino;
+
+    public Product() {
 
     }
-    public void ModificationItem()
-    {
 
+    public class produttore {
+       private String nome;
+       private String sitoweb;
+       private String citta;
+       private String nazione;
+       public produttore(String nome,
+                         String sitoweb,
+                         String citta,
+                         String nazione) {
+
+           this.nome = nome;
+           this.sitoweb = sitoweb;
+           this.citta = citta;
+           this.nazione = nazione;
+       }
+       //metodi get
+       public String getNome() {
+           return nome;
+       }
+
+       public String getSitoweb() {
+           return sitoweb;
+       }
+
+       public String getCitta() {
+           return citta;
+       }
+       public String getNazione() {
+           return nazione;
+       }
+
+       //metodi setter
+       public void setNome(String nome) {
+           this.nome = nome;
+       }
+       public void setSitoweb(String sitoweb) {
+           this.sitoweb = sitoweb;
+       }
+       public void setCitta(String citta) {
+           this.citta = citta;
+       }
+       public void setNazione(String nazione) {
+           this.nazione = nazione;
+       }
+   }
+private produttore prod ;
+    private Product[] Prodotto;
+   public Product(String categoria, String sottocategoria, Double costo,Product[] prodotto, int[][] magazzino, produttore prod){
+       this.prod = prod;
+       this.categoria=categoria;
+       this.costo=costo;
+       this.sottocategoria=sottocategoria;
+       this.magazzino=magazzino;
+       this.Prodotto=prodotto;
+   }
+ //METODI GET
+    public Product[] getProdotto() {
+        return Prodotto;
     }
+
+    public produttore getProd(){
+       return prod;
+   }
+
+    public int[][] getMagazzino() {
+        return magazzino;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public String getSottocategoria() {
+        return sottocategoria;
+    }
+
+    public double getCosto() {
+        return costo;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    public void setCosto(double costo) {
+        this.costo = costo;
+    }
+
+
+
+    public void setMagazzino(int[][] magazzino) {
+        this.magazzino = magazzino;
+    }
+
+    public void setProd(produttore prod) {
+        this.prod = prod;
+    }
+
+    //METODI SET
+
+    public void setProdotto(Product[] prodotto) {
+        Prodotto = prodotto;
+    }
+
+    public void setSottocategoria(String sottocategoria) {
+        this.sottocategoria = sottocategoria;
+    }
+
+
 }
