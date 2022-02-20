@@ -1,8 +1,20 @@
 import javax.swing.*;
 import java.util.Scanner;
 
-public class Admin {
-   /* public String risposta;
+public class Admin
+{
+    Scanner in = new Scanner(System.in);
+    private String risposta;
+    private String risposta2;
+    private String risposta3;
+    private String newproduct;
+    private int numero;
+    private String[] includes = new String[numero];
+    private double costo;
+    private String nomeproduttore;
+    private String sitowebproduttore;
+    private String cittàproduttore;
+    private String nazioneproduttore;
     public void Insertitem()
     {
         System.out.println("Scelga la categoria di articoli che desidera inserire (si scriva il nome): ");
@@ -81,9 +93,8 @@ public class Admin {
         System.out.print("Nazione: ");
         nazioneproduttore = in.next();
     }
-private void insert_prod(){
-
-}
+    private String risposta4;
+    private int costo2;
     public void InsertService()
     {
         System.out.println("Scelga la categoria di servizi che desidera inserire (si scriva il nome): ");
@@ -91,19 +102,33 @@ private void insert_prod(){
         System.out.println("B = Trasporto");
         do
         {
-            if (risposta==null)
+            if (risposta4==null)
             {
-                risposta = in.next();
+                risposta4 = in.next();
             }
             else
             {
                 System.out.println("Risposta non valida: RIPROVARE");
-                risposta = in.next();
+                risposta4 = in.next();
             }
-        } while(risposta.equals("Montaggio") || risposta.equals("Trasporto"));
+        } while(risposta4.equals("Montaggio") || risposta4.equals("Trasporto"));
         System.out.print("Inserisca il costo del servizio (inserire un numero)");
-        costo = in.nextInt();
+        costo2 = in.nextInt();
     }
-}
-*/
+    public void DeleteService()
+    {
+
+    }
+    public void ModificationService()
+    {
+
+    }
+    public void DeleteItem()
+    {
+
+    }
+    public void ModificationItem()
+    {
+
+    }
 }

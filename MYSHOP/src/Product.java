@@ -100,8 +100,6 @@ private produttore prod ;
         this.costo = costo;
     }
 
-
-
     public void setMagazzino(int[][] magazzino) {
         this.magazzino = magazzino;
     }
