@@ -7,7 +7,7 @@ public class Principale
     {
         guest utente = new guest();
         MENU interfaccia = new MENU();
-        boolean confronta1, confronta2, confronta3, confronta4, confronta5;
+        boolean confronta1, confronta2, confronta3, confronta4, confronta5, confronta6, confronta7;
         String scelta = JOptionPane.showInputDialog("Benvenuto nel nostro MyShop \n" +
                 "Sei Amministratore, Manager oppure Utente?");
         confronta1 = scelta.equals("Amministratore");
@@ -18,7 +18,7 @@ public class Principale
             do
             {
                 scelta = JOptionPane.showInputDialog("Il nome inserito non è valido! \n" +
-                        "RIPROVARE");
+                        "RIPROVARE: sei Amministratore, Manager oppure Utente? ");
                 confronta1 = scelta.equals("Amministratore");
                 confronta2 = scelta.equals("Manager");
                 confronta3 = scelta.equals("Utente");
@@ -31,16 +31,16 @@ public class Principale
                     "Sei un utente registrato? (Rispondi con SI o NO)");
             confronta4 = risposta.equals("SI");
             confronta5 = risposta.equals("NO");
-            if (confronta4 == false || confronta5 == false)
+            if (confronta4 == false && confronta5 == false)
             {
                 do
                 {
                     risposta = JOptionPane.showInputDialog("ATTENZIONE!!! \n" +
                             "Inserimento non valido! \n" +
-                            "RIPROVARE");
+                            "RIPROVARE: Sei un utente registrato? (Rispondi con SI o NO)");
                     confronta4 = risposta.equals("SI");
                     confronta5 = risposta.equals("NO");
-                } while (confronta4 == false && confronta5 == false)
+                } while (confronta4 == false && confronta5 == false);
             }
             if (risposta.equals("SI"))
             {
@@ -49,6 +49,19 @@ public class Principale
             {
                 String risposta2 = JOptionPane.showInputDialog("Vuoi effettuare la registrazione? " +
                         "(Rispondi con SI o NO)");
+                confronta6 = risposta2.equals("SI");
+                confronta7 = risposta2.equals("NO");
+                if (confronta6 == false && confronta7 == false)
+                {
+                    do
+                    {
+                        risposta2 = JOptionPane.showInputDialog("ATTENZIONE!!! \n" +
+                                "Inserimento non valido! \n" +
+                                "RIPROVARE: Vuoi effettuare la registrazione? (Rispondi con SI o NO)");
+                        confronta6 = risposta2.equals("SI");
+                        confronta7 = risposta2.equals("NO");
+                    } while(confronta6 == false && confronta7 == false);
+                }
                 if (risposta2.equals("NO"))
                 {
                     utente.visitaShop();
