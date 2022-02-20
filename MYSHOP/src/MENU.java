@@ -4,8 +4,10 @@ public class MENU extends JFrame{
     private JTextField textField1;
     private JPasswordField passwordField1;
     private JPanel Login;
+    private JButton LOGINButton;
+    private JButton LOGINASGUESTButton;
 
-    private MENU(){
+    public MENU(){
         setContentPane(Login);
         setTitle("MYSHOP");
         setSize(480,600);
@@ -16,4 +18,7 @@ public class MENU extends JFrame{
     public static void main(String[] args) {
         MENU frame= new MENU();
     }
+
+
+
 }
