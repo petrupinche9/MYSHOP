@@ -5,7 +5,6 @@ public class Principale
     public static void main(String[] args)
     {
         guest utente = new guest();
-        MENU interfaccia = new MENU();
         boolean confronta1, confronta2, confronta3, confronta4, confronta5, confronta6, confronta7;
         String scelta = JOptionPane.showInputDialog("Benvenuto nel nostro MyShop \n" +
                 "Sei Amministratore, Manager oppure Utente?");

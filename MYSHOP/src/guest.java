@@ -2,7 +2,7 @@ import javax.swing.*;
 
 public class guest
 {
-    MENU grafica = new MENU();
+    MyShop grafica = new MyShop();
     public void visitaShop()
     {
         grafica.GUI();
