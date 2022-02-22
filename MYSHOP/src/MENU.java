@@ -1,4 +1,6 @@
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class MENU extends JFrame
 {
@@ -16,5 +18,26 @@ public class MENU extends JFrame
         setSize(480,600);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
+        //Azione da compiere al Click (LOGIN)
+        LOGINButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               get
+            }
+        });
+        //Azione da compiere al Click(LOGIN GUEST)
+        LOGINASGUESTButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        //Azione da compiere al Click->> UTENTE SI REGISTRA
+        REGISTRATIButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
     }
 }

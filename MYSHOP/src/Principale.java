@@ -1,9 +1,22 @@
 import javax.swing.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Date;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileInputStream;
+import java.util.ArrayList;
 
 public class Principale
 {
-    public static void main(String[] args)
+    public static void main(String[] args)throws Exception
     {
+
         guest utente = new guest();
         boolean confronta1, confronta2, confronta3, confronta4, confronta5, confronta6, confronta7;
         String scelta = JOptionPane.showInputDialog("Benvenuto nel nostro MyShop \n" +

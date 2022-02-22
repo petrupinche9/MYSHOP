@@ -5,7 +5,7 @@ public class guest
     MENU grafica = new MENU();
     public void visitaShop()
     {
-        grafica.GUI();
+        grafica.setVisible(true);
     }
     public void registrazione()
     {
