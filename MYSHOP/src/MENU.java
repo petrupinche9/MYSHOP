@@ -22,7 +22,7 @@ public class MENU extends JFrame
         LOGINButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               
+
             }
         });
         //Azione da compiere al Click(LOGIN GUEST)
