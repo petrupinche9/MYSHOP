@@ -79,7 +79,7 @@ public class Admin
         newproduct = JOptionPane.showInputDialog("Inserisca il prodotto:");
         System.out.println("Nuovo Prodotto --> " + newproduct);
         String costo = JOptionPane.showInputDialog("Inserisca il costo del prodotto");
-        System.out.println("Costo nuovo prodotto --> " + costo);
+        System.out.println("Costo nuovo prodotto --> " + costo + "€");
         costodouble = Double.parseDouble(costo);
         String question = JOptionPane.showInputDialog("Inserisca il numero di corsia");
         System.out.println("Numero di corsia --> " + question);
@@ -124,11 +124,12 @@ public class Admin
         String nazioneproduttore = JOptionPane.showInputDialog("Inserisca la NAZIONE");
         System.out.println("Nazione del Produttore --> " + nazioneproduttore);
     }
-    boolean confronta13, confronta14;
-    private int costo;
 
     public void InsertService()
     {
+        boolean confronta13, confronta14;
+        int costo;
+        System.out.println("SCELTE EFFETTUATE:");
         String service = JOptionPane.showInputDialog("Scelga la categoria di servizio che vuole inserire: \n" +
                 "A = Montaggio \n " +
                 "B = Trasporto \n " +
@@ -140,12 +141,17 @@ public class Admin
             do
             {
                 service = JOptionPane.showInputDialog("Inserimento non valido! \n" +
-                        "RIPROVARE (Si scriva il nome");
+                        "RIPROVARE (Si scriva il nome) \n" +
+                        "A = Montaggio \n " +
+                        "B = Trasporto \n " +
+                        "(Si scriva il nome");
                 confronta13 = service.equals("Montaggio");
                 confronta14 = service.equals("Trasporto");
             } while (confronta13 == false && confronta14 == false);
         }
+        System.out.println("Categoria --> " + service);
         String prezzo = JOptionPane.showInputDialog("Inserisca il costo del servizio");
+        System.out.println("Costo --> " + prezzo + "€");
         costo = Integer.parseInt(prezzo);
     }
     public void DeleteService()
