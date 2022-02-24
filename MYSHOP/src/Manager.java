@@ -1,5 +1,6 @@
 import javax.swing.*;
 
 public class Manager {
-    private JButton button1;
+    private JButton vaiAllaListaDegliButton;
+    private JButton vaiAlMagazzinoButton;
 }
