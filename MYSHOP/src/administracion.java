@@ -4,9 +4,11 @@ import java.awt.event.ActionListener;
 
 class Ascoltatore4 implements ActionListener
 {
+    Admin insert = new Admin();
     public void actionPerformed(ActionEvent event)
     {
         JButton b = (JButton)event.getSource();
+        insert.Insertitem();
     }
 }
 

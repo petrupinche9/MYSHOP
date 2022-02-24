@@ -54,7 +54,7 @@ public class Principale
             }
             if (risposta.equals("SI"))
             {
-                MENU menu = new MENU();
+                administracionprincipal princ = new administracionprincipal();
             } else
             {
                 String risposta2 = JOptionPane.showInputDialog("Vuoi effettuare la registrazione? " +
