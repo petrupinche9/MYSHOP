@@ -1,6 +1,7 @@
 import javax.swing.*;
 
-public class Manager {
+public class Manager extends JFrame
+{
     private JButton vaiAllaListaDegliButton;
     private JButton vaiAlMagazzinoButton;
 }

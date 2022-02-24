@@ -1,5 +1,6 @@
 import javax.swing.*;
 
-public class Cliente {
+public class Cliente extends JFrame
+{
     private JButton vaiAllaListaDeiButton;
 }
