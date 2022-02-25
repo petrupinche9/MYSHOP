@@ -16,8 +16,6 @@ public class Principale
 {
     public static void main(String[] args)throws Exception
     {
-        MyShop prova = new MyShop();
-        prova.GUI();
         guest utente = new guest();
         boolean confronta1, confronta2, confronta3, confronta4, confronta5, confronta6, confronta7;
         String scelta = JOptionPane.showInputDialog("Benvenuto nel nostro MyShop \n" +

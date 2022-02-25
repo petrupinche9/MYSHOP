@@ -2,10 +2,9 @@ import javax.swing.*;
 
 public class guest
 {
-    MyShop grafica = new MyShop();
     public void visitaShop()
     {
-        grafica.GUI();
+        HomePageMyShop grafica = new HomePageMyShop();
     }
     public void registrazione()
     {
@@ -124,12 +123,12 @@ public class guest
                 } while (controll == false);
             }
             System.out.println("Grazie per esserti registrato. Sarai automaticamente inviato sul nostro MySHOP");
-            grafica.GUI();
+            HomePageMyShop grafica1 = new HomePageMyShop();
         }
         if (confronta == true && confronta1 == false)
         {
             System.out.println("Grazie per esserti registrato. Sarai automaticamente inviato sul nostro MySHOP");
-            grafica.GUI();
+            HomePageMyShop grafica3 = new HomePageMyShop();
         }
     }
 }
