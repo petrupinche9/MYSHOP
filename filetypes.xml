@@ -1,7 +1,7 @@
 <application>
   <component name="FileTypeManager" version="17">
     <extensionMap>
-      <mapping ext="php" type="PHP" />
+      <mapping pattern="PdfHelper" type="CLASS" />
     </extensionMap>
   </component>
 </application>
