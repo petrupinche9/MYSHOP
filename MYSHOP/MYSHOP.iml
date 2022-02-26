@@ -22,5 +22,8 @@
     <orderEntry type="library" name="Java EE 6-Java EE 6" level="project" />
     <orderEntry type="library" name="javax.mail" level="application" />
     <orderEntry type="library" name="pdfbox-3.0.0-alpha2" level="application" />
+    <orderEntry type="library" name="pdfbox-2.0.3" level="application" />
+    <orderEntry type="library" name="fontbox-2.0.3" level="application" />
+    <orderEntry type="library" name="commons-logging-1.2" level="application" />
   </component>
 </module>
