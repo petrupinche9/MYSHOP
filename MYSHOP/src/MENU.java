@@ -15,7 +15,7 @@ public class MENU extends JFrame
     {
         setContentPane(Login);
         setTitle("MYSHOP");
-        setSize(480,600);
+        setSize(880,1000);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
         //Azione da compiere al Click (LOGIN)

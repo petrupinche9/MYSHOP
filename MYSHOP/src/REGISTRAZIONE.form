@@ -27,7 +27,7 @@
         <properties>
           <font name="Monospaced" size="16" style="1"/>
           <foreground color="-14566617"/>
-          <text value="BENVENUTO NELLA FASE DI REGISTRAZIONE NEL NOSTRO MYSHOP"/>
+          <text value="BENVENUTO NELLA FASE DI REGISTRAZIONE DI MYSHOP"/>
         </properties>
       </component>
       <component id="519c9" class="javax.swing.JLabel">
@@ -35,7 +35,7 @@
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="NOME"/>
+          <text value="    NOME"/>
         </properties>
       </component>
       <component id="d3a38" class="javax.swing.JTextField" binding="textField1" default-binding="true">
@@ -51,7 +51,7 @@
           <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="COGNOME"/>
+          <text value="   COGNOME"/>
         </properties>
       </component>
       <component id="5b099" class="javax.swing.JTextField" binding="textField2" default-binding="true">
@@ -67,7 +67,7 @@
           <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="E-MAIL"/>
+          <text value="   E-MAIL"/>
         </properties>
       </component>
       <component id="85466" class="javax.swing.JTextField" binding="textField3" default-binding="true">
@@ -83,7 +83,7 @@
           <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="TELEFONO"/>
+          <text value="  TELEFONO"/>
         </properties>
       </component>
       <component id="c3529" class="javax.swing.JTextField" binding="textField4" default-binding="true">
@@ -99,7 +99,7 @@
           <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="RUOLO"/>
+          <text value="   RUOLO"/>
         </properties>
       </component>
       <component id="6dbbb" class="javax.swing.JTextField" binding="textField7" default-binding="true">

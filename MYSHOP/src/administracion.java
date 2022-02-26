@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+//inserisci servizio
 class Ascoltatore5 implements ActionListener
 {
     Admin service = new Admin();
@@ -11,7 +12,7 @@ class Ascoltatore5 implements ActionListener
         service.InsertService();
     }
 }
-
+//inserisci prodotto
 class Ascoltatore4 implements ActionListener
 {
     Admin insert = new Admin();

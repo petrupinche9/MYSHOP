@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+//crea punti vendita
 class Ascoltatore3 implements ActionListener
 {
     public void actionPerformed(ActionEvent h)
@@ -11,7 +12,7 @@ class Ascoltatore3 implements ActionListener
         System.out.println("Creazione punti vendita");
     }
 }
-
+//classe di modifica
 class Ascoltatore2 implements ActionListener
 {
     public void actionPerformed(ActionEvent e)
