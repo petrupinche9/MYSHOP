@@ -4,7 +4,7 @@ public class guest
 {
     public void visitaShop()
     {
-        HomePageMyShop grafica = new HomePageMyShop();
+        Select_Shop grafica = new Select_Shop();
     }
     public void registrazione()
     {
@@ -123,12 +123,12 @@ public class guest
                 } while (controll == false);
             }
             System.out.println("Grazie per esserti registrato. Sarai automaticamente inviato sul nostro MySHOP");
-            HomePageMyShop grafica1 = new HomePageMyShop();
+            Select_Shop grafica1 = new Select_Shop();
         }
         if (confronta == true && confronta1 == false)
         {
             System.out.println("Grazie per esserti registrato. Sarai automaticamente inviato sul nostro MySHOP");
-            HomePageMyShop grafica3 = new HomePageMyShop();
+            Select_Shop grafica3 = new Select_Shop();
         }
     }
 }

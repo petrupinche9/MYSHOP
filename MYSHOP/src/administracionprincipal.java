@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -27,7 +26,7 @@ class Ascoltatore implements ActionListener
     public void actionPerformed(ActionEvent event)
     {
         JButton b = (JButton)event.getSource();
-        HomePageMyShop shop = new HomePageMyShop();
+        Select_Shop shop = new Select_Shop();
     }
 }
 

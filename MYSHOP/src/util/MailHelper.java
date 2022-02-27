@@ -18,10 +18,11 @@ public class MailHelper {
         return instance;
     }
 
-    public static void main(String args[]) {
 
-        new MailHelper().send("petruzzi.matteo99@gmail.com", "myshop", "msg di test");
-    }
+
+        // metodo per inviare mail
+    // new MailHelper().send("petruzzi.matteo99@gmail.com", "myshop", "msg di test");
+
 
     public void send(String to,String sub,String msg){
         //Get properties object

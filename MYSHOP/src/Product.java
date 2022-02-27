@@ -1,16 +1,11 @@
-import java.util.Scanner;
-
-public class Product
+public class Product extends article
 {
+    private int id,corsia,scaffale;
     private String categoria;
     private String sottocategoria;
     private double costo;
     private int[][] magazzino;
 
-    public Product()
-    {
-
-    }
 
     public class produttore
     {
@@ -20,13 +15,14 @@ public class Product
         private String nazione;
         public produttore(String nome, String sitoweb, String citta, String nazione)
         {
-
+            super();
             this.nome = nome;
             this.sitoweb = sitoweb;
             this.citta = citta;
             this.nazione = nazione;
         }
         //metodi get
+
         public String getNome()
         {
             return nome;
@@ -65,20 +61,34 @@ public class Product
         }
     }
     private produttore prod ;
-    private Product[] Prodotto;
-    public Product(String categoria, String sottocategoria, Double costo,Product[] prodotto, int[][] magazzino, produttore prod)
+   // private Product[] Prodotto;
+    public Product(int id, String categoria, String sottocategoria, Double costo, int corsia, int scaffale, produttore prod)
     {
+        this.id=id;
         this.prod = prod;
         this.categoria=categoria;
         this.costo=costo;
         this.sottocategoria=sottocategoria;
-        this.magazzino=magazzino;
-        this.Prodotto=prodotto;
+        this.corsia=corsia;
+        this.scaffale=scaffale;
+
     }
     //METODI GET
-    public Product[] getProdotto()
+    public int getId() { return id; }
+
+    public void setId(int id) { this.id = id;  }
+
+   /* public Product[] getProdotto()
     {
         return Prodotto;
+    }*/
+
+    public int getCorsia() {
+        return corsia;
+    }
+
+    public int getScaffale() {
+        return scaffale;
     }
 
     public produttore getProd()
@@ -105,7 +115,7 @@ public class Product
     {
         return costo;
     }
-
+    //METODI SET
     public void setCategoria(String categoria)
     {
         this.categoria = categoria;
@@ -126,12 +136,19 @@ public class Product
         this.prod = prod;
     }
 
-    //METODI SET
+    public void setCorsia(int corsia) {
+        this.corsia = corsia;
+    }
 
-    public void setProdotto(Product[] prodotto)
+    public void setScaffale(int scaffale) {
+        this.scaffale = scaffale;
+    }
+
+    /*  public void setProdotto(Product[] prodotto)
     {
         Prodotto = prodotto;
-    }
+    }*/
+
 
     public void setSottocategoria(String sottocategoria)
     {

@@ -1,15 +1,18 @@
-import java.util.Scanner;
-
-public class service
+public class service extends article
 {
+    private int id;
     private String categoria;
     private double costo;
-    public service(String categoria, double costo)
+    public service(int id, String categoria, double costo)
     {
+        super();
+        this.id=id;
         this.categoria= categoria;
         this.costo=costo;
     }
 //metodi get
+
+    public int getId() { return id; }
 
     public double getCosto()
     {
@@ -21,6 +24,8 @@ public class service
         return categoria;
     }
 //metodi set
+
+    public void setId(int id) { this.id = id;    }
 
     public void setCosto(double costo)
     {

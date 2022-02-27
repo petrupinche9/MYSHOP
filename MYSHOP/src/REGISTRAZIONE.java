@@ -11,6 +11,9 @@ public class REGISTRAZIONE extends JFrame
     private JTextField textField7;
     private JButton COMPLETAREGISTRAZIONEButton;
     private JPanel RegistrazionePannello;
+    private JTextField textField5;
+    private JTextField textField6;
+    private JPasswordField passwordField1;
 
     public REGISTRAZIONE()
     {
