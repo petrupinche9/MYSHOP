@@ -4,14 +4,14 @@ import java.awt.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
-public class HomePage extends JFrame{
+public class HomePage_guest extends JFrame{
     private JPanel panel1;
     private JButton LOGINButton;
     private JButton SIGNUPButton;
     private JTable table1;
 
     // da aggiungere il metodo per aggiornare da database
-    public HomePage() {
+    public HomePage_guest() {
         Icon aboutIcon = new ImageIcon("image/lampadario.jpg");
         Icon addIcon = new ImageIcon("image/sedia.jpg");
         Icon copyIcon = new ImageIcon("image/sedia_game.jpg");

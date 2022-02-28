@@ -25,7 +25,7 @@ class Ascoltatore4 implements ActionListener
 
 public class administracion extends JFrame
 {
-    private JButton aggiungiProfottoButton;
+    private JButton aggiungiProdottoButton;
     private JButton modificaProdottoButton;
     private JButton eliminaProdottoButton;
     private JButton eliminaServizioButton;
@@ -39,7 +39,7 @@ public class administracion extends JFrame
     {
         setContentPane(administracionPanel);
         setTitle("MODIFICA MYSHOP");
-        aggiungiProfottoButton.addActionListener(listener4);
+        aggiungiProdottoButton.addActionListener(listener4);
         aggiungiServizioButton.addActionListener(listener5);
         setSize(500, 500);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);

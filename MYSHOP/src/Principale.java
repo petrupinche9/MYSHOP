@@ -1,10 +1,8 @@
-import javax.swing.*;
-
 public class Principale
 {
     public static void main(String[] args)throws Exception
     {
-        guest utente = new guest();
+        /*guest utente = new guest();
         boolean confronta1, confronta2, confronta3, confronta4, confronta5, confronta6, confronta7;
         String scelta = JOptionPane.showInputDialog("Benvenuto nel nostro MyShop \n" +
                 "Sei Amministratore, Manager oppure Utente?");
@@ -68,6 +66,12 @@ public class Principale
                     REGISTRAZIONE registrazione = new REGISTRAZIONE();
                 }
             }
-        }
+        }*/
+        MENU rf = new MENU();
+        rf.setVisible(true);
+        rf.pack();
+        rf.setLocationRelativeTo(null);
+        rf.setSize(600,400);
+        //rf.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 }

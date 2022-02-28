@@ -22,12 +22,12 @@
           <text value="BENVENUTO NELLA CLASSE DI MODIFICA"/>
         </properties>
       </component>
-      <component id="7f148" class="javax.swing.JButton" binding="aggiungiProfottoButton" default-binding="true">
+      <component id="7f148" class="javax.swing.JButton" binding="aggiungiProdottoButton" default-binding="true">
         <constraints>
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Aggiungi Profotto"/>
+          <text value="Aggiungi Prodotto"/>
         </properties>
       </component>
       <component id="57a2" class="javax.swing.JLabel">

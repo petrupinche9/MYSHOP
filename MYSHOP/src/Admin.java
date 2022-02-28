@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.util.Scanner;
 
-public class Admin
+public class Admin extends user
 {
     Scanner in = new Scanner(System.in);
     boolean confronta, confronta2, confronta3, confronta4, confronta5, confronta6, confronta7;
