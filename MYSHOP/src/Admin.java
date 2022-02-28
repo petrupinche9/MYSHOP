@@ -1,14 +1,16 @@
 import javax.swing.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Admin extends user
 {
-    Scanner in = new Scanner(System.in);
     boolean confronta, confronta2, confronta3, confronta4, confronta5, confronta6, confronta7;
-    boolean confronta8, confronta9, confronta10, confronta11, confronta12;
-    private double costodouble;
+    boolean confronta8, confronta9, confronta10, confronta11, confronta12, confronta13, confronta14;
+    boolean confronta15, confronta16;
     private String newproduct;
     private int numero, corsia, scaffale;
+    private double costodouble, costodouble2;
+
     public void Insertitem()
     {
         System.out.println("SCELTE EFFETTUATE:");
@@ -128,7 +130,7 @@ public class Admin extends user
     public void InsertService()
     {
         boolean confronta13, confronta14;
-        int costo;
+        double costo;
         System.out.println("SCELTE EFFETTUATE:");
         String service = JOptionPane.showInputDialog("Scelga la categoria di servizio che vuole inserire: \n" +
                 "A = Montaggio \n " +
@@ -150,22 +152,183 @@ public class Admin extends user
             } while (confronta13 == false && confronta14 == false);
         }
         System.out.println("Categoria --> " + service);
-        String prezzo = JOptionPane.showInputDialog("Inserisca il costo del servizio");
-        System.out.println("Costo --> " + prezzo + "€");
-        costo = Integer.parseInt(prezzo);
+        if (service.equals("Montaggio"))
+        {
+            service inseriscimontaggio = new service();
+            String servizio = JOptionPane.showInputDialog("Inserisca il servizio di Montaggio");
+            inseriscimontaggio.insertservicemontaggio(servizio);
+            System.out.println("Servizio inserito --> " + servizio);
+            String prezzo = JOptionPane.showInputDialog("Inserisca il costo del servizio di Montaggio");
+            System.out.println("Costo --> " + prezzo + "€");
+            costodouble2 = Double.parseDouble(prezzo);
+            inseriscimontaggio.insertpricemontaggio(costodouble2);
+            System.out.println("SERVIZIO DI MONTAGGIO INSERITO CON SUCCESSO");
+        }
+        if (service.equals("Trasporto"))
+        {
+            service inseriscitrasporto = new service();
+            String servizio2 = JOptionPane.showInputDialog("Inserisca il servizio di Trasporto");
+            inseriscitrasporto.insertservicetrasporto(servizio2);
+            System.out.println("Servizio inserito --> " + servizio2);
+            String prezzo = JOptionPane.showInputDialog("Inserisca il costo del servizio di Trasporto");
+            System.out.println("Costo --> " + prezzo + "€");
+            costo = Double.parseDouble(prezzo);
+            inseriscitrasporto.insertpricetrasporto(costo);
+            System.out.println("SERVIZIO DI MONTAGGIO INSERITO CON SUCCESSO");
+        }
     }
+
     public void DeleteService()
     {
-
+        System.out.println("SCELTE EFFETTUATE:");
+        String response = JOptionPane.showInputDialog("Si scelga la categoria del servizio che si intende eliminare \n" +
+                "A = Montaggio \n " +
+                "B = Trasporto \n " +
+                "(Si scriva il nome");
+        confronta13 = response.equals("Montaggio");
+        confronta14 = response.equals("Trasporto");
+        if (confronta13 == false && confronta14 == false)
+        {
+            do
+            {
+                response = JOptionPane.showInputDialog("La scelta inserita non è valida! RIPROVARE \n" +
+                        "A = Montaggio \n " +
+                        "B = Trasporto \n " +
+                        "(Si scriva il nome");
+                confronta13 = response.equals("Montaggio");
+                confronta14 = response.equals("Trasporto");
+            } while (confronta13 == false && confronta14 == false);
+        }
+        System.out.println("Si è scelto --> " + response);
+        if (response.equals("Montaggio"))
+        {
+            boolean controllo;
+            service montaggio = new service();
+            montaggio.getCategoriamontaggio();
+            String deletemontaggio = JOptionPane.showInputDialog("Quale servizio di MONTAGGIO si desidera eliminare?");
+            controllo = montaggio.controllomontaggio(deletemontaggio);
+            if (controllo == false)
+            {
+                do
+                {
+                    deletemontaggio = JOptionPane.showInputDialog("Il servizio inserito non è presente in elenco! \n" +
+                            "PREGO RIPROVARE");
+                    controllo = montaggio.controllomontaggio(deletemontaggio);
+                } while (controllo == false);
+            }
+            if (controllo == true)
+            {
+                montaggio.removemontaggio(deletemontaggio);
+                JOptionPane.showMessageDialog(null,"Servizio MONTAGGIO rimosso con successo!");
+            }
+        }
+        if (response.equals("Trasporto"))
+        {
+            boolean controllo2;
+            service trasporto = new service();
+            trasporto.getCategoriatrasporto();
+            String deletetrasporto = JOptionPane.showInputDialog("Quale servizio di TRASPORTO si desidera eliminare?");
+            controllo2 = trasporto.controllotrasporto(deletetrasporto);
+            if (controllo2 == false)
+            {
+                do
+                {
+                    deletetrasporto = JOptionPane.showInputDialog("Il servizio inserito non è presente in elenco! \n" +
+                            "PREGO RIPROVARE");
+                    controllo2 = trasporto.controllotrasporto(deletetrasporto);
+                } while (controllo2 == false);
+            }
+            if (controllo2 == true)
+            {
+                trasporto.removetrasporto(deletetrasporto);
+                JOptionPane.showMessageDialog(null, "Servizio TRASPORTO rimosso con successo");
+            }
+        }
     }
+
     public void ModificationService()
     {
-
+        System.out.println("SCELTE EFFETTUATE:");
+        String modify = JOptionPane.showInputDialog("Quale categoria di servizio si intende modificare? \n" +
+                "A = Montaggio \n" +
+                "B = Trasporto \n" +
+                "(Si scriva il nome)");
+        confronta15 = modify.equals("Montaggio");
+        confronta16 = modify.equals("Trasporto");
+        if (confronta15 == false && confronta16 == false)
+        {
+            do
+            {
+                modify = JOptionPane.showInputDialog("La scelta inserita non è valida! RIPROVARE \n" +
+                        "A = Montaggio \n" +
+                        "B = Trasporto \n" +
+                        "(Si scriva il nome)");
+                confronta15 = modify.equals("Montaggio");
+                confronta16 = modify.equals("Trasporto");
+            } while (confronta15 == false && confronta16 == false);
+        }
+        System.out.println("Si è scelto --> " + modify);
+        if (modify.equals("Montaggio"))
+        {
+            boolean controllo3;
+            service montaggio2 = new service();
+            montaggio2.getCategoriamontaggio();
+            String modifymontaggio = JOptionPane.showInputDialog("Quale servizio di MONTAGGIO si desidera modificare?");
+            controllo3 = montaggio2.controllomontaggio(modifymontaggio);
+            if (controllo3 == false)
+            {
+                do
+                {
+                    modifymontaggio = JOptionPane.showInputDialog("Il servizio inserito non è presente in elenco! \n" +
+                            "PREGO RIPROVARE");
+                    controllo3 = montaggio2.controllomontaggio(modifymontaggio);
+                } while (controllo3 == false);
+            }
+            if (controllo3 == true)
+            {
+                String newname = JOptionPane.showInputDialog("Inserire nuovo nome \n" +
+                        "(Se non si intende modificare il nome lo si riscriva");
+                String newprice = JOptionPane.showInputDialog("Inserire nuovo prezzo \n " +
+                        "(Se non si intende modificare il prezzo lo si riscriva");
+                double modprezzo = Double.parseDouble(newprice);
+                montaggio2.modifymontag(modifymontaggio, newname, modprezzo);
+                JOptionPane.showMessageDialog(null, "Servizio modificato con successo");
+            }
+        }
+        if (modify.equals("Trasporto"))
+        {
+            boolean controllo4;
+            service trasporto2 = new service();
+            trasporto2.getCategoriatrasporto();
+            String modifytrasporto = JOptionPane.showInputDialog("Quale servizio di TRASPORTO si desidera modificare?");
+            controllo4 = trasporto2.controllotrasporto(modifytrasporto);
+            if (controllo4 == false)
+            {
+                do
+                {
+                    modifytrasporto = JOptionPane.showInputDialog("Il servizio inserito non è presente in elenco! \n" +
+                            "PREGO RIPROVARE");
+                    controllo4 = trasporto2.controllotrasporto(modifytrasporto);
+                } while (controllo4 == false);
+            }
+            if (controllo4 == true)
+            {
+                String newname2 = JOptionPane.showInputDialog("Inserire nuovo nome \n" +
+                        "(Se non si intende modificare il nome lo si riscriva");
+                String newprice2 = JOptionPane.showInputDialog("Inserire nuovo prezzo \n" +
+                        "(Se non si intende modificare il prezzo lo si riscriva");
+                double modprezzo2 = Double.parseDouble(newprice2);
+                trasporto2.modifytraspor(modifytrasporto, newname2, modprezzo2);
+                JOptionPane.showMessageDialog(null, "Servizio modificato con successo");
+            }
+        }
     }
+
     public void DeleteItem()
     {
 
     }
+
     public void ModificationItem()
     {
 
