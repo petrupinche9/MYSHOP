@@ -1,21 +1,28 @@
 package it.view;
 
+import it.DAO.userDAO;
+import it.DbConnection;
+import it.model.user;
+
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class REGISTRAZIONE extends JFrame
 {
-    private JTextField textField1;
-    private JTextField textField2;
-    private JTextField textField3;
-    private JTextField textField4;
-    private JTextField textField7;
+    private JTextField Name;
+    private JTextField Surname;
+    private JTextField Email;
+    private JTextField Telephone;
+    private JTextField occupation;
     private JButton COMPLETAREGISTRAZIONEButton;
     private JPanel RegistrazionePannello;
-    private JTextField textField5;
-    private JTextField textField6;
-    private JPasswordField passwordField1;
+    private JTextField Age;
+    private JTextField username;
+    private JPasswordField passwd;
+    private JComboBox<String> comboBox1;
 
     public REGISTRAZIONE()
     {
@@ -28,7 +35,33 @@ public class REGISTRAZIONE extends JFrame
         COMPLETAREGISTRAZIONEButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                user p=new user();
+                p.setName(Name.getText());
+                p.setSurname(Surname.getText());
+                p.setEmail(Email.getText());
+                p.setTelephone(Integer.parseInt(Telephone.getText()));
+                p.setTelephone(Integer.parseInt(Age.getText()));
+                p.setOccupation(occupation.getText());
+                p.setUsername(username.getText());
+                p.setPassword(String.valueOf(passwd.getPassword()));
+                userDAO reg =new userDAO();
+                reg.newuser(p);
+            }
+        });
+        comboBox1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                EventQueue.invokeLater(new Runnable() {
+                public void run() {// updates to the Swing GUI must be done on EDT
+                    ArrayList<String[]> res = DbConnection.getInstance().eseguiQuery("SELECT Shopname FROM Point_shop");
+                    if(res.size()==1) {
+                        for (int i = 0; i < res.size(); ++i) {
+                            String[] riga = res.get(0);
+                            comboBox1.addItem(riga[i]);
+                        }
+                    }
+                }
+            });
             }
         });
     }

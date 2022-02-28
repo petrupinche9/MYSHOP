@@ -1,55 +1,76 @@
 package it.view;
 
+import it.model.article;
+
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
-import java.awt.*;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
-
-
+import javax.swing.table.AbstractTableModel;
+import java.util.ArrayList;
 public class HomePage_guest extends JFrame{
     private JPanel panel1;
     private JButton LOGINButton;
     private JButton SIGNUPButton;
     private JTable table1;
+    private JSplitPane rootpanel;
 
 
     // da aggiungere il metodo per aggiornare da database
     public HomePage_guest() {
-        Icon icon1 = new ImageIcon("image/lampadario.jpg");
-        Icon icon2 = new ImageIcon("image/sedia.jpg");
-        Icon icon3 = new ImageIcon("image/sedia_game.jpg");
-        String[] columns = { "Name", "category", "Image"};
-        //data for JTable in a 2D table
-        Object[][] data = {
-                {1, "Thomas", "Alaska",icon1 },
-                {2, "Jean", "Arizona", icon2 },
-                {3, "Yohan", "California", icon3},
+        class TableModelarticle extends AbstractTableModel {
 
-        };
-        DefaultTableModel model = new DefaultTableModel(data, columns);
+            private ArrayList<article> articoli;
 
-        JTable table = new JTable(model) {
-            public Class getColumnClass(int column) {
-                return (column == 3) ? Icon.class : Object.class;
+            public TableModelarticle(ArrayList<article> articoli) {
+                this.articoli = articoli;
             }
-        };
-        table.setRowHeight(60);
-        JScrollPane scrollPane = new JScrollPane(table);
-        getContentPane().add(scrollPane);
 
-        JLabel labelHead = new JLabel("List of employees");
-        labelHead.setFont(new Font("Arial", Font.TRUETYPE_FONT,20));
-        getContentPane().add(labelHead,BorderLayout.PAGE_START);
-        table1.addComponentListener(new ComponentAdapter() {
             @Override
-            public void componentShown(ComponentEvent e) {
-                super.componentShown(e);
-                //Set row height to 60 pixels
-
+            public int getRowCount() {
+                return articoli.size();
             }
 
-        });
+            @Override
+            public int getColumnCount() {
+                return 7;
+            }
+
+            @Override
+            public Object getValueAt(int rowIndex, int columnIndex) {
+
+                article p = articoli.get(rowIndex);
+
+                //BINDING
+                switch(columnIndex) {
+                   // case 0: return p.getFoto();
+                    case 1: return p.getName();
+                    case 2: return p.getDescr();
+                    case 3: return p.getCosto();
+                   /* case 3: return p.getCosto();
+                    case 4: return p.getNumPostiOccupati();
+                    case 5: return DateUtil.stringFromDate(p.getDataInizio());
+                    case 6: return DateUtil.stringFromDate(p.getDataFine());*/
+                }
+
+                return "-";
+            }
+
+            @Override
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return (columnIndex > 4);
+            }
+
+            @Override
+            public void setValueAt(Object value, int rowIndex, int columnIndex) {
+                article p = articoli.get(rowIndex);
+
+              /*  switch (columnIndex) {
+                    case 5: p.setDataInizio(DateUtil.dateTimeFromString((String)value)); break;
+                    case 6: p.setDataFine(DateUtil.dateTimeFromString((String)value)); break;
+                }*/
+
+                //TODO richiamare il metodo di business modificaPrenotazione che chiamera il DAO per update sql
+
+            }
+        }
     }
 
 

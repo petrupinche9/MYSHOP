@@ -5,7 +5,7 @@ public class Product extends article
     private int id,corsia,scaffale;
     private String categoria;
     private String sottocategoria;
-    private double costo;
+
     private int[][] magazzino;
 
 
@@ -68,9 +68,8 @@ public class Product extends article
     {
         this.id=id;
         this.prodotto= prodotto;
-        this.prod = prod;
+        this.prod = prod; // produttore
         this.categoria=categoria;
-        this.costo=costo;
         this.sottocategoria=sottocategoria;
         this.corsia=corsia;
         this.scaffale=scaffale;
@@ -114,19 +113,11 @@ public class Product extends article
         return sottocategoria;
     }
 
-    public double getCosto()
-    {
-        return costo;
-    }
+
     //METODI SET
     public void setCategoria(String categoria)
     {
         this.categoria = categoria;
-    }
-
-    public void setCosto(double costo)
-    {
-        this.costo = costo;
     }
 
     public void setMagazzino(int[][] magazzino)

@@ -1,9 +1,6 @@
 package it.view;
 
-import javax.swing.*;
+import it.model.user;
 
-public class Manager extends JFrame
-{
-    private JButton vaiAllaListaDegliButton;
-    private JButton vaiAlMagazzinoButton;
+public class Manager extends user {
 }
