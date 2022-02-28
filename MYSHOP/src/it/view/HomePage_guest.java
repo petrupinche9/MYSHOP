@@ -1,8 +1,11 @@
+package it.view;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+
 
 public class HomePage_guest extends JFrame{
     private JPanel panel1;
@@ -10,18 +13,19 @@ public class HomePage_guest extends JFrame{
     private JButton SIGNUPButton;
     private JTable table1;
 
+
     // da aggiungere il metodo per aggiornare da database
     public HomePage_guest() {
-        Icon aboutIcon = new ImageIcon("image/lampadario.jpg");
-        Icon addIcon = new ImageIcon("image/sedia.jpg");
-        Icon copyIcon = new ImageIcon("image/sedia_game.jpg");
-        String[] columns = {"Id", "Name", "Address", "Image"};
+        Icon icon1 = new ImageIcon("image/lampadario.jpg");
+        Icon icon2 = new ImageIcon("image/sedia.jpg");
+        Icon icon3 = new ImageIcon("image/sedia_game.jpg");
+        String[] columns = { "Name", "category", "Image"};
         //data for JTable in a 2D table
         Object[][] data = {
-                {1, "Thomas", "Alaska", new ImageIcon("user1.png") },
-                {2, "Jean", "Arizona", new ImageIcon("user2.png") },
-                {3, "Yohan", "California", new ImageIcon("user3.png") },
-                {4, "Emily", "Florida", new ImageIcon("user4.png") }
+                {1, "Thomas", "Alaska",icon1 },
+                {2, "Jean", "Arizona", icon2 },
+                {3, "Yohan", "California", icon3},
+
         };
         DefaultTableModel model = new DefaultTableModel(data, columns);
 
@@ -47,4 +51,6 @@ public class HomePage_guest extends JFrame{
 
         });
     }
+
+
 }

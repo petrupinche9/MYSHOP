@@ -1,3 +1,8 @@
+package it.view;
+
+import it.DbConnection;
+import it.model.user;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -31,7 +36,7 @@ public class MENU extends JFrame
                 String uname = textField1.getText();
                 String pass = String.valueOf(passwordField1.getPassword());
 
-                String query = "SELECT * FROM user WHERE username="+uname+" AND passwd ="+pass+";";
+                String query = "SELECT * FROM it.model.user WHERE username="+uname+" AND passwd ="+pass+";";
 
                 res = DbConnection.getInstance().eseguiQuery(query);
 

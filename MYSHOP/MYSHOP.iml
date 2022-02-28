@@ -29,5 +29,8 @@
     <orderEntry type="library" name="fontbox-2.0.3 (2)" level="project" />
     <orderEntry type="library" name="javax.mail (2)" level="project" />
     <orderEntry type="library" name="pdfbox-2.0.3 (2)" level="project" />
+    <orderEntry type="library" name="fontbox-2.0.3 (3)" level="project" />
+    <orderEntry type="library" name="javax.mail (3)" level="project" />
+    <orderEntry type="library" name="pdfbox-2.0.3 (3)" level="project" />
   </component>
 </module>

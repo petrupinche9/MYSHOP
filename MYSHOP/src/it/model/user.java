@@ -1,3 +1,5 @@
+package it.model;
+
 public class user {
     private int id;
     private String username;

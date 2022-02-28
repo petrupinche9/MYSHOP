@@ -1,3 +1,5 @@
+package it.model;
+
 //implementare database
 public class article {
    private int id;
@@ -9,7 +11,7 @@ public class article {
     public article() {
 
     }
-    public article( int id,String Descr,Product[] prodotto,String comment, int eval){
+    public article(int id, String Descr, Product[] prodotto, String comment, int eval){
         this.id=id;
         this.comment=comment;
         this.eval=eval;

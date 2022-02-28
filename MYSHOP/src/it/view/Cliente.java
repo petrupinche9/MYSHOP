@@ -1,3 +1,5 @@
+package it.view;
+
 import javax.swing.*;
 
 public class Cliente extends JFrame

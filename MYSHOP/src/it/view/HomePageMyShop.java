@@ -1,11 +1,13 @@
+package it.view;
+
 import javax.swing.*;
 
-public class Select_Shop extends JFrame
+public class HomePageMyShop extends JFrame
 {
     private JComboBox comboBox1;
     private JPanel HomePage;
 
-    public Select_Shop()
+    public HomePageMyShop()
     {
         comboBox1.addItem("SELEZIONE PUNTI VENDITA");
         setContentPane(HomePage);

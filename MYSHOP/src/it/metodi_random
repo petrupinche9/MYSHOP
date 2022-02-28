@@ -13,10 +13,10 @@ try {
             fila[1] = rs.getString("lna");
             byte[] imgBytes = rs.getBytes("pic");
             Blob blob = new javax.sql.rowset.serial.SerialBlob(imgBytes);
-            BufferedImage image = null;
+            BufferedImage it.image = null;
             try (InputStream is = blob.getBinaryStream()) {
-                image = ImageIO.read(is);
-                ImageIcon icon = new ImageIcon(image);
+                it.image = ImageIO.read(is);
+                ImageIcon icon = new ImageIcon(it.image);
                 fila[2] = icon.toString();
             } catch (IOException exp) {
                 exp.printStackTrace();

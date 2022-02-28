@@ -1,3 +1,6 @@
+package it;
+import it.view.HomePageMyShop;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -26,7 +29,7 @@ class Ascoltatore implements ActionListener
     public void actionPerformed(ActionEvent event)
     {
         JButton b = (JButton)event.getSource();
-        Select_Shop shop = new Select_Shop();
+        HomePageMyShop shop = new HomePageMyShop();
     }
 }
 

@@ -1,4 +1,4 @@
-package util;
+package it.util;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
