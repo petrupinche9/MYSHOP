@@ -5,8 +5,12 @@ public class Product extends article
     private int id,corsia,scaffale;
     private String categoria;
     private String sottocategoria;
-
+    private Product[] prodotto;
     private int[][] magazzino;
+
+    public Product() {
+
+    }
 
 
     public class produttore
@@ -63,7 +67,6 @@ public class Product extends article
         }
     }
     private produttore prod ;
-    private Product[] prodotto;
     public Product(int id, Product[] prodotto, String categoria, String sottocategoria, Double costo, int corsia, int scaffale, produttore prod)
     {
         this.id=id;

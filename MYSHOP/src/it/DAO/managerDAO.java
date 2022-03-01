@@ -22,10 +22,16 @@ public class managerDAO implements ImanagerDAO{
 
         return a;
     }
-
-
     @Override
     public ArrayList<manager> findAll() {
-        return null;
+        ArrayList<manager> c =new ArrayList<manager>() ;
+
+        ArrayList<String[]> res = DbConnection.getInstance().eseguiQuery("SELECT idmanager FROM Manager ;");
+        for(String[] riga : res) {
+            manager mng = findById(Integer.parseInt(riga[0]));
+            c.add(mng);
+        }
+
+        return c;
     }
 }

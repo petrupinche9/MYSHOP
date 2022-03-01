@@ -4,23 +4,22 @@ public class article {
    private int id;
     private String name;
     private String Descr;
-    private Product[] prodotto;
     private String comment;
     private int eval;
     private double costo;
-
+    private byte[] img;
     public article() {
 
     }
 
-    public article(int id,String name, double costo, String Descr, Product[] prodotto, String comment, int eval){
+    public article(int id,String name, double costo, String Descr, String comment, int eval, byte[] img){
         this.id=id;
         this.name=name;
         this.comment=comment;
         this.eval=eval;
         this.Descr=Descr;
         this.costo=costo;
-        this.prodotto=prodotto;
+        this.img=img;
 
     }
     // metodi get
@@ -30,9 +29,6 @@ public class article {
     public String getName() {return name;}
     public int getEval() {
         return eval;
-    }
-    public Product[] getProdotto() {
-        return prodotto;
     }
     public String getComment() {
         return comment;
@@ -44,6 +40,7 @@ public class article {
     {
         return costo;
     }
+    public byte[] getImg() {return img;}
 
     //METODI SET
     public void setCosto(double costo)
@@ -63,8 +60,5 @@ public class article {
     public void setId(int id) {
         this.id = id;
     }
-    public void setProdotto(Product[] prodotto) {
-        this.prodotto = prodotto;
-    }
-
+    public void setImg(byte[] img) { this.img = img; }
 }

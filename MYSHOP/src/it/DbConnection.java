@@ -70,7 +70,7 @@ public class DbConnection {
 
         return v;
     }
-
+//add foto solo per admin
     public void addFoto(File file, String sql) {
 
         try {

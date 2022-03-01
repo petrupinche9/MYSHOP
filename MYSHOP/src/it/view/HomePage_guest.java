@@ -67,7 +67,6 @@ public class HomePage_guest extends JFrame{
                     case 6: p.setDataFine(DateUtil.dateTimeFromString((String)value)); break;
                 }*/
 
-                //TODO richiamare il metodo di business modificaPrenotazione che chiamera il DAO per update sql
 
             }
         }

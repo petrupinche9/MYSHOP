@@ -8,7 +8,7 @@ import java.util.ArrayList;
 //base dao per tutti
 public class userDAO implements IuserDAO {
     @Override
-
+//cerca utenti da id
     public user findById(int id) {
         user c = null;
 
@@ -25,11 +25,19 @@ public class userDAO implements IuserDAO {
         return c;
     }
 
+//ritorna tutti gli utenti
+    public ArrayList<user> findAll() {
+        ArrayList<user> c =new ArrayList<user>() ;
 
-    /*@Override
-    public ArrayList<Cliente> findAll() {
-        return null;
-    }*/
+        ArrayList<String[]> res = DbConnection.getInstance().eseguiQuery("SELECT iduser FROM user ;");
+        for(String[] riga : res) {
+            user usr = findById(Integer.parseInt(riga[0]));
+            c.add(usr);
+        }
+
+        return c;
+    }
+    //registrazione nuovo utente
     public void newuser( user p){
         String res = "INSERT INTO user VALUES (NULL,'"+p.getUsername()+"', '"+p.getPassword()+"', '"+p.getName()+"','"+p.getSurname()+"','"+p.getAge()+"','"+p.getEmail()+"','"+p.getTelephone()+"', '"+p.getOccupation()+"'); ";
         JOptionPane.showInputDialog(res);
