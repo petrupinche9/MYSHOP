@@ -8,4 +8,5 @@ public interface ImanagerDAO {
     manager findById(int id);
 
     ArrayList<manager> findAll();
+
 }

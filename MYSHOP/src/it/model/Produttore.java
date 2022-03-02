@@ -2,13 +2,15 @@ package it.model;
 
 public class Produttore
 {
+    private int id;
     private String nome;
     private String sitoweb;
     private String citta;
     private String nazione;
-    public Produttore(String nome, String sitoweb, String citta, String nazione)
+    public Produttore(int id,String nome, String sitoweb, String citta, String nazione)
     {
         super();
+        this.id=id;
         this.nome = nome;
         this.sitoweb = sitoweb;
         this.citta = citta;
@@ -24,12 +26,11 @@ public class Produttore
     {
         return nome;
     }
-
+    public int getId() {return id;    }
     public String getSitoweb()
     {
         return sitoweb;
     }
-
     public String getCitta()
     {
         return citta;

@@ -1,6 +1,15 @@
 package it.DAO;
 
-import it.model.Admin;
+import it.model.*;
+import it.view.Manager;
 
 public interface IAdminDAO extends IBaseDAO<Admin>{
+    public void newproduct(Product p, Produttore prod);
+    public void newsubproduct( Product p,Produttore prod);
+    public void newservice(service p, Fornitore prod);
+    public void erase_article( article p);
+    public void mod_prodotti(Product p, Produttore prod);
+    public void mod_servizi(service p, Fornitore f);
+    public void create_shopandmanager(Point_shop shop, Manager mng);
+
 }

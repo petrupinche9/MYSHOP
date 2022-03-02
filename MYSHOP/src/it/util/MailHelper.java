@@ -9,8 +9,8 @@ public class MailHelper {
 
     private static MailHelper instance;
 
-    private static String FROM = "MYSHOP22@gmail.com";
-    private static String PASSWORD = "finalmente22";
+    private static String FROM = "manager.MYSHOP22@gmaial.com";
+    private static String PASSWORD = "MYshop22";
 
     public static synchronized MailHelper getInstance() {
         if(instance == null)
@@ -18,11 +18,10 @@ public class MailHelper {
         return instance;
     }
 
+    /*public static void main(String args[]) {
 
-
-        // metodo per inviare mail
-    // new MailHelper().send("petruzzi.matteo99@gmail.com", "myshop", "msg di test");
-
+        new MailHelper().send("roberto.vergallo@gmail.com", "oggetto", "msg di test");
+    }*/
 
     public void send(String to,String sub,String msg){
         //Get properties object
@@ -34,7 +33,7 @@ public class MailHelper {
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.port", "465");
         //get Session
-        Session session = Session.getDefaultInstance(props,
+        javax.mail.Session session = javax.mail.Session.getDefaultInstance(props,
                 new Authenticator() {
                     protected PasswordAuthentication getPasswordAuthentication() {
                         return new PasswordAuthentication(FROM,PASSWORD);

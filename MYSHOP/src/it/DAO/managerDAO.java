@@ -1,8 +1,12 @@
 package it.DAO;
 
 import it.DbConnection;
+import it.model.Point_shop;
+import it.model.Product;
 import it.model.manager;
-
+import it.model.user;
+import it.util.MailHelper;
+import javax.swing.*;
 import java.util.ArrayList;
 //azioni manager
 public class managerDAO implements ImanagerDAO{
@@ -33,5 +37,35 @@ public class managerDAO implements ImanagerDAO{
         }
 
         return c;
+    }
+
+    public void add_product_to_shop(Product p, Point_shop shop){
+        productDAO s=new productDAO();
+        ArrayList<String[]> res = DbConnection.getInstance().eseguiQuery("UPDATE articolo INNER JOIN Point_shop as shop ON Point_shop_idPoint_shop=shop.idPoint_shop INNER JOIN product AS p ON p.idproduct=product_idproduct  WHERE idarticolo= "+s.findById(p.getId()).getId()+" " +
+                "SET Point_shop_idPoint_shop='"+shop.getId()+"', corsia='"+p.getCorsia()+"',scaffale='"+p.getScaffale()+"';");
+        JOptionPane.showInputDialog(res);
+
+    }
+    public void erase_product_from_shop(Product p, Point_shop shop){
+        productDAO s=new productDAO();
+        ArrayList<String[]> res = DbConnection.getInstance().eseguiQuery("UPDATE articolo INNER JOIN Point_shop as shop ON Point_shop_idPoint_shop=shop.idPoint_shop  WHERE  idarticolo= "+s.findById(p.getId()).getId()+" " +
+                "SET Point_shop_idPoint_shop=NULL , corsia='"+p.getCorsia()+"',scaffale='"+p.getScaffale()+"';");
+        JOptionPane.showInputDialog(res);
+    }
+    public void send_email_to_client(user c,String obj,String mex){
+        new MailHelper().send(c.getEmail(), obj, mex);
+    }
+    public void add_user_to_shop(user p, Point_shop shop){
+        userDAO s=new userDAO();
+        ArrayList<String[]> res = DbConnection.getInstance().eseguiQuery("UPDATE Point_shop INNER JOIN Cliente as cl ON cl.isCliente=Cliente_idCLiente WHERE idCliente= "+s.findById(p.getId()).getId()+" " +
+                "SET Cliente_idCliente='"+p.getId()+"';");
+        JOptionPane.showInputDialog(res);
+
+    }
+    public void erase_user_from_shop(user p, Point_shop shop){
+        userDAO s=new userDAO();
+        ArrayList<String[]> res = DbConnection.getInstance().eseguiQuery("UPDATE Point_shop INNER JOIN Cliente as cl ON cl.isCliente=Cliente_idCLiente WHERE idCliente= "+s.findById(p.getId()).getId()+" " +
+                "SET Cliente_idCliente=NULL;");
+        JOptionPane.showInputDialog(res);
     }
 }
