@@ -57,15 +57,13 @@ public class managerDAO implements ImanagerDAO{
     }
     public void add_user_to_shop(user p, Point_shop shop){
         userDAO s=new userDAO();
-        ArrayList<String[]> res = DbConnection.getInstance().eseguiQuery("UPDATE Point_shop INNER JOIN Cliente as cl ON cl.isCliente=Cliente_idCLiente WHERE idCliente= "+s.findById(p.getId()).getId()+" " +
-                "SET Cliente_idCliente='"+p.getId()+"';");
+        ArrayList<String[]> res = DbConnection.getInstance().eseguiQuery("UPDATE Point_shop_has_Cliente SET Cliente_idCliente='"+p.getId()+"' Point_shop_idPoint_shop='"+shop.getId()+"';");
         JOptionPane.showInputDialog(res);
 
     }
     public void erase_user_from_shop(user p, Point_shop shop){
         userDAO s=new userDAO();
-        ArrayList<String[]> res = DbConnection.getInstance().eseguiQuery("UPDATE Point_shop INNER JOIN Cliente as cl ON cl.isCliente=Cliente_idCLiente WHERE idCliente= "+s.findById(p.getId()).getId()+" " +
-                "SET Cliente_idCliente=NULL;");
+        ArrayList<String[]> res = DbConnection.getInstance().eseguiQuery("DELETE FROM Point_shop_has_Cliente WHERE Cliente_idCliente='"+p.getId()+"' Point_shop_idPoint_shop='"+shop.getId()+"'; ");
         JOptionPane.showInputDialog(res);
     }
 }
