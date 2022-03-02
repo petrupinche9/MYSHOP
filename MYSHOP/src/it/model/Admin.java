@@ -1,14 +1,9 @@
-package it.model;
-
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Admin extends user
+public class Admin
 {
-    boolean confronta, confronta2, confronta3, confronta4, confronta5, confronta6, confronta7;
-    boolean confronta8, confronta9, confronta10, confronta11, confronta12, confronta13, confronta14;
-    boolean confronta15, confronta16;
     private String newproduct;
     private int numero, corsia, scaffale;
     private double costodouble, costodouble2;
@@ -21,24 +16,31 @@ public class Admin extends user
                 "B = Illuminazione \n " +
                 "C = Tessile \n " +
                 "(Si scriva il nome)");
-        confronta = categoria.equals("Mobili");
-        confronta2 = categoria.equals("Illuminazione");
-        confronta3 = categoria.equals("Tessile");
-        if (confronta == false && confronta2 == false && confronta3 == false)
+        if(categoria.equals("Mobili") || categoria.equals("Illuminazione") || categoria.equals("Tessile"))
         {
+            switch (categoria)
+            {
+                case "Mobili": System.out.println("Categoria --> " + categoria); break;
+                case "Illuminazione": System.out.println("Categoria --> " + categoria); break;
+                case "Tessile": System.out.println("Categoria --> " + categoria); break;
+            }
+        } else
+        {
+            boolean fatto = false;
             do
             {
-                categoria = JOptionPane.showInputDialog("Categoria inserita non valida! \n " +
-                        "RIPROVARE (Si scriva il nome) \n" +
-                                "A = Mobili \n" +
-                                "B = Illuminazione \n " +
-                                "C = Tessile");
-                confronta = categoria.equals("Mobili");
-                confronta2 = categoria.equals("Illuminazione");
-                confronta3 = categoria.equals("Tessile");
-            } while (confronta == false && confronta2 == false && confronta3 == false);
+                categoria = JOptionPane.showInputDialog("Inserimento non valido. RIPROVARE \n" +
+                        "A = Mobili \n" +
+                        "B = Illuminazione \n " +
+                        "C = Tessile \n " +
+                        "(Si scriva il nome)");
+                if(categoria.equals("Mobili") || categoria.equals("Illuminazione") || categoria.equals("Tessile"))
+                {
+                    fatto = true;
+                }
+            } while (fatto == false);
+            System.out.println("Categoria --> " + categoria);
         }
-        System.out.println("Categoria --> " + categoria);
         String sottocategoria = JOptionPane.showInputDialog("Scelga ora una sottocategoria: \n" +
                         "A = Cucina \n" +
                         "B = Soggiorno \n" +
@@ -48,38 +50,43 @@ public class Admin extends user
                         "F = Lampadari \n" +
                         "G = Lampade da esterno \n" +
                         "(Si scriva il nome)");
-        confronta4 = sottocategoria.equals("Cucina");
-        confronta5 = sottocategoria.equals("Soggiorno");
-        confronta6 = sottocategoria.equals("Camera");
-        confronta7 = sottocategoria.equals("Tappeti");
-        confronta8 = sottocategoria.equals("Tende");
-        confronta9 = sottocategoria.equals("Lampadari");
-        confronta10 = sottocategoria.equals("Lampade da esterno");
-        if (confronta4 == false && confronta5 == false && confronta6 == false && confronta7 == false &&
-                confronta8 == false && confronta9 == false && confronta10 == false)
+        if (sottocategoria.equals("Cucina") || sottocategoria.equals("Soggiorno") ||
+                sottocategoria.equals("Camera") || sottocategoria.equals("Tappeti") ||
+                sottocategoria.equals("Tende") || sottocategoria.equals("Lampadari") ||
+                sottocategoria.equals("Lampada da esterno"))
         {
-            do
+            switch (sottocategoria)
             {
+                case "Cucina": System.out.println("Sottocategoria --> " + sottocategoria); break;
+                case "Soggiorno": System.out.println("Sottocategoria --> " + sottocategoria); break;
+                case "Camera": System.out.println("Sottocategoria --> " + sottocategoria); break;
+                case "Tappeti": System.out.println("Sottocategoria --> " + sottocategoria); break;
+                case "Tende": System.out.println("Sottocategoria --> " + sottocategoria); break;
+                case "Lampadari": System.out.println("Sottocategoria --> " + sottocategoria); break;
+                case "Lampade da esterno": System.out.println("Sottocategoria --> " + sottocategoria); break;
+            }
+        } else
+        {
+            boolean fatto = false;
+            do {
                 sottocategoria = JOptionPane.showInputDialog("Sottocategoria inserita non valida! \n" +
                         "RIPROVARE (Si scriva il nome) \n" +
-                                "A = Cucina \n" +
-                                "B = Soggiorno \n" +
-                                "C = Camera \n" +
-                                "D = Tappeti \n" +
-                                "E = Tende \n" +
-                                "F = Lampadari \n" +
-                                "G = Lampade da esterno");
-                confronta4 = sottocategoria.equals("Cucina");
-                confronta5 = sottocategoria.equals("Soggiorno");
-                confronta6 = sottocategoria.equals("Camera");
-                confronta7 = sottocategoria.equals("Tappeti");
-                confronta8 = sottocategoria.equals("Tende");
-                confronta9 = sottocategoria.equals("Lampadari");
-                confronta10 = sottocategoria.equals("Lampade da esterno");
-            } while (confronta4 == false && confronta5 == false && confronta6 == false && confronta7 == false &&
-                    confronta8 == false && confronta9 == false && confronta10 == false);
+                        "A = Cucina \n" +
+                        "B = Soggiorno \n" +
+                        "C = Camera \n" +
+                        "D = Tappeti \n" +
+                        "E = Tende \n" +
+                        "F = Lampadari \n" +
+                        "G = Lampade da esterno");
+                if (sottocategoria.equals("Cucina") || sottocategoria.equals("Soggiorno") ||
+                        sottocategoria.equals("Camera") || sottocategoria.equals("Tappeti") ||
+                        sottocategoria.equals("Tende") || sottocategoria.equals("Lampadari") ||
+                        sottocategoria.equals("Lampada da esterno")) {
+                    fatto = true;
+                }
+            } while (fatto == false);
+            System.out.println("Sottocategoria --> " + sottocategoria);
         }
-        System.out.println("Sottocategoria --> " + sottocategoria);
         newproduct = JOptionPane.showInputDialog("Inserisca il prodotto:");
         System.out.println("Nuovo Prodotto --> " + newproduct);
         String costo = JOptionPane.showInputDialog("Inserisca il costo del prodotto");
@@ -93,67 +100,128 @@ public class Admin extends user
         scaffale = Integer.parseInt(question2);
         String includeart = JOptionPane.showInputDialog("Vuole includere altri articoli in questo prodotto? \n" +
                 "(Rispondere con SI o NO)");
-        confronta11 = includeart.equals("SI");
-        confronta12 = includeart.equals("NO");
-        if (confronta11 == false && confronta12 == false)
+        if (includeart.equals("SI") || includeart.equals("NO"))
         {
+            if (includeart.equals("SI"))
+            {
+                System.out.println("Si includono prodotti? --> " + includeart);
+                String number = JOptionPane.showInputDialog("Quanti prodotti vuoi includere?");
+                numero = Integer.parseInt(number);
+                System.out.println("Numero prodotti inclusi --> " + numero);
+                String[] includes = new String[numero];
+                for(int i = 0; i < numero; i++)
+                {
+                    includes[i] = JOptionPane.showInputDialog("Prodotto numero " + (i + 1));
+                    System.out.println(includes[i]);
+                }
+                String nomeproduttore = JOptionPane.showInputDialog("Inserisca ora i dati del produttore: \n" +
+                        "Inserisca il NOME");
+                System.out.println("Nome del Produttore --> " + nomeproduttore);
+                String sitowebproduttore = JOptionPane.showInputDialog("Inserisca il SITOWEB");
+                System.out.println("Sitoweb del Produttore --> " + sitowebproduttore);
+                String cittàproduttore = JOptionPane.showInputDialog("Inserisca la CITTÀ");
+                System.out.println("Città del Produttore --> " + cittàproduttore);
+                String nazioneproduttore = JOptionPane.showInputDialog("Inserisca la NAZIONE");
+                System.out.println("Nazione del Produttore --> " + nazioneproduttore);
+            } else
+            {
+                if (includeart.equals("NO"))
+                {
+                    System.out.println("Si includono prodotti? --> " + includeart);
+                    String nomeproduttore = JOptionPane.showInputDialog("Inserisca ora i dati del produttore: \n" +
+                            "Inserisca il NOME");
+                    System.out.println("Nome del Produttore --> " + nomeproduttore);
+                    String sitowebproduttore = JOptionPane.showInputDialog("Inserisca il SITOWEB");
+                    System.out.println("Sitoweb del Produttore --> " + sitowebproduttore);
+                    String cittàproduttore = JOptionPane.showInputDialog("Inserisca la CITTÀ");
+                    System.out.println("Città del Produttore --> " + cittàproduttore);
+                    String nazioneproduttore = JOptionPane.showInputDialog("Inserisca la NAZIONE");
+                    System.out.println("Nazione del Produttore --> " + nazioneproduttore);
+                }
+            }
+        } else
+        {
+            boolean fatto = false;
             do
             {
-                includeart = JOptionPane.showInputDialog("Risposta non valida: RIPROVARE!! \n" +
-                        "(Rispondere con SI o NO");
-                confronta11 = includeart.equals("SI");
-                confronta12 = includeart.equals("NO");
-            } while (confronta11 == false && confronta12 == false);
-        }
-        System.out.println("Si includono prodotti? --> " + includeart);
-        if (confronta11 == true && confronta12 == false)
-        {
-            String number = JOptionPane.showInputDialog("Quanti prodotti vuoi includere?");
-            numero = Integer.parseInt(number);
-            System.out.println("Numero prodotti inclusi --> " + numero);
-            String[] includes = new String[numero];
-            for(int i = 0; i < numero; i++)
+               includeart = JOptionPane.showInputDialog("Inserimento non valido. RIPROVARE" +
+                       "(Si scriva SI o NO)");
+               if (includeart.equals("SI") || includeart.equals("NO"))
+               {
+                   fatto = true;
+               }
+            } while (fatto == false);
+            if (includeart.equals("SI"))
             {
-                includes[i] = JOptionPane.showInputDialog("Prodotto numero " + (i + 1));
-                System.out.println(includes[i]);
+                System.out.println("Si includono prodotti? --> " + includeart);
+                String number = JOptionPane.showInputDialog("Quanti prodotti vuoi includere?");
+                numero = Integer.parseInt(number);
+                System.out.println("Numero prodotti inclusi --> " + numero);
+                String[] includes = new String[numero];
+                for(int i = 0; i < numero; i++)
+                {
+                    includes[i] = JOptionPane.showInputDialog("Prodotto numero " + (i + 1));
+                    System.out.println(includes[i]);
+                }
+                String nomeproduttore = JOptionPane.showInputDialog("Inserisca ora i dati del produttore: \n" +
+                        "Inserisca il NOME");
+                System.out.println("Nome del Produttore --> " + nomeproduttore);
+                String sitowebproduttore = JOptionPane.showInputDialog("Inserisca il SITOWEB");
+                System.out.println("Sitoweb del Produttore --> " + sitowebproduttore);
+                String cittàproduttore = JOptionPane.showInputDialog("Inserisca la CITTÀ");
+                System.out.println("Città del Produttore --> " + cittàproduttore);
+                String nazioneproduttore = JOptionPane.showInputDialog("Inserisca la NAZIONE");
+                System.out.println("Nazione del Produttore --> " + nazioneproduttore);
+            } else
+            {
+                if (includeart.equals("NO"))
+                {
+                    System.out.println("Si includono prodotti? --> " + includeart);
+                    String nomeproduttore = JOptionPane.showInputDialog("Inserisca ora i dati del produttore: \n" +
+                            "Inserisca il NOME");
+                    System.out.println("Nome del Produttore --> " + nomeproduttore);
+                    String sitowebproduttore = JOptionPane.showInputDialog("Inserisca il SITOWEB");
+                    System.out.println("Sitoweb del Produttore --> " + sitowebproduttore);
+                    String cittàproduttore = JOptionPane.showInputDialog("Inserisca la CITTÀ");
+                    System.out.println("Città del Produttore --> " + cittàproduttore);
+                    String nazioneproduttore = JOptionPane.showInputDialog("Inserisca la NAZIONE");
+                    System.out.println("Nazione del Produttore --> " + nazioneproduttore);
+                }
             }
         }
-        String nomeproduttore = JOptionPane.showInputDialog("Inserisca ora i dati del produttore: \n" +
-                "Inserisca il NOME");
-        System.out.println("Nome del Produttore --> " + nomeproduttore);
-        String sitowebproduttore = JOptionPane.showInputDialog("Inserisca il SITOWEB");
-        System.out.println("Sitoweb del Produttore --> " + sitowebproduttore);
-        String cittàproduttore = JOptionPane.showInputDialog("Inserisca la CITTÀ");
-        System.out.println("Città del Produttore --> " + cittàproduttore);
-        String nazioneproduttore = JOptionPane.showInputDialog("Inserisca la NAZIONE");
-        System.out.println("Nazione del Produttore --> " + nazioneproduttore);
     }
 
     public void InsertService()
     {
-        boolean confronta13, confronta14;
         double costo;
         System.out.println("SCELTE EFFETTUATE:");
         String service = JOptionPane.showInputDialog("Scelga la categoria di servizio che vuole inserire: \n" +
                 "A = Montaggio \n " +
                 "B = Trasporto \n " +
                 "(Si scriva il nome");
-        confronta13 = service.equals("Montaggio");
-        confronta14 = service.equals("Trasporto");
-        if (confronta13 == false && confronta14 == false)
+        if (service.equals("Montaggio") || service.equals("Trasporto"))
         {
+            switch (service)
+            {
+                case "Montaggio": System.out.println("Categoria --> " + service); break;
+                case "Trasporto": System.out.println("Categoria --> " + service); break;
+            }
+        } else
+        {
+            boolean fatto = false;
             do
             {
-                service = JOptionPane.showInputDialog("Inserimento non valido! \n" +
-                        "RIPROVARE (Si scriva il nome) \n" +
+                service = JOptionPane.showInputDialog("Inserimento non valido. RIPROVARE \n" +
                         "A = Montaggio \n " +
                         "B = Trasporto \n " +
                         "(Si scriva il nome");
-                confronta13 = service.equals("Montaggio");
-                confronta14 = service.equals("Trasporto");
-            } while (confronta13 == false && confronta14 == false);
+                if (service.equals("Montaggio") || service.equals("Trasporto"))
+                {
+                    fatto = true;
+                }
+            } while (fatto == false);
+            System.out.println("Categoria --> " + service);
         }
-        System.out.println("Categoria --> " + service);
         if (service.equals("Montaggio"))
         {
             service inseriscimontaggio = new service();
@@ -187,21 +255,29 @@ public class Admin extends user
                 "A = Montaggio \n " +
                 "B = Trasporto \n " +
                 "(Si scriva il nome");
-        confronta13 = response.equals("Montaggio");
-        confronta14 = response.equals("Trasporto");
-        if (confronta13 == false && confronta14 == false)
+        if (response.equals("Montaggio") || response.equals("Trasporto"))
         {
+            switch (response)
+            {
+                case "Montaggio": System.out.println("Si è scelto --> " + response); break;
+                case "Trasporto": System.out.println("Si è scelto --> " + response); break;
+            }
+        } else
+        {
+            boolean fatto = false;
             do
             {
-                response = JOptionPane.showInputDialog("La scelta inserita non è valida! RIPROVARE \n" +
+                response = JOptionPane.showInputDialog("Inserimento non valido. RIPROVARE \n" +
                         "A = Montaggio \n " +
                         "B = Trasporto \n " +
                         "(Si scriva il nome");
-                confronta13 = response.equals("Montaggio");
-                confronta14 = response.equals("Trasporto");
-            } while (confronta13 == false && confronta14 == false);
+                if (response.equals("Montaggio") || response.equals("Trasporto"))
+                {
+                    fatto = true;
+                }
+            } while (fatto == false);
+            System.out.println("Si è scelto --> " + response);
         }
-        System.out.println("Si è scelto --> " + response);
         if (response.equals("Montaggio"))
         {
             boolean controllo;
@@ -255,21 +331,29 @@ public class Admin extends user
                 "A = Montaggio \n" +
                 "B = Trasporto \n" +
                 "(Si scriva il nome)");
-        confronta15 = modify.equals("Montaggio");
-        confronta16 = modify.equals("Trasporto");
-        if (confronta15 == false && confronta16 == false)
+        if (modify.equals("Montaggio") || modify.equals("Trasporto"))
         {
+            switch (modify)
+            {
+                case "Montaggio": System.out.println("Si è scelto --> " + modify); break;
+                case "Trasporto": System.out.println("Si è scelto --> " + modify); break;
+            }
+        } else
+        {
+            boolean fatto = false;
             do
             {
-                modify = JOptionPane.showInputDialog("La scelta inserita non è valida! RIPROVARE \n" +
-                        "A = Montaggio \n" +
-                        "B = Trasporto \n" +
-                        "(Si scriva il nome)");
-                confronta15 = modify.equals("Montaggio");
-                confronta16 = modify.equals("Trasporto");
-            } while (confronta15 == false && confronta16 == false);
+                modify = JOptionPane.showInputDialog("Inserimento non valido. RIPROVARE \n" +
+                        "A = Montaggio \n " +
+                        "B = Trasporto \n " +
+                        "(Si scriva il nome");
+                if (modify.equals("Montaggio") || modify.equals("Trasporto"))
+                {
+                    fatto = true;
+                }
+            } while (fatto == false);
+            System.out.println("Si è scelto --> " + modify);
         }
-        System.out.println("Si è scelto --> " + modify);
         if (modify.equals("Montaggio"))
         {
             boolean controllo3;
