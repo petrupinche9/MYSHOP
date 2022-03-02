@@ -1,91 +1,35 @@
 package it.model;
 
-public class service extends article
-{
+public class service extends article {
     private int id;
-    private String categoria;
-    private String Name;
+    private String fornitore;
+
     public service() {
 
     }
-    public class Fornitore
-    {
-        private String nome;
-        private String sitoweb;
-        private String citta;
-        private String nazione;
-        public Fornitore(String nome, String sitoweb, String citta, String nazione)
-        {
-            super();
-            this.nome = nome;
-            this.sitoweb = sitoweb;
-            this.citta = citta;
-            this.nazione = nazione;
-        }
-        //metodi get
 
-        public String getNome()
-        {
-            return nome;
-        }
 
-        public String getSitoweb()
-        {
-            return sitoweb;
-        }
-
-        public String getCitta()
-        {
-            return citta;
-        }
-        public String getNazione()
-        {
-            return nazione;
-        }
-
-        //metodi setter
-        public void setNome(String nome)
-        {
-            this.nome = nome;
-        }
-        public void setSitoweb(String sitoweb)
-        {
-            this.sitoweb = sitoweb;
-        }
-        public void setCitta(String citta)
-        {
-            this.citta = citta;
-        }
-        public void setNazione(String nazione)
-        {
-            this.nazione = nazione;
-        }
+    public service(int id, String fornitore) {
+        this.id = id;
+        this.fornitore = fornitore;
     }
-    private service.Fornitore maker ;
-    public service(int id, String categoria, Fornitore maker)
-    {
-        this.id=id;
-        this.categoria=categoria;
-        this.maker=maker;
 
-    }
     //METODI GET
-    public int getId() { return id; }
-
-    public String getCategoria()
-    {
-        return categoria;
+    public int getId() {
+        return id;
     }
 
-    public Fornitore getMaker() {return maker;   }
+    public String getFornitore() {
+        return fornitore;
+    }
 
     //METODI SET
-    public void setId(int id) { this.id = id;  }
-
-    public void setCategoria(String categoria)
-    {
-        this.categoria = categoria;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setMaker(Fornitore maker) {this.maker = maker;    }
+    public void setFornitore(String fornitore) {
+        this.fornitore = fornitore;
+    }
 }
+

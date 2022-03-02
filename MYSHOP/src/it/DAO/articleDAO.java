@@ -2,16 +2,15 @@ package it.DAO;
 
 import it.DbConnection;
 import it.model.Product;
+import it.model.article;
 
 import java.util.ArrayList;
 
-public class productDAO implements IproductDAO {
-
- //trova prodotti da id
-    public Product findById(int id) {
+public class articleDAO implements IarticleDAO{
+    public article findById(int id) {
         Product c = null;
 
-        ArrayList<String[]> res = DbConnection.getInstance().eseguiQuery("SELECT C.articolo_idarticolo, C.Name, C.costo, C.Image_descr, C.description, U.subcategory, U.corsia, U.scaffale, U.Produttore FROM product AS C INNER JOIN articolo as U  ON U.idprodotto = C.articolo_idarticolo WHERE C.articolo_idarticolo = "+id+";");
+        ArrayList<String[]> res = DbConnection.getInstance().eseguiQuery("SELECT * FROM articolo WHERE idarticolo = "+id+";");
         // byte[] img = DbConnection.getInstance().getFoto("SELECT C.articolo_idarticolo, U.Image_descr FROM product AS C INNER JOIN articolo as U  ON U.idprodotto = C.articolo_idarticolo WHERE C.articolo_idarticolo = "+id+";");
         if(res.size()==1) {
             String[] riga = res.get(0);
@@ -31,18 +30,17 @@ public class productDAO implements IproductDAO {
         return c;
     }
     //trova tutti i prodotti
-    public ArrayList<Product> findAll() {
+    public ArrayList<article> findAll() {
 
-        ArrayList<Product> c =new ArrayList<Product>() ;
+        ArrayList<article> c =new ArrayList<article>() ;
 
-        ArrayList<String[]> res1 = DbConnection.getInstance().eseguiQuery("SELECT idproduct FROM product ;");
+        ArrayList<String[]> res1 = DbConnection.getInstance().eseguiQuery("SELECT * FROM product ;");
         for(String[] riga : res1) {
-            Product p = findById(Integer.parseInt(riga[0]));
+            article p = findById(Integer.parseInt(riga[0]));
             c.add(p);
         }
 
         return c;
     }
-
 
 }

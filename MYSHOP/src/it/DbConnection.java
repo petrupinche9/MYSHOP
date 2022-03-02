@@ -108,7 +108,7 @@ public class DbConnection {
     }
 
     // Esegue una query di aggiornamento sul Database
-    // query: una stringa che rappresenta un'istuzione SQL di tipo UPDATE da eseguire
+    // query: una stringa che rappresenta un'istuzione SQL di tipo INSERT DELETE UPDATE da eseguire
     // ritorna TRUE se l'esecuzione � adata a buon fine, FALSE se c'� stata un'eccezione
     public boolean eseguiAggiornamento(String query) {
         int numero ;

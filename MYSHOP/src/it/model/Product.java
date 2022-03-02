@@ -5,73 +5,21 @@ public class Product extends article
     private int id,corsia,scaffale;
     private String categoria;
     private String sottocategoria;
+    private String produttore;
     private Product[] prodotto;
-    private int[][] magazzino;
+
 
     public Product() {
 
     }
 
 
-    public class produttore
-    {
-        private String nome;
-        private String sitoweb;
-        private String citta;
-        private String nazione;
-        public produttore(String nome, String sitoweb, String citta, String nazione)
-        {
-            super();
-            this.nome = nome;
-            this.sitoweb = sitoweb;
-            this.citta = citta;
-            this.nazione = nazione;
-        }
-        //metodi get
 
-        public String getNome()
-        {
-            return nome;
-        }
-
-        public String getSitoweb()
-        {
-            return sitoweb;
-        }
-
-        public String getCitta()
-        {
-            return citta;
-        }
-        public String getNazione()
-        {
-            return nazione;
-        }
-
-        //metodi setter
-        public void setNome(String nome)
-        {
-            this.nome = nome;
-        }
-        public void setSitoweb(String sitoweb)
-        {
-            this.sitoweb = sitoweb;
-        }
-        public void setCitta(String citta)
-        {
-            this.citta = citta;
-        }
-        public void setNazione(String nazione)
-        {
-            this.nazione = nazione;
-        }
-    }
-    private produttore prod ;
-    public Product(int id, Product[] prodotto, String categoria, String sottocategoria, Double costo, int corsia, int scaffale, produttore prod)
+    public Product(int id, Product[] prodotto, String categoria, String sottocategoria, Double costo, int corsia, int scaffale, String produttore)
     {
         this.id=id;
         this.prodotto= prodotto;
-        this.prod = prod; // produttore
+        this.produttore = produttore; // produttore
         this.categoria=categoria;
         this.sottocategoria=sottocategoria;
         this.corsia=corsia;
@@ -96,16 +44,6 @@ public class Product extends article
         return scaffale;
     }
 
-    public produttore getProd()
-    {
-        return prod;
-    }
-
-    public int[][] getMagazzino()
-    {
-        return magazzino;
-    }
-
     public String getCategoria()
     {
         return categoria;
@@ -116,6 +54,9 @@ public class Product extends article
         return sottocategoria;
     }
 
+    public String getProduttore() {
+        return produttore;
+    }
 
     //METODI SET
     public void setCategoria(String categoria)
@@ -123,14 +64,8 @@ public class Product extends article
         this.categoria = categoria;
     }
 
-    public void setMagazzino(int[][] magazzino)
-    {
-        this.magazzino = magazzino;
-    }
-
-    public void setProd(produttore prod)
-    {
-        this.prod = prod;
+    public void setProduttore(String produttore) {
+        this.produttore = produttore;
     }
 
     public void setCorsia(int corsia) {

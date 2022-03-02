@@ -8,11 +8,12 @@ public class article {
     private int eval;
     private double costo;
     private byte[] img;
+    private String category;
     public article() {
 
     }
 
-    public article(int id,String name, double costo, String Descr, String comment, int eval, byte[] img){
+    public article(int id,String name, double costo, String Descr, String comment, int eval, byte[] img, String category){
         this.id=id;
         this.name=name;
         this.comment=comment;
@@ -20,7 +21,7 @@ public class article {
         this.Descr=Descr;
         this.costo=costo;
         this.img=img;
-
+        this.category=category;
     }
     // metodi get
     public int getId() {
@@ -41,6 +42,7 @@ public class article {
         return costo;
     }
     public byte[] getImg() {return img;}
+    public String getCategory() {return category;}
 
     //METODI SET
     public void setCosto(double costo)
@@ -61,4 +63,5 @@ public class article {
         this.id = id;
     }
     public void setImg(byte[] img) { this.img = img; }
+    public void setCategory(String category) {this.category = category;   }
 }
