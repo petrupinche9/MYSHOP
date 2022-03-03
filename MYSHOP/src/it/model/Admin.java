@@ -1,8 +1,10 @@
-import javax.swing.*;
-import java.util.ArrayList;
-import java.util.Scanner;
+package it.model;
 
-public class Admin
+import it.model.user;
+
+import javax.swing.*;
+
+public class Admin extends user
 {
     private String newproduct;
     private int numero, corsia, scaffale;

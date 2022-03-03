@@ -6,6 +6,7 @@ import it.model.Point_shop;
 import java.util.ArrayList;
 
 public class ShopDAO implements IShopDAO{
+    @Override
     public Point_shop findById(int id) {
         Point_shop c = null;
 
@@ -15,12 +16,16 @@ public class ShopDAO implements IShopDAO{
             String[] riga = res.get(0);
             c = new Point_shop();
             c.setId(Integer.parseInt(riga[0]));
-
-
+            c.setShopname(riga[1]);
+            c.setCity(riga[2]);
+            c.setArticle_type(riga[3]);
+            ImanagerDAO mDAO=new managerDAO();
+            c.setMng(mDAO.findById(Integer.parseInt(riga[4])));
         }
 
         return c;
     }
+    @Override
     //trova tutti i prodotti
     public ArrayList<Point_shop> findAll() {
 

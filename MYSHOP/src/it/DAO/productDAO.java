@@ -6,7 +6,7 @@ import it.model.Product;
 import java.util.ArrayList;
 
 public class productDAO implements IproductDAO {
-
+    @Override
  //trova prodotti da id
     public Product findById(int id) {
         Product c = null;
@@ -30,6 +30,7 @@ public class productDAO implements IproductDAO {
 
         return c;
     }
+    @Override
     //trova tutti i prodotti
     public ArrayList<Product> findAll() {
 

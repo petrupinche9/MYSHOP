@@ -33,5 +33,8 @@
     <orderEntry type="library" name="javax.mail (3)" level="project" />
     <orderEntry type="library" name="pdfbox-2.0.3 (3)" level="project" />
     <orderEntry type="library" name="jconsole" level="project" />
+    <orderEntry type="library" name="commons-lang-2.5" level="project" />
+    <orderEntry type="library" name="dateutils-1.0.8" level="project" />
+    <orderEntry type="library" name="standard-1.1.2" level="project" />
   </component>
 </module>

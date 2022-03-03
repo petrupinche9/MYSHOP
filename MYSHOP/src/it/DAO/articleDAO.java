@@ -7,6 +7,7 @@ import it.model.article;
 import java.util.ArrayList;
 
 public class articleDAO implements IarticleDAO{
+    @Override
     public article findById(int id) {
         article c = null;
 
@@ -29,6 +30,7 @@ public class articleDAO implements IarticleDAO{
 
         return c;
     }
+    @Override
     //trova tutti i prodotti
     public ArrayList<article> findAll() {
 

@@ -5,7 +5,8 @@ import it.model.service;
 
 import java.util.ArrayList;
 
-public class serviceDAO {
+public class serviceDAO implements IserviceDAO{
+    @Override
     //trova servizi da id
     public service findById(int id) {
         service c = null;
@@ -26,6 +27,7 @@ public class serviceDAO {
 
         return c;
     }
+    @Override
     //trova tutti i service
     public ArrayList<service> findAll() {
 

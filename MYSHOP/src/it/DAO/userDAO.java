@@ -24,7 +24,7 @@ public class userDAO implements IuserDAO {
 
         return c;
     }
-
+    @Override
 //ritorna tutti gli utenti
     public ArrayList<user> findAll() {
         ArrayList<user> c =new ArrayList<user>() ;
@@ -37,17 +37,18 @@ public class userDAO implements IuserDAO {
 
         return c;
     }
+    @Override
     //registrazione nuovo utente
     public void newuser( user p){
         String res = "INSERT INTO user VALUES ('"+p.getId()+"','"+p.getUsername()+"', '"+p.getPassword()+"', '"+p.getName()+"','"+p.getSurname()+"','"+p.getAge()+"','"+p.getEmail()+"','"+p.getTelephone()+"', '"+p.getOccupation()+"'); ";
         JOptionPane.showInputDialog(res);
         DbConnection.getInstance().eseguiAggiornamento(res);
-        userDAO s=new userDAO();
-        ArrayList<String[]> sh = DbConnection.getInstance().eseguiQuery("UPDATE Point_shop INNER JOIN Cliente as cl ON cl.isCliente=Cliente_idCLiente WHERE idCliente= "+s.findById(p.getId()).getId()+" " +
-                "SET Cliente_idCliente='"+p.getId()+"';");
-        JOptionPane.showInputDialog(sh);
+       // userDAO s=new userDAO();
+        //ArrayList<String[]> sh = DbConnection.getInstance().eseguiQuery("UPDATE Point_shop INNER JOIN Cliente as cl ON cl.isCliente=Cliente_idCLiente WHERE idCliente= "+s.findById(p.getId()).getId()+" " +
+                //"SET Cliente_idCliente='"+p.getId()+"';");
+       // JOptionPane.showInputDialog(sh);
     }
-    public void erase_user( user p){
+    /*public void erase_user( user p){
         String res = "DELETE FROM user WHERE iduser='"+p.getId()+"' ";
         JOptionPane.showInputDialog(res);
         DbConnection.getInstance().eseguiAggiornamento(res);
@@ -55,6 +56,6 @@ public class userDAO implements IuserDAO {
         ArrayList<String[]> sh = DbConnection.getInstance().eseguiQuery("UPDATE Point_shop INNER JOIN Cliente as cl ON cl.isCliente=Cliente_idCLiente WHERE idCliente= "+s.findById(p.getId()).getId()+" " +
                 "SET Cliente_idCliente=NULL;");
         JOptionPane.showInputDialog(sh);
-    }
+    }*/
 
 }
