@@ -2,7 +2,6 @@ package it.DAO;
 
 import it.DbConnection;
 import it.model.*;
-import it.view.Manager;
 
 import javax.swing.*;
 import java.io.File;
@@ -127,7 +126,7 @@ public class AdminDAO implements IAdminDAO{
     }
     @Override
 //crea punto vendita e manager
-    public void create_shopandmanager(Point_shop shop, Manager mng){
+    public void create_shopandmanager(Point_shop shop, manager mng){
         userDAO user=new userDAO();
         String res3 = "INSERT INTO Point_shop VALUES ('"+shop.getId()+"','"+shop.getShopname()+"','"+shop.getCity()+"','"+shop.getArticle_type()+"');";
         JOptionPane.showMessageDialog(null,res3);
