@@ -95,9 +95,9 @@ public class AdminDAO implements IAdminDAO{
     }
     @Override
     //elimina article (prodotto,servizio)
-    public void erase_article( article p){
+    public void erase_article( int id){
         articleDAO a=new articleDAO();
-        String res3 = "DELETE FROM article WHERE idarticle = '"+p.getId()+"';";
+        String res3 = "DELETE FROM article WHERE idarticle = '"+id+"';";
         JOptionPane.showMessageDialog(null,res3);
         DbConnection.getInstance().eseguiAggiornamento(res3);
     }
