@@ -1,5 +1,5 @@
 package it;
-import it.view.HomePageMyShop;
+import it.view.*;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -11,7 +11,7 @@ class Ascoltatore3 implements ActionListener
     public void actionPerformed(ActionEvent h)
     {
         JButton b = (JButton)h.getSource();
-        System.out.println("Creazione punti vendita");
+        administracionpuntivendita puntivendita = new administracionpuntivendita();
     }
 }
 //classe di modifica
