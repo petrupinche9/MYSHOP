@@ -110,7 +110,7 @@
         </constraints>
         <properties>
           <font name="Lucida Sans Typewriter" size="10"/>
-          <text value="Inserisci il MANAGER (ID)"/>
+          <text value="Inserisci il MANAGER "/>
         </properties>
       </component>
       <component id="e6318" class="javax.swing.JTextField" binding="textField5" default-binding="true">

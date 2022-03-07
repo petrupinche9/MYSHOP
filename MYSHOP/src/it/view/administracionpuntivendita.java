@@ -5,14 +5,6 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-class Ascoltatore implements ActionListener
-{
-    public void actionPerformed(ActionEvent event)
-    {
-        puntovenditamanager manager = new puntovenditamanager();
-    }
-}
-
 public class administracionpuntivendita extends JFrame {
     private JTextField textField1;
     private JTextField textField2;
@@ -22,14 +14,24 @@ public class administracionpuntivendita extends JFrame {
     private JTextField textField5;
     private JButton CREAUNMANAGERButton;
     private JPanel managerPanel;
-    Ascoltatore listener = new Ascoltatore();
 
     public administracionpuntivendita()
     {
         setContentPane(managerPanel);
         setTitle("Creare Punti Vendita");
-        CREAUNMANAGERButton.addActionListener(listener);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
+
+        CONFERMAButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String text1 = textField1.getText();
+                int id = Integer.parseInt(text1);
+                String text2 = textField2.getText();
+                String text3 = textField3.getText();
+                String text4 = textField4.getText();
+
+            }
+        });
     }
 }
