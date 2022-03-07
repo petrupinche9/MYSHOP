@@ -23,6 +23,7 @@ public class service extends article {
         return fornitore;
     }
 
+
     //METODI SET
     public void setId(int id) {
         this.id = id;
@@ -31,5 +32,6 @@ public class service extends article {
     public void setFornitore(String fornitore) {
         this.fornitore = fornitore;
     }
+
 }
 

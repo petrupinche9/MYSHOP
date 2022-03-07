@@ -11,6 +11,20 @@ public class user {
     private int telephone;
     private String Occupation;
 
+    public user(int id, String username, String password, String Name, String Surname, int age, String Email, int telephone, String Occupation)
+    {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.Name = Name;
+        this.Surname = Surname;
+        this.age = age;
+        this.Email = Email;
+        this.telephone = telephone;
+        this.Occupation = Occupation;
+    }
+
+
     public int getId() {
         return id;
     }

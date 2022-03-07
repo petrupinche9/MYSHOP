@@ -1,5 +1,6 @@
 package it.model;
 
-public class manager extends user{
+public class manager extends user
+{
 
 }
