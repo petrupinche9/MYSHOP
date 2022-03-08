@@ -6,6 +6,7 @@ import javax.swing.*;
 
 public class Admin extends user
 {
+    /*
     private String newproduct;
     private int numero, corsia, scaffale;
     private double costodouble, costodouble2;
@@ -421,4 +422,6 @@ public class Admin extends user
     {
 
     }
+
+     */
 }

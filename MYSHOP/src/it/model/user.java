@@ -24,6 +24,10 @@ public class user {
         this.Occupation = Occupation;
     }
 
+    public user(){
+
+    }
+
 
     public int getId() {
         return id;

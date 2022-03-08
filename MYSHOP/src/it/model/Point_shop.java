@@ -12,7 +12,13 @@ public Point_shop(int id, String Shopname,String city, String article_type,manag
     this.city=city;
     this.article_type=article_type;
     this.mng=mng;
+
 }
+
+    public Point_shop()
+    {
+
+    }
 //metodi get
     public int getId() {
         return id;
