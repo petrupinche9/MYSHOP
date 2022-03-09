@@ -7,7 +7,6 @@ public class Shop_list {
     private user cliente;
     private manager mng;
     private article articoli;
-    private user Cliente;
     private Point_shop shop;
 private String stato ;
 private double total_price;

@@ -39,15 +39,17 @@ public class userDAO implements IuserDAO {
     }
     @Override
     //registrazione nuovo utente
-    public void newuser( user p){
+    public void newuser(user p){
         String res = "INSERT INTO user VALUES ('"+p.getId()+"','"+p.getUsername()+"', '"+p.getPassword()+"', '"+p.getName()+"','"+p.getSurname()+"','"+p.getAge()+"','"+p.getEmail()+"','"+p.getTelephone()+"', '"+p.getOccupation()+"'); ";
-        JOptionPane.showInputDialog(res);
+        JOptionPane.showMessageDialog(null,res);
         DbConnection.getInstance().eseguiAggiornamento(res);
        // userDAO s=new userDAO();
         //ArrayList<String[]> sh = DbConnection.getInstance().eseguiQuery("UPDATE Point_shop INNER JOIN Cliente as cl ON cl.isCliente=Cliente_idCLiente WHERE idCliente= "+s.findById(p.getId()).getId()+" " +
                 //"SET Cliente_idCliente='"+p.getId()+"';");
        // JOptionPane.showInputDialog(sh);
     }
+
+    //commenta
     /*public void erase_user( user p){
         String res = "DELETE FROM user WHERE iduser='"+p.getId()+"' ";
         JOptionPane.showInputDialog(res);

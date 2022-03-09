@@ -1,9 +1,11 @@
 package it.view;
 
+import it.DAO.IarticleDAO;
+import it.DAO.articleDAO;
 import it.model.article;
 
 import javax.swing.*;
-import javax.swing.table.AbstractTableModel;
+import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 public class HomePage_guest extends JFrame{
     private JPanel panel1;
@@ -11,66 +13,48 @@ public class HomePage_guest extends JFrame{
     private JButton SIGNUPButton;
     private JTable table1;
     private JSplitPane rootpanel;
+    private JButton UPDATECATALOGUEButton;
 
 
     // da aggiungere il metodo per aggiornare da database
     public HomePage_guest() {
-        class TableModelarticle extends AbstractTableModel {
 
-            private ArrayList<article> articoli;
+          //  ArrayList<String[]> res = DbConnection.getInstance().eseguiQuery("SELECT * FROM ARTICLE;");
+        IarticleDAO ar=new articleDAO();
+        ArrayList<article>res=ar.findAll();
+        JOptionPane.showMessageDialog(null,res);
+            String columns[] = { "ID", "Name", "Age" };
+        String[][] data = new String[1000][1000];
 
-            public TableModelarticle(ArrayList<article> articoli) {
-                this.articoli = articoli;
+        for(int i=0;i<res.size();i++) {
+                int id=res.get(i).getId();
+                String nom = res.get(i).getName();
+                String descr = res.get(i).getDescr();
+                double costo=res.get(i).getCosto();
+                data[i][0] = id + "";
+                data[i][1] = nom;
+                data[i][2] = descr;
+                data[i][3] = String.valueOf(costo);
+                i++;
             }
 
-            @Override
-            public int getRowCount() {
-                return articoli.size();
-            }
+            DefaultTableModel model = new DefaultTableModel(data, columns);
+            JTable table = new JTable(model);
+      table.setShowGrid(true);
+      table.setShowVerticalLines(true);
+            JScrollPane pane = new JScrollPane(table);
+            JFrame f = new JFrame("Populate JTable from Database");
+            JPanel panel = new JPanel();
 
-            @Override
-            public int getColumnCount() {
-                return 7;
-            }
-
-            @Override
-            public Object getValueAt(int rowIndex, int columnIndex) {
-
-                article p = articoli.get(rowIndex);
-
-                //BINDING
-                switch(columnIndex) {
-                   // case 0: return p.getFoto();
-                    case 1: return p.getName();
-                    case 2: return p.getDescr();
-                    case 3: return p.getCosto();
-                   /* case 3: return p.getCosto();
-                    case 4: return p.getNumPostiOccupati();
-                    case 5: return DateUtil.stringFromDate(p.getDataInizio());
-                    case 6: return DateUtil.stringFromDate(p.getDataFine());*/
-                }
-
-                return "-";
-            }
-
-            @Override
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return (columnIndex > 4);
-            }
-
-            @Override
-            public void setValueAt(Object value, int rowIndex, int columnIndex) {
-                article p = articoli.get(rowIndex);
-
-              /*  switch (columnIndex) {
-                    case 5: p.setDataInizio(DateUtil.dateTimeFromString((String)value)); break;
-                    case 6: p.setDataFine(DateUtil.dateTimeFromString((String)value)); break;
-                }*/
+      panel.add(pane);
+      f.add(panel);
+      f.setSize(500, 250);
+      f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      f.setVisible(true);
 
 
-            }
         }
     }
 
 
-}
+

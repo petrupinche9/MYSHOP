@@ -45,9 +45,15 @@ public class AdminDAO implements IAdminDAO{
         File selFile = fc.getSelectedFile();
         DbConnection.getInstance().addFoto(selFile,img2);
     }
+
+    @Override
+    public void newsubproduct(Product p, Produttore prod) {
+
+    }
+
     @Override
     //aggiunta nuovo sottoprodotto
-    public void newsubproduct( Product p,Produttore prod) {
+    public void newsubproduct(Product p, Produttore prod, int id) {
         JFrame frame = new JFrame();
         productDAO pro = new productDAO();
         String res2 = "INSERT INTO Subproduct ('"+p.getId()+"','" + p.getName() + "','" + p.getCosto() + "', NULL , '" + p.getDescr() + "', '" + p.getSottocategoria() + "', NULL, NULL)" +
@@ -93,9 +99,15 @@ public class AdminDAO implements IAdminDAO{
         File selFile = fc.getSelectedFile();
         DbConnection.getInstance().addFoto(selFile,img2);
     }
+
+    @Override
+    public void erase_article(article p) {
+
+    }
+
     @Override
     //elimina article (prodotto,servizio)
-    public void erase_article( int id){
+    public void erase_article(int id){
         articleDAO a=new articleDAO();
         String res3 = "DELETE FROM article WHERE idarticle = '"+id+"';";
         JOptionPane.showMessageDialog(null,res3);
@@ -124,6 +136,8 @@ public class AdminDAO implements IAdminDAO{
                 "SET idFornitore='"+f.getId()+"', Name='"+f.getNome()+"',Website='"+f.getSitoweb()+"',city='"+ f.getCitta()+"',State='"+ f.getNazione()+"', idservizio='"+s.findById(p.getId())+"'");
 
     }
+
+
     @Override
 //crea punto vendita e manager
     public void create_shopandmanager(Point_shop shop, manager mng){
