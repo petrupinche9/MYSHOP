@@ -1,7 +1,6 @@
 package it.model;
 
 public class service extends article {
-    private int id;
     private String fornitore;
 
     public service() {
@@ -9,15 +8,13 @@ public class service extends article {
     }
 
 
-    public service(int id, String fornitore) {
-        this.id = id;
+    public service(int id, String name, double costo, String Descr, String comment, int eval, byte[] img, String category, String fornitore)
+    {
+        super(id, name, costo, Descr, comment, eval, img, category);
         this.fornitore = fornitore;
     }
 
     //METODI GET
-    public int getId() {
-        return id;
-    }
 
     public String getFornitore() {
         return fornitore;
@@ -25,9 +22,6 @@ public class service extends article {
 
 
     //METODI SET
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public void setFornitore(String fornitore) {
         this.fornitore = fornitore;
