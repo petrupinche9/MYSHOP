@@ -125,10 +125,11 @@
         </constraints>
         <properties>
           <font name="Lucida Sans Typewriter" size="10"/>
+          <labelFor value="3ac45"/>
           <text value="Inserisci PASSWORD"/>
         </properties>
       </component>
-      <component id="3ac45" class="javax.swing.JTextField" binding="textField6" default-binding="true">
+      <component id="3ac45" class="javax.swing.JTextField" binding="inserisciPASSWORDTextField" default-binding="true">
         <constraints>
           <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -142,6 +143,7 @@
         </constraints>
         <properties>
           <font name="Lucida Sans Typewriter" size="10"/>
+          <labelFor value="ac2fc"/>
           <text value="Inserisci NOME"/>
         </properties>
       </component>
@@ -159,10 +161,11 @@
         </constraints>
         <properties>
           <font name="Lucida Sans Typewriter" size="10"/>
+          <labelFor value="7aafd"/>
           <text value="Inserisci COGNOME"/>
         </properties>
       </component>
-      <component id="7aafd" class="javax.swing.JTextField" binding="textField8" default-binding="true">
+      <component id="7aafd" class="javax.swing.JTextField" binding="inserisciCOGNOMETextField" default-binding="true">
         <constraints>
           <grid row="10" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -176,10 +179,11 @@
         </constraints>
         <properties>
           <font name="Lucida Sans Typewriter" size="10"/>
+          <labelFor value="b6da3"/>
           <text value="Inserisci ETÀ"/>
         </properties>
       </component>
-      <component id="b6da3" class="javax.swing.JTextField" binding="textField9" default-binding="true">
+      <component id="b6da3" class="javax.swing.JTextField" binding="inserisciETÀTextField" default-binding="true">
         <constraints>
           <grid row="12" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -193,10 +197,11 @@
         </constraints>
         <properties>
           <font name="Lucida Sans Typewriter" size="10"/>
+          <labelFor value="89ea"/>
           <text value="Inserisci E-MAIL"/>
         </properties>
       </component>
-      <component id="89ea" class="javax.swing.JTextField" binding="textField10" default-binding="true">
+      <component id="89ea" class="javax.swing.JTextField" binding="inserisciEMAILTextField" default-binding="true">
         <constraints>
           <grid row="14" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -210,10 +215,11 @@
         </constraints>
         <properties>
           <font name="Lucida Sans Typewriter" size="10"/>
+          <labelFor value="a4cb7"/>
           <text value="Inserisci NUMERO DI TELEFONO"/>
         </properties>
       </component>
-      <component id="a4cb7" class="javax.swing.JTextField" binding="textField11" default-binding="true">
+      <component id="a4cb7" class="javax.swing.JTextField" binding="inserisciNUMERODITELEFONOTextField" default-binding="true">
         <constraints>
           <grid row="16" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -227,10 +233,11 @@
         </constraints>
         <properties>
           <font name="Lucida Sans Typewriter" size="10"/>
+          <labelFor value="3e61a"/>
           <text value="Inserisci PROFESSIONE"/>
         </properties>
       </component>
-      <component id="3e61a" class="javax.swing.JTextField" binding="textField12" default-binding="true">
+      <component id="3e61a" class="javax.swing.JTextField" binding="inserisciPROFESSIONETextField" default-binding="true">
         <constraints>
           <grid row="18" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>

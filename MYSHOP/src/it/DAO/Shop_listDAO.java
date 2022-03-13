@@ -28,10 +28,8 @@ public class Shop_listDAO implements IShop_listDAO{
             IShopDAO mDao = new ShopDAO();
             user Cliente = cDao.findById(Integer.parseInt(riga[3]));
             Point_shop shop = mDao.findById(Integer.parseInt(riga[4]));
-            article articolo=aDao.findById(Integer.parseInt(riga[5]));
             p.setCliente(Cliente);
             p.setShop(shop);
-            p.setArticoli(articolo);
             p.setData(DateUtil.dateTimeFromString(riga[6]));
         }
 
@@ -55,17 +53,18 @@ public class Shop_listDAO implements IShop_listDAO{
     }
 
     @Override
-    public void save_Shop_list(Shop_list p) {
+    public void save_Shop_list(Shop_list p, ArrayList<article> ar) {
 
         String strDataPrenotazione = DateUtil.stringFromDate(p.getData());
-
-        String sql = "INSERT INTO Shop_list VALUES ('"+p.getId()+"', '"+p.getStato()+"',"+p.getTotal_price()+","+p.getData()+","+p.getShop().getId()+","+p.getCliente().getId()+","+p.getArticoli().getId()+");";
-
+        String sql = "INSERT INTO Shop_list VALUES ('"+p.getId()+"', '"+p.getStato()+"',"+p.getTotal_price()+","+p.getData()+","+p.getShop().getId()+","+p.getCliente().getId()+");";
         System.out.println(sql);
         DbConnection.getInstance().eseguiAggiornamento(sql);
 
-        sql = "SELECT last_insert_id()";
-        ArrayList<String[]> res = DbConnection.getInstance().eseguiQuery(sql);
-        p.setId(Integer.parseInt(res.get(0)[0]));
+        for (int i = 0; i<p.getArticoli().size(); i++) {
+            String articolo = "UPDATE articolo SET Shop_List_idShop_List='" + p.getId() + "' WHERE idarticolo='"+ar.get(i).getId()+"';";
+        }
+        System.out.println(sql);
+        DbConnection.getInstance().eseguiAggiornamento(sql);
+
     }
 }

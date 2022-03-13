@@ -1,6 +1,8 @@
 package it.view;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class administracionaggiungisottoprodotto extends JFrame{
     private JTextField textField1;
@@ -21,6 +23,12 @@ public class administracionaggiungisottoprodotto extends JFrame{
         setTitle("AGGIUNGI PRODOTTO");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
-    }
 
+        CONFERMAButton1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+    }
 }

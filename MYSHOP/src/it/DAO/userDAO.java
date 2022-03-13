@@ -1,6 +1,7 @@
 package it.DAO;
 
 import it.DbConnection;
+import it.model.article;
 import it.model.user;
 
 import javax.swing.*;
@@ -50,6 +51,12 @@ public class userDAO implements IuserDAO {
     }
 
     //commenta
+    public void newcomment(user p, article ar, String text){
+        String res = "INSERT INTO comments VALUES ('"+text+"','"+ar.getEval()+"','"+p.getId()+"','"+ar.getId()+"'); ";
+        JOptionPane.showMessageDialog(null,res);
+        DbConnection.getInstance().eseguiAggiornamento(res);
+
+    }
     /*public void erase_user( user p){
         String res = "DELETE FROM user WHERE iduser='"+p.getId()+"' ";
         JOptionPane.showInputDialog(res);

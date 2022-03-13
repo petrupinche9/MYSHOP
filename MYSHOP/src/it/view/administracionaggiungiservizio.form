@@ -52,7 +52,7 @@
           <text value="Inserire NOME"/>
         </properties>
       </component>
-      <component id="bc34c" class="javax.swing.JTextField" binding="textField3" default-binding="true">
+      <component id="bc34c" class="javax.swing.JTextField" binding="Nomefield">
         <constraints>
           <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -66,10 +66,11 @@
         </constraints>
         <properties>
           <font name="Lucida Sans Typewriter" size="10"/>
+          <labelFor value="b197"/>
           <text value="Inserire il SITO WEB"/>
         </properties>
       </component>
-      <component id="b197" class="javax.swing.JTextField" binding="textField4" default-binding="true">
+      <component id="b197" class="javax.swing.JTextField" binding="Sitoweb">
         <constraints>
           <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -86,7 +87,7 @@
           <text value="Inserire la CITTÀ"/>
         </properties>
       </component>
-      <component id="3db94" class="javax.swing.JTextField" binding="textField5" default-binding="true">
+      <component id="3db94" class="javax.swing.JTextField" binding="Citta">
         <constraints>
           <grid row="7" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -103,7 +104,7 @@
           <text value="Inserire la NAZIONE"/>
         </properties>
       </component>
-      <component id="7b76f" class="javax.swing.JTextField" binding="textField6" default-binding="true">
+      <component id="7b76f" class="javax.swing.JTextField" binding="Nazione">
         <constraints>
           <grid row="9" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -134,7 +135,9 @@
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <text value=""/>
+        </properties>
       </component>
       <component id="333b3" class="javax.swing.JLabel">
         <constraints>
