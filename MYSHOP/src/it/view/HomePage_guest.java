@@ -5,7 +5,9 @@ import it.DAO.articleDAO;
 import it.model.article;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.table.AbstractTableModel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class HomePage_guest extends JFrame{
@@ -14,14 +16,15 @@ public class HomePage_guest extends JFrame{
     private JButton SIGNUPButton;
     private JTable table1;
     private JSplitPane rootpanel;
-    private JButton UPDATECATALOGUEButton;
+    private JComboBox shop;
+    private JComboBox comboBox1;
 
 
     // da aggiungere il metodo per aggiornare da database
     public HomePage_guest() {
 
           //  ArrayList<String[]> res = DbConnection.getInstance().eseguiQuery("SELECT * FROM ARTICLE;");
-       IarticleDAO ar=new articleDAO();
+       /*IarticleDAO ar=new articleDAO();
         ArrayList<article> res=ar.findAll();
         JOptionPane.showMessageDialog(null,res);
             String columns[] = { "ID", "Name", "Age" };
@@ -52,9 +55,94 @@ public class HomePage_guest extends JFrame{
       f.setSize(500, 250);
       f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       f.setVisible(true);
+*/
 
+
+      //go to login page
+        LOGINButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MENU mf = new MENU();
+                mf.setVisible(true);
+                mf.pack();
+                mf.setLocationRelativeTo(null);
+                mf.setExtendedState(JFrame.MAXIMIZED_BOTH);
+            }
+        });
+        SIGNUPButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                REGISTRAZIONE rf = new REGISTRAZIONE();
+                rf.setVisible(true);
+                rf.pack();
+                rf.setLocationRelativeTo(null);
+                rf.setExtendedState(JFrame.MAXIMIZED_BOTH);
+            }
+        });
+
+
+    }
+     class TableModelarticoli extends AbstractTableModel {
+
+        IarticleDAO ar=new articleDAO();
+        ArrayList<article> articoli=ar.findAll();
+
+        public TableModelarticoli(ArrayList<article> articoli) {
+            this.articoli = articoli;
+        }
+
+        @Override
+        public int getRowCount() {
+            return articoli.size();
+        }
+
+        @Override
+        public int getColumnCount() {
+                        return 7;
+        }
+
+        @Override
+        public Object getValueAt(int rowIndex, int columnIndex) {
+
+            article p = articoli.get(rowIndex);
+
+            //BINDING
+            switch(columnIndex) {
+                case 0: return p.getName();
+                case 1: return p.getImg(p.getId());
+                case 2: return p.getDescr();
+                case 3: return p.getCosto();
+                case 4: return p.getCategory();
+                case 5: return p.getEval();
+            }
+
+            return "-";
+        }
+
+        @Override
+        public boolean isCellEditable(int rowIndex, int columnIndex) {
+            return (columnIndex > 4);
+        }
+
+        @Override
+        public void setValueAt(Object value, int rowIndex, int columnIndex) {
+            article p = articoli.get(rowIndex);
+
+           /* switch (columnIndex) {
+                case 5: p.setDataInizio(DateUtil.dateTimeFromString((String)value)); break;
+                case 6: p.setDataFine(DateUtil.dateTimeFromString((String)value)); break;
+            }*/
+
+            //TODO richiamare il metodo di business modificaPrenotazione che chiamera il DAO per update sql
 
         }
+
+        @Override
+        public String getColumnName(int columnIndex) {
+            String[] colonne = {"Nome","Foto","descrizione","Costo","Categoria","Stars"};
+            return colonne[columnIndex];
+        }
+    }
     }
 
 

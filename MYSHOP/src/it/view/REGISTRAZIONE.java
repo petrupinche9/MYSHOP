@@ -3,6 +3,7 @@ package it.view;
 import it.DAO.userDAO;
 import it.DbConnection;
 import it.model.user;
+import it.util.Session;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,6 +24,7 @@ public class REGISTRAZIONE extends JFrame
     private JTextField username;
     private JPasswordField passwd;
     private JComboBox<String> comboBox1;
+    private JTextField idtext;
 
     public REGISTRAZIONE()
     {
@@ -36,6 +38,7 @@ public class REGISTRAZIONE extends JFrame
             @Override
             public void actionPerformed(ActionEvent e) {
                 user p=new user();
+
                 p.setName(Name.getText());
                 p.setSurname(Surname.getText());
                 p.setEmail(Email.getText());
@@ -46,6 +49,8 @@ public class REGISTRAZIONE extends JFrame
                 p.setPassword(String.valueOf(passwd.getPassword()));
                 userDAO reg =new userDAO();
                 reg.newuser(p);
+                Session.getInstance().setClienteLoggato(p);
+
             }
         });
         comboBox1.addActionListener(new ActionListener() {

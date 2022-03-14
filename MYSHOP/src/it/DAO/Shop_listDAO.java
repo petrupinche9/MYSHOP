@@ -62,9 +62,10 @@ public class Shop_listDAO implements IShop_listDAO{
 
         for (int i = 0; i<p.getArticoli().size(); i++) {
             String articolo = "UPDATE articolo SET Shop_List_idShop_List='" + p.getId() + "' WHERE idarticolo='"+ar.get(i).getId()+"';";
+            System.out.println(sql);
+            DbConnection.getInstance().eseguiAggiornamento(sql);
         }
-        System.out.println(sql);
-        DbConnection.getInstance().eseguiAggiornamento(sql);
+
 
     }
 }

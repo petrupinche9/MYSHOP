@@ -1,4 +1,7 @@
 package it.model;
+
+import it.DbConnection;
+
 //implementare database
 public class article {
    private int id;
@@ -41,7 +44,9 @@ public class article {
     {
         return costo;
     }
-    public byte[] getImg() {return img;}
+    public byte[] getImg(int id) {
+        return DbConnection.getInstance().getFoto("SELECT Image_descr FROM article WHERE idarticle='"+id+"");
+    }
     public String getCategory() {return category;}
 
     //METODI SET
