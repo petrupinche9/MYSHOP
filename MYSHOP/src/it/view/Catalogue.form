@@ -70,7 +70,7 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="6f0d8" class="javax.swing.JTable" binding="table1" default-binding="true">
+          <component id="6f0d8" class="javax.swing.JTable" binding="TableModelarticoli">
             <constraints/>
             <properties/>
           </component>

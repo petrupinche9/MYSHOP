@@ -29,7 +29,7 @@ class Ascoltatore implements ActionListener
     public void actionPerformed(ActionEvent event)
     {
         JButton b = (JButton)event.getSource();
-        HomePageMyShop shop = new HomePageMyShop();
+        Catalogue shop = new Catalogue();
     }
 }
 

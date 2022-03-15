@@ -38,7 +38,7 @@ public class REGISTRAZIONE extends JFrame
             @Override
             public void actionPerformed(ActionEvent e) {
                 user p=new user();
-
+                p.setId(Integer.parseInt(idtext.getText()));
                 p.setName(Name.getText());
                 p.setSurname(Surname.getText());
                 p.setEmail(Email.getText());
@@ -50,6 +50,11 @@ public class REGISTRAZIONE extends JFrame
                 userDAO reg =new userDAO();
                 reg.newuser(p);
                 Session.getInstance().setClienteLoggato(p);
+                Catalogue mf = new Catalogue();
+                mf.setVisible(true);
+                mf.pack();
+                mf.setLocationRelativeTo(null);
+                mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
             }
         });

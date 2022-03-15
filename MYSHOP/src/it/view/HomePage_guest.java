@@ -14,7 +14,7 @@ public class HomePage_guest extends JFrame{
     private JPanel panel1;
     private JButton LOGINButton;
     private JButton SIGNUPButton;
-    private JTable table1;
+    private JTable TableModelarticoli;
     private JSplitPane rootpanel;
     private JComboBox shop;
     private JComboBox comboBox1;
@@ -22,7 +22,11 @@ public class HomePage_guest extends JFrame{
 
     // da aggiungere il metodo per aggiornare da database
     public HomePage_guest() {
-
+        setContentPane(panel1);
+        setTitle("MYSHOP");
+        setSize(300,300);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setVisible(true);
           //  ArrayList<String[]> res = DbConnection.getInstance().eseguiQuery("SELECT * FROM ARTICLE;");
        /*IarticleDAO ar=new articleDAO();
         ArrayList<article> res=ar.findAll();
@@ -66,7 +70,7 @@ public class HomePage_guest extends JFrame{
                 mf.setVisible(true);
                 mf.pack();
                 mf.setLocationRelativeTo(null);
-                mf.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                mf.setExtendedState(JFrame.DO_NOTHING_ON_CLOSE);
             }
         });
         SIGNUPButton.addActionListener(new ActionListener() {
@@ -76,7 +80,7 @@ public class HomePage_guest extends JFrame{
                 rf.setVisible(true);
                 rf.pack();
                 rf.setLocationRelativeTo(null);
-                rf.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                rf.setExtendedState(JFrame.DO_NOTHING_ON_CLOSE);
             }
         });
 

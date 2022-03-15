@@ -57,7 +57,7 @@ public class MENU extends JFrame
                     mf.setVisible(true);
                     mf.pack();
                     mf.setLocationRelativeTo(null);
-                    mf.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                    mf.setExtendedState(JFrame.DO_NOTHING_ON_CLOSE);
 
                 }
                 else{
@@ -86,7 +86,7 @@ public class MENU extends JFrame
                 rf.setVisible(true);
                 rf.pack();
                 rf.setLocationRelativeTo(null);
-                rf.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                rf.setExtendedState(JFrame.EXIT_ON_CLOSE);
             }
         });
       /*  comboBox1.addActionListener(new ActionListener() {

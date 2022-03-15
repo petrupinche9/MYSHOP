@@ -12,13 +12,19 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class Catalogue {
+public class Catalogue extends JFrame{
     private JPanel panel1;
     private JComboBox comboBox_shop;
     private JComboBox comboBox_cat;
-    private JTable table1;
+    private JTable TableModelarticoli;
     private JLabel cliente;
     public Catalogue() {
+
+        setContentPane(panel1);
+        setTitle("MYSHOP");
+        setSize(300,300);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setVisible(true);
     class TableModelarticoli extends AbstractTableModel {
 
         IarticleDAO ar = new articleDAO();
@@ -35,7 +41,7 @@ public class Catalogue {
 
         @Override
         public int getColumnCount() {
-            return 7;
+            return 6;
         }
 
         @Override

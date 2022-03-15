@@ -24,7 +24,7 @@ public class DbConnection {
 
     private DbConnection() {
         if(connesso != true)
-            connetti("MYshop22DB", "root", "MYshop22");
+            connetti("myshop22", "root", ".myshop22.");
     }
 
     // Apre la connessione con il Database
@@ -35,7 +35,7 @@ public class DbConnection {
 
             // Carico il driver JDBC per la connessione con il database MySQL
             Class.forName("com.mysql.jdbc.Driver");
-            db = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/" + nomeDB + "?it.model.user=" + nomeUtente + "&password=" + pwdUtente+"&useLegacyDatetimeCode=false&serverTimezone=UTC");
+            db = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/" + nomeDB + "?user=" + nomeUtente + "&password=" + pwdUtente+"&useLegacyDatetimeCode=false&serverTimezone=UTC");
             connesso=true;
 
         } catch (Exception e) {
