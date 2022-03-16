@@ -2,12 +2,18 @@ package it.model;
 
 public class manager extends user
 {
-    public manager(int id, String username, String password, String Name, String Surname, int age, String Email, int telephone, String Occupation)
+    private Point_shop shop;
+    public manager(int id, String username, String password, String Name, String Surname, int age, String Email, int telephone, String Occupation, Point_shop shop)
     {
         super(id, username, password, Name, Surname, age, Email, telephone, Occupation);
+        this.shop=shop;
     }
 
     public manager(){
 
+    }
+
+    public void setShop(Point_shop shop) {
+        this.shop = shop;
     }
 }

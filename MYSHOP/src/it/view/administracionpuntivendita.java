@@ -1,25 +1,32 @@
 package it.view;
 
+import it.DAO.AdminDAO;
+import it.DAO.IAdminDAO;
+import it.model.Point_shop;
+import it.model.manager;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class administracionpuntivendita extends JFrame {
-    private JTextField textField1;
-    private JTextField textField2;
+    private JTextField username_mng;
+    private JTextField shopname;
     private JButton CONFERMAButton;
-    private JTextField textField3;
-    private JTextField textField4;
-    private JTextField inserisciPASSWORDTextField;
-    private JTextField textField7;
-    private JTextField inserisciCOGNOMETextField;
-    private JTextField inserisciETÀTextField;
-    private JTextField inserisciEMAILTextField;
-    private JTextField inserisciNUMERODITELEFONOTextField;
-    private JTextField inserisciPROFESSIONETextField;
+    private JTextField city;
+    private JTextField article_type;
+    private JTextField passwd_mng;
+    private JTextField surname;
+    private JTextField age;
+    private JTextField mail;
+    private JTextField telephone;
+    private JTextField profession;
     private JTextField textField5;
     private JButton CREAUNMANAGERButton;
     private JPanel managerPanel;
+    private JTextField idshop;
+    private JTextField name;
 
     public administracionpuntivendita()
     {
@@ -31,13 +38,35 @@ public class administracionpuntivendita extends JFrame {
         CONFERMAButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String text1 = textField1.getText();
-                int id = Integer.parseInt(text1);
-                String text2 = textField2.getText();
-                String text3 = textField3.getText();
-                String text4 = textField4.getText();
+                Point_shop shop=new Point_shop();
+                manager mng=new manager();
+                //parsing shop
+                shop.setShopname(shopname.getText());
+                shop.setCity(city.getText());
+                shop.setArticle_type(article_type.getText());
+
+                //parsing manager
+                mng.setId(Integer.parseInt(createID()));
+                mng.setUsername(username_mng.getText());
+                mng.setPassword(passwd_mng.getText());
+                mng.setName(name.getText());
+                mng.setSurname(surname.getText());
+                mng.setAge(Integer.parseInt(age.getText()));
+                mng.setEmail(mail.getText());
+                mng.setTelephone(Integer.parseInt(telephone.getText()));
+                mng.setOccupation(profession.getText());
+                mng.setShop(shop);
+                IAdminDAO admin =new AdminDAO();
+                admin.create_shopandmanager(shop,mng);
 
             }
         });
     }
+    private static AtomicLong idCounter = new AtomicLong();
+
+    public static String createID()
+    {
+        return String.valueOf(idCounter.getAndIncrement());
+    }
+
 }

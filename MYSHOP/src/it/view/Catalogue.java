@@ -4,6 +4,7 @@ import it.DAO.IarticleDAO;
 import it.DAO.articleDAO;
 import it.DbConnection;
 import it.model.article;
+import it.util.Session;
 
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
@@ -17,7 +18,7 @@ public class Catalogue extends JFrame{
     private JComboBox comboBox_shop;
     private JComboBox comboBox_cat;
     private JTable TableModelarticoli;
-    private JLabel cliente;
+    private JLabel cliente23;
     public Catalogue() {
 
         setContentPane(panel1);
@@ -25,6 +26,7 @@ public class Catalogue extends JFrame{
         setSize(300,300);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
+        cliente23.setText(Session.getInstance().getClienteLoggato().getUsername());
     class TableModelarticoli extends AbstractTableModel {
 
         IarticleDAO ar = new articleDAO();

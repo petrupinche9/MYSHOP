@@ -5,7 +5,11 @@
     <constraints>
       <xy x="20" y="20" width="666" height="400"/>
     </constraints>
-    <properties/>
+    <properties>
+      <background color="-15327423"/>
+      <enabled value="false"/>
+      <preferredSize width="300" height="190"/>
+    </properties>
     <border type="none"/>
     <children>
       <grid id="39701" layout-manager="GridLayoutManager" row-count="6" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">

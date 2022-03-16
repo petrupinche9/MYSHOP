@@ -58,7 +58,7 @@ public class administracion extends JFrame
         aggiungiServizioButton.addActionListener(listener5);
         modificaServizioButton.addActionListener(listener7);
         setSize(500, 500);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);
         eliminaArticoloButton.addActionListener(new ActionListener() {
             @Override

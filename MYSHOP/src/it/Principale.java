@@ -14,5 +14,6 @@ public class Principale
         rf.pack();
         rf.setLocationRelativeTo(null);
         rf.setSize(600,400);
+        rf.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 }

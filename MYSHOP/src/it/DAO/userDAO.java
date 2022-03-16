@@ -41,7 +41,7 @@ public class userDAO implements IuserDAO {
     @Override
     //registrazione nuovo utente
     public void newuser(user p){
-        String res = "INSERT INTO user VALUES ('"+p.getId()+"','"+p.getUsername()+"', '"+p.getPassword()+"', '"+p.getName()+"','"+p.getSurname()+"','"+p.getAge()+"','"+p.getEmail()+"','"+p.getTelephone()+"', '"+p.getOccupation()+"'); ";
+        String res = "INSERT INTO user (iduser,username,passwd,Name,Surname,Age,Email,telephone,occupation) VALUES ('"+p.getId()+"','"+p.getUsername()+"', '"+p.getPassword()+"', '"+p.getName()+"','"+p.getSurname()+"','"+p.getAge()+"','"+p.getEmail()+"','"+p.getTelephone()+"', '"+p.getOccupation()+"'); ";
         JOptionPane.showMessageDialog(null,res);
         DbConnection.getInstance().eseguiAggiornamento(res);
 

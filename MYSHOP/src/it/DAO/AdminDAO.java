@@ -6,6 +6,7 @@ import it.model.*;
 import javax.swing.*;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class AdminDAO implements IAdminDAO{
     @Override
@@ -129,13 +130,31 @@ public class AdminDAO implements IAdminDAO{
     //crea punto vendita e manager
     public void create_shopandmanager(Point_shop shop, manager mng){
         userDAO user=new userDAO();
-             ArrayList<String[]> res3 =DbConnection.getInstance().eseguiQuery("INSERT INTO Point_shop VALUES ('"+shop.getId()+"','"+shop.getShopname()+"','"+shop.getCity()+"','"+shop.getArticle_type()+"','"+mng.getId()+"');");
-        JOptionPane.showMessageDialog(null,res3);
 
         //crea manager
-             ArrayList<String[]> mng_sql = DbConnection.getInstance().eseguiQuery("INSERT INTO Manager ('"+mng.getId()+"','"+mng.getUsername()+"','"+mng.getPassword()+"', '"+mng.getName()+"' , '"+mng.getSurname()+"', '"+mng.getAge()+"','"+mng.getEmail()+"','"+mng.getTelephone()+"','"+mng.getOccupation()+"','"+shop.getId()+"')" +
-                "SELECT us.iduser, us.Username, us.passwd, us.Name, us.Surname, us.Age, us.Email, us.telephone, us.occupation, mng.Point_shop_idPoint_shop, FROM user AS us INNER JOIN Manager as mng ON us.iduser = mng.user_iduser WHERE us.iduser='"+user.findById(mng.getId())+"'  ;");
+             String mng_sql = "INSERT INTO user (iduser,username,passwd,Name,Surname,Age,Email,telephone,occupation)" +
+                     " VALUES ('"+mng.getId()+"','"+mng.getUsername()+"','"+mng.getPassword()+"', '"+mng.getName()+"' , '"+mng.getSurname()+"', '"+mng.getAge()+"','"+mng.getEmail()+"','"+mng.getTelephone()+"','"+mng.getOccupation()+"')";
         JOptionPane.showMessageDialog(null,mng_sql);
+             DbConnection.getInstance().eseguiAggiornamento(mng_sql);
+             String mngs = "INSERT INTO manager (user_iduser) VALUES " +
+                     "( (SELECT iduser from user WHERE username='"+mng.getUsername()+"' AND passwd ='"+mng.getPassword()+"' ) )" ;
+                     JOptionPane.showMessageDialog(null,mngs);
+             DbConnection.getInstance().eseguiAggiornamento(mngs);
+             //crea punto vendita
+             String sh = "INSERT INTO Point_shop (Manager_idManager) VALUES " +
+                     "( (SELECT idManager from Manager INNER JOIN user AS us WHERE us.username='"+mng.getUsername()+"' AND us.passwd ='"+mng.getPassword()+"' ) )" ;
+             JOptionPane.showMessageDialog(null,sh);
+             DbConnection.getInstance().eseguiAggiornamento(sh);
+             //,(SELECT iduser from user WHERE username='"+mng.getUsername()+"' AND passwd ='"+mng.getPassword()+"' )
+             String res3 ="INSERT INTO Point_shop (Shopname,city,article_type)  VALUES ('"+shop.getShopname()+"','"+shop.getCity()+"','"+shop.getArticle_type()+"');";
+             JOptionPane.showMessageDialog(null,res3);
+             DbConnection.getInstance().eseguiAggiornamento(res3);
 
+    }
+    private static AtomicLong idCounter = new AtomicLong();
+
+    public static String createID()
+    {
+        return String.valueOf(idCounter.getAndIncrement());
     }
 }

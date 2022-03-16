@@ -1,57 +1,75 @@
 package it;
-import it.view.*;
+
+import it.util.Session;
+import it.view.Catalogue;
+import it.view.MENU;
+import it.view.administracionpuntivendita;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-//crea punti vendita
-class Ascoltatore3 implements ActionListener
-{
-    public void actionPerformed(ActionEvent h)
-    {
-        JButton b = (JButton)h.getSource();
-        administracionpuntivendita puntivendita = new administracionpuntivendita();
-    }
-}
-//classe di modifica
-class Ascoltatore2 implements ActionListener
-{
-    public void actionPerformed(ActionEvent e)
-    {
-        JButton b = (JButton)e.getSource();
-        administracion ad = new administracion();
-    }
-}
-
-class Ascoltatore implements ActionListener
-{
-    public void actionPerformed(ActionEvent event)
-    {
-        JButton b = (JButton)event.getSource();
-        Catalogue shop = new Catalogue();
-    }
-}
 
 public class administracionprincipal extends JFrame
 {
     private JButton vaiAlMyShopButton;
     private JButton vaiAllaClasseDiButton;
     private JButton creaPuntiVenditaButton;
-    private JPanel administracionprincipal;
-    Ascoltatore listener = new Ascoltatore();
-    Ascoltatore2 listener2 = new Ascoltatore2();
-    Ascoltatore3 listener3 = new Ascoltatore3();
+    private JPanel administracionprincipal23;
+    private JButton logout;
 
     public administracionprincipal()
     {
-        setContentPane(administracionprincipal);
+        setContentPane(administracionprincipal23);
         setTitle("GESTIONE MYSHOP");
-        vaiAlMyShopButton.addActionListener(listener);
-        vaiAllaClasseDiButton.addActionListener(listener2);
-        creaPuntiVenditaButton.addActionListener(listener3);
-        setSize(500, 500);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setSize(300, 300);
         setVisible(true);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+
+        // vai al catalogo
+        vaiAlMyShopButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Catalogue mf = new Catalogue();
+                mf.pack();
+                mf.setVisible(true);
+                mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            }
+        });
+        //vai a creare punti vendita
+        creaPuntiVenditaButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                administracionpuntivendita mf = new administracionpuntivendita();
+                mf.pack();
+                mf.setVisible(true);
+                mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            }
+        });
+        //vai a modifica
+        vaiAllaClasseDiButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                administracion mf= new administracion();
+                mf.pack();
+                mf.setVisible(true);
+                mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+            }
+        });
+
+        logout.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Session.getInstance().setClienteLoggato(null);
+                MENU mf = new MENU();
+                mf.setSize(300,300);
+                mf.pack();
+                mf.setLocationRelativeTo(null);
+                mf.setVisible(true);
+                dispose();
+
+            }
+        });
     }
 }
