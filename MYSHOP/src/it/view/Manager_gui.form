@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="it.view.Manager_gui">
-  <grid id="27dc6" layout-manager="GridLayoutManager" row-count="3" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" layout-manager="GridLayoutManager" row-count="5" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="500" height="400"/>
+      <xy x="20" y="20" width="597" height="400"/>
     </constraints>
     <properties/>
     <border type="none"/>
     <children>
       <component id="1e9db" class="javax.swing.JLabel">
         <constraints>
-          <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <font size="22"/>
@@ -18,32 +18,54 @@
           <text value="SALVE MANAGER"/>
         </properties>
       </component>
-      <component id="5b0e2" class="javax.swing.JLabel">
-        <constraints>
-          <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <font name="Adobe Gothic Std B" size="12"/>
-          <foreground color="-15811655"/>
-          <text value="BENVENUTO NELLA PARTE GESTIONALE DEL SUO PUNTO VENDITA"/>
-        </properties>
-      </component>
-      <component id="f8abb" class="javax.swing.JButton" binding="vaiAllaListaDegliButton" default-binding="true">
+      <component id="ed295" class="javax.swing.JButton" binding="aggiungiUnArticoloAlButton" default-binding="true">
         <constraints>
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <font name="Adobe Fan Heiti Std B" size="11"/>
-          <text value="Vai alla lista degli acquirenti"/>
+          <text value="Aggiungi un articolo al Punto Vendita"/>
         </properties>
       </component>
-      <component id="7359" class="javax.swing.JButton" binding="vaiAlMagazzinoButton" default-binding="true">
+      <component id="2365c" class="javax.swing.JButton" binding="eliminaUnArticoloDaButton" default-binding="true">
         <constraints>
-          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <font name="Adobe Heiti Std R" size="12"/>
-          <text value="Vai al Magazzino"/>
+          <text value="Elimina un articolo da un Punto Vendita"/>
+        </properties>
+      </component>
+      <component id="24ec9" class="javax.swing.JButton" binding="aggiungiUtenteAlPuntoButton" default-binding="true">
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Aggiungi utente al Punto Vendita"/>
+        </properties>
+      </component>
+      <component id="dcc1c" class="javax.swing.JButton" binding="eliminaUtenteDaUnButton" default-binding="true">
+        <constraints>
+          <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Elimina utente da un Punto Vendita"/>
+        </properties>
+      </component>
+      <component id="453b5" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="Lucida Sans Typewriter" size="14"/>
+          <foreground color="-15811655"/>
+          <text value="BENVENUTO NELLA PARTE GESTIONALE MYSHOP"/>
+        </properties>
+      </component>
+      <component id="e3968" class="javax.swing.JButton" binding="inviaEMailButton" default-binding="true">
+        <constraints>
+          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Invia e-mail"/>
         </properties>
       </component>
     </children>

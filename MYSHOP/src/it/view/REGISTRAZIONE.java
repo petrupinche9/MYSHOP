@@ -31,7 +31,7 @@ public class REGISTRAZIONE extends JFrame
         setContentPane(RegistrazionePannello);
         setTitle("REGISTRAZIONE MYSHOP");
         setSize(500, 500);
-        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
         //AZIONE DA COMPIERE bottone Registrati->> QUERY INSERT PER AGGIORNARE DATABASE
         COMPLETAREGISTRAZIONEButton.addActionListener(new ActionListener() {
