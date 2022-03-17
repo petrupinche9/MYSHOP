@@ -5,16 +5,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class administracionaggiungiprodotto extends JFrame {
-    private JTextField textField3;
-    private JTextField textField4;
-    private JTextField textField5;
-    private JTextField textField6;
-    private JTextField textField7;
-    private JTextField textField8;
-    private JTextField textField1;
-    private JTextField textField2;
-    private JTextField textField9;
-    private JTextField textField10;
+    private JTextField category;
+    private JTextField subcategory;
+    private JTextField costo;
+    private JTextField corsia;
+    private JTextField scaffale;
+    private JTextField prod_name;
+    private JTextField website;
+    private JTextField city;
+    private JTextField nation;
     private JButton CONFERMAButton;
     private JButton AGGIUNGISOTTOPRODOTTOButton;
     private JPanel aggiungiprodottoPanel;
@@ -26,10 +25,22 @@ public class administracionaggiungiprodotto extends JFrame {
         setSize(500, 500);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
+
         CONFERMAButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+            }
+        });
+
+        AGGIUNGISOTTOPRODOTTOButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                administracionaggiungisottoprodotto cf = new administracionaggiungisottoprodotto();
+                cf.setVisible(true);
+                cf.pack();
+                cf.setLocationRelativeTo(null);
+                cf.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
             }
         });
     }
