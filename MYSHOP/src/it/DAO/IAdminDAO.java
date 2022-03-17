@@ -2,15 +2,13 @@ package it.DAO;
 
 import it.model.*;
 
-import java.io.File;
-
 public interface IAdminDAO extends IBaseDAO<Admin>{
-    public void newproduct(Product p, Produttore prod, File img);
+    public void newproduct(Product p, Produttore prod, byte[] img);
 
     //aggiunta nuovo sottoprodotto
-    public void newsubproduct(SubProduct p, Produttore prod, File img);
+    public void newsubproduct(SubProduct p, Produttore prod, byte[] img);
 
-    public void newservice(service p, Fornitore prod, File img);
+    public void newservice(service p, Fornitore prod, byte[] img);
 
     //elimina article (prodotto,servizio)
    public  void erase_article(int id);

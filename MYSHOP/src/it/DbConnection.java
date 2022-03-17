@@ -5,8 +5,8 @@ package it;
  * Gestisce l'apertura e la chiusura della connessione col Database
  * Fornisce i metodi per l'esecuzione delle query sul Database
  */
-import java.io.File;
-import java.io.FileInputStream;
+
+import javax.sql.rowset.serial.SerialBlob;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -72,6 +72,7 @@ public class DbConnection {
     }
 
 //add foto solo per admin
+    /*
     public void addFoto(File file, String sql) {
 
         try {
@@ -82,8 +83,21 @@ public class DbConnection {
             statement.executeUpdate();
             statement.close();   // Chiudo lo Statement
         } catch(Exception e) { e.printStackTrace(); }
-    }
+    }*/
 
+    public void addFoto(byte[] file, String sql) {
+
+        try {
+
+            PreparedStatement statement = db.prepareStatement(sql);
+            Blob blob = new SerialBlob(file);
+            statement.setBlob(1, blob);
+            statement.executeUpdate();
+            statement.close();   // Chiudo lo Statement
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     public byte[] getFoto(String query) {
         //query = "select F.foto from foto as F where F.idfoto=1;"
