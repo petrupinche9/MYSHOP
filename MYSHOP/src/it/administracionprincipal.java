@@ -15,12 +15,13 @@ public class administracionprincipal extends JFrame
     private JButton vaiAlMyShopButton;
     private JButton vaiAllaClasseDiButton;
     private JButton creaPuntiVenditaButton;
-    private JPanel administracionprincipal23;
+    private JButton LOGOUTButton;
+    private JPanel administracionprincipal;
     private JButton logout;
 
     public administracionprincipal()
     {
-        setContentPane(administracionprincipal23);
+        setContentPane(administracionprincipal);
         setTitle("GESTIONE MYSHOP");
         setSize(300, 300);
         setVisible(true);
@@ -32,33 +33,38 @@ public class administracionprincipal extends JFrame
             public void actionPerformed(ActionEvent e) {
                 Catalogue mf = new Catalogue();
                 mf.pack();
+                mf.setLocationRelativeTo(null);
                 mf.setVisible(true);
                 mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             }
         });
+
         //vai a creare punti vendita
         creaPuntiVenditaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 administracionpuntivendita mf = new administracionpuntivendita();
                 mf.pack();
+                mf.setLocationRelativeTo(null);
                 mf.setVisible(true);
                 mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             }
         });
+
         //vai a modifica
         vaiAllaClasseDiButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 administracion mf= new administracion();
                 mf.pack();
+                mf.setLocationRelativeTo(null);
                 mf.setVisible(true);
                 mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
             }
         });
 
-        logout.addActionListener(new ActionListener() {
+        LOGOUTButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Session.getInstance().setClienteLoggato(null);
@@ -71,5 +77,6 @@ public class administracionprincipal extends JFrame
 
             }
         });
+
     }
 }

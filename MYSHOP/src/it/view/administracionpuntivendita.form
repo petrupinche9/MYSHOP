@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="it.view.administracionpuntivendita">
-  <grid id="27dc6" layout-manager="GridLayoutManager" row-count="20" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="managerPanel" layout-manager="GridLayoutManager" row-count="20" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
       <xy x="20" y="20" width="717" height="586"/>
@@ -34,10 +34,11 @@
         </constraints>
         <properties>
           <font name="Lucida Sans Typewriter" size="10"/>
+          <labelFor value="cbe2b"/>
           <text value="Inserisci il NOME VENDITORE"/>
         </properties>
       </component>
-      <component id="cbe2b" class="javax.swing.JTextField" binding="textField2" default-binding="true">
+      <component id="cbe2b" class="javax.swing.JTextField" binding="shopname">
         <constraints>
           <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -51,10 +52,11 @@
         </constraints>
         <properties>
           <font name="Lucida Sans Typewriter" size="10"/>
+          <labelFor value="dc919"/>
           <text value="Inserisci la CITTÀ"/>
         </properties>
       </component>
-      <component id="dc919" class="javax.swing.JTextField" binding="textField3" default-binding="true">
+      <component id="dc919" class="javax.swing.JTextField" binding="city">
         <constraints>
           <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -68,10 +70,11 @@
         </constraints>
         <properties>
           <font name="Lucida Sans Typewriter" size="10"/>
+          <labelFor value="48d8b"/>
           <text value="Inserisci la TIPOLOGIA DI ARTICOLI"/>
         </properties>
       </component>
-      <component id="48d8b" class="javax.swing.JTextField" binding="textField4" default-binding="true">
+      <component id="48d8b" class="javax.swing.JTextField" binding="article_type">
         <constraints>
           <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -111,7 +114,7 @@
           <text value="Inserisci USERNAME"/>
         </properties>
       </component>
-      <component id="dead6" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+      <component id="dead6" class="javax.swing.JTextField" binding="username">
         <constraints>
           <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -129,7 +132,7 @@
           <text value="Inserisci PASSWORD"/>
         </properties>
       </component>
-      <component id="3ac45" class="javax.swing.JTextField" binding="inserisciPASSWORDTextField" default-binding="true">
+      <component id="3ac45" class="javax.swing.JTextField" binding="passwd">
         <constraints>
           <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -147,13 +150,15 @@
           <text value="Inserisci NOME"/>
         </properties>
       </component>
-      <component id="ac2fc" class="javax.swing.JTextField" binding="textField7" default-binding="true">
+      <component id="ac2fc" class="javax.swing.JTextField" binding="name">
         <constraints>
           <grid row="8" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <text value=""/>
+        </properties>
       </component>
       <component id="1f71a" class="javax.swing.JLabel">
         <constraints>
@@ -165,13 +170,15 @@
           <text value="Inserisci COGNOME"/>
         </properties>
       </component>
-      <component id="7aafd" class="javax.swing.JTextField" binding="inserisciCOGNOMETextField" default-binding="true">
+      <component id="7aafd" class="javax.swing.JTextField" binding="surname">
         <constraints>
           <grid row="10" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <text value=""/>
+        </properties>
       </component>
       <component id="5dffe" class="javax.swing.JLabel">
         <constraints>
@@ -183,13 +190,15 @@
           <text value="Inserisci ETÀ"/>
         </properties>
       </component>
-      <component id="b6da3" class="javax.swing.JTextField" binding="inserisciETÀTextField" default-binding="true">
+      <component id="b6da3" class="javax.swing.JTextField" binding="age">
         <constraints>
           <grid row="12" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <text value=""/>
+        </properties>
       </component>
       <component id="a58b5" class="javax.swing.JLabel">
         <constraints>
@@ -201,13 +210,15 @@
           <text value="Inserisci E-MAIL"/>
         </properties>
       </component>
-      <component id="89ea" class="javax.swing.JTextField" binding="inserisciEMAILTextField" default-binding="true">
+      <component id="89ea" class="javax.swing.JTextField" binding="mail">
         <constraints>
           <grid row="14" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <text value=""/>
+        </properties>
       </component>
       <component id="69cd7" class="javax.swing.JLabel">
         <constraints>
@@ -219,7 +230,7 @@
           <text value="Inserisci NUMERO DI TELEFONO"/>
         </properties>
       </component>
-      <component id="a4cb7" class="javax.swing.JTextField" binding="inserisciNUMERODITELEFONOTextField" default-binding="true">
+      <component id="a4cb7" class="javax.swing.JTextField" binding="telephone">
         <constraints>
           <grid row="16" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -237,7 +248,7 @@
           <text value="Inserisci PROFESSIONE"/>
         </properties>
       </component>
-      <component id="3e61a" class="javax.swing.JTextField" binding="inserisciPROFESSIONETextField" default-binding="true">
+      <component id="3e61a" class="javax.swing.JTextField" binding="occupation">
         <constraints>
           <grid row="18" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -251,6 +262,22 @@
         </constraints>
         <properties>
           <text value="CONFERMA"/>
+        </properties>
+      </component>
+      <component id="1edc5" class="javax.swing.JButton" binding="GOBACKButton" default-binding="true">
+        <constraints>
+          <grid row="12" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="GO BACK"/>
+        </properties>
+      </component>
+      <component id="97660" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="11" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="TORNA AL PANNELLO DI CONTROLLO"/>
         </properties>
       </component>
     </children>

@@ -1,6 +1,7 @@
 package it.view;
 
 import it.DbConnection;
+import it.administracionprincipal;
 import it.model.user;
 import it.util.Session;
 
@@ -24,11 +25,13 @@ public class MENU extends JFrame
         setContentPane(Login);
         setTitle("MYSHOP");
         setSize(300,300);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setVisible(true);
-
+        textField1.setHorizontalAlignment(JTextField.CENTER);
+        passwordField1.setHorizontalAlignment(JTextField.CENTER);
         //Azione da compiere al Click (LOGIN)
         LOGINButton.addActionListener(new ActionListener() {
+
             @Override
             public void actionPerformed(ActionEvent e) {
                 ArrayList<String[]> res;
@@ -36,10 +39,57 @@ public class MENU extends JFrame
                 String uname = textField1.getText();
                 String pass = String.valueOf(passwordField1.getPassword());
 
-                String query = "SELECT * FROM user WHERE username="+uname+" AND passwd ="+pass+";";
+                String query = "SELECT * FROM user WHERE username='"+uname+"' AND passwd ='"+pass+"';";
 
                 res = DbConnection.getInstance().eseguiQuery(query);
-                if(res.size()==1) {
+                if(admin_cred()==true && res.size()==1) {
+                    JOptionPane.showMessageDialog(null,"BENVENUTO ADMIN");
+                    String[] riga = res.get(0);
+                    user admin = new user();
+                    admin.setId(Integer.parseInt(riga[0]));
+                    admin.setUsername(riga[1]);
+                    admin.setPassword(riga[2]);
+                    admin.setName(riga[3]);
+                    admin.setSurname(riga[4]);
+                    admin.setAge(Integer.parseInt(riga[5]));
+                    admin.setEmail(riga[6]);
+                    admin.setTelephone(Integer.parseInt(riga[7]));
+                    admin.setOccupation(riga[8]);
+                    Session.getInstance().setClienteLoggato(admin);
+                    administracionprincipal cf = new administracionprincipal();
+                    cf.setVisible(true);
+                    cf.pack();
+                    cf.setLocationRelativeTo(null);
+                    cf.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+                    dispose();
+                    // dispatchEvent(new WindowEvent(MENU1, WindowEvent.WINDOW_CLOSING));
+
+
+                }else if(mng_cred()==true && res.size()==1){
+                    JOptionPane.showMessageDialog(null,"BENVENUTO MANAGER");
+                    String[] riga = res.get(0);
+                    user mng = new user();
+                    mng.setId(Integer.parseInt(riga[0]));
+                    mng.setUsername(riga[1]);
+                    mng.setPassword(riga[2]);
+                    mng.setName(riga[3]);
+                    mng.setSurname(riga[4]);
+                    mng.setAge(Integer.parseInt(riga[5]));
+                    mng.setEmail(riga[6]);
+                    mng.setTelephone(Integer.parseInt(riga[7]));
+                    mng.setOccupation(riga[8]);
+                    Session.getInstance().setClienteLoggato(mng);
+                    Manager_gui lf = new Manager_gui();
+                    lf.setVisible(true);
+                    lf.pack();
+                    lf.setSize(300, 300);
+                    lf.setLocationRelativeTo(null);
+                    lf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    dispose();
+                    // dispatchEvent(new WindowEvent(MENU1, JFrame.DISPOSE_ON_CLOSE));
+
+                } else if(res.size()==1 && mng_cred()!=true && admin_cred()!=true ) {
+                    JOptionPane.showMessageDialog(null,"BENVENUTO CLIENTE");
                     String[] riga = res.get(0);
                     user c = new user();
                     c.setId(Integer.parseInt(riga[0]));
@@ -53,12 +103,13 @@ public class MENU extends JFrame
                     c.setOccupation(riga[8]);
                     Session.getInstance().setClienteLoggato(c);
 
-                    HomePage_guest mf = new HomePage_guest();
+                    Catalogue mf = new Catalogue();
                     mf.setVisible(true);
                     mf.pack();
                     mf.setLocationRelativeTo(null);
-                    mf.setExtendedState(JFrame.DO_NOTHING_ON_CLOSE);
-
+                    mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    dispose();
+                    //  dispatchEvent(new WindowEvent(MENU1, JFrame.DISPOSE_ON_CLOSE));
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "Incorrect Username Or Password", "Login Failed", 2);
@@ -74,7 +125,8 @@ public class MENU extends JFrame
                 mf.setVisible(true);
                 mf.pack();
                 mf.setLocationRelativeTo(null);
-                mf.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                mf.setExtendedState(JFrame.DISPOSE_ON_CLOSE);
+                dispose();
             }
         });
 
@@ -86,9 +138,12 @@ public class MENU extends JFrame
                 rf.setVisible(true);
                 rf.pack();
                 rf.setLocationRelativeTo(null);
-                rf.setExtendedState(JFrame.EXIT_ON_CLOSE);
+                rf.setExtendedState(JFrame.DISPOSE_ON_CLOSE);
+                dispose();
             }
         });
+
+
       /*  comboBox1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -115,6 +170,20 @@ public class MENU extends JFrame
                 comboBox1.setModel(model);
             }
         });*/
+    }
+    public boolean admin_cred(){
+        String admin = "SELECT * FROM user INNER JOIN admin AS a ON iduser=a.user_iduser;";
+        ArrayList<String[]> res_adm = DbConnection.getInstance().eseguiQuery(admin);
+        if(res_adm.size()==1){
+            return true;
+        }else{return false;}
+    }
+    public boolean mng_cred(){
+        String mng = "SELECT * FROM user INNER JOIN manager AS m ON iduser=m.user_iduser;";
+        ArrayList<String[]> res_mng = DbConnection.getInstance().eseguiQuery(mng);
+        if(res_mng.size()==1){
+            return true;
+        }else{return false;}
     }
 
 }

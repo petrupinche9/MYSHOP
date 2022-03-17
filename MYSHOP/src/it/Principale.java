@@ -10,10 +10,10 @@ public class Principale
     {
         JOptionPane.showMessageDialog(null, DbConnection.getInstance().isConnesso());
         MENU rf = new MENU();
-        rf.setVisible(true);
         rf.pack();
         rf.setLocationRelativeTo(null);
-        rf.setSize(600,400);
+        rf.setVisible(true);
+        //rf.setSize(600,400);
         rf.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 }

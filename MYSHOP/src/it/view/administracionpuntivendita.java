@@ -1,25 +1,32 @@
 package it.view;
 
+import it.DAO.AdminDAO;
+import it.DAO.IAdminDAO;
+import it.administracionprincipal;
+import it.model.Point_shop;
+import it.model.manager;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class administracionpuntivendita extends JFrame {
-    private JTextField textField1;
-    private JTextField textField2;
+    private JTextField username;
+    private JTextField shopname;
     private JButton CONFERMAButton;
-    private JTextField textField3;
-    private JTextField textField4;
-    private JTextField inserisciPASSWORDTextField;
-    private JTextField textField7;
-    private JTextField inserisciCOGNOMETextField;
-    private JTextField inserisciETÀTextField;
-    private JTextField inserisciEMAILTextField;
-    private JTextField inserisciNUMERODITELEFONOTextField;
-    private JTextField inserisciPROFESSIONETextField;
+    private JTextField city;
+    private JTextField article_type;
+    private JTextField passwd;
+    private JTextField surname;
+    private JTextField age;
+    private JTextField mail;
+    private JTextField telephone;
+    private JTextField occupation;
     private JTextField textField5;
     private JButton CREAUNMANAGERButton;
     private JPanel managerPanel;
+    private JTextField name;
+    private JButton GOBACKButton;
 
     public administracionpuntivendita()
     {
@@ -31,12 +38,36 @@ public class administracionpuntivendita extends JFrame {
         CONFERMAButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String text1 = textField1.getText();
-                int id = Integer.parseInt(text1);
-                String text2 = textField2.getText();
-                String text3 = textField3.getText();
-                String text4 = textField4.getText();
+                Point_shop shop=new Point_shop();
+                manager mng=new manager();
+                //setta shop
+                shop.setShopname(shopname.getText());
+                shop.setCity(city.getText());
+                shop.setArticle_type(article_type.getText());
+                //setta manager
+                mng.setUsername(username.getText());
+                mng.setPassword(passwd.getText());
+                mng.setName(name.getText());
+                mng.setSurname(surname.getText());
+                mng.setAge(Integer.parseInt(age.getText()));
+                mng.setEmail(mail.getText());
+                mng.setTelephone(Integer.parseInt(telephone.getText()));
+                mng.setOccupation(occupation.getText());
+                shop.setMng(mng);
+                IAdminDAO admin=new AdminDAO();
+                admin.create_shopandmanager(shop,mng);
 
+            }
+        });
+        GOBACKButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                administracionprincipal cf = new administracionprincipal();
+                cf.setVisible(true);
+                cf.pack();
+                cf.setLocationRelativeTo(null);
+                cf.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+                dispose();
             }
         });
     }

@@ -38,7 +38,6 @@ public class REGISTRAZIONE extends JFrame
             @Override
             public void actionPerformed(ActionEvent e) {
                 user p=new user();
-                p.setId(Integer.parseInt(idtext.getText()));
                 p.setName(Name.getText());
                 p.setSurname(Surname.getText());
                 p.setEmail(Email.getText());

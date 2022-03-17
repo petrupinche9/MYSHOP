@@ -6,7 +6,6 @@ import it.model.*;
 import javax.swing.*;
 import java.io.File;
 import java.util.ArrayList;
-import java.util.concurrent.atomic.AtomicLong;
 
 public class AdminDAO implements IAdminDAO{
     @Override
@@ -128,33 +127,28 @@ public class AdminDAO implements IAdminDAO{
 
          @Override
     //crea punto vendita e manager
-    public void create_shopandmanager(Point_shop shop, manager mng){
-        userDAO user=new userDAO();
+    public void create_shopandmanager(Point_shop shop, manager mng) {
+             userDAO user = new userDAO();
 
-        //crea manager
-             String mng_sql = "INSERT INTO user (iduser,username,passwd,Name,Surname,Age,Email,telephone,occupation)" +
-                     " VALUES ('"+mng.getId()+"','"+mng.getUsername()+"','"+mng.getPassword()+"', '"+mng.getName()+"' , '"+mng.getSurname()+"', '"+mng.getAge()+"','"+mng.getEmail()+"','"+mng.getTelephone()+"','"+mng.getOccupation()+"')";
-        JOptionPane.showMessageDialog(null,mng_sql);
+             //crea manager
+             String mng_sql = "INSERT INTO user (username,passwd,Name,Surname,Age,Email,telephone,occupation)" +
+                     " VALUES ('" + mng.getUsername() + "','" + mng.getPassword() + "', '" + mng.getName() + "' , '" + mng.getSurname() + "', '" + mng.getAge() + "','" + mng.getEmail() + "','" + mng.getTelephone() + "','" + mng.getOccupation() + "')";
+             JOptionPane.showMessageDialog(null, mng_sql);
              DbConnection.getInstance().eseguiAggiornamento(mng_sql);
              String mngs = "INSERT INTO manager (user_iduser) VALUES " +
-                     "( (SELECT iduser from user WHERE username='"+mng.getUsername()+"' AND passwd ='"+mng.getPassword()+"' ) )" ;
-                     JOptionPane.showMessageDialog(null,mngs);
+                     "( (SELECT iduser from user WHERE username='" + mng.getUsername() + "' AND passwd ='" + mng.getPassword() + "' ) )";
+             JOptionPane.showMessageDialog(null, mngs);
              DbConnection.getInstance().eseguiAggiornamento(mngs);
              //crea punto vendita
              String sh = "INSERT INTO Point_shop (Manager_idManager) VALUES " +
-                     "( (SELECT idManager from Manager INNER JOIN user AS us WHERE us.username='"+mng.getUsername()+"' AND us.passwd ='"+mng.getPassword()+"' ) )" ;
-             JOptionPane.showMessageDialog(null,sh);
+                     "( (SELECT idManager from Manager INNER JOIN user AS us ON us.iduser=user_iduser  WHERE us.username='" + mng.getUsername() + "' AND us.passwd ='" + mng.getPassword() + "' ) )";
+             JOptionPane.showMessageDialog(null, sh);
              DbConnection.getInstance().eseguiAggiornamento(sh);
              //,(SELECT iduser from user WHERE username='"+mng.getUsername()+"' AND passwd ='"+mng.getPassword()+"' )
-             String res3 ="UPDATE Point_shop AS s INNER JOIN manager AS d ON s.Manager_idManager=d.idManager SET s.Shopname='"+shop.getShopname()+"' , s.city='"+shop.getCity()+"' , s.article_type='"+shop.getArticle_type()+"';";
-             JOptionPane.showMessageDialog(null,res3);
+             String res3 = "UPDATE Point_shop AS s INNER JOIN manager AS d ON s.Manager_idManager=d.idManager SET s.Shopname='" + shop.getShopname() + "' , s.city='" + shop.getCity() + "' , s.article_type='" + shop.getArticle_type() + "'" +
+                     "WHERE d.idManager=(SELECT idManager from Manager INNER JOIN user AS us ON us.iduser=user_iduser  WHERE us.username='"+mng.getUsername()+"' AND us.passwd ='"+mng.getPassword()+"' );;";
+             JOptionPane.showMessageDialog(null, res3);
              DbConnection.getInstance().eseguiAggiornamento(res3);
-
+         }
     }
-    private static AtomicLong idCounter = new AtomicLong();
 
-    public static String createID()
-    {
-        return String.valueOf(idCounter.getAndIncrement());
-    }
-}
