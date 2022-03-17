@@ -146,7 +146,7 @@ public class AdminDAO implements IAdminDAO{
              JOptionPane.showMessageDialog(null,sh);
              DbConnection.getInstance().eseguiAggiornamento(sh);
              //,(SELECT iduser from user WHERE username='"+mng.getUsername()+"' AND passwd ='"+mng.getPassword()+"' )
-             String res3 ="INSERT INTO Point_shop (Shopname,city,article_type)  VALUES ('"+shop.getShopname()+"','"+shop.getCity()+"','"+shop.getArticle_type()+"');";
+             String res3 ="UPDATE Point_shop AS s INNER JOIN manager AS d ON s.Manager_idManager=d.idManager SET s.Shopname='"+shop.getShopname()+"' , s.city='"+shop.getCity()+"' , s.article_type='"+shop.getArticle_type()+"';";
              JOptionPane.showMessageDialog(null,res3);
              DbConnection.getInstance().eseguiAggiornamento(res3);
 
