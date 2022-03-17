@@ -1,0 +1,45 @@
+/*
+INSERT INTO orders ( '"VAR10"', '"01/02/2020"')
+SELECT o.userid , o.timestamp FROM users u INNER JOIN orders o ON  o.userid = u.id
+
+
+
+/* */
+
+
+
+/**/
+
+
+
+try {
+        String[]title = {"First Name","Last Name","Picture"};
+
+        String sql="select * from users";
+        model = new DefaultTableModel(null,title);
+        st = conn.createStatement();
+        ResultSet rs = st.executeQuery(sql);
+        String[]fila = new String[4];
+
+        while(rs.next()){
+            fila[0] = rs.getString("fna");
+            fila[1] = rs.getString("lna");
+            byte[] imgBytes = rs.getBytes("pic");
+            Blob blob = new javax.sql.rowset.serial.SerialBlob(imgBytes);
+            BufferedImage it.image = null;
+            try (InputStream is = blob.getBinaryStream()) {
+                it.image = ImageIO.read(is);
+                ImageIcon icon = new ImageIcon(it.image);
+                fila[2] = icon.toString();
+            } catch (IOException exp) {
+                exp.printStackTrace();
+            }
+            model.addRow(fila);
+        }
+        tbl.setModel(model);
+    }
+    catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, e.getMessage());
+    }*/
+
+

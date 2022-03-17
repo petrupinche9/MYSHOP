@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="jconsole">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/MYSHOP/src/it/jconsole.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
