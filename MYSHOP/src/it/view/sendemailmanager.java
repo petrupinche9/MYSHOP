@@ -13,6 +13,7 @@ public class sendemailmanager extends JFrame{
     private JTextField textField2;
     private JTextField textField3;
     private JButton CONFERMAButton;
+    private JTextArea textArea1;
     private JPanel sendmailPanel;
 
     public sendemailmanager()
@@ -29,7 +30,7 @@ public class sendemailmanager extends JFrame{
                 userDAO utente = new userDAO();
                 user utentemessage = utente.findById(iduser);
                 String object = textField2.getText();
-                String message = textField3.getText();
+                String message = textArea1.getText();
                 managerDAO manager = new managerDAO();
                 manager.send_email_to_client(utentemessage, object, message);
                 JOptionPane.showMessageDialog(null, "E-mail Inviata");

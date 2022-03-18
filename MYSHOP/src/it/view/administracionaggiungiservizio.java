@@ -16,11 +16,11 @@ public class administracionaggiungiservizio extends JFrame {
     private JButton CONFERMAButton;
     private JTextField textField1;
     private JTextField textField2;
-    private JTextField textField7;
     private JTextField textField8;
     private JTextField textField9;
     private JTextField textField11;
     private JButton sfogliaButton;
+    private JTextArea textArea1;
     private JPanel aggiungiservicePanel;
 
     public administracionaggiungiservizio()
