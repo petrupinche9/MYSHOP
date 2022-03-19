@@ -97,61 +97,83 @@ public class AdminDAO implements IAdminDAO{
     @Override
     //inserisci nuovo servizio
     public void newservice( service p, Fornitore prod, byte[] img){
-        JFrame frame1 = new JFrame();
-        serviceDAO serv= new serviceDAO();
-        String res2 = "INSERT INTO service ('"+p.getId()+"','"+p.getName()+"','"+p.getCosto()+"', NULL , '"+p.getDescr()+"', '"+p.getCategory()+"')" +
-                "SELECT U.idservice, C.Name, C.costo, C.Image_descr, C.description, C.category FROM articolo AS C INNER JOIN service as U  ON U.idservice = C.service_idservice ;";
-        JOptionPane.showMessageDialog(null,res2);
-        ArrayList<String[]> res = DbConnection.getInstance().eseguiQuery(res2);
-      //aggiunta fornitore
-        String res3="SELECT 1 FROM Fornitore AS forn INNER JOIN service AS serv ON forn.idFornitore=serv.Fornitore_idFornitore" +
-                " INSERT INTO produttore SET idFornitore='"+prod.getId()+"', Name='"+prod.getNome()+"',Website='"+prod.getSitoweb()+"',city='"+ prod.getCitta()+"',State='"+ prod.getNazione()+"', idservizio='"+serv.findById(p.getId())+"')" ;
-        ArrayList<String[]> insert_prod = DbConnection.getInstance().eseguiQuery(res3);
 
-        //aggiunta foto
-        String img2="INSERT INTO article (Image_descr) WHERE idarticolo='"+p.getId()+"'";
-        DbConnection.getInstance().addFoto(img, img2);
+        //insert articolo
+        String res2 = "INSERT INTO articolo (Name,description,costo,Image_descr,category) VALUES ('"+p.getName()+"','"+p.getDescr()+"','"+p.getCosto()+"',  NULL ,'"+p.getCategory()+"');" ;
+        // "SELECT C.idarticolo, C.Name, C.costo, C.Image_descr, C.description, C.category, U.subcategory, U.corsia, U.scaffale, U.Produttore_idProduttore FROM articolo AS C INNER JOIN product as U  ON U.idprodotto = C.articolo_idarticolo ;";
+        //VALUES ('"+p.getId()+"','"+p.getName()+"','"+p.getDescr()+"','"+p.getCosto()+"','"+p.getCategoria()+"', '"+p.getSottocategoria()+"','"+p.getCorsia()+"','"+p.getScaffale()+"','"+ Arrays.toString(p.getProdotto()) +"',); ";
+        JOptionPane.showMessageDialog(null, res2);
+        DbConnection.getInstance().eseguiAggiornamento(res2);
+//aggiunta foto
+        String img2="INSERT INTO article (Image_descr) WHERE idarticolo=( (SELECT idarticolo from articolo WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "' AND costo='" + p.getCosto() + "'  ) )";
+        DbConnection.getInstance().addFoto(img,img2);
+
+        //insert prodotto
+        String mngs = "INSERT INTO service (article_idarticolo) VALUES " +
+                "( (SELECT idarticolo from articolo WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "' AND costo='" + p.getCosto() + "'  ) )";
+        JOptionPane.showMessageDialog(null, mngs);
+        DbConnection.getInstance().eseguiAggiornamento(mngs);
+
+
+//insert produttore
+        String produttore = "INSERT INTO Fornitore (service_idservice) VALUES " +
+                "( SELECT idservice from service INNER JOIN articolo AS us ON articolo_idarticolo=us.idarticolo  WHERE us.Name='" + p.getName() + "' AND us.description ='" + p.getDescr() + "' AND us.costo='" + p.getCosto() + "'  ); )";
+        JOptionPane.showMessageDialog(null, produttore);
+        DbConnection.getInstance().eseguiAggiornamento(produttore);
+        String prodfin = "UPDATE Fornitore INNER JOIN service AS d ON service_idservice=d.idservice SET Name='"+prod.getNome()+"', Website='"+prod.getSitoweb()+"', Nazione ='"+prod.getNazione()+"'" +
+                "WHERE d.idservice=(SELECT idservice from product INNER JOIN articolo AS us ON articolo_idarticolo=us.idarticolo  WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "' AND costo='" + p.getCosto() + "'  );";
+        JOptionPane.showMessageDialog(null, prodfin);
+        DbConnection.getInstance().eseguiAggiornamento(prodfin);
     }
 
     @Override
     //elimina article (prodotto,servizio)
-    public void erase_article(int id){
+    public void erase_article(String name, String category){
         articleDAO a=new articleDAO();
-        String res3 = "DELETE FROM article WHERE idarticle = '"+a.findById(id).getId()+"';";
+        String res3 = "DELETE from articolo WHERE Name='" + name + "' AND category ='" + category + "' ; ";
         JOptionPane.showMessageDialog(null,res3);
         ArrayList<String[]> erase_article = DbConnection.getInstance().eseguiQuery(res3);
     }
 
     @Override
     //modifica prodotti
-    public void mod_prodotti(Product p, Produttore prod){
+    public void mod_prodotti(Product p){
         productDAO s=new productDAO();
-        String res = "UPDATE product as p INNER JOIN articolo as ar ON p.idproduct = as.product_idproduct  " +
-                "SET idproduct='"+p.getId()+"', Name='"+p.getName()+"',description'"+p.getDescr()+"',costo='"+p.getCosto()+"',category'"+p.getCategoria()+"' , product.subcategory='"+p.getSottocategoria()+"', product.corsia='"+p.getCorsia()+"',product.scaffale='"+p.getScaffale()+"'" +
-                "WHERE ar.product_idproduct = "+p.getId()+";";
+        String res = "UPDATE articolo INNER JOIN product as p ON p.articolo_idarticolo = idarticolo  " +
+                "SET Name='"+p.getName()+"',description'"+p.getDescr()+"',costo='"+p.getCosto()+"',category'"+p.getCategoria()+"' , p.subcategory='"+p.getSottocategoria()+"', p.corsia='"+p.getCorsia()+"',p.scaffale='"+p.getScaffale()+"'" +
+                "WHERE d.idproduct=(SELECT idproduct from product INNER JOIN articolo AS us ON articolo_idarticolo=us.idarticolo  WHERE us.Name='" + p.getName() + "' AND us.description ='" + p.getDescr() + "' AND us.costo='" + p.getCosto() + "'  );";
         DbConnection.getInstance().eseguiAggiornamento(res);
-        //modifica produttore
-        String forn = "UPDATE Produttore AS pro INNER JOIN product AS prd ON pro.idProduttore = Produttore_idProduttore WHERE pro.idProduttore= '"+s.findById(p.getId())+"'" +
-                "SET idProduttore='"+prod.getId()+"', Name='"+prod.getNome()+"',Website='"+prod.getSitoweb()+"',city='"+ prod.getCitta()+"',State='"+ prod.getNazione()+"';";
-        DbConnection.getInstance().eseguiAggiornamento(forn);
+    }
 
+    @Override
+    public void mod_servizi(service p, Fornitore f) {
+
+    }
+
+    @Override
+    public void mod_produttore(Produttore prod, Produttore lastprod){
+        //modifica produttore
+        String forn = "UPDATE Produttore SET  Name='"+lastprod.getNome()+"',Website='"+lastprod.getSitoweb()+"',city='"+ lastprod.getCitta()+"',State='"+ lastprod.getNazione()+"' " +
+                "WHERE Name='"+prod.getNome()+"'" ;
+        DbConnection.getInstance().eseguiAggiornamento(forn);
     }
 
     //modifica servizi
     @Override
-    public void mod_servizi(service p, Fornitore f){
+    public void mod_servizi(service p){
         serviceDAO s=new serviceDAO();
-        String res ="UPDATE service AS s INNER JOIN articolo AS ar ON s.idservice = ar.articolo_idarticolo  " +
-                "SET idservice='"+p.getId()+"', Name='"+p.getName()+"',description'"+p.getDescr()+"',costo='"+p.getCosto()+"'" +
-                "WHERE s.articolo_idarticolo = '"+s.findById(p.getId())+"';";
+        String res ="UPDATE articolo INNER JOIN service AS ar ON idarticolo = ar.articolo_idarticolo  " +
+                "SET Name='"+p.getName()+"',description'"+p.getDescr()+"',costo='"+p.getCosto()+"',category ='"+p.getCategory()+"'";
         DbConnection.getInstance().eseguiAggiornamento(res);
-        //modifica fornitore
-        String forn = "UPDATE Fornitore INNER JOIN service ON idFornitore = Fornitore_idFornitore " +
-                "SET idFornitore='"+f.getId()+"', Name='"+f.getNome()+"',Website='"+f.getSitoweb()+"',city='"+ f.getCitta()+"',State='"+ f.getNazione()+"', idservizio='"+s.findById(p.getId())+"'" +
-                "WHERE idservizio= '"+s.findById(p.getId())+"';";
+    }
+    @Override
+    //modifica fornitore
+    public void mod_fornitore(Fornitore f, Fornitore lastf){
+        String forn = "UPDATE Fornitore INNER JOIN service as s ON idFornitore = s.Fornitore_idFornitore " +
+                "SET  Name='"+lastf.getNome()+"',Website='"+lastf.getSitoweb()+"',city='"+ lastf.getCitta()+"',State='"+ lastf.getNazione()+"'" +
+                "WHERE Name='"+f.getNome()+"'; ";
         DbConnection.getInstance().eseguiAggiornamento(forn);
     }
-
      public void add_article_to_catalogue(article ar){
 
      }

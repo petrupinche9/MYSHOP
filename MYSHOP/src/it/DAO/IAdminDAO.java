@@ -3,19 +3,29 @@ package it.DAO;
 import it.model.*;
 
 public interface IAdminDAO extends IBaseDAO<Admin>{
-    public void newproduct(Product p, Produttore prod, byte[] img);
+    void newproduct(Product p, Produttore prod, byte[] img);
 
     //aggiunta nuovo sottoprodotto
-    public void newsubproduct(SubProduct p, Produttore prod, byte[] img);
+    void newsubproduct(SubProduct p, Produttore prod, byte[] img);
 
-    public void newservice(service p, Fornitore prod, byte[] img);
+    void newservice(service p, Fornitore prod, byte[] img);
 
     //elimina article (prodotto,servizio)
-   public  void erase_article(int id);
+    void erase_article(String name, String category);
 
-    public void mod_prodotti(Product p, Produttore prod);
-    public void mod_servizi(service p, Fornitore f);
+    //modifica prodotti,servizi
+    void mod_prodotti(Product p);
+
+    void mod_servizi(service p, Fornitore f);
+
+    void mod_produttore(Produttore prod, Produttore lastprod);
+
+    //modifica servizi
+    void mod_servizi(service p);
+
+    //modifica fornitore
+    void mod_fornitore(Fornitore f, Fornitore lastf);
 
     //crea punto vendita e manager
-    public void create_shopandmanager(Point_shop shop, manager mng);
+    void create_shopandmanager(Point_shop shop, manager mng);
 }

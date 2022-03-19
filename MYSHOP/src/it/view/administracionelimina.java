@@ -7,8 +7,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class administracionelimina extends JFrame{
-    private JTextField textField1;
+
     private JButton ELIMINAARTICOLOButton;
+    private JTextField category;
+    private JTextField name;
     private JPanel administracioneliminaPanel;
 
     public administracionelimina()
@@ -21,10 +23,10 @@ public class administracionelimina extends JFrame{
         ELIMINAARTICOLOButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String txtid = textField1.getText();
-                int id = Integer.parseInt(txtid);
+                String nome = name.getText();
+                String categoria = category.getText();
                 AdminDAO delete = new AdminDAO();
-                delete.erase_article(id);
+                delete.erase_article(nome,categoria);
             }
         });
     }
