@@ -16,8 +16,6 @@ public interface IAdminDAO extends IBaseDAO<Admin>{
     //modifica prodotti,servizi
     void mod_prodotti(Product p);
 
-    void mod_servizi(service p, Fornitore f);
-
     void mod_produttore(Produttore prod, Produttore lastprod);
 
     //modifica servizi

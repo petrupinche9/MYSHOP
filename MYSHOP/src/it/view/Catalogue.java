@@ -116,7 +116,7 @@ public class Catalogue extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 EventQueue.invokeLater(new Runnable() {
                     public void run() {// updates to the Swing GUI must be done on EDT
-                        ArrayList<String[]> res = DbConnection.getInstance().eseguiQuery("SELECT Shopname FROM Point_shop");
+                        ArrayList<String[]> res = DbConnection.getInstance().eseguiQuery("SELECT * FROM Point_shop");
                         if (res.size() == 1) {
                             for (int i = 0; i < res.size(); ++i) {
                                 String[] riga = res.get(0);

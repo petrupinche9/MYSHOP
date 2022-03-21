@@ -3,7 +3,6 @@ package it.model;
 public class Product extends article
 {
     private int id,corsia,scaffale;
-    private String categoria;
     private String sottocategoria;
     private String produttore;
     private Product[] prodotto;
@@ -15,12 +14,11 @@ public class Product extends article
 
 
 
-    public Product(int id, Product[] prodotto, String categoria, String sottocategoria, Double costo, int corsia, int scaffale, String produttore)
+    public Product(int id, Product[] prodotto, String sottocategoria, Double costo, int corsia, int scaffale, String produttore)
     {
         this.id=id;
         this.prodotto= prodotto;
         this.produttore = produttore; // produttore
-        this.categoria=categoria;
         this.sottocategoria=sottocategoria;
         this.corsia=corsia;
         this.scaffale=scaffale;
@@ -44,11 +42,6 @@ public class Product extends article
         return scaffale;
     }
 
-    public String getCategoria()
-    {
-        return categoria;
-    }
-
     public String getSottocategoria()
     {
         return sottocategoria;
@@ -59,10 +52,6 @@ public class Product extends article
     }
 
     //METODI SET
-    public void setCategoria(String categoria)
-    {
-        this.categoria = categoria;
-    }
 
     public void setProduttore(String produttore) {
         this.produttore = produttore;

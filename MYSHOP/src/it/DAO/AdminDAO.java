@@ -22,17 +22,17 @@ public class AdminDAO implements IAdminDAO{
     public void newproduct(Product p, Produttore prod, byte[] img){
 
         //insert articolo
-        String res2 = "INSERT INTO articolo (Name,description,costo,Image_descr,category) VALUES ('"+p.getName()+"','"+p.getDescr()+"','"+p.getCosto()+"',  NULL ,'"+p.getCategoria()+"');" ;
+        String res2 = "INSERT INTO articolo (Name,description,costo,Image_descr,category) VALUES ('"+p.getName()+"','"+p.getDescr()+"','"+p.getCosto()+"',  NULL ,'"+p.getCategory()+"');" ;
                // "SELECT C.idarticolo, C.Name, C.costo, C.Image_descr, C.description, C.category, U.subcategory, U.corsia, U.scaffale, U.Produttore_idProduttore FROM articolo AS C INNER JOIN product as U  ON U.idprodotto = C.articolo_idarticolo ;";
         //VALUES ('"+p.getId()+"','"+p.getName()+"','"+p.getDescr()+"','"+p.getCosto()+"','"+p.getCategoria()+"', '"+p.getSottocategoria()+"','"+p.getCorsia()+"','"+p.getScaffale()+"','"+ Arrays.toString(p.getProdotto()) +"',); ";
         JOptionPane.showMessageDialog(null, res2);
         DbConnection.getInstance().eseguiAggiornamento(res2);
 //aggiunta foto
-        String img2="INSERT INTO article (Image_descr) WHERE idarticolo=( (SELECT idarticolo from articolo WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "' AND costo='" + p.getCosto() + "'  ) )";
+        String img2="INSERT INTO articolo (Image_descr) WHERE idarticolo=( (SELECT idarticolo from articolo WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "' AND costo='" + p.getCosto() + "'  ) )";
         DbConnection.getInstance().addFoto(img,img2);
 
         //insert prodotto
-        String mngs = "INSERT INTO product (article_idarticolo) VALUES " +
+        String mngs = "INSERT INTO product (articolo_idarticolo) VALUES " +
                 "( (SELECT idarticolo from articolo WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "' AND costo='" + p.getCosto() + "'  ) )";
         JOptionPane.showMessageDialog(null, mngs);
         DbConnection.getInstance().eseguiAggiornamento(mngs);
@@ -51,6 +51,18 @@ public class AdminDAO implements IAdminDAO{
         JOptionPane.showMessageDialog(null, prodfin);
         DbConnection.getInstance().eseguiAggiornamento(prodfin);
 
+        //conferma salvataggio
+        ArrayList<String[]> id = DbConnection.getInstance().eseguiQuery("SELECT idproduct FROM product INNER JOIN articolo AS ar ON ar.idarticolo=articolo_idarticolo " +
+                "WHERE ar.name='"+p.getName()+"' AND ar.category='"+p.getCategory()+"' AND corsia='"+p.getCorsia()+"' AND scaffale='"+p.getScaffale()+"'");
+
+        if(id.size()==1) {
+            String[] riga = id.get(0);
+            JOptionPane.showMessageDialog(null,"PRODOTTO INSERITO CON MATRICOLA ==> "+Integer.parseInt(riga[0])+"");
+        }else{
+            JOptionPane.showMessageDialog(null,"PRODOTTO NON INSERITO CORRETTAMENTE");
+        }
+
+
     }
 
 
@@ -58,7 +70,7 @@ public class AdminDAO implements IAdminDAO{
     //aggiunta nuovo sottoprodotto
     public void newsubproduct(SubProduct p, Produttore prod, byte[] img) {
         //insert articolo
-        String res2 = "INSERT INTO articolo (Name,description,costo,Image_descr,category) VALUES ('"+p.getName()+"','"+p.getDescr()+"','"+p.getCosto()+"',  NULL ,'"+p.getCategoria()+"');" ;
+        String res2 = "INSERT INTO articolo (Name,description,costo,Image_descr,category) VALUES ('"+p.getName()+"','"+p.getDescr()+"','"+p.getCosto()+"',  NULL ,'"+p.getCategory()+"');" ;
         // "SELECT C.idarticolo, C.Name, C.costo, C.Image_descr, C.description, C.category, U.subcategory, U.corsia, U.scaffale, U.Produttore_idProduttore FROM articolo AS C INNER JOIN product as U  ON U.idprodotto = C.articolo_idarticolo ;";
         //VALUES ('"+p.getId()+"','"+p.getName()+"','"+p.getDescr()+"','"+p.getCosto()+"','"+p.getCategoria()+"', '"+p.getSottocategoria()+"','"+p.getCorsia()+"','"+p.getScaffale()+"','"+ Arrays.toString(p.getProdotto()) +"',); ";
         JOptionPane.showMessageDialog(null, res2);
@@ -92,6 +104,19 @@ public class AdminDAO implements IAdminDAO{
                 "WHERE d.idproduct=(SELECT idproduct from product INNER JOIN articolo AS us ON articolo_idarticolo=us.idarticolo  WHERE us.Name='" + p.getName() + "' AND us.description ='" + p.getDescr() + "' AND us.costo='" + p.getCosto() + "'  );";
         JOptionPane.showMessageDialog(null, prodfin);
         DbConnection.getInstance().eseguiAggiornamento(prodfin);
+
+        //conferma salvataggio
+        ArrayList<String[]> id = DbConnection.getInstance().eseguiQuery("SELECT idSubproduct FROM Subproduct INNER JOIN product AS p  ON product_idproduct=p.idproduct INNER JOIN articolo AS ar ON p.articolo_idarticolo=ar.idarticolo " +
+                "WHERE ar.name='"+p.getName()+"' AND ar.category='"+p.getCategory()+"' AND p.corsia='"+p.getCorsia()+"' AND p.scaffale='"+p.getScaffale()+"'");
+
+        if(id.size()==1) {
+            String[] riga = id.get(0);
+            JOptionPane.showMessageDialog(null,"SUBPRODOTTO INSERITO CON MATRICOLA ==> "+Integer.parseInt(riga[0])+"");
+        }else{
+            JOptionPane.showMessageDialog(null,"SUBPRODOTTO NON INSERITO CORRETTAMENTE");
+        }
+
+
     }
 
     @Override
@@ -115,7 +140,7 @@ public class AdminDAO implements IAdminDAO{
         DbConnection.getInstance().eseguiAggiornamento(mngs);
 
 
-//insert produttore
+//insert fornitore
         String produttore = "INSERT INTO Fornitore (service_idservice) VALUES " +
                 "( SELECT idservice from service INNER JOIN articolo AS us ON articolo_idarticolo=us.idarticolo  WHERE us.Name='" + p.getName() + "' AND us.description ='" + p.getDescr() + "' AND us.costo='" + p.getCosto() + "'  ); )";
         JOptionPane.showMessageDialog(null, produttore);
@@ -124,6 +149,17 @@ public class AdminDAO implements IAdminDAO{
                 "WHERE d.idservice=(SELECT idservice from product INNER JOIN articolo AS us ON articolo_idarticolo=us.idarticolo  WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "' AND costo='" + p.getCosto() + "'  );";
         JOptionPane.showMessageDialog(null, prodfin);
         DbConnection.getInstance().eseguiAggiornamento(prodfin);
+
+        //conferma salvataggio
+        ArrayList<String[]> id = DbConnection.getInstance().eseguiQuery("SELECT idservice FROM service INNER JOIN articolo AS ar ON ar.idarticolo=articolo_idarticolo " +
+                "WHERE ar.name='"+p.getName()+"' AND ar.category='"+p.getCategory()+"' ");
+
+        if(id.size()==1) {
+            String[] riga = id.get(0);
+            JOptionPane.showMessageDialog(null,"SERVIZIO INSERITO CON MATRICOLA ==> "+Integer.parseInt(riga[0])+"");
+        }else{
+            JOptionPane.showMessageDialog(null,"SERVIZIO NON INSERITO CORRETTAMENTE");
+        }
     }
 
     @Override
@@ -138,16 +174,20 @@ public class AdminDAO implements IAdminDAO{
     @Override
     //modifica prodotti
     public void mod_prodotti(Product p){
-        productDAO s=new productDAO();
+
         String res = "UPDATE articolo INNER JOIN product as p ON p.articolo_idarticolo = idarticolo  " +
-                "SET Name='"+p.getName()+"',description'"+p.getDescr()+"',costo='"+p.getCosto()+"',category'"+p.getCategoria()+"' , p.subcategory='"+p.getSottocategoria()+"', p.corsia='"+p.getCorsia()+"',p.scaffale='"+p.getScaffale()+"'" +
+                "SET Name='"+p.getName()+"',description'"+p.getDescr()+"',costo='"+p.getCosto()+"',category'"+p.getCategory()+"' , p.subcategory='"+p.getSottocategoria()+"', p.corsia='"+p.getCorsia()+"',p.scaffale='"+p.getScaffale()+"'" +
                 "WHERE d.idproduct=(SELECT idproduct from product INNER JOIN articolo AS us ON articolo_idarticolo=us.idarticolo  WHERE us.Name='" + p.getName() + "' AND us.description ='" + p.getDescr() + "' AND us.costo='" + p.getCosto() + "'  );";
         DbConnection.getInstance().eseguiAggiornamento(res);
     }
 
     @Override
-    public void mod_servizi(service p, Fornitore f) {
-
+    //modifica servizi
+    public void mod_servizi(service p){
+        serviceDAO s=new serviceDAO();
+        String res ="UPDATE articolo INNER JOIN service AS ar ON idarticolo = ar.articolo_idarticolo  " +
+                "SET Name='"+p.getName()+"',description'"+p.getDescr()+"',costo='"+p.getCosto()+"',category ='"+p.getCategory()+"'";
+        DbConnection.getInstance().eseguiAggiornamento(res);
     }
 
     @Override
@@ -158,14 +198,6 @@ public class AdminDAO implements IAdminDAO{
         DbConnection.getInstance().eseguiAggiornamento(forn);
     }
 
-    //modifica servizi
-    @Override
-    public void mod_servizi(service p){
-        serviceDAO s=new serviceDAO();
-        String res ="UPDATE articolo INNER JOIN service AS ar ON idarticolo = ar.articolo_idarticolo  " +
-                "SET Name='"+p.getName()+"',description'"+p.getDescr()+"',costo='"+p.getCosto()+"',category ='"+p.getCategory()+"'";
-        DbConnection.getInstance().eseguiAggiornamento(res);
-    }
     @Override
     //modifica fornitore
     public void mod_fornitore(Fornitore f, Fornitore lastf){
