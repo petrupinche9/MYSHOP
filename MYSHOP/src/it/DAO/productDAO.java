@@ -2,6 +2,7 @@ package it.DAO;
 
 import it.DbConnection;
 import it.model.Product;
+import it.model.Produttore;
 
 import java.util.ArrayList;
 
@@ -25,6 +26,17 @@ public class productDAO implements IproductDAO {
             c.setSottocategoria(riga[5]);
             c.setCorsia(Integer.parseInt(riga[6]));
             c.setScaffale(Integer.parseInt(riga[7]));
+            ArrayList<String[]> prod = DbConnection.getInstance().eseguiQuery("SELECT * FROM Fornitore INNER JOIN service AS serv " +
+                    "ON  service_idservice=serv.idservice WHERE serv.idservice='"+riga[0]+"'");
+            if(prod.size()==1){
+                Produttore p=new Produttore();
+                String[] dio = prod.get(0);
+                p.setId(Integer.parseInt(dio[0]));
+                p.setNome(dio[1]);
+                p.setSitoweb(dio[2]);
+                p.setNazione(dio[3]);
+                c.setProduttore(p);
+            }
 
         }
 

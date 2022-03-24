@@ -33,14 +33,14 @@ public class administracionaggiungiprodotto extends JFrame {
     private JTextField name;
     private JLabel foto;
     private JTextArea descr;
-    private JPanel aggiungiprodottoPanel;
+    private JPanel adminprodottoPanel;
 
     public administracionaggiungiprodotto()
     {
-        setContentPane(aggiungiprodottoPanel);
+        setContentPane(adminprodottoPanel);
         setTitle("AGGIUNGI PRODOTTO");
         setSize(500, 500);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setVisible(true);
 
         CONFERMAButton.addActionListener(new ActionListener() {
@@ -51,7 +51,7 @@ public class administracionaggiungiprodotto extends JFrame {
                 Produttore p = new Produttore();
                 prod.setName(name.getText());
                 prod.setDescr(descr.getText());
-                prod.setCategoria(category.getText());
+                prod.setCategory(category.getText());
                 prod.setSottocategoria(subcategory.getText());
                 prod.setCosto(Double.parseDouble(costo.getText()));
                 prod.setScaffale(Integer.parseInt(scaffale.getText()));
@@ -121,12 +121,9 @@ public class administracionaggiungiprodotto extends JFrame {
             }
         });
 
-        setLayout(null);
-        setLocationRelativeTo(null);
-        setSize(400,400);
-        setVisible(true);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
             }
+
     public ImageIcon resize(String imgPath){
         ImageIcon path = new ImageIcon(imgPath);
         Image img = path.getImage();
@@ -134,6 +131,7 @@ public class administracionaggiungiprodotto extends JFrame {
         ImageIcon image = new ImageIcon(newImg);
         return image;
     }
+
         }
 
 

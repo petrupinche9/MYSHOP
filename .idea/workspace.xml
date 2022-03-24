@@ -2,20 +2,63 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="71d110a1-c0bc-4f14-8051-33f62b96ad40" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/adminmod_prod.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/adminmod_prod.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/adminmod_serv.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/adminmod_serv.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/mod_prodotto.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/mod_prodotto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/mod_serv.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/mod_serv.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_16_03_2022_21_53_[Default_Changelist]/Myshop22DB.mwb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_16_03_2022_21_53_[Default_Changelist]/Myshop22DB.mwb.bak" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_16_03_2022_21_53_[Default_Changelist]/WhatsApp Image 2022-03-03 at 21.06.35.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_16_03_2022_21_53_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_16_03_2022_21_53__Default_Changelist_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_03_2022_00_00_[Default_Changelist]/Myshop22DB.mwb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_03_2022_00_00_[Default_Changelist]/Myshop22DB.mwb.bak" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_03_2022_00_00_[Default_Changelist]/WhatsApp Image 2022-03-03 at 21.06.35.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_03_2022_00_00_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_03_2022_00_00__Default_Changelist_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Documentazione.docx" beforeDir="false" afterPath="$PROJECT_DIR$/Documentazione.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/DAO/AdminDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/DAO/AdminDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/DAO/IAdminDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/DAO/IAdminDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/DAO/productDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/DAO/productDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/DAO/serviceDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/DAO/serviceDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/administracion.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/administracion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/model/Fornitore.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/model/Fornitore.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/model/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/Catalogue.form" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/Catalogue.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/model/Produttore.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/model/Produttore.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/Catalogue.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/Catalogue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/administracion.form" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/administracion.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/administracionaggiungiprodotto.form" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/administracionaggiungiprodotto.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/administracionaggiungiprodotto.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/administracionaggiungiprodotto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/administracionaggiungiservizio.form" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/administracionaggiungiservizio.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/administracionaggiungiservizio.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/administracionaggiungiservizio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/administracionelimina.form" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/administracionelimina.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/adminmod_prod.form" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/adminmod_prod.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/adminmod_prod.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/adminmod_prod.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/adminmod_serv.form" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/adminmod_serv.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/adminmod_serv.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/adminmod_serv.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/Ascoltatore4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/Ascoltatore5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/Ascoltatore7.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/DAO/AdminDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/DAO/AdminDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/DAO/IAdminDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/DAO/IAdminDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/DAO/productDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/DAO/productDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/DAO/serviceDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/DAO/serviceDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/administracion$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/administracion$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/administracion.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/administracion.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/model/Fornitore.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/model/Fornitore.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/model/Product.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/model/Product.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/model/Produttore.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/model/Produttore.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/model/service.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/model/service.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/Catalogue$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/Catalogue$1$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/Catalogue$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/Catalogue$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/Catalogue$1TableModelarticoli.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/Catalogue$1TableModelarticoli.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/Catalogue$2$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/Catalogue$2$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/Catalogue$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/Catalogue$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/Catalogue.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/Catalogue.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/administracionaggiungiprodotto$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/administracionaggiungiprodotto$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/administracionaggiungiprodotto.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/administracionaggiungiprodotto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/administracionaggiungiservizio$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/administracionaggiungiservizio$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/administracionaggiungiservizio$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/administracionaggiungiservizio$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/administracionaggiungiservizio.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/administracionaggiungiservizio.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/administracionelimina.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/administracionelimina.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,6 +182,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="create.test.in.the.same.root" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/MYSHOP/src/it/view" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Libraries" />
@@ -151,11 +195,18 @@
     <key name="CreateClassDialog.RecentsKey">
       <recent name="it.model" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\petru\OneDrive\Desktop\MYSHOP\MYSHOP\src\it" />
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\petru\OneDrive\Desktop\MYSHOP\MYSHOP\src\it\view" />
+      <recent name="C:\Users\petru\OneDrive\Desktop\MYSHOP\MYSHOP\src\it\view\finto" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\petru\OneDrive\Desktop\MYSHOP\MYSHOP\src\it\view" />
+      <recent name="C:\Users\petru\OneDrive\Desktop\MYSHOP\MYSHOP\src\it" />
       <recent name="C:\Users\petru\OneDrive\Desktop\MYSHOP\MYSHOP\src" />
       <recent name="C:\Users\petru\OneDrive\Desktop\MYSHOP\MYSHOP\src\view" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="it.view" />
     </key>
   </component>
   <component name="RunManager">
@@ -184,7 +235,7 @@
       <workItem from="1645295250450" duration="44855000" />
       <workItem from="1645880302727" duration="101000" />
       <workItem from="1645883541906" duration="4453000" />
-      <workItem from="1645903646019" duration="237225000" />
+      <workItem from="1645903646019" duration="248924000" />
     </task>
     <task id="LOCAL-00001" summary="GUI INIT">
       <created>1645147530607</created>
@@ -417,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647716856068</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="avanzo generale">
+      <created>1647827379727</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1647827379727</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -519,7 +577,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="INIZIO GUI&#10;definizione classi product &amp; service" />
     <MESSAGE value="Merge remote-tracking branch 'origin/main' into main&#10;&#10;# Conflicts:&#10;#&#9;MYSHOP/src/Admin.java&#10;#&#9;MYSHOP/src/Principale.java&#10;#&#9;MYSHOP/src/Product.java&#10;#&#9;MYSHOP/src/guest.java" />
     <MESSAGE value="INTRODOTTE GUI DELLE VARIE UTENZE E CLASSE DI CONNESSIONE AL DATABASE" />
     <MESSAGE value="RISOLTO GUI" />
@@ -544,7 +601,8 @@
     <MESSAGE value="avanzo" />
     <MESSAGE value="(no testato) add product" />
     <MESSAGE value="(no testato) add service" />
-    <option name="LAST_COMMIT_MESSAGE" value="(no testato) add service" />
+    <MESSAGE value="avanzo generale" />
+    <option name="LAST_COMMIT_MESSAGE" value="avanzo generale" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

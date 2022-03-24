@@ -4,7 +4,7 @@ public class Product extends article
 {
     private int id,corsia,scaffale;
     private String sottocategoria;
-    private String produttore;
+    private Produttore produttore;
     private Product[] prodotto;
 
 
@@ -14,7 +14,7 @@ public class Product extends article
 
 
 
-    public Product(int id, Product[] prodotto, String sottocategoria, Double costo, int corsia, int scaffale, String produttore)
+    public Product(int id, Product[] prodotto, String sottocategoria, Double costo, int corsia, int scaffale, Produttore produttore)
     {
         this.id=id;
         this.prodotto= prodotto;
@@ -47,13 +47,13 @@ public class Product extends article
         return sottocategoria;
     }
 
-    public String getProduttore() {
+    public Produttore getProduttore() {
         return produttore;
     }
 
     //METODI SET
 
-    public void setProduttore(String produttore) {
+    public void setProduttore(Produttore produttore) {
         this.produttore = produttore;
     }
 

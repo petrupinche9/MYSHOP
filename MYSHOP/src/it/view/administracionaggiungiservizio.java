@@ -28,7 +28,6 @@ public class administracionaggiungiservizio extends JFrame {
     private JButton sfogliaButton;
     private JTextArea descrizione;
     private JLabel foto;
-    private JPanel descr;
     private JTextField name;
     private JPanel aggiungiservicePanel;
 

@@ -57,4 +57,5 @@ public class Produttore
     {
         this.nazione = nazione;
     }
+    public void setId(int parseInt) { this.id=id;    }
 }

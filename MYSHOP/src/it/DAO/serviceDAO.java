@@ -1,6 +1,7 @@
 package it.DAO;
 
 import it.DbConnection;
+import it.model.Fornitore;
 import it.model.service;
 
 import java.util.ArrayList;
@@ -22,7 +23,17 @@ public class serviceDAO implements IserviceDAO{
             byte[] img = riga[3].getBytes();  //parsing from string to byte
             c.setImg(img);
             c.setCategory(riga[4]);
-            c.setFornitore(riga[5]);
+            ArrayList<String[]> forn = DbConnection.getInstance().eseguiQuery("SELECT * FROM Fornitore INNER JOIN service AS serv " +
+                    "ON  service_idservice=serv.idservice WHERE serv.idservice='"+riga[0]+"'");
+            if(forn.size()==1){
+                Fornitore f=new Fornitore();
+                String[] dio = forn.get(0);
+                f.setId(Integer.parseInt(dio[0]));
+                f.setNome(dio[1]);
+                f.setSitoweb(dio[2]);
+                f.setNazione(dio[3]);
+                c.setFornitore(f);
+            }
         }
 
         return c;

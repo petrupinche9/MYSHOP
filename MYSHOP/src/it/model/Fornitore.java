@@ -17,6 +17,10 @@ public class Fornitore
         this.citta = citta;
         this.nazione = nazione;
     }
+
+    public Fornitore() {
+
+    }
     //metodi get
 
     public String getNome()

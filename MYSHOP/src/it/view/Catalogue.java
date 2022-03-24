@@ -4,6 +4,7 @@ import it.DAO.IarticleDAO;
 import it.DAO.articleDAO;
 import it.DbConnection;
 import it.model.article;
+import it.util.Session;
 
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
@@ -25,6 +26,7 @@ public class Catalogue extends JFrame{
         setSize(300,300);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
+        cliente.setText(Session.getInstance().getClienteLoggato().getUsername());
     class TableModelarticoli extends AbstractTableModel {
 
         IarticleDAO ar = new articleDAO();
