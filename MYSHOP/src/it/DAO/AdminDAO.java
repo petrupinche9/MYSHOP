@@ -28,12 +28,12 @@ public class AdminDAO implements IAdminDAO{
         JOptionPane.showMessageDialog(null, res2);
         DbConnection.getInstance().eseguiAggiornamento(res2);
 //aggiunta foto
-        String img2="INSERT INTO articolo (Image_descr) WHERE idarticolo=( (SELECT idarticolo from articolo WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "' AND costo='" + p.getCosto() + "'  ) )";
+        String img2="UPDATE articolo SET Image_descr=? WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "' ;";
         DbConnection.getInstance().addFoto(img,img2);
 
         //insert prodotto
         String mngs = "INSERT INTO product (articolo_idarticolo) VALUES " +
-                "( (SELECT idarticolo from articolo WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "' AND costo='" + p.getCosto() + "'  ) )";
+                "( (SELECT idarticolo from articolo WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "'  ) );";
         JOptionPane.showMessageDialog(null, mngs);
         DbConnection.getInstance().eseguiAggiornamento(mngs);
         String uppr = "UPDATE product AS s INNER JOIN articolo AS d ON s.articolo_idarticolo=d.idproduct SET subcategory='"+p.getSottocategoria()+"', corsia='"+p.getCorsia()+"' , scaffale='"+p.getScaffale()+"'" +

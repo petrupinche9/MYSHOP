@@ -251,10 +251,14 @@
       </component>
       <component id="2bc6c" class="javax.swing.JLabel" binding="foto">
         <constraints>
-          <grid row="15" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="15" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="150" height="150"/>
+            <preferred-size width="150" height="150"/>
+            <maximum-size width="150" height="150"/>
+          </grid>
         </constraints>
         <properties>
-          <text value="Label"/>
+          <text value="foto"/>
         </properties>
       </component>
       <component id="91baa" class="javax.swing.JButton" binding="SFOGLIAButton" default-binding="true">
