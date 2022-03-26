@@ -19,6 +19,8 @@ public class Catalogue extends JFrame{
     private JComboBox comboBox_cat;
     private JTable TableModelarticoli;
     private JLabel cliente;
+    private JButton LOGOUTButton;
+
     public Catalogue() {
 
         setContentPane(panel1);
@@ -128,6 +130,17 @@ public class Catalogue extends JFrame{
 
                     }
                 });
+            }
+        });
+        LOGOUTButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Session.getInstance().setClienteLoggato(null);
+                MENU mf = new MENU();
+                mf.setVisible(true);
+                mf.pack();
+                mf.setLocationRelativeTo(null);
+                mf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             }
         });
     }

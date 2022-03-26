@@ -36,18 +36,17 @@ public class AdminDAO implements IAdminDAO{
                 "( (SELECT idarticolo from articolo WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "'  ) );";
         JOptionPane.showMessageDialog(null, mngs);
         DbConnection.getInstance().eseguiAggiornamento(mngs);
-        String uppr = "UPDATE product AS s INNER JOIN articolo AS d ON s.articolo_idarticolo=d.idproduct SET subcategory='"+p.getSottocategoria()+"', corsia='"+p.getCorsia()+"' , scaffale='"+p.getScaffale()+"'" +
-                "WHERE d.idarticolo=(SELECT idarticolo from articolo INNER JOIN product AS us ON us.articolo_idarticolo=idarticolo  WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "' AND costo='" + p.getCosto() + "'  );";
+        String uppr = "UPDATE product INNER JOIN articolo AS d ON articolo_idarticolo=d.idarticolo SET subcategory='"+p.getSottocategoria()+"', corsia='"+p.getCorsia()+"' , scaffale='"+p.getScaffale()+"'" +
+                " WHERE d.idarticolo=(SELECT idarticolo FROM articolo  WHERE Name='"+p.getName()+"' AND description ='"+p.getDescr()+"' );";
         JOptionPane.showMessageDialog(null, uppr);
         DbConnection.getInstance().eseguiAggiornamento(uppr);
 
 //insert produttore
-        String produttore = "INSERT INTO Produttore (product_idproduct) VALUES " +
-                "( SELECT idproduct from product INNER JOIN articolo AS us ON articolo_idarticolo=us.idarticolo  WHERE us.Name='" + p.getName() + "' AND us.description ='" + p.getDescr() + "' AND us.costo='" + p.getCosto() + "'  ); )";
+        String produttore = "INSERT INTO Produttore (product_idproduct) VALUES ( (SELECT idproduct from product INNER JOIN articolo AS us ON articolo_idarticolo=us.idarticolo  WHERE us.Name='" + p.getName() + "' AND us.description ='" + p.getDescr() + "' ) ); ";
         JOptionPane.showMessageDialog(null, produttore);
         DbConnection.getInstance().eseguiAggiornamento(produttore);
-        String prodfin = "UPDATE Produttore INNER JOIN product AS d ON product_idproduct=d.idproduct SET Name='"+prod.getNome()+"', Website='"+prod.getSitoweb()+"', Nazione ='"+prod.getNazione()+"'" +
-                "WHERE d.idproduct=(SELECT idproduct from product INNER JOIN articolo AS us ON articolo_idarticolo=us.idarticolo  WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "' AND costo='" + p.getCosto() + "'  );";
+        String prodfin = "UPDATE Produttore INNER JOIN product AS d ON product_idproduct=d.idproduct SET Name='"+prod.getNome()+"', Website='"+prod.getSitoweb()+"', Citta='"+prod.getCitta()+"', Nazione ='"+prod.getNazione()+"'" +
+                "WHERE d.idproduct=(SELECT idproduct from product INNER JOIN articolo AS us ON articolo_idarticolo=us.idarticolo  WHERE Name='"+p.getName()+"' AND description ='"+p.getDescr()+"'  );";
         JOptionPane.showMessageDialog(null, prodfin);
         DbConnection.getInstance().eseguiAggiornamento(prodfin);
 
