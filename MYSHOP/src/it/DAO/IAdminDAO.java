@@ -6,7 +6,7 @@ public interface IAdminDAO extends IBaseDAO<Admin>{
     void newproduct(Product p, Produttore prod, byte[] img);
 
     //aggiunta nuovo sottoprodotto
-    void newsubproduct(SubProduct p, Produttore prod, byte[] img);
+    void newsubproduct(SubProduct p, Produttore prod, byte[] img, Product p2);
 
     void newservice(service p, Fornitore prod, byte[] img);
 

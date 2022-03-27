@@ -34,6 +34,7 @@ public class administracionaggiungiprodotto extends JFrame {
     private JLabel foto;
     private JTextArea descr;
     private JPanel adminprodottoPanel;
+    private JButton CHIUDIButton;
 
     public administracionaggiungiprodotto()
     {
@@ -97,7 +98,7 @@ public class administracionaggiungiprodotto extends JFrame {
         AGGIUNGISOTTOPRODOTTOButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                administracionaggiungisottoprodotto cf = new administracionaggiungisottoprodotto();
+                add_subproduct cf = new add_subproduct();
                 cf.setVisible(true);
                 cf.pack();
                 cf.setLocationRelativeTo(null);
@@ -125,7 +126,13 @@ public class administracionaggiungiprodotto extends JFrame {
         });
 
 
+        CHIUDIButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
             }
+        });
+    }
 
     public ImageIcon resize(String imgPath){
         ImageIcon path = new ImageIcon(imgPath);

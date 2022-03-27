@@ -33,7 +33,7 @@
             </constraints>
             <properties>
               <font name="Fira Code Light" size="16" style="2"/>
-              <text value="WELCOME USER, PLEASE LOGIN "/>
+              <text value="BENVENUTO SU MYSHOP!"/>
             </properties>
           </component>
           <component id="bf47d" class="javax.swing.JTextField" binding="textField1" default-binding="true">

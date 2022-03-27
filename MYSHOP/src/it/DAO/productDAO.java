@@ -12,22 +12,22 @@ public class productDAO implements IproductDAO {
     public Product findById(int id) {
         Product c = null;
 
-        ArrayList<String[]> res = DbConnection.getInstance().eseguiQuery("SELECT C.articolo_idarticolo, C.Name, C.costo, C.Image_descr, C.description, U.subcategory, U.corsia, U.scaffale, U.Produttore FROM articolo AS C INNER JOIN product as U  ON C.idarticolo = U.articolo_idarticolo WHERE C.articolo_idarticolo = "+id+";");
+        ArrayList<String[]> res = DbConnection.getInstance().eseguiQuery("SELECT C.Name, C.costo, C.description, C.category, U.subcategory, U.corsia, U.scaffale FROM articolo AS C INNER JOIN product as U ON C.idarticolo = U.articolo_idarticolo  WHERE C.idarticolo = '"+id+"';");
         // byte[] img = DbConnection.getInstance().getFoto("SELECT C.articolo_idarticolo, U.Image_descr FROM product AS C INNER JOIN articolo as U  ON U.idprodotto = C.articolo_idarticolo WHERE C.articolo_idarticolo = "+id+";");
         if(res.size()==1) {
             String[] riga = res.get(0);
             c = new Product();
-            c.setId(Integer.parseInt(riga[0]));
-            c.setName(riga[1]);
-            c.setCosto(Double.parseDouble(riga[2]));
-            byte[] img = riga[3].getBytes();  //parsing from string to byte
+            c.setId(id);
+            c.setName(riga[0]);
+            c.setCosto(Double.parseDouble(riga[1]));
+            byte[] img = DbConnection.getInstance().getFoto("SELECT Image_descr FROM articolo WHERE C.idarticolo = '"+id+"'; ");  //parsing from string to byte
             c.setImg(img);
-            c.setDescr(riga[4]);
-            c.setSottocategoria(riga[5]);
-            c.setCorsia(Integer.parseInt(riga[6]));
-            c.setScaffale(Integer.parseInt(riga[7]));
-            ArrayList<String[]> prod = DbConnection.getInstance().eseguiQuery("SELECT * FROM Fornitore INNER JOIN service AS serv " +
-                    "ON  service_idservice=serv.idservice WHERE serv.idservice='"+riga[0]+"'");
+            c.setDescr(riga[2]);
+            c.setSottocategoria(riga[3]);
+            c.setCorsia(Integer.parseInt(riga[4]));
+            c.setScaffale(Integer.parseInt(riga[5]));
+            ArrayList<String[]> prod = DbConnection.getInstance().eseguiQuery("SELECT * FROM Produttore INNER JOIN Product AS p " +
+                    "ON  Product_idProduct=p.idProduct WHERE p.articolo_idarticolo='"+id+"'");
             if(prod.size()==1){
                 Produttore p=new Produttore();
                 String[] dio = prod.get(0);

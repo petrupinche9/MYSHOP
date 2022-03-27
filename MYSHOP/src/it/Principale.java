@@ -13,7 +13,7 @@ public class Principale
         rf.pack();
         rf.setLocationRelativeTo(null);
         rf.setVisible(true);
-        //rf.setSize(600,400);
+        rf.setSize(500,400);
         rf.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 }

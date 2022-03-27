@@ -7,6 +7,10 @@ public class SubProduct extends Product
         this.id_master_product=id;
     }
 
+    public SubProduct() {
+
+    }
+
     @Override
     public int getId() {
         return id_master_product;

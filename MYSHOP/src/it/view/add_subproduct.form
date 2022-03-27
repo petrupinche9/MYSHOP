@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="it.view.add_subproduct">
+  <grid id="27dc6" binding="adminprodottoPanel" layout-manager="GridLayoutManager" row-count="16" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="543" height="676"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <component id="82725" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="4" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <enabled value="true"/>
+          <font name="JetBrains Mono" size="20"/>
+          <foreground color="-15811655"/>
+          <text value="AGGIUNGI SOTTOPRODOTTO"/>
+        </properties>
+      </component>
+      <component id="8146f" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="Calibri" size="16" style="1"/>
+          <labelFor value="88ff0"/>
+          <text value="Inserisca il NOME"/>
+        </properties>
+      </component>
+      <component id="88ff0" class="javax.swing.JTextField" binding="name">
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="fe488" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="4" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="Calibri" size="16" style="1"/>
+          <labelFor value="4decf"/>
+          <text value="Inserisca la CATEGORIA"/>
+        </properties>
+      </component>
+      <component id="4decf" class="javax.swing.JTextField" binding="category">
+        <constraints>
+          <grid row="5" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="aedf7" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="6" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="Calibri" size="16" style="1"/>
+          <labelFor value="76c13"/>
+          <text value="Inserisca  la SOTTOCATEGORIA"/>
+        </properties>
+      </component>
+      <component id="76c13" class="javax.swing.JTextField" binding="subcategory">
+        <constraints>
+          <grid row="7" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="243b0" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="8" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="Calibri" size="16" style="1"/>
+          <labelFor value="859da"/>
+          <text value="Inserisca il COSTO"/>
+        </properties>
+      </component>
+      <component id="859da" class="javax.swing.JTextField" binding="costo">
+        <constraints>
+          <grid row="9" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="c8749" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="Calibri" size="16" style="1"/>
+          <text value="Inserisci NOME"/>
+        </properties>
+      </component>
+      <component id="a60ae" class="javax.swing.JTextField" binding="prod_name">
+        <constraints>
+          <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="a72fd" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="Calibri" size="16" style="1"/>
+          <labelFor value="dd652"/>
+          <text value="Inserisci SITO WEB"/>
+        </properties>
+      </component>
+      <component id="dd652" class="javax.swing.JTextField" binding="website">
+        <constraints>
+          <grid row="5" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="26352" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="6" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="Calibri" size="16" style="1"/>
+          <labelFor value="9a21"/>
+          <text value="Inserisci CITTÀ"/>
+        </properties>
+      </component>
+      <component id="9a21" class="javax.swing.JTextField" binding="city">
+        <constraints>
+          <grid row="7" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="b9438" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="8" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="Calibri" size="16" style="1"/>
+          <labelFor value="e0f35"/>
+          <text value="Inserisci NAZIONE"/>
+        </properties>
+      </component>
+      <component id="e0f35" class="javax.swing.JTextField" binding="nation">
+        <constraints>
+          <grid row="9" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="b5c37" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="Constantia" size="14"/>
+          <foreground color="-14566617"/>
+          <text value="INSERIRE I DATI DEL PRODUTTORE"/>
+        </properties>
+      </component>
+      <component id="5bde1" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="Constantia" size="14"/>
+          <foreground color="-14566617"/>
+          <text value="INSERIRE DATI DEL SOTTOPRODOTTO"/>
+        </properties>
+      </component>
+      <component id="99bb" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="12" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="Calibri" style="1"/>
+          <text value="Immagine  di descrizione"/>
+        </properties>
+      </component>
+      <component id="43682" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="10" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="Calibri" size="12" style="1"/>
+          <labelFor value="d8d02"/>
+          <text value="DESCRIZIONE MAX 255 char"/>
+        </properties>
+      </component>
+      <component id="d8d02" class="javax.swing.JTextArea" binding="descr">
+        <constraints>
+          <grid row="11" column="3" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="50"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="2bc6c" class="javax.swing.JLabel" binding="foto">
+        <constraints>
+          <grid row="14" column="0" row-span="2" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="150" height="150"/>
+            <preferred-size width="150" height="150"/>
+            <maximum-size width="150" height="150"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="foto"/>
+        </properties>
+      </component>
+      <component id="91baa" class="javax.swing.JButton" binding="SFOGLIAButton" default-binding="true">
+        <constraints>
+          <grid row="12" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="7" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="SFOGLIA"/>
+        </properties>
+      </component>
+      <component id="f3415" class="javax.swing.JButton" binding="CONFERMAButton" default-binding="true">
+        <constraints>
+          <grid row="14" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+            <minimum-size width="200" height="50"/>
+            <preferred-size width="200" height="50"/>
+            <maximum-size width="200" height="50"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="CONFERMA"/>
+        </properties>
+      </component>
+      <component id="4e6d7" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="12" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="Calibri" size="14" style="1"/>
+          <text value="inserisci ID del prodotto principale"/>
+        </properties>
+      </component>
+      <component id="2e20e" class="javax.swing.JTextField" binding="idprod">
+        <constraints>
+          <grid row="13" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="932b4" class="javax.swing.JButton" binding="CHIUDIButton" default-binding="true">
+        <constraints>
+          <grid row="15" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="CHIUDI"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>

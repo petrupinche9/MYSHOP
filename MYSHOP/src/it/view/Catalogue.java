@@ -136,6 +136,7 @@ public class Catalogue extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 Session.getInstance().setClienteLoggato(null);
+                dispose();
                 MENU mf = new MENU();
                 mf.setVisible(true);
                 mf.pack();
