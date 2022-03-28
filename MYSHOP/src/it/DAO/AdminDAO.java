@@ -173,20 +173,21 @@ public class AdminDAO implements IAdminDAO{
 
     @Override
     //modifica prodotti
-    public void mod_prodotti(Product p){
+    public void mod_prodotti(Product p, int lastid_prod){
 
         String res = "UPDATE articolo INNER JOIN product as p ON p.articolo_idarticolo = idarticolo  " +
                 "SET Name='"+p.getName()+"',description'"+p.getDescr()+"',costo='"+p.getCosto()+"',category'"+p.getCategory()+"' , p.subcategory='"+p.getSottocategoria()+"', p.corsia='"+p.getCorsia()+"',p.scaffale='"+p.getScaffale()+"'" +
-                "WHERE d.idproduct=(SELECT idproduct from product INNER JOIN articolo AS us ON articolo_idarticolo=us.idarticolo  WHERE us.Name='" + p.getName() + "' AND us.description ='" + p.getDescr() + "' AND us.costo='" + p.getCosto() + "'  );";
+                "WHERE d.idproduct=(SELECT idproduct from product INNER JOIN articolo AS us ON articolo_idarticolo=us.idarticolo  WHERE us.idarticolo='"+lastid_prod+"' );";
         DbConnection.getInstance().eseguiAggiornamento(res);
     }
 
     @Override
     //modifica servizi
-    public void mod_servizi(service p){
+    public void mod_servizi(service p, int lastid_serv){
         serviceDAO s=new serviceDAO();
         String res ="UPDATE articolo INNER JOIN service AS ar ON idarticolo = ar.articolo_idarticolo  " +
-                "SET Name='"+p.getName()+"',description'"+p.getDescr()+"',costo='"+p.getCosto()+"',category ='"+p.getCategory()+"'";
+                "SET Name='"+p.getName()+"',description'"+p.getDescr()+"',costo='"+p.getCosto()+"',category ='"+p.getCategory()+"'" +
+                "WHERE d.idservice=(SELECT idservice from service INNER JOIN articolo AS us ON articolo_idarticolo=us.idarticolo  WHERE us.idarticolo='"+lastid_serv+"' );";
         DbConnection.getInstance().eseguiAggiornamento(res);
     }
 

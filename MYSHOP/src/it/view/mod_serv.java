@@ -31,6 +31,7 @@ public class mod_serv extends JFrame {
     private JLabel foto;
     private JTextArea descr;
     private JPanel modifica_serv;
+    private JTextField lastid_serv;
 
     public mod_serv()
     {
@@ -76,7 +77,7 @@ public class mod_serv extends JFrame {
                     bytes = baos.toByteArray();
                     serv.setImg(bytes);
                     IAdminDAO admin = new AdminDAO();
-                    admin.newservice(serv, p, bytes);
+                    admin.mod_servizi(serv,Integer.parseInt(lastid_serv.getText()));
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
@@ -124,7 +125,7 @@ public class mod_serv extends JFrame {
     public void setName_mod(String nome){
 name.setText(nome);
     }
-
+public void setlastid_serv(int id){lastid_serv.setText(String.valueOf(id));}
     public void setDescr_mod(String description) {
       descr.setText(description);
     }

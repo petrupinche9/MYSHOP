@@ -42,6 +42,7 @@ public class adminmod_prod extends JFrame {
                 cf.setcorsia_mod(prodotto.getCorsia());
                 cf.setsubcat_mod(prodotto.getSottocategoria());
                 cf.setscaffi_mod(prodotto.getScaffale());
+                cf.setidlast_prod(Integer.parseInt(idtext.getText()));
                 try {
                     cf.setimage_mod(prodotto.getImg(Integer.parseInt(idtext.getText())));
                 } catch (IOException ex) {

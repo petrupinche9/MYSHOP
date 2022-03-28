@@ -31,6 +31,8 @@ public class mod_prodotto extends JFrame {
     private JLabel foto;
     private JTextArea descr;
     private JPanel modifica_prod;
+    private JTextField idlastprod;
+    private JLabel lastid;
 
     public mod_prodotto()
     {
@@ -43,6 +45,7 @@ public class mod_prodotto extends JFrame {
         CONFERMAButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 //set prodotto
                 Product prod = new Product();
                 Produttore p = new Produttore();
@@ -79,7 +82,8 @@ public class mod_prodotto extends JFrame {
                     bytes = baos.toByteArray();
                     prod.setImg(bytes);
                     IAdminDAO admin = new AdminDAO();
-                    admin.newproduct(prod, p, bytes);
+                    admin.mod_prodotti(prod,Integer.parseInt(idlastprod.getText()));
+
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
@@ -127,7 +131,7 @@ public class mod_prodotto extends JFrame {
     public void setName_mod(String nome){
 name.setText(nome);
     }
-
+    public void setidlast_prod(int id){idlastprod.setText(String.valueOf(id));}
     public void setDescr_mod(String description) {
       descr.setText(description);
     }

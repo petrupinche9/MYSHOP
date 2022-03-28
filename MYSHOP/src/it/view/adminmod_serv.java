@@ -45,6 +45,7 @@ public class adminmod_serv extends JFrame {
                 cf.setDescr_mod(serv.getDescr());
                 cf.setcat_mod(serv.getCategory());
                 cf.setcosto_mod(serv.getCosto());
+                cf.setlastid_serv(Integer.parseInt(idtext.getText()));
                 try {
                     cf.setimage_mod(serv.getImg(Integer.parseInt(idtext.getText())));
                 } catch (IOException ex) {

@@ -14,12 +14,12 @@ public interface IAdminDAO extends IBaseDAO<Admin>{
     void erase_article(String name, String category);
 
     //modifica prodotti,servizi
-    void mod_prodotti(Product p);
+    void mod_prodotti(Product p, int i);
 
     void mod_produttore(Produttore prod, Produttore lastprod);
 
     //modifica servizi
-    void mod_servizi(service p);
+    void mod_servizi(service p, int lastid_serv);
 
     //modifica fornitore
     void mod_fornitore(Fornitore f, Fornitore lastf);
