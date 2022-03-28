@@ -40,6 +40,7 @@ public class adminmod_serv extends JFrame {
                 cf.pack();
                 cf.setLocationRelativeTo(null);
                 cf.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+                cf.setSize(300,300);
 
                 cf.setName_mod(serv.getName());
                 cf.setDescr_mod(serv.getDescr());

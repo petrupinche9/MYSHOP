@@ -30,11 +30,6 @@ public class adminmod_prod extends JFrame {
                Product prodotto=pro.findById(Integer.parseInt(idtext.getText()));
                 mod_prodotto cf=new mod_prodotto();
 
-                cf.setVisible(true);
-                cf.pack();
-                cf.setLocationRelativeTo(null);
-                cf.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-
                 cf.setName_mod(prodotto.getName());
                 cf.setDescr_mod(prodotto.getDescr());
                 cf.setcat_mod(prodotto.getCategory());
@@ -48,6 +43,11 @@ public class adminmod_prod extends JFrame {
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
+                cf.setVisible(true);
+                cf.pack();
+                cf.setLocationRelativeTo(null);
+                cf.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+                cf.setSize(600,600);
 
             }
         });

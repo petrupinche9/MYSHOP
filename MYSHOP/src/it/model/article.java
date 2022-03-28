@@ -45,7 +45,7 @@ public class article {
         return costo;
     }
     public byte[] getImg(int id) {
-        return DbConnection.getInstance().getFoto("SELECT Image_descr FROM article WHERE idarticle='"+id+"");
+        return DbConnection.getInstance().getFoto("SELECT Image_descr FROM article WHERE idarticle='"+id+"';");
     }
     public String getCategory() {return category;}
 

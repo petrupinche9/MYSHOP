@@ -37,9 +37,10 @@ public class mod_prodotto extends JFrame {
     public mod_prodotto()
     {
         setContentPane(modifica_prod);
-        setTitle("AGGIUNGI PRODOTTO");
+        setTitle("MODIFICA PRODOTTO");
         setSize(500, 500);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);
 
         CONFERMAButton.addActionListener(new ActionListener() {
@@ -110,11 +111,6 @@ public class mod_prodotto extends JFrame {
             }
         });
 
-        setLayout(null);
-        setLocationRelativeTo(null);
-        setSize(400,400);
-        setVisible(true);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 
     }
