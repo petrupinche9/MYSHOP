@@ -124,7 +124,7 @@ public class AdminDAO implements IAdminDAO{
     public void newservice( service p, Fornitore prod, byte[] img){
 
         //insert articolo
-        String res2 = "INSERT INTO articolo (Name,description,costo,Image_descr,category) VALUES ('"+p.getName()+"','"+p.getDescr()+"','"+p.getCosto()+"',  NULL ,'"+p.getCategory()+"');" ;
+        String res2 = "INSERT INTO articolo (Name,description,costo,category) VALUES ('"+p.getName()+"','"+p.getDescr()+"','"+p.getCosto()+"' ,'"+p.getCategory()+"');" ;
         // "SELECT C.idarticolo, C.Name, C.costo, C.Image_descr, C.description, C.category, U.subcategory, U.corsia, U.scaffale, U.Produttore_idProduttore FROM articolo AS C INNER JOIN product as U  ON U.idprodotto = C.articolo_idarticolo ;";
         //VALUES ('"+p.getId()+"','"+p.getName()+"','"+p.getDescr()+"','"+p.getCosto()+"','"+p.getCategoria()+"', '"+p.getSottocategoria()+"','"+p.getCorsia()+"','"+p.getScaffale()+"','"+ Arrays.toString(p.getProdotto()) +"',); ";
         JOptionPane.showMessageDialog(null, res2);
@@ -139,20 +139,18 @@ public class AdminDAO implements IAdminDAO{
         JOptionPane.showMessageDialog(null, mngs);
         DbConnection.getInstance().eseguiAggiornamento(mngs);
 
-
-
 //insert fornitore
         String produttore = "INSERT INTO Fornitore (service_idservice) VALUES ( (SELECT idservice from service INNER JOIN articolo AS us ON articolo_idarticolo=us.idarticolo  WHERE us.Name='" + p.getName() + "' AND us.description ='" + p.getDescr() + "' ) ); ";
         JOptionPane.showMessageDialog(null, produttore);
         DbConnection.getInstance().eseguiAggiornamento(produttore);
         String prodfin = "UPDATE Fornitore INNER JOIN service AS d ON service_idservice=d.idservice SET Name='"+prod.getNome()+"', Website='"+prod.getSitoweb()+"', Citta='"+prod.getCitta()+"', Nazione ='"+prod.getNazione()+"'" +
-                "WHERE d.idproduct=(SELECT idproduct from product INNER JOIN articolo AS us ON articolo_idarticolo=us.idarticolo  WHERE Name='"+p.getName()+"' AND description ='"+p.getDescr()+"'  );";
+                "WHERE d.idservice=(SELECT idservice from service INNER JOIN articolo AS us ON articolo_idarticolo=us.idarticolo  WHERE Name='"+p.getName()+"' AND description ='"+p.getDescr()+"'  );";
         JOptionPane.showMessageDialog(null, prodfin);
         DbConnection.getInstance().eseguiAggiornamento(prodfin);
 
         //conferma salvataggio
         ArrayList<String[]> id = DbConnection.getInstance().eseguiQuery("SELECT idservice FROM service INNER JOIN articolo AS ar ON ar.idarticolo=articolo_idarticolo " +
-                "WHERE ar.name='"+p.getName()+"' AND ar.category='"+p.getCategory()+"' AND ar.descr='"+p.getDescr()+"' ");
+                "WHERE ar.name='"+p.getName()+"' AND ar.category='"+p.getCategory()+"' AND ar.description='"+p.getDescr()+"' ");
 
         if(id.size()==1) {
             String[] riga = id.get(0);

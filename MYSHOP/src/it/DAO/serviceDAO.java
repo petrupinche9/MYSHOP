@@ -12,28 +12,30 @@ public class serviceDAO implements IserviceDAO{
     public service findById(int id) {
         service c = null;
 
-        ArrayList<String[]> res = DbConnection.getInstance().eseguiQuery("SELECT C.articolo_idarticolo, C.Name, C.description, C.costo, C.Image_descr, C.category, U.Fornitore FROM service AS C INNER JOIN articolo as U  ON U.idservice = C.articolo_idarticolo WHERE C.articolo_idarticolo = "+id+";");
+        ArrayList<String[]> res = DbConnection.getInstance().eseguiQuery("SELECT C.Name, C.costo, C.description, C.category FROM articolo AS C INNER JOIN service as U ON C.idarticolo = U.articolo_idarticolo  WHERE C.idarticolo = '"+id+"';");
         // byte[] img = DbConnection.getInstance().getFoto("SELECT C.articolo_idarticolo, U.Image_descr FROM product AS C INNER JOIN articolo as U  ON U.idprodotto = C.articolo_idarticolo WHERE C.articolo_idarticolo = "+id+";");
         if(res.size()==1) {
             String[] riga = res.get(0);
             c = new service();
-            c.setId(Integer.parseInt(riga[0]));
-            c.setName(riga[1]);
-            c.setCosto(Double.parseDouble(riga[2]));
-            byte[] img = riga[3].getBytes();  //parsing from string to byte
+            c.setId(id);
+            c.setName(riga[0]);
+            c.setCosto(Double.parseDouble(riga[1]));
+            byte[] img = DbConnection.getInstance().getFoto("SELECT Image_descr FROM articolo WHERE C.idarticolo = '"+id+"'; ");  //parsing from string to byte
             c.setImg(img);
-            c.setCategory(riga[4]);
-            ArrayList<String[]> forn = DbConnection.getInstance().eseguiQuery("SELECT * FROM Fornitore INNER JOIN service AS serv " +
-                    "ON  service_idservice=serv.idservice WHERE serv.idservice='"+riga[0]+"'");
-            if(forn.size()==1){
-                Fornitore f=new Fornitore();
-                String[] dio = forn.get(0);
-                f.setId(Integer.parseInt(dio[0]));
-                f.setNome(dio[1]);
-                f.setSitoweb(dio[2]);
-                f.setNazione(dio[3]);
-                c.setFornitore(f);
+            c.setDescr(riga[2]);
+            c.setCategory(riga[3]);
+            ArrayList<String[]> prod = DbConnection.getInstance().eseguiQuery("SELECT * FROM Fornitore INNER JOIN service AS p " +
+                    "ON  service_idservice=p.idservice WHERE p.articolo_idarticolo='"+id+"'");
+            if(prod.size()==1){
+                Fornitore p=new Fornitore();
+                String[] dio = prod.get(0);
+                p.setId(Integer.parseInt(dio[0]));
+                p.setNome(dio[1]);
+                p.setSitoweb(dio[2]);
+                p.setNazione(dio[3]);
+                c.setFornitore(p);
             }
+
         }
 
         return c;
