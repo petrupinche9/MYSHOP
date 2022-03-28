@@ -30,10 +30,10 @@
       </component>
       <component id="4275e" class="javax.swing.JLabel">
         <constraints>
-          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <font name="Lucida Sans Typewriter" size="10"/>
+          <font name="Calibri" size="16"/>
           <labelFor value="cbe2b"/>
           <text value="Inserisci il NOME VENDITORE"/>
         </properties>
@@ -48,10 +48,10 @@
       </component>
       <component id="bab9b" class="javax.swing.JLabel">
         <constraints>
-          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <font name="Lucida Sans Typewriter" size="10"/>
+          <font name="Calibri" size="16"/>
           <labelFor value="dc919"/>
           <text value="Inserisci la CITTÀ"/>
         </properties>
@@ -66,10 +66,10 @@
       </component>
       <component id="47ba2" class="javax.swing.JLabel">
         <constraints>
-          <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <font name="Lucida Sans Typewriter" size="10"/>
+          <font name="Calibri" size="16"/>
           <labelFor value="48d8b"/>
           <text value="Inserisci la TIPOLOGIA DI ARTICOLI"/>
         </properties>
@@ -107,10 +107,10 @@
       </component>
       <component id="87f58" class="javax.swing.JLabel">
         <constraints>
-          <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <font name="Lucida Sans Typewriter" size="10"/>
+          <font name="Calibri" size="16"/>
           <text value="Inserisci USERNAME"/>
         </properties>
       </component>
@@ -124,10 +124,10 @@
       </component>
       <component id="f6fff" class="javax.swing.JLabel">
         <constraints>
-          <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <font name="Lucida Sans Typewriter" size="10"/>
+          <font name="Calibri" size="16"/>
           <labelFor value="3ac45"/>
           <text value="Inserisci PASSWORD"/>
         </properties>
@@ -142,10 +142,10 @@
       </component>
       <component id="f2675" class="javax.swing.JLabel">
         <constraints>
-          <grid row="7" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="7" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <font name="Lucida Sans Typewriter" size="10"/>
+          <font name="Calibri" size="16"/>
           <labelFor value="ac2fc"/>
           <text value="Inserisci NOME"/>
         </properties>
@@ -162,10 +162,10 @@
       </component>
       <component id="1f71a" class="javax.swing.JLabel">
         <constraints>
-          <grid row="9" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="9" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <font name="Lucida Sans Typewriter" size="10"/>
+          <font name="Calibri" size="16"/>
           <labelFor value="7aafd"/>
           <text value="Inserisci COGNOME"/>
         </properties>
@@ -182,10 +182,10 @@
       </component>
       <component id="5dffe" class="javax.swing.JLabel">
         <constraints>
-          <grid row="11" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="11" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <font name="Lucida Sans Typewriter" size="10"/>
+          <font name="Calibri" size="16"/>
           <labelFor value="b6da3"/>
           <text value="Inserisci ETÀ"/>
         </properties>
@@ -202,10 +202,10 @@
       </component>
       <component id="a58b5" class="javax.swing.JLabel">
         <constraints>
-          <grid row="13" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="13" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <font name="Lucida Sans Typewriter" size="10"/>
+          <font name="Calibri" size="16"/>
           <labelFor value="89ea"/>
           <text value="Inserisci E-MAIL"/>
         </properties>
@@ -222,10 +222,10 @@
       </component>
       <component id="69cd7" class="javax.swing.JLabel">
         <constraints>
-          <grid row="15" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="15" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <font name="Lucida Sans Typewriter" size="10"/>
+          <font name="Calibri" size="16"/>
           <labelFor value="a4cb7"/>
           <text value="Inserisci NUMERO DI TELEFONO"/>
         </properties>
@@ -240,10 +240,10 @@
       </component>
       <component id="93f9a" class="javax.swing.JLabel">
         <constraints>
-          <grid row="17" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="17" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <font name="Lucida Sans Typewriter" size="10"/>
+          <font name="Calibri" size="16"/>
           <labelFor value="3e61a"/>
           <text value="Inserisci PROFESSIONE"/>
         </properties>
@@ -277,6 +277,7 @@
           <grid row="11" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="Calibri" size="16"/>
           <text value="TORNA AL PANNELLO DI CONTROLLO"/>
         </properties>
       </component>

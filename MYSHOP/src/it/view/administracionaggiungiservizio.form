@@ -45,10 +45,10 @@
       </component>
       <component id="d5b38" class="javax.swing.JLabel">
         <constraints>
-          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <font name="Lucida Sans Typewriter" size="10"/>
+          <font name="Calibri" size="16"/>
           <text value="Inserire NOME"/>
         </properties>
       </component>
@@ -64,10 +64,10 @@
       </component>
       <component id="2d4c0" class="javax.swing.JLabel">
         <constraints>
-          <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <font name="Lucida Sans Typewriter" size="10"/>
+          <font name="Calibri" size="16"/>
           <labelFor value="b197"/>
           <text value="Inserire il SITO WEB"/>
         </properties>
@@ -82,10 +82,10 @@
       </component>
       <component id="da71a" class="javax.swing.JLabel">
         <constraints>
-          <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <font name="Lucida Sans Typewriter" size="10"/>
+          <font name="Calibri" size="16"/>
           <text value="Inserire la CITTÀ"/>
         </properties>
       </component>
@@ -99,10 +99,10 @@
       </component>
       <component id="3dc36" class="javax.swing.JLabel">
         <constraints>
-          <grid row="8" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="8" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <font name="Lucida Sans Typewriter" size="10"/>
+          <font name="Calibri" size="16"/>
           <text value="Inserire la NAZIONE"/>
         </properties>
       </component>
@@ -124,10 +124,10 @@
       </component>
       <component id="31a29" class="javax.swing.JLabel">
         <constraints>
-          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <font name="Lucida Sans Typewriter" size="10"/>
+          <font name="Calibri" size="16"/>
           <text value="Inserire NOME"/>
         </properties>
       </component>
@@ -143,10 +143,10 @@
       </component>
       <component id="333b3" class="javax.swing.JLabel">
         <constraints>
-          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <font name="Lucida Sans Typewriter" size="10"/>
+          <font name="Calibri" size="16"/>
           <text value="Inserire COSTO"/>
         </properties>
       </component>
@@ -160,10 +160,10 @@
       </component>
       <component id="20c9f" class="javax.swing.JLabel">
         <constraints>
-          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <font name="Lucida Sans Typewriter" size="10"/>
+          <font name="Calibri" size="16"/>
           <text value="Inserire DESCRIZIONE"/>
         </properties>
       </component>
@@ -179,10 +179,10 @@
       </component>
       <component id="d3b3e" class="javax.swing.JLabel">
         <constraints>
-          <grid row="11" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="11" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <font name="Lucida Sans Typewriter" size="10"/>
+          <font name="Calibri" size="16"/>
           <text value="SCEGLI IMMAGINE"/>
         </properties>
       </component>
@@ -204,10 +204,10 @@
       </component>
       <component id="203d" class="javax.swing.JLabel">
         <constraints>
-          <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <font name="Lucida Sans Typewriter" size="10"/>
+          <font name="Calibri" size="16"/>
           <text value="Inserisci CATEGORIA"/>
         </properties>
       </component>

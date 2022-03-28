@@ -187,7 +187,7 @@
           <grid row="12" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <font name="Calibri" style="1"/>
+          <font name="Calibri" size="16" style="1"/>
           <text value="Immagine  di descrizione"/>
         </properties>
       </component>
@@ -196,7 +196,7 @@
           <grid row="10" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <font name="Calibri" size="12" style="1"/>
+          <font name="Calibri" size="16" style="1"/>
           <labelFor value="d8d02"/>
           <text value="DESCRIZIONE MAX 255 char"/>
         </properties>
@@ -243,11 +243,11 @@
       </component>
       <component id="4e6d7" class="javax.swing.JLabel">
         <constraints>
-          <grid row="12" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="12" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <font name="Calibri" size="14" style="1"/>
-          <text value="inserisci ID del prodotto principale"/>
+          <text value="Inserisci ID del prodotto principale"/>
         </properties>
       </component>
       <component id="2e20e" class="javax.swing.JTextField" binding="idprod">
