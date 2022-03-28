@@ -19,6 +19,8 @@ public class MENU extends JFrame
     private JButton LOGINButton;
     private JButton LOGINASGUESTButton;
     private JButton REGISTRATIButton;
+    private String globalus;
+    private String globalpass;
 
     public MENU()
     {
@@ -37,7 +39,9 @@ public class MENU extends JFrame
                 ArrayList<String[]> res;
                 ResultSet rs;
                 String uname = textField1.getText();
+                globalus = uname;
                 String pass = String.valueOf(passwordField1.getPassword());
+                globalpass = pass;
 
                 String query = "SELECT * FROM user WHERE username='"+uname+"' AND passwd ='"+pass+"';";
 
@@ -172,14 +176,14 @@ public class MENU extends JFrame
         });*/
     }
     public boolean admin_cred(){
-        String admin = "SELECT * FROM user INNER JOIN admin AS a ON iduser=a.user_iduser;";
+        String admin = "SELECT * FROM user INNER JOIN admin AS a ON iduser=a.user_iduser WHERE username='"+globalus+"' AND passwd ='"+globalpass+"';";
         ArrayList<String[]> res_adm = DbConnection.getInstance().eseguiQuery(admin);
         if(res_adm.size()==1){
             return true;
         }else{return false;}
     }
     public boolean mng_cred(){
-        String mng = "SELECT * FROM user INNER JOIN manager AS m ON iduser=m.user_iduser;";
+        String mng = "SELECT * FROM user INNER JOIN manager AS m ON iduser=m.user_iduser WHERE username='"+globalus+"' AND passwd ='"+globalpass+"';";
         ArrayList<String[]> res_mng = DbConnection.getInstance().eseguiQuery(mng);
         if(res_mng.size()==1){
             return true;
