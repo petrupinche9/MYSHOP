@@ -1,9 +1,6 @@
-package it;
+package it.view;
 
 import it.util.Session;
-import it.view.Catalogue;
-import it.view.MENU;
-import it.view.administracionpuntivendita;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

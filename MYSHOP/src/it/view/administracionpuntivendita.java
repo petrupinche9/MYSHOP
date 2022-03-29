@@ -2,7 +2,6 @@ package it.view;
 
 import it.DAO.AdminDAO;
 import it.DAO.IAdminDAO;
-import it.administracionprincipal;
 import it.model.Point_shop;
 import it.model.manager;
 

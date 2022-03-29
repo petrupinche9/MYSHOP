@@ -4,6 +4,7 @@ import it.DbConnection;
 import it.model.Fornitore;
 import it.model.service;
 
+import javax.swing.*;
 import java.util.ArrayList;
 
 public class serviceDAO implements IserviceDAO{
@@ -34,8 +35,10 @@ public class serviceDAO implements IserviceDAO{
                 p.setSitoweb(dio[2]);
                 p.setNazione(dio[3]);
                 c.setFornitore(p);
+            }else{
+                JOptionPane.showMessageDialog(null, "FORNITORE NON TROVATO O INESISTENTE");
             }
-
+            JOptionPane.showMessageDialog(null, "SERVIZIO NON TROVATO O INESISTENTE");
         }
 
         return c;

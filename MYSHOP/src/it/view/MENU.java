@@ -1,7 +1,6 @@
 package it.view;
 
 import it.DbConnection;
-import it.administracionprincipal;
 import it.model.user;
 import it.util.Session;
 
@@ -83,7 +82,7 @@ public class MENU extends JFrame
                     Manager_gui lf = new Manager_gui();
                     lf.setVisible(true);
                     lf.pack();
-                    lf.setSize(300, 300);
+                    //lf.setSize(300, 300);
                     lf.setLocationRelativeTo(null);
                     lf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                     dispose();

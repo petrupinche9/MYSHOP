@@ -51,8 +51,8 @@ public class AdminDAO implements IAdminDAO{
         DbConnection.getInstance().eseguiAggiornamento(prodfin);
 
         //conferma salvataggio
-        ArrayList<String[]> id = DbConnection.getInstance().eseguiQuery("SELECT idproduct FROM product INNER JOIN articolo AS ar ON ar.idarticolo=articolo_idarticolo " +
-                "WHERE ar.name='"+p.getName()+"' AND ar.category='"+p.getCategory()+"' AND corsia='"+p.getCorsia()+"' AND scaffale='"+p.getScaffale()+"'");
+        ArrayList<String[]> id = DbConnection.getInstance().eseguiQuery("SELECT idarticolo FROM articolo INNER JOIN product AS p ON idarticolo=p.articolo_idarticolo " +
+                "WHERE name='"+p.getName()+"' AND category='"+p.getCategory()+"' AND p.corsia='"+p.getCorsia()+"' AND p.scaffale='"+p.getScaffale()+"'");
 
         if(id.size()==1) {
             String[] riga = id.get(0);
@@ -106,8 +106,8 @@ public class AdminDAO implements IAdminDAO{
         DbConnection.getInstance().eseguiAggiornamento(prodfin);
 
         //conferma salvataggio
-        ArrayList<String[]> id = DbConnection.getInstance().eseguiQuery("SELECT idSubproduct FROM Subproduct INNER JOIN product AS p  ON product_idproduct=p.idproduct INNER JOIN articolo AS ar ON p.articolo_idarticolo=ar.idarticolo " +
-                "WHERE ar.name='"+p.getName()+"' AND ar.category='"+p.getCategory()+"' AND p.corsia='"+p.getCorsia()+"' AND p.scaffale='"+p.getScaffale()+"'");
+        ArrayList<String[]> id = DbConnection.getInstance().eseguiQuery("SELECT idarticolo FROM articolo INNER JOIN product AS p  ON idarticolo=p.articolo_idarticolo INNER JOIN Subproduct AS ar ON p.idproduct=ar.product_idproduct  " +
+                "WHERE name='"+p.getName()+"' AND category='"+p.getCategory()+"' AND p.corsia='"+p.getCorsia()+"' AND p.scaffale='"+p.getScaffale()+"'");
 
         if(id.size()==1) {
             String[] riga = id.get(0);
@@ -149,7 +149,7 @@ public class AdminDAO implements IAdminDAO{
         DbConnection.getInstance().eseguiAggiornamento(prodfin);
 
         //conferma salvataggio
-        ArrayList<String[]> id = DbConnection.getInstance().eseguiQuery("SELECT idservice FROM service INNER JOIN articolo AS ar ON ar.idarticolo=articolo_idarticolo " +
+        ArrayList<String[]> id = DbConnection.getInstance().eseguiQuery("SELECT idarticolo FROM articolo INNER JOIN service AS ar ON idarticolo=ar.articolo_idarticolo " +
                 "WHERE ar.name='"+p.getName()+"' AND ar.category='"+p.getCategory()+"' AND ar.description='"+p.getDescr()+"' ");
 
         if(id.size()==1) {

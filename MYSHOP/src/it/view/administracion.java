@@ -1,6 +1,4 @@
-package it;
-
-import it.view.*;
+package it.view;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

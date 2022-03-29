@@ -38,7 +38,7 @@ public class mod_prodotto extends JFrame {
     {
         setContentPane(modifica_prod);
         setTitle("MODIFICA PRODOTTO");
-        setSize(500, 500);
+       setSize(700, 600);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);

@@ -47,7 +47,7 @@ public class adminmod_prod extends JFrame {
                 cf.pack();
                 cf.setLocationRelativeTo(null);
                 cf.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-                cf.setSize(600,600);
+               // cf.setSize(600,600);
 
             }
         });

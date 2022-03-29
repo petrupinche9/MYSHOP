@@ -103,7 +103,8 @@ public class DbConnection {
         //query = "select F.foto from foto as F where F.idfoto=1;"
         byte[] blob=null;
         try {
-            Statement stmt = db.createStatement();     // Creo lo Statement per l'esecuzione della query
+            Statement stmt = db.createStatement( ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_READ_ONLY);     // Creo lo Statement per l'esecuzione della query
             ResultSet rs = stmt.executeQuery(query);   // Ottengo il ResultSet dell'esecuzione della query
 
             int rowcount = 0;

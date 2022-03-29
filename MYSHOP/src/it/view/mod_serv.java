@@ -37,7 +37,7 @@ public class mod_serv extends JFrame {
     {
         setContentPane(modifica_serv);
         setTitle("AGGIUNGI PRODOTTO");
-        setSize(500, 500);
+        setSize(700, 600);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);
