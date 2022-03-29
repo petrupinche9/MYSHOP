@@ -3,7 +3,7 @@
   <grid id="27dc6" binding="modifica_prod" layout-manager="GridLayoutManager" row-count="16" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="868" height="541"/>
+      <xy x="20" y="20" width="868" height="606"/>
     </constraints>
     <properties/>
     <border type="none"/>
@@ -53,7 +53,9 @@
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <editable value="true"/>
+        </properties>
       </component>
       <component id="aedf7" class="javax.swing.JLabel">
         <constraints>
@@ -153,21 +155,13 @@
         </constraints>
         <properties/>
       </component>
-      <component id="388d3" class="javax.swing.JTextField" binding="idlastprod">
-        <constraints>
-          <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
-          </grid>
-        </constraints>
-        <properties/>
-      </component>
       <component id="f1493" class="javax.swing.JLabel" binding="lastid">
         <constraints>
           <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <font name="Calibri" size="16"/>
-          <text value="inserisca L'ID DEL PRODOTTO che vuoi modificare"/>
+          <text value="ID PRODOTTO"/>
         </properties>
       </component>
       <component id="99bb" class="javax.swing.JLabel">
@@ -196,7 +190,8 @@
           </grid>
         </constraints>
         <properties>
-          <text value="foto"/>
+          <enabled value="true"/>
+          <text value=""/>
         </properties>
       </component>
       <component id="f3415" class="javax.swing.JButton" binding="CONFERMAButton" default-binding="true">
@@ -209,6 +204,24 @@
         </constraints>
         <properties>
           <text value="CONFERMA MODIFICA"/>
+        </properties>
+      </component>
+      <component id="388d3" class="javax.swing.JTextField" binding="idlastprod">
+        <constraints>
+          <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <editable value="false"/>
+        </properties>
+      </component>
+      <component id="a7329" class="javax.swing.JButton" binding="CHIUDIButton" default-binding="true">
+        <constraints>
+          <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="CHIUDI"/>
         </properties>
       </component>
     </children>

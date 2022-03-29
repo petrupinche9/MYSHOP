@@ -103,8 +103,10 @@ public class DbConnection {
         //query = "select F.foto from foto as F where F.idfoto=1;"
         byte[] blob=null;
         try {
-            Statement stmt = db.createStatement( ResultSet.TYPE_SCROLL_INSENSITIVE,
-                    ResultSet.CONCUR_READ_ONLY);     // Creo lo Statement per l'esecuzione della query
+            Statement stmt = db.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_READ_ONLY);
+
+            // Creo lo Statement per l'esecuzione della query
             ResultSet rs = stmt.executeQuery(query);   // Ottengo il ResultSet dell'esecuzione della query
 
             int rowcount = 0;
@@ -122,7 +124,6 @@ public class DbConnection {
 
         return blob;
     }
-
     // Esegue una query di aggiornamento sul Database
     // query: una stringa che rappresenta un'istuzione SQL di tipo INSERT DELETE UPDATE da eseguire
     // ritorna TRUE se l'esecuzione � adata a buon fine, FALSE se c'� stata un'eccezione

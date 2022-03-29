@@ -2,32 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="71d110a1-c0bc-4f14-8051-33f62b96ad40" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/MYSHOP/src/it/image/PUB CRAWL.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MYSHOP/DB/Myshop22DB.mwb" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/DB/Myshop22DB.mwb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/DAO/AdminDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/DAO/AdminDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/DAO/productDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/DAO/productDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/DAO/serviceDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/DAO/serviceDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/DbConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/DbConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/administracion.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/administracion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/administracionprincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/administracionprincipal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/model/article.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/model/article.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/MENU.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/MENU.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/Manager_gui.form" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/Manager_gui.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/Manager_gui.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/Manager_gui.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/administracion.form" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/administracion.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/administracionprincipal.form" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/administracionprincipal.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/administracionpuntivendita.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/administracionpuntivendita.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/administracionaggiungiprodotto.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/administracionaggiungiprodotto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/adminmod_prod.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/adminmod_prod.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/adminmod_serv.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/adminmod_serv.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/mod_prodotto.form" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/mod_prodotto.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/mod_prodotto.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/mod_prodotto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/mod_serv.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/mod_serv.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/mod_serv.form" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/mod_serv.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/DAO/AdminDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/DAO/AdminDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/DAO/productDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/DAO/productDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/DAO/serviceDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/DAO/serviceDAO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/DbConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/DbConnection.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/model/article.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/model/article.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/Manager_gui.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/Manager_gui.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -204,7 +190,8 @@
       <workItem from="1645295250450" duration="44855000" />
       <workItem from="1645880302727" duration="101000" />
       <workItem from="1645883541906" duration="4453000" />
-      <workItem from="1645903646019" duration="285933000" />
+      <workItem from="1645903646019" duration="290833000" />
+      <workItem from="1648584791472" duration="8915000" />
     </task>
     <task id="LOCAL-00001" summary="GUI INIT">
       <created>1645147530607</created>
@@ -500,7 +487,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648506034076</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="update puntivenditane manager">
+      <created>1648580007571</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1648580007571</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -602,7 +596,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="aggiunta classe articolo,user&#10;aggiunta bozza HomePage" />
     <MESSAGE value="aggiunta classe user&#10;login completato" />
     <MESSAGE value="riordinamento package" />
     <MESSAGE value="update petru" />
@@ -627,7 +620,8 @@
     <MESSAGE value="insert servizio finito" />
     <MESSAGE value="piccola correzione" />
     <MESSAGE value="update modifica articoli" />
-    <option name="LAST_COMMIT_MESSAGE" value="update modifica articoli" />
+    <MESSAGE value="update puntivenditane manager" />
+    <option name="LAST_COMMIT_MESSAGE" value="update puntivenditane manager" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -637,6 +631,10 @@
           <line>11</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

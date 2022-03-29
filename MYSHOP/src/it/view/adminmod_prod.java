@@ -7,7 +7,6 @@ import it.model.Product;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 
 public class adminmod_prod extends JFrame {
     private JTextField idtext;
@@ -38,11 +37,7 @@ public class adminmod_prod extends JFrame {
                 cf.setsubcat_mod(prodotto.getSottocategoria());
                 cf.setscaffi_mod(prodotto.getScaffale());
                 cf.setidlast_prod(Integer.parseInt(idtext.getText()));
-                try {
-                    cf.setimage_mod(prodotto.getImg(Integer.parseInt(idtext.getText())));
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
+                cf.setimage_mod(prodotto.getImg(Integer.parseInt(idtext.getText())));
                 cf.setVisible(true);
                 cf.pack();
                 cf.setLocationRelativeTo(null);

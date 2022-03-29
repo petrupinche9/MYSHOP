@@ -85,27 +85,11 @@
       </component>
       <component id="99bb" class="javax.swing.JLabel">
         <constraints>
-          <grid row="10" column="0" row-span="3" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="10" column="0" row-span="2" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <font name="Calibri" size="16"/>
           <text value="Immagine  di descrizione"/>
-        </properties>
-      </component>
-      <component id="91baa" class="javax.swing.JButton" binding="SFOGLIAButton" default-binding="true">
-        <constraints>
-          <grid row="10" column="1" row-span="3" col-span="1" vsize-policy="3" hsize-policy="7" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="SFOGLIA"/>
-        </properties>
-      </component>
-      <component id="2bc6c" class="javax.swing.JLabel" binding="foto">
-        <constraints>
-          <grid row="10" column="3" row-span="3" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Label"/>
         </properties>
       </component>
       <component id="43682" class="javax.swing.JLabel">
@@ -140,7 +124,7 @@
         </constraints>
         <properties>
           <font name="Calibri" size="16"/>
-          <text value="Inserisca l'ID DEL SERVIZIO da modificare"/>
+          <text value="ID SERVIZIO"/>
         </properties>
       </component>
       <component id="46d8e" class="javax.swing.JTextField" binding="lastid_serv">
@@ -149,7 +133,29 @@
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <editable value="false"/>
+        </properties>
+      </component>
+      <component id="91baa" class="javax.swing.JButton" binding="SFOGLIAButton" default-binding="true">
+        <constraints>
+          <grid row="12" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="7" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="SFOGLIA"/>
+        </properties>
+      </component>
+      <component id="2bc6c" class="javax.swing.JLabel" binding="foto">
+        <constraints>
+          <grid row="12" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="150" height="150"/>
+            <preferred-size width="150" height="150"/>
+            <maximum-size width="150" height="150"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="Label"/>
+        </properties>
       </component>
     </children>
   </grid>

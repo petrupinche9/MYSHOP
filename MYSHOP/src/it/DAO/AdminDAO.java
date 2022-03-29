@@ -176,9 +176,9 @@ public class AdminDAO implements IAdminDAO{
     public void mod_prodotti(Product p, int lastid_prod){
 
         String res = "UPDATE articolo INNER JOIN product as p ON p.articolo_idarticolo = idarticolo  " +
-                "SET Name='"+p.getName()+"',description'"+p.getDescr()+"',costo='"+p.getCosto()+"',category'"+p.getCategory()+"' , p.subcategory='"+p.getSottocategoria()+"', p.corsia='"+p.getCorsia()+"',p.scaffale='"+p.getScaffale()+"'" +
-                "WHERE d.idproduct=(SELECT idproduct from product INNER JOIN articolo AS us ON articolo_idarticolo=us.idarticolo  WHERE us.idarticolo='"+lastid_prod+"' );";
+                "SET Name='"+p.getName()+"',description='"+p.getDescr()+"',costo='"+p.getCosto()+"',category='"+p.getCategory()+"' , p.subcategory='"+p.getSottocategoria()+"', p.corsia='"+p.getCorsia()+"',p.scaffale='"+p.getScaffale()+"'" ;
         DbConnection.getInstance().eseguiAggiornamento(res);
+        JOptionPane.showMessageDialog(null,"PRODOTTO AGGIORNATO");
     }
 
     @Override

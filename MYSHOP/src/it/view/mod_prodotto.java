@@ -33,12 +33,13 @@ public class mod_prodotto extends JFrame {
     private JPanel modifica_prod;
     private JTextField idlastprod;
     private JLabel lastid;
+    private JButton CHIUDIButton;
+    private JButton provaFotoButton;
 
-    public mod_prodotto()
-    {
+    public mod_prodotto() {
         setContentPane(modifica_prod);
         setTitle("MODIFICA PRODOTTO");
-       setSize(700, 600);
+        setSize(700, 600);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);
@@ -58,11 +59,6 @@ public class mod_prodotto extends JFrame {
                 prod.setScaffale(Integer.parseInt(scaffale.getText()));
                 prod.setCorsia(Integer.parseInt(corsia.getText()));
 
-                //set produttore
-                p.setNome(prod_name.getText());
-                p.setCitta(city.getText());
-                p.setNazione(nation.getText());
-                p.setSitoweb(website.getText());
 
                 //set image
                 Icon icon = foto.getIcon();
@@ -70,8 +66,8 @@ public class mod_prodotto extends JFrame {
                 Graphics2D g2d = img.createGraphics();
                 icon.paintIcon(null, g2d, 0, 0);
                 g2d.dispose();
-                  //convert to byte
-                byte[] bytes ;
+                //convert to byte
+                byte[] bytes;
                 try (ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
                     ImageOutputStream ios = ImageIO.createImageOutputStream(baos);
                     try {
@@ -83,7 +79,7 @@ public class mod_prodotto extends JFrame {
                     bytes = baos.toByteArray();
                     prod.setImg(bytes);
                     IAdminDAO admin = new AdminDAO();
-                    admin.mod_prodotti(prod,Integer.parseInt(idlastprod.getText()));
+                    admin.mod_prodotti(prod, Integer.parseInt(idlastprod.getText()));
 
                 } catch (IOException ex) {
                     ex.printStackTrace();
@@ -99,11 +95,11 @@ public class mod_prodotto extends JFrame {
                 JFileChooser file = new JFileChooser();
                 file.setCurrentDirectory(new File(System.getProperty("user.home")));
                 //filtering files
-                FileNameExtensionFilter filter = new FileNameExtensionFilter("*.Images","jpg","png");
+                FileNameExtensionFilter filter = new FileNameExtensionFilter("*.Images", "jpg", "png");
                 file.addChoosableFileFilter(filter);
                 int res = file.showSaveDialog(null);
                 //if the user clicks on save in Jfilechooser
-                if(res == JFileChooser.APPROVE_OPTION){
+                if (res == JFileChooser.APPROVE_OPTION) {
                     File selFile = file.getSelectedFile();
                     String path = selFile.getAbsolutePath();
                     foto.setIcon(resize(path));
@@ -112,7 +108,12 @@ public class mod_prodotto extends JFrame {
         });
 
 
-
+        CHIUDIButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
     }
 
     public ImageIcon resize(String imgPath){
@@ -146,14 +147,22 @@ name.setText(nome);
     public void setscaffi_mod(int scaffi){
         scaffale.setText(String.valueOf(scaffi));
     }
-    public void  setimage_mod(byte[] img) throws IOException {
+    public void  setimage_mod(byte[] img) {
+        try {
+            //set image
+            InputStream in = new ByteArrayInputStream(img);
+            BufferedImage bImageFromConvert =ImageIO.read(in);
+            ImageIcon pic = new ImageIcon(bImageFromConvert);
+            Image image = pic.getImage(); // transform it
+            Image newimg = image.getScaledInstance(120, 120,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+            pic = new ImageIcon(newimg);  // transform it back
+            foto.setIcon(pic);
 
-        InputStream is = new ByteArrayInputStream(img);
-        BufferedImage newBi = ImageIO.read(is);
-        Icon icon = foto.getIcon();
-        Graphics2D g2d = newBi.createGraphics();
-        icon.paintIcon(null, g2d, 0, 0);
-        g2d.dispose();
+        }catch(IOException e) {
+            e.printStackTrace();
+
+        }
+
     }
 }
 

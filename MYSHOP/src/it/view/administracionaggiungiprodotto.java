@@ -69,8 +69,12 @@ public class administracionaggiungiprodotto extends JFrame {
               //  BufferedImage img = new BufferedImage(icon.getIconWidth(), icon.getIconHeight(), BufferedImage.TYPE_INT_ARGB);
                  BufferedImage img = new BufferedImage(50, 50, BufferedImage.TYPE_INT_ARGB);
 
-                Graphics2D g2d = img.createGraphics();
+              /*  Graphics2D g2d = img.createGraphics();
                // g2d.drawImage(img, 0, 0, 50, 50, null);
+                icon.paintIcon(null, g2d, 0, 0);
+                g2d.dispose();*/
+                Graphics2D g2d = img.createGraphics();
+                g2d.drawImage(img, 0, 0, 50, 50, null);
                 icon.paintIcon(null, g2d, 0, 0);
                 g2d.dispose();
 
@@ -78,7 +82,9 @@ public class administracionaggiungiprodotto extends JFrame {
                 try (ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
                     ImageOutputStream ios = ImageIO.createImageOutputStream(baos);
                     try {
-                        ImageIO.write(img, "png", ios);
+                        BufferedImage img_res = new BufferedImage(50, 50, BufferedImage.TYPE_INT_ARGB);
+                        img_res=getScaledImage(img,50,50);
+                        ImageIO.write(img_res, "png", ios);
                         // Set a flag to indicate that the write was successful
                     } finally {
                         ios.close();
@@ -134,6 +140,14 @@ public class administracionaggiungiprodotto extends JFrame {
         });
     }
 
+    private BufferedImage getScaledImage(Image srcImg, int w, int h) {
+        BufferedImage resizedImg = new BufferedImage(w, h, Transparency.TRANSLUCENT);
+        Graphics2D g2 = resizedImg.createGraphics();
+        g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+        g2.drawImage(srcImg, 0, 0, w, h, null);
+        g2.dispose();
+        return resizedImg;
+    }
     public ImageIcon resize(String imgPath){
         ImageIcon path = new ImageIcon(imgPath);
         Image img = path.getImage();
