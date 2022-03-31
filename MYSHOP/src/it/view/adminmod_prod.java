@@ -38,7 +38,7 @@ public class adminmod_prod extends JFrame {
                 cf.setsubcat_mod(prodotto.getSottocategoria());
                 cf.setscaffi_mod(prodotto.getScaffale());
                 cf.setidlast_prod(Integer.parseInt(idtext.getText()));
-               byte[] img= DbConnection.getInstance().getFoto("SELECT Image_descr FROM articolo_photo INNER JOIN articolo AS f ON articolo_idarticolo=f.idarticolo WHERE f.Name='"+prodotto.getName()+"' AND f.description='"+prodotto.getDescr()+"';");
+               byte[] img= DbConnection.getInstance().getFoto("SELECT Image_descr FROM articolo_photo INNER JOIN articolo AS f ON articolo_idarticolo=f.idarticolo WHERE f.idarticolo='"+Integer.parseInt(idtext.getText())+"';");
                 cf.setimage_mod(img);
                 cf.setVisible(true);
                 cf.pack();

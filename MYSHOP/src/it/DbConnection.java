@@ -86,7 +86,6 @@ public class DbConnection {
     }*/
 
     public void addFoto(byte[] file, String sql) {
-
         try {
 
             PreparedStatement statement = db.prepareStatement(sql);

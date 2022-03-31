@@ -74,6 +74,7 @@ public class administracionaggiungiprodotto extends JFrame {
                 icon.paintIcon(null, g2d, 0, 0);
                 g2d.dispose();
 
+                //convert to bytes
                 byte[] bytes ;
                 try (ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
                     ImageOutputStream ios = ImageIO.createImageOutputStream(baos);

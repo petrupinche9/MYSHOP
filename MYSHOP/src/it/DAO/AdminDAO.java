@@ -180,9 +180,11 @@ public class AdminDAO implements IAdminDAO{
         String res = "UPDATE articolo INNER JOIN product as p ON p.articolo_idarticolo = idarticolo  " +
                 "SET Name='"+p.getName()+"',description='"+p.getDescr()+"',costo='"+p.getCosto()+"',category='"+p.getCategory()+"' , p.subcategory='"+p.getSottocategoria()+"', p.corsia='"+p.getCorsia()+"',p.scaffale='"+p.getScaffale()+"'" ;
         DbConnection.getInstance().eseguiAggiornamento(res);
-        String image = "UPDATE articolo_photo INNER JOIN articolo as p ON articolo_idarticolo = p.idarticolo  " +
-                "SET Image_descr=?" ;
-        DbConnection.getInstance().addFoto(p.getImg(),image);
+        String del_image = "DELETE FROM articolo_photo WHERE (`idarticolo_photo` = '7');" ;
+        DbConnection.getInstance().eseguiAggiornamento(del_image);
+        //aggiunta foto
+        String img2="INSERT INTO articolo_photo (Image_descr,articolo_idarticolo) VALUES (?,(SELECT idarticolo from articolo WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "'  ) )  ;";
+        DbConnection.getInstance().addFoto(p.getImg(),img2);
         JOptionPane.showMessageDialog(null,"PRODOTTO AGGIORNATO");
 
     }
@@ -195,6 +197,12 @@ public class AdminDAO implements IAdminDAO{
                 "SET Name='"+p.getName()+"',description'"+p.getDescr()+"',costo='"+p.getCosto()+"',category ='"+p.getCategory()+"'" +
                 "WHERE d.idservice=(SELECT idservice from service INNER JOIN articolo AS us ON articolo_idarticolo=us.idarticolo  WHERE us.idarticolo='"+lastid_serv+"' );";
         DbConnection.getInstance().eseguiAggiornamento(res);
+        String del_image = "DELETE FROM articolo_photo  WHERE articolo_idarticolo='"+lastid_serv+"';" ;
+        DbConnection.getInstance().eseguiAggiornamento(del_image);
+        //aggiunta foto
+        String img2="INSERT INTO articolo_photo (Image_descr,articolo_idarticolo) VALUES (?,(SELECT idarticolo from articolo WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "'  ) )  ;";
+        DbConnection.getInstance().addFoto(p.getImg(),img2);
+        JOptionPane.showMessageDialog(null,"SERVIZIO AGGIORNATO");
     }
 
     @Override

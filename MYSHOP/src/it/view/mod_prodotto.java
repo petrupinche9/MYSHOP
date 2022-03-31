@@ -15,8 +15,6 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.*;
 
-import static java.awt.image.BufferedImage.TYPE_INT_ARGB;
-
 public class mod_prodotto extends JFrame {
     private JTextField category;
     private JTextField subcategory;
@@ -61,13 +59,16 @@ public class mod_prodotto extends JFrame {
                 prod.setScaffale(Integer.parseInt(scaffale.getText()));
                 prod.setCorsia(Integer.parseInt(corsia.getText()));
 
-
                 //set image
                 Icon icon = foto.getIcon();
-                BufferedImage img = new BufferedImage(icon.getIconWidth(), icon.getIconHeight(), TYPE_INT_ARGB);
+                BufferedImage img = new BufferedImage(icon.getIconWidth(), icon.getIconHeight(), BufferedImage.TYPE_INT_ARGB);
+                // BufferedImage img = new BufferedImage(150, 50, BufferedImage.TYPE_INT_ARGB);
+
                 Graphics2D g2d = img.createGraphics();
+                g2d.drawImage(img, 0, 0, 50, 50, null);
                 icon.paintIcon(null, g2d, 0, 0);
                 g2d.dispose();
+
                 //convert to byte
                 byte[] bytes;
                 try (ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
