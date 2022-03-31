@@ -58,7 +58,7 @@ public class Catalogue extends JFrame{
                 case 0:
                     return p.getName();
                 case 1:
-                    return p.getImg(p.getId());
+                    return p.getImg();
                 case 2:
                     return p.getDescr();
                 case 3:

@@ -22,13 +22,13 @@ public class AdminDAO implements IAdminDAO{
     public void newproduct(Product p, Produttore prod, byte[] img){
 
         //insert articolo
-        String res2 = "INSERT INTO articolo (Name,description,costo,Image_descr,category) VALUES ('"+p.getName()+"','"+p.getDescr()+"','"+p.getCosto()+"',  NULL ,'"+p.getCategory()+"');" ;
+        String res2 = "INSERT INTO articolo (Name,description,costo,category) VALUES ('"+p.getName()+"','"+p.getDescr()+"','"+p.getCosto()+"','"+p.getCategory()+"');" ;
                // "SELECT C.idarticolo, C.Name, C.costo, C.Image_descr, C.description, C.category, U.subcategory, U.corsia, U.scaffale, U.Produttore_idProduttore FROM articolo AS C INNER JOIN product as U  ON U.idprodotto = C.articolo_idarticolo ;";
         //VALUES ('"+p.getId()+"','"+p.getName()+"','"+p.getDescr()+"','"+p.getCosto()+"','"+p.getCategoria()+"', '"+p.getSottocategoria()+"','"+p.getCorsia()+"','"+p.getScaffale()+"','"+ Arrays.toString(p.getProdotto()) +"',); ";
         JOptionPane.showMessageDialog(null, res2);
         DbConnection.getInstance().eseguiAggiornamento(res2);
 //aggiunta foto
-        String img2="UPDATE articolo SET Image_descr=? WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "' ;";
+        String img2="INSERT INTO articolo_photo (Image_descr,articolo_idarticolo) VALUES (?,(SELECT idarticolo from articolo WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "'  ) )  ;";
         DbConnection.getInstance().addFoto(img,img2);
 
         //insert prodotto
@@ -70,14 +70,15 @@ public class AdminDAO implements IAdminDAO{
     public void newsubproduct(SubProduct p, Produttore prod, byte[] img, Product p2) {
 
         //insert articolo
-        String res2 = "INSERT INTO articolo (Name,description,costo,Image_descr,category) VALUES ('"+p.getName()+"','"+p.getDescr()+"','"+p.getCosto()+"',  NULL ,'"+p.getCategory()+"');" ;
+        String res2 = "INSERT INTO articolo (Name,description,costo,category) VALUES ('"+p.getName()+"','"+p.getDescr()+"','"+p.getCosto()+"',  NULL ,'"+p.getCategory()+"');" ;
         // "SELECT C.idarticolo, C.Name, C.costo, C.Image_descr, C.description, C.category, U.subcategory, U.corsia, U.scaffale, U.Produttore_idProduttore FROM articolo AS C INNER JOIN product as U  ON U.idprodotto = C.articolo_idarticolo ;";
         //VALUES ('"+p.getId()+"','"+p.getName()+"','"+p.getDescr()+"','"+p.getCosto()+"','"+p.getCategoria()+"', '"+p.getSottocategoria()+"','"+p.getCorsia()+"','"+p.getScaffale()+"','"+ Arrays.toString(p.getProdotto()) +"',); ";
         JOptionPane.showMessageDialog(null, res2);
         DbConnection.getInstance().eseguiAggiornamento(res2);
 //aggiunta foto
-        String img2="UPDATE articolo SET Image_descr=? WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "' ;";
+        String img2="INSERT INTO articolo_photo (Image_descr,articolo_idarticolo) VALUES (?,(SELECT idarticolo from articolo WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "'  ) )  ;";
         DbConnection.getInstance().addFoto(img,img2);
+
 
         //insert prodotto
         String mngs = "INSERT INTO product (articolo_idarticolo) VALUES " +
@@ -129,8 +130,9 @@ public class AdminDAO implements IAdminDAO{
         //VALUES ('"+p.getId()+"','"+p.getName()+"','"+p.getDescr()+"','"+p.getCosto()+"','"+p.getCategoria()+"', '"+p.getSottocategoria()+"','"+p.getCorsia()+"','"+p.getScaffale()+"','"+ Arrays.toString(p.getProdotto()) +"',); ";
         JOptionPane.showMessageDialog(null, res2);
         DbConnection.getInstance().eseguiAggiornamento(res2);
+
 //aggiunta foto
-        String img2="UPDATE articolo SET Image_descr=? WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "' ;";
+        String img2="INSERT INTO articolo_photo (Image_descr,articolo_idarticolo) VALUES (?,(SELECT idarticolo from articolo WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "'  ) )  ;";
         DbConnection.getInstance().addFoto(img,img2);
 
         //insert prodotto
@@ -150,7 +152,7 @@ public class AdminDAO implements IAdminDAO{
 
         //conferma salvataggio
         ArrayList<String[]> id = DbConnection.getInstance().eseguiQuery("SELECT idarticolo FROM articolo INNER JOIN service AS ar ON idarticolo=ar.articolo_idarticolo " +
-                "WHERE ar.name='"+p.getName()+"' AND ar.category='"+p.getCategory()+"' AND ar.description='"+p.getDescr()+"' ");
+                "WHERE Name='"+p.getName()+"' AND category='"+p.getCategory()+"' AND description='"+p.getDescr()+"' ");
 
         if(id.size()==1) {
             String[] riga = id.get(0);
@@ -178,7 +180,11 @@ public class AdminDAO implements IAdminDAO{
         String res = "UPDATE articolo INNER JOIN product as p ON p.articolo_idarticolo = idarticolo  " +
                 "SET Name='"+p.getName()+"',description='"+p.getDescr()+"',costo='"+p.getCosto()+"',category='"+p.getCategory()+"' , p.subcategory='"+p.getSottocategoria()+"', p.corsia='"+p.getCorsia()+"',p.scaffale='"+p.getScaffale()+"'" ;
         DbConnection.getInstance().eseguiAggiornamento(res);
+        String image = "UPDATE articolo_photo INNER JOIN articolo as p ON articolo_idarticolo = p.idarticolo  " +
+                "SET Image_descr=?" ;
+        DbConnection.getInstance().addFoto(p.getImg(),image);
         JOptionPane.showMessageDialog(null,"PRODOTTO AGGIORNATO");
+
     }
 
     @Override

@@ -2,6 +2,7 @@ package it.view;
 
 import it.DAO.IserviceDAO;
 import it.DAO.serviceDAO;
+import it.DbConnection;
 import it.model.service;
 
 import javax.swing.*;
@@ -35,7 +36,12 @@ public class adminmod_serv extends JFrame {
                 IserviceDAO s=new serviceDAO();
                 service serv=s.findById(Integer.parseInt(idtext.getText()));
                 mod_serv cf=new mod_serv();
-
+                byte[] img= DbConnection.getInstance().getFoto("SELECT Image_descr FROM articolo_photo INNER JOIN articolo AS f ON articolo_idarticolo=f.idarticolo WHERE f.Name='"+serv.getName()+"' AND f.description='"+serv.getDescr()+"';");
+                try {
+                    cf.setimage_mod(img);
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
                 cf.setVisible(true);
                 cf.pack();
                 cf.setLocationRelativeTo(null);
@@ -48,7 +54,7 @@ public class adminmod_serv extends JFrame {
                 cf.setcosto_mod(serv.getCosto());
                 cf.setlastid_serv(Integer.parseInt(idtext.getText()));
                 try {
-                    cf.setimage_mod(serv.getImg(Integer.parseInt(idtext.getText())));
+                    cf.setimage_mod(serv.getImg());
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }

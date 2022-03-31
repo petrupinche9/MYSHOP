@@ -15,6 +15,8 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.*;
 
+import static java.awt.image.BufferedImage.TYPE_INT_ARGB;
+
 public class mod_prodotto extends JFrame {
     private JTextField category;
     private JTextField subcategory;
@@ -62,7 +64,7 @@ public class mod_prodotto extends JFrame {
 
                 //set image
                 Icon icon = foto.getIcon();
-                BufferedImage img = new BufferedImage(icon.getIconWidth(), icon.getIconHeight(), BufferedImage.TYPE_INT_ARGB);
+                BufferedImage img = new BufferedImage(icon.getIconWidth(), icon.getIconHeight(), TYPE_INT_ARGB);
                 Graphics2D g2d = img.createGraphics();
                 icon.paintIcon(null, g2d, 0, 0);
                 g2d.dispose();
@@ -71,7 +73,8 @@ public class mod_prodotto extends JFrame {
                 try (ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
                     ImageOutputStream ios = ImageIO.createImageOutputStream(baos);
                     try {
-                        ImageIO.write(img, "png", ios);
+                        ImageIO.write(img, "jpg", ios);
+                        baos.flush();
                         // Set a flag to indicate that the write was successful
                     } finally {
                         ios.close();
@@ -148,20 +151,19 @@ name.setText(nome);
         scaffale.setText(String.valueOf(scaffi));
     }
     public void  setimage_mod(byte[] img) {
+
+        InputStream in = new ByteArrayInputStream(img);
         try {
-            //set image
-            InputStream in = new ByteArrayInputStream(img);
-            BufferedImage bImageFromConvert =ImageIO.read(in);
-            ImageIcon pic = new ImageIcon(bImageFromConvert);
-            Image image = pic.getImage(); // transform it
-            Image newimg = image.getScaledInstance(120, 120,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
-            pic = new ImageIcon(newimg);  // transform it back
-            foto.setIcon(pic);
-
-        }catch(IOException e) {
+            BufferedImage imgFromDb = ImageIO.read(in);
+            ImageIcon image = new ImageIcon(imgFromDb);
+            Image im = image.getImage();
+            Image myImg = im.getScaledInstance(foto.getWidth(), foto.getHeight(),Image.SCALE_SMOOTH);
+            ImageIcon newImage = new ImageIcon(myImg);
+            foto.setIcon(newImage);
+        } catch (IOException e) {
             e.printStackTrace();
-
         }
+
 
     }
 }

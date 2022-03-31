@@ -32,6 +32,7 @@ public class mod_serv extends JFrame {
     private JTextArea descr;
     private JPanel modifica_serv;
     private JTextField lastid_serv;
+    private JButton CHIUDIButton;
 
     public mod_serv()
     {
@@ -106,6 +107,12 @@ public class mod_serv extends JFrame {
         });
 
 
+        CHIUDIButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
     }
 
     public ImageIcon resize(String imgPath){
@@ -141,12 +148,17 @@ public void setlastid_serv(int id){lastid_serv.setText(String.valueOf(id));}
     }
     public void  setimage_mod(byte[] img) throws IOException {
 
-        InputStream is = new ByteArrayInputStream(img);
-        BufferedImage newBi = ImageIO.read(is);
-        Icon icon = foto.getIcon();
-        Graphics2D g2d = newBi.createGraphics();
-        icon.paintIcon(null, g2d, 0, 0);
-        g2d.dispose();
+        InputStream in = new ByteArrayInputStream(img);
+        try {
+            BufferedImage imgFromDb = ImageIO.read(in);
+            ImageIcon image = new ImageIcon(imgFromDb);
+            Image im = image.getImage();
+            Image myImg = im.getScaledInstance(foto.getWidth(), foto.getHeight(),Image.SCALE_SMOOTH);
+            ImageIcon newImage = new ImageIcon(myImg);
+            foto.setIcon(newImage);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 

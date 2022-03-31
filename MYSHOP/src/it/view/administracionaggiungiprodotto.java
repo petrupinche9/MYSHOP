@@ -66,13 +66,9 @@ public class administracionaggiungiprodotto extends JFrame {
 
                 //set image
                 Icon icon = foto.getIcon();
-              //  BufferedImage img = new BufferedImage(icon.getIconWidth(), icon.getIconHeight(), BufferedImage.TYPE_INT_ARGB);
-                 BufferedImage img = new BufferedImage(50, 50, BufferedImage.TYPE_INT_ARGB);
+                BufferedImage img = new BufferedImage(icon.getIconWidth(), icon.getIconHeight(), BufferedImage.TYPE_INT_ARGB);
+                // BufferedImage img = new BufferedImage(150, 50, BufferedImage.TYPE_INT_ARGB);
 
-              /*  Graphics2D g2d = img.createGraphics();
-               // g2d.drawImage(img, 0, 0, 50, 50, null);
-                icon.paintIcon(null, g2d, 0, 0);
-                g2d.dispose();*/
                 Graphics2D g2d = img.createGraphics();
                 g2d.drawImage(img, 0, 0, 50, 50, null);
                 icon.paintIcon(null, g2d, 0, 0);
@@ -82,9 +78,8 @@ public class administracionaggiungiprodotto extends JFrame {
                 try (ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
                     ImageOutputStream ios = ImageIO.createImageOutputStream(baos);
                     try {
-                        BufferedImage img_res = new BufferedImage(50, 50, BufferedImage.TYPE_INT_ARGB);
-                        img_res=getScaledImage(img,50,50);
-                        ImageIO.write(img_res, "png", ios);
+                        ImageIO.write(img, "jpg", ios);
+                        baos.flush();
                         // Set a flag to indicate that the write was successful
                     } finally {
                         ios.close();

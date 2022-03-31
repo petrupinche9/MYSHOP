@@ -2,6 +2,7 @@ package it.view;
 
 import it.DAO.IproductDAO;
 import it.DAO.productDAO;
+import it.DbConnection;
 import it.model.Product;
 
 import javax.swing.*;
@@ -37,7 +38,8 @@ public class adminmod_prod extends JFrame {
                 cf.setsubcat_mod(prodotto.getSottocategoria());
                 cf.setscaffi_mod(prodotto.getScaffale());
                 cf.setidlast_prod(Integer.parseInt(idtext.getText()));
-                cf.setimage_mod(prodotto.getImg(Integer.parseInt(idtext.getText())));
+               byte[] img= DbConnection.getInstance().getFoto("SELECT Image_descr FROM articolo_photo INNER JOIN articolo AS f ON articolo_idarticolo=f.idarticolo WHERE f.Name='"+prodotto.getName()+"' AND f.description='"+prodotto.getDescr()+"';");
+                cf.setimage_mod(img);
                 cf.setVisible(true);
                 cf.pack();
                 cf.setLocationRelativeTo(null);

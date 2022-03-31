@@ -21,7 +21,7 @@ public class serviceDAO implements IserviceDAO{
             c.setId(id);
             c.setName(riga[0]);
             c.setCosto(Double.parseDouble(riga[1]));
-            byte[] img = DbConnection.getInstance().getFoto("SELECT Image_descr FROM articolo WHERE idarticolo = '"+id+"'; ");  //parsing from string to byte
+            byte[] img = DbConnection.getInstance().getFoto("SELECT Image_descr FROM articolo_photo INNER JOIN articolo AS a ON articolo_idarticolo=a.idarticolo  WHERE idarticolo = '"+id+"'; ");  //parsing from string to byte
             c.setImg(img);
             c.setDescr(riga[2]);
             c.setCategory(riga[3]);
@@ -38,6 +38,8 @@ public class serviceDAO implements IserviceDAO{
             }else{
                 JOptionPane.showMessageDialog(null, "FORNITORE NON TROVATO O INESISTENTE");
             }
+
+        }else{
             JOptionPane.showMessageDialog(null, "SERVIZIO NON TROVATO O INESISTENTE");
         }
 

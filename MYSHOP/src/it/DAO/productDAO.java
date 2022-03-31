@@ -26,7 +26,7 @@ public class productDAO implements IproductDAO {
             c.setSottocategoria(riga[4]);
             c.setCorsia(Integer.parseInt(riga[5]));
             c.setScaffale(Integer.parseInt(riga[6]));
-            byte[] img = DbConnection.getInstance().getFoto("SELECT Image_descr FROM articolo WHERE idarticolo = '"+id+"'; ");  //parsing from string to byte
+            byte[] img = DbConnection.getInstance().getFoto("SELECT Image_descr FROM articolo_photo INNER JOIN articolo AS a ON articolo_idarticolo=a.idarticolo  WHERE idarticolo = '"+id+"'; ");  //parsing from string to byte
             c.setImg(img);
         }else{
             JOptionPane.showMessageDialog(null, "PRODOTTO NON TROVATO O INESISTENTE");

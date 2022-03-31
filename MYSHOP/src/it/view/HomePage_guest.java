@@ -113,7 +113,7 @@ public class HomePage_guest extends JFrame{
             //BINDING
             switch(columnIndex) {
                 case 0: return p.getName();
-                case 1: return p.getImg(p.getId());
+                case 1: return p.getImg();
                 case 2: return p.getDescr();
                 case 3: return p.getCosto();
                 case 4: return p.getCategory();
