@@ -2,6 +2,7 @@ package it.view;
 
 import it.DAO.AdminDAO;
 import it.DAO.IAdminDAO;
+import it.DbConnection;
 import it.model.Product;
 import it.model.Produttore;
 
@@ -16,6 +17,7 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class administracionaggiungiprodotto extends JFrame {
     private JTextField category;
@@ -101,10 +103,37 @@ public class administracionaggiungiprodotto extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 add_subproduct cf = new add_subproduct();
-                cf.setVisible(true);
-                cf.pack();
-                cf.setLocationRelativeTo(null);
-                cf.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+
+                Product prod = new Product();
+                Produttore p = new Produttore();
+                prod.setName(name.getText());
+                prod.setDescr(descr.getText());
+                prod.setCategory(category.getText());
+                prod.setSottocategoria(subcategory.getText());
+                prod.setCosto(Double.parseDouble(costo.getText()));
+                prod.setScaffale(Integer.parseInt(scaffale.getText()));
+                prod.setCorsia(Integer.parseInt(corsia.getText()));
+
+                //set produttore
+                p.setNome(prod_name.getText());
+                p.setCitta(city.getText());
+                p.setNazione(nation.getText());
+                p.setSitoweb(website.getText());
+
+                ArrayList<String[]> check = DbConnection.getInstance().eseguiQuery("SELECT idarticolo FROM articolo INNER JOIN product AS p ON idarticolo=p.articolo_idarticolo " +
+                        "WHERE name='"+prod.getName()+"'  AND p.corsia='"+prod.getCorsia()+"' AND p.scaffale='"+prod.getScaffale()+"');");
+
+                if(check.size()==1) {
+                    String[] riga = check.get(0);
+                    cf.setVisible(true);
+                    cf.pack();
+                    cf.setLocationRelativeTo(null);
+                    cf.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+                    cf.setidprod(Integer.parseInt(riga[1]));
+                }else {
+                    JOptionPane.showMessageDialog(null,"PRODOTTO PRINCIPALE NON TROVATO ");
+                }
+
             }
         });
 

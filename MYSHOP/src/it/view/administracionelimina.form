@@ -25,10 +25,10 @@
         <properties>
           <font name="Fira Code" size="12"/>
           <foreground color="-14566617"/>
-          <text value="SI INSERISCA QUI DI SEGUITO I SEGUENTI DATI DELL'ARTICOLO"/>
+          <text value="SI INSERISCA QUI DI SEGUITO IL'ID DELL'ARTICOLO"/>
         </properties>
       </component>
-      <component id="c4892" class="javax.swing.JTextField" binding="category">
+      <component id="c4892" class="javax.swing.JTextField" binding="idtext">
         <constraints>
           <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -50,7 +50,7 @@
         </constraints>
         <properties>
           <font name="Calibri" size="16"/>
-          <text value="CATEGORIA"/>
+          <text value="ID"/>
         </properties>
       </component>
     </children>

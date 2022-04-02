@@ -20,47 +20,68 @@ public class AdminDAO implements IAdminDAO{
     //inserisci nuovo prodotto
     @Override
     public void newproduct(Product p, Produttore prod, byte[] img){
+//PRODOTTO ESISTE GIà?
+        ArrayList<String[]> check = DbConnection.getInstance().eseguiQuery("SELECT idarticolo FROM articolo INNER JOIN product AS p ON idarticolo=p.articolo_idarticolo " +
+                "WHERE name='"+p.getName()+"'  AND p.corsia='"+p.getCorsia()+"' AND p.scaffale='"+p.getScaffale()+"';");
 
-        //insert articolo
-        String res2 = "INSERT INTO articolo (Name,description,costo,category) VALUES ('"+p.getName()+"','"+p.getDescr()+"','"+p.getCosto()+"','"+p.getCategory()+"');" ;
-               // "SELECT C.idarticolo, C.Name, C.costo, C.Image_descr, C.description, C.category, U.subcategory, U.corsia, U.scaffale, U.Produttore_idProduttore FROM articolo AS C INNER JOIN product as U  ON U.idprodotto = C.articolo_idarticolo ;";
-        //VALUES ('"+p.getId()+"','"+p.getName()+"','"+p.getDescr()+"','"+p.getCosto()+"','"+p.getCategoria()+"', '"+p.getSottocategoria()+"','"+p.getCorsia()+"','"+p.getScaffale()+"','"+ Arrays.toString(p.getProdotto()) +"',); ";
-        JOptionPane.showMessageDialog(null, res2);
-        DbConnection.getInstance().eseguiAggiornamento(res2);
+        if(check.size()==1) {
+            String[] riga = check.get(0);
+            JOptionPane.showMessageDialog(null,"PRODOTTO GIA' PRESENTE CON MATRICOLA ==> "+Integer.parseInt(riga[0])+"");
+        }else {
+
+            //insert articolo
+            String res2 = "INSERT INTO articolo (Name,description,costo,category) VALUES " +
+                    "('" + p.getName() + "','" + p.getDescr() + "','" + p.getCosto() + "','" + p.getCategory() + "');";
+            JOptionPane.showMessageDialog(null, res2);
+            DbConnection.getInstance().eseguiAggiornamento(res2);
 //aggiunta foto
-        String img2="INSERT INTO articolo_photo (Image_descr,articolo_idarticolo) VALUES (?,(SELECT idarticolo from articolo WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "'  ) )  ;";
-        DbConnection.getInstance().addFoto(img,img2);
+            String img2 = "INSERT INTO articolo_photo (Image_descr,articolo_idarticolo) VALUES (?," +
+                    "(SELECT idarticolo from articolo WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "'  ) )  ;";
+            DbConnection.getInstance().addFoto(img, img2);
+//CHECK PRODUTTORE E INSERIMENTO NUOVO PRODUTTORE
+            ArrayList<String[]> check_prod = DbConnection.getInstance().eseguiQuery("SELECT idproduttore FROM produttore  " +
+                    " WHERE Name='" + prod.getNome() + "' AND Website='" + prod.getSitoweb() + "' AND citta='" + prod.getCitta() + "' AND Nazione ='" + prod.getNazione() + "';");
 
-        //insert prodotto
-        String mngs = "INSERT INTO product (articolo_idarticolo) VALUES " +
-                "( (SELECT idarticolo from articolo WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "'  ) );";
-        JOptionPane.showMessageDialog(null, mngs);
-        DbConnection.getInstance().eseguiAggiornamento(mngs);
-        String uppr = "UPDATE product INNER JOIN articolo AS d ON articolo_idarticolo=d.idarticolo SET subcategory='"+p.getSottocategoria()+"', corsia='"+p.getCorsia()+"' , scaffale='"+p.getScaffale()+"'" +
-                " WHERE d.idarticolo=(SELECT idarticolo FROM articolo  WHERE Name='"+p.getName()+"' AND description ='"+p.getDescr()+"' );";
-        JOptionPane.showMessageDialog(null, uppr);
-        DbConnection.getInstance().eseguiAggiornamento(uppr);
+            if(check_prod.size()==1) {
+                String[] riga = check_prod.get(0);
+                JOptionPane.showMessageDialog(null,"PRODOTTURE GIA' PRESENTE CON MATRICOLA ==> "+Integer.parseInt(riga[0])+"");
+                String mngs = "INSERT INTO product (articolo_idarticolo,Produttore_idProduttore) VALUES " +
+                        "( (SELECT idarticolo from articolo WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "'  )," +
+                        "  '"+Integer.parseInt(riga[0])+"');";
+                JOptionPane.showMessageDialog(null, mngs);
+                DbConnection.getInstance().eseguiAggiornamento(mngs);
+                String uppr = "UPDATE product INNER JOIN articolo AS d ON articolo_idarticolo=d.idarticolo SET subcategory='" + p.getSottocategoria() + "', corsia='" + p.getCorsia() + "' , scaffale='" + p.getScaffale() + "'" +
+                        " WHERE d.idarticolo=(SELECT idarticolo FROM articolo  WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "' );";
+                JOptionPane.showMessageDialog(null, uppr);
+                DbConnection.getInstance().eseguiAggiornamento(uppr);
+            }else {
+                //insert produttore
+                String prodfin = "INSERT INTO Produttore (Name,Website,citta,Nazione) VALUES ('" + prod.getNome() + "', '" + prod.getSitoweb() + "', '" + prod.getCitta() + "',  '" + prod.getNazione() + "');" ;
+                JOptionPane.showMessageDialog(null, prodfin);
+                DbConnection.getInstance().eseguiAggiornamento(prodfin);
+                //insert prodotto
+                String mngs = "INSERT INTO product (articolo_idarticolo, Produttore_idProduttore) VALUES " +
+                        "( (SELECT idarticolo from articolo WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "'  )," +
+                        "(SELECT idproduttore from produttore where Name='"+prod.getNome()+"' AND Website='"+prod.getSitoweb()+"' AND citta='"+prod.getCitta()+"' AND Nazione='"+prod.getNazione()+"' ) );";
+                JOptionPane.showMessageDialog(null, mngs);
+                DbConnection.getInstance().eseguiAggiornamento(mngs);
+                String uppr = "UPDATE product INNER JOIN articolo AS d ON articolo_idarticolo=d.idarticolo SET subcategory='" + p.getSottocategoria() + "', corsia='" + p.getCorsia() + "' , scaffale='" + p.getScaffale() + "'" +
+                        " WHERE d.idarticolo=(SELECT idarticolo FROM articolo  WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "' );";
+                JOptionPane.showMessageDialog(null, uppr);
+                DbConnection.getInstance().eseguiAggiornamento(uppr);
 
-//insert produttore
-        String produttore = "INSERT INTO Produttore (product_idproduct) VALUES ( (SELECT idproduct from product INNER JOIN articolo AS us ON articolo_idarticolo=us.idarticolo  WHERE us.Name='" + p.getName() + "' AND us.description ='" + p.getDescr() + "' ) ); ";
-        JOptionPane.showMessageDialog(null, produttore);
-        DbConnection.getInstance().eseguiAggiornamento(produttore);
-        String prodfin = "UPDATE Produttore INNER JOIN product AS d ON product_idproduct=d.idproduct SET Name='"+prod.getNome()+"', Website='"+prod.getSitoweb()+"', citta='"+prod.getCitta()+"', Nazione ='"+prod.getNazione()+"'" +
-                "WHERE d.idproduct=(SELECT idproduct from product INNER JOIN articolo AS us ON articolo_idarticolo=us.idarticolo  WHERE Name='"+p.getName()+"' AND description ='"+p.getDescr()+"'  );";
-        JOptionPane.showMessageDialog(null, prodfin);
-        DbConnection.getInstance().eseguiAggiornamento(prodfin);
+            }
+            //conferma salvataggio
+            ArrayList<String[]> id = DbConnection.getInstance().eseguiQuery("SELECT idarticolo FROM articolo INNER JOIN product AS p ON idarticolo=p.articolo_idarticolo " +
+                    "WHERE name='" + p.getName() + "' AND category='" + p.getCategory() + "' AND p.corsia='" + p.getCorsia() + "' AND p.scaffale='" + p.getScaffale() + "'");
 
-        //conferma salvataggio
-        ArrayList<String[]> id = DbConnection.getInstance().eseguiQuery("SELECT idarticolo FROM articolo INNER JOIN product AS p ON idarticolo=p.articolo_idarticolo " +
-                "WHERE name='"+p.getName()+"' AND category='"+p.getCategory()+"' AND p.corsia='"+p.getCorsia()+"' AND p.scaffale='"+p.getScaffale()+"'");
-
-        if(id.size()==1) {
-            String[] riga = id.get(0);
-            JOptionPane.showMessageDialog(null,"PRODOTTO INSERITO CON MATRICOLA ==> "+Integer.parseInt(riga[0])+"");
-        }else{
-            JOptionPane.showMessageDialog(null,"PRODOTTO NON INSERITO CORRETTAMENTE");
+            if (id.size() == 1) {
+                String[] riga = id.get(0);
+                JOptionPane.showMessageDialog(null, "PRODOTTO INSERITO CON MATRICOLA ==> " + Integer.parseInt(riga[0]) + "");
+            } else {
+                JOptionPane.showMessageDialog(null, "PRODOTTO NON INSERITO CORRETTAMENTE");
+            }
         }
-
 
     }
 
@@ -68,107 +89,159 @@ public class AdminDAO implements IAdminDAO{
     @Override
     //aggiunta nuovo sottoprodotto
     public void newsubproduct(SubProduct p, Produttore prod, byte[] img, Product p2) {
+        //PRODOTTO ESISTE GIà?
+        ArrayList<String[]> check = DbConnection.getInstance().eseguiQuery("SELECT idarticolo FROM articolo INNER JOIN product AS p ON idarticolo=p.articolo_idarticolo " +
+                "WHERE name='"+p.getName()+"'  AND p.corsia='"+p.getCorsia()+"' AND p.scaffale='"+p.getScaffale()+"';");
 
-        //insert articolo
-        String res2 = "INSERT INTO articolo (Name,description,costo,category) VALUES ('"+p.getName()+"','"+p.getDescr()+"','"+p.getCosto()+"',  NULL ,'"+p.getCategory()+"');" ;
-        // "SELECT C.idarticolo, C.Name, C.costo, C.Image_descr, C.description, C.category, U.subcategory, U.corsia, U.scaffale, U.Produttore_idProduttore FROM articolo AS C INNER JOIN product as U  ON U.idprodotto = C.articolo_idarticolo ;";
-        //VALUES ('"+p.getId()+"','"+p.getName()+"','"+p.getDescr()+"','"+p.getCosto()+"','"+p.getCategoria()+"', '"+p.getSottocategoria()+"','"+p.getCorsia()+"','"+p.getScaffale()+"','"+ Arrays.toString(p.getProdotto()) +"',); ";
-        JOptionPane.showMessageDialog(null, res2);
-        DbConnection.getInstance().eseguiAggiornamento(res2);
+        if(check.size()==1) {
+            String[] riga = check.get(0);
+            JOptionPane.showMessageDialog(null,"SUBPRODOTTO GIA' PRESENTE CON MATRICOLA ==> "+Integer.parseInt(riga[0])+"");
+        }else {
+
+            //insert articolo subprodotto
+            String res2 = "INSERT INTO articolo (Name,description,costo,category) VALUES " +
+                    "('" + p.getName() + "','" + p.getDescr() + "','" + p.getCosto() + "','" + p.getCategory() + "');";
+            JOptionPane.showMessageDialog(null, res2);
+            DbConnection.getInstance().eseguiAggiornamento(res2);
 //aggiunta foto
-        String img2="INSERT INTO articolo_photo (Image_descr,articolo_idarticolo) VALUES (?,(SELECT idarticolo from articolo WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "'  ) )  ;";
-        DbConnection.getInstance().addFoto(img,img2);
+            String img2 = "INSERT INTO articolo_photo (Image_descr,articolo_idarticolo) VALUES (?," +
+                    "(SELECT idarticolo from articolo WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "'  ) )  ;";
+            DbConnection.getInstance().addFoto(img, img2);
 
+//CHECK PRODUTTORE E INSERIMENTO NUOVO PRODUTTORE
+            ArrayList<String[]> check_prod = DbConnection.getInstance().eseguiQuery("SELECT idproduttore FROM produttore  " +
+                    " WHERE Name='" + prod.getNome() + "' AND Website='" + prod.getSitoweb() + "' AND citta='" + prod.getCitta() + "' AND Nazione ='" + prod.getNazione() + "';");
 
-        //insert prodotto
-        String mngs = "INSERT INTO product (articolo_idarticolo) VALUES " +
-                "( (SELECT idarticolo from articolo WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "'  ) );";
-        JOptionPane.showMessageDialog(null, mngs);
-        DbConnection.getInstance().eseguiAggiornamento(mngs);
-        String uppr = "UPDATE product INNER JOIN articolo AS d ON articolo_idarticolo=d.idarticolo SET subcategory='"+p.getSottocategoria()+"', " +
-                " WHERE d.idarticolo=(SELECT idarticolo FROM articolo  WHERE Name='"+p.getName()+"' AND description ='"+p.getDescr()+"' );";
-        JOptionPane.showMessageDialog(null, uppr);
-        DbConnection.getInstance().eseguiAggiornamento(uppr);
+            if(check_prod.size()==1) {
+                String[] riga = check_prod.get(0);
+                JOptionPane.showMessageDialog(null,"PRODUTTURE GIA' PRESENTE CON MATRICOLA ==> "+Integer.parseInt(riga[0])+"");
 
-        //insert prodotto
-        String sub = "INSERT INTO Subproduct (articolo_idarticolo,product_idproduct) VALUES " +
-                "((SELECT idarticolo FROM articolo  WHERE Name='"+p.getName()+"' AND description ='"+p.getDescr()+"' )," +
-                " (SELECT idproduct from product INNER JOIN articolo AS us ON articolo_idarticolo=us.idarticolo  WHERE us.Name='" + p2.getName() + "' AND us.description ='" + p2.getDescr() + "' ));";
-        JOptionPane.showMessageDialog(null, sub);
-        DbConnection.getInstance().eseguiAggiornamento(mngs);
+                String mngs = "INSERT INTO product (articolo_idarticolo,Produttore_idProduttore) VALUES " +
+                        "( (SELECT idarticolo from articolo WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "'  )," +
+                        "  '"+Integer.parseInt(riga[0])+"');";
+                JOptionPane.showMessageDialog(null, mngs);
+                DbConnection.getInstance().eseguiAggiornamento(mngs);
 
-//insert produttore
-        String produttore = "INSERT INTO Produttore (product_idproduct) VALUES ( (SELECT idproduct from product INNER JOIN articolo AS us ON articolo_idarticolo=us.idarticolo  WHERE us.Name='" + p.getName() + "' AND us.description ='" + p.getDescr() + "' ) ); ";
-        JOptionPane.showMessageDialog(null, produttore);
-        DbConnection.getInstance().eseguiAggiornamento(produttore);
-        String prodfin = "UPDATE Produttore INNER JOIN product AS d ON product_idproduct=d.idproduct SET Name='"+prod.getNome()+"', Website='"+prod.getSitoweb()+"', Citta='"+prod.getCitta()+"', Nazione ='"+prod.getNazione()+"'" +
-                "WHERE d.idproduct=(SELECT idproduct from product INNER JOIN articolo AS us ON articolo_idarticolo=us.idarticolo  WHERE Name='"+p.getName()+"' AND description ='"+p.getDescr()+"'  );";
-        JOptionPane.showMessageDialog(null, prodfin);
-        DbConnection.getInstance().eseguiAggiornamento(prodfin);
+                String uppr = "UPDATE product INNER JOIN articolo AS d ON articolo_idarticolo=d.idarticolo SET subcategory='" + p.getSottocategoria() + "'" +
+                        " WHERE d.idarticolo=(SELECT idarticolo FROM articolo  WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "' );";
+                JOptionPane.showMessageDialog(null, uppr);
+                DbConnection.getInstance().eseguiAggiornamento(uppr);
 
-        //conferma salvataggio
-        ArrayList<String[]> id = DbConnection.getInstance().eseguiQuery("SELECT idarticolo FROM articolo INNER JOIN product AS p  ON idarticolo=p.articolo_idarticolo INNER JOIN Subproduct AS ar ON p.idproduct=ar.product_idproduct  " +
-                "WHERE name='"+p.getName()+"' AND category='"+p.getCategory()+"' AND p.corsia='"+p.getCorsia()+"' AND p.scaffale='"+p.getScaffale()+"'");
+                String SUB = "INSERT INTO Subproduct (articolo_idarticolo,Product_idProduct) VALUES " +
+                        "( (SELECT idarticolo from articolo WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "'  )," +
+                        "  (SELECT idproduct from product INNER JOIN articolo AS a WHERE a.Name='" + p2.getName() + "' AND a.description ='" + p2.getDescr() + "' AND subcategory='"+p2.getSottocategoria()+"' AND corsia='"+p2.getCorsia()+"' AND scaffale='"+p2.getScaffale()+"'));";
+                JOptionPane.showMessageDialog(null, mngs);
+                DbConnection.getInstance().eseguiAggiornamento(mngs);
 
-        if(id.size()==1) {
-            String[] riga = id.get(0);
-            JOptionPane.showMessageDialog(null,"SUBPRODOTTO INSERITO CON MATRICOLA ==> "+Integer.parseInt(riga[0])+"");
-        }else{
-            JOptionPane.showMessageDialog(null,"SUBPRODOTTO NON INSERITO CORRETTAMENTE");
+            }else {
+                //insert produttore
+                String prodfin = "INSERT INTO Produttore (Name,Website,citta,Nazione) VALUES ('" + prod.getNome() + "', '" + prod.getSitoweb() + "', '" + prod.getCitta() + "',  '" + prod.getNazione() + "');" ;
+                JOptionPane.showMessageDialog(null, prodfin);
+                DbConnection.getInstance().eseguiAggiornamento(prodfin);
+
+                ArrayList<String[]> prodii = DbConnection.getInstance().eseguiQuery("SELECT idproduttore FROM produttore  " +
+                        " WHERE Name='" + prod.getNome() + "' AND Website='" + prod.getSitoweb() + "' AND citta='" + prod.getCitta() + "' AND Nazione ='" + prod.getNazione() + "';");
+                String[] riga = check_prod.get(0);
+                String mngs = "INSERT INTO product (articolo_idarticolo,Produttore_idProduttore) VALUES " +
+                        "( (SELECT idarticolo from articolo WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "'  )," +
+                        "  '"+Integer.parseInt(riga[0])+"');";
+                JOptionPane.showMessageDialog(null, mngs);
+                DbConnection.getInstance().eseguiAggiornamento(mngs);
+
+                String uppr = "UPDATE product INNER JOIN articolo AS d ON articolo_idarticolo=d.idarticolo SET subcategory='" + p.getSottocategoria() + "'" +
+                        " WHERE d.idarticolo=(SELECT idarticolo FROM articolo  WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "' );";
+                JOptionPane.showMessageDialog(null, uppr);
+                DbConnection.getInstance().eseguiAggiornamento(uppr);
+
+                String SUB = "INSERT INTO Subproduct (articolo_idarticolo,Product_idProduct) VALUES " +
+                        "( (SELECT idarticolo from articolo WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "'  )," +
+                        "  (SELECT idproduct from product INNER JOIN articolo AS a WHERE a.Name='" + p2.getName() + "' AND a.description ='" + p2.getDescr() + "' AND subcategory='"+p2.getSottocategoria()+"' AND corsia='"+p2.getCorsia()+"' AND scaffale='"+p2.getScaffale()+"'));";
+                JOptionPane.showMessageDialog(null, mngs);
+                DbConnection.getInstance().eseguiAggiornamento(mngs);
+
+            }
+            //conferma salvataggio
+            ArrayList<String[]> id = DbConnection.getInstance().eseguiQuery("SELECT idarticolo FROM articolo INNER JOIN Subproduct AS p ON idarticolo=p.articolo_idarticolo " +
+                    "WHERE name='" + p.getName() + "' AND category='" + p.getCategory() + "' ;");
+
+            if (id.size() == 1) {
+                String[] riga = id.get(0);
+                JOptionPane.showMessageDialog(null, "SUBPRODOTTO INSERITO CON MATRICOLA ==> " + Integer.parseInt(riga[0]) + "");
+            } else {
+                JOptionPane.showMessageDialog(null, "SUBPRODOTTO NON INSERITO CORRETTAMENTE");
+            }
         }
-
 
     }
 
     @Override
     //inserisci nuovo servizio
     public void newservice( service p, Fornitore prod, byte[] img){
+        //PRODOTTO ESISTE GIà?
+        ArrayList<String[]> check = DbConnection.getInstance().eseguiQuery("SELECT idarticolo FROM articolo  " +
+                "WHERE name='"+p.getName()+"' AND description='"+p.getDescr()+"';");
 
-        //insert articolo
-        String res2 = "INSERT INTO articolo (Name,description,costo,category) VALUES ('"+p.getName()+"','"+p.getDescr()+"','"+p.getCosto()+"' ,'"+p.getCategory()+"');" ;
-        // "SELECT C.idarticolo, C.Name, C.costo, C.Image_descr, C.description, C.category, U.subcategory, U.corsia, U.scaffale, U.Produttore_idProduttore FROM articolo AS C INNER JOIN product as U  ON U.idprodotto = C.articolo_idarticolo ;";
-        //VALUES ('"+p.getId()+"','"+p.getName()+"','"+p.getDescr()+"','"+p.getCosto()+"','"+p.getCategoria()+"', '"+p.getSottocategoria()+"','"+p.getCorsia()+"','"+p.getScaffale()+"','"+ Arrays.toString(p.getProdotto()) +"',); ";
-        JOptionPane.showMessageDialog(null, res2);
-        DbConnection.getInstance().eseguiAggiornamento(res2);
+        if(check.size()==1) {
+            String[] riga = check.get(0);
+            JOptionPane.showMessageDialog(null,"SERVIZIO GIA' PRESENTE CON MATRICOLA ==> "+Integer.parseInt(riga[0])+"");
+        }else {
 
+            //insert articolo
+            String res2 = "INSERT INTO articolo (Name,description,costo,category) VALUES " +
+                    "('" + p.getName() + "','" + p.getDescr() + "','" + p.getCosto() + "','" + p.getCategory() + "');";
+            JOptionPane.showMessageDialog(null, res2);
+            DbConnection.getInstance().eseguiAggiornamento(res2);
 //aggiunta foto
-        String img2="INSERT INTO articolo_photo (Image_descr,articolo_idarticolo) VALUES (?,(SELECT idarticolo from articolo WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "'  ) )  ;";
-        DbConnection.getInstance().addFoto(img,img2);
+            String img2 = "INSERT INTO articolo_photo (Image_descr,articolo_idarticolo) VALUES (?," +
+                    "(SELECT idarticolo from articolo WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "'  ) )  ;";
+            DbConnection.getInstance().addFoto(img, img2);
+//CHECK PRODUTTORE E INSERIMENTO NUOVO PRODUTTORE
+            ArrayList<String[]> check_forn = DbConnection.getInstance().eseguiQuery("SELECT idFornitore FROM  Fornitore " +
+                    " WHERE Name='" + prod.getNome() + "' AND Website='" + prod.getSitoweb() + "' AND citta='" + prod.getCitta() + "' AND Nazione ='" + prod.getNazione() + "';");
 
-        //insert prodotto
-        String mngs = "INSERT INTO service (articolo_idarticolo) VALUES " +
-                "( (SELECT idarticolo from articolo WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "'  ) );";
-        JOptionPane.showMessageDialog(null, mngs);
-        DbConnection.getInstance().eseguiAggiornamento(mngs);
+            if(check_forn.size()==1) {
+                String[] riga = check_forn.get(0);
+                JOptionPane.showMessageDialog(null,"FORNITORE GIA' PRESENTE CON MATRICOLA ==> "+Integer.parseInt(riga[0])+"");
+                String mngs = "INSERT INTO service (articolo_idarticolo,Fornitore_idFornitore) VALUES " +
+                        "( (SELECT idarticolo from articolo WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "'  )," +
+                        "  '"+Integer.parseInt(riga[0])+"');";
+                JOptionPane.showMessageDialog(null, mngs);
+                DbConnection.getInstance().eseguiAggiornamento(mngs);
 
-//insert fornitore
-        String produttore = "INSERT INTO Fornitore (service_idservice) VALUES ( (SELECT idservice from service INNER JOIN articolo AS us ON articolo_idarticolo=us.idarticolo  WHERE us.Name='" + p.getName() + "' AND us.description ='" + p.getDescr() + "' ) ); ";
-        JOptionPane.showMessageDialog(null, produttore);
-        DbConnection.getInstance().eseguiAggiornamento(produttore);
-        String prodfin = "UPDATE Fornitore INNER JOIN service AS d ON service_idservice=d.idservice SET Name='"+prod.getNome()+"', Website='"+prod.getSitoweb()+"', Citta='"+prod.getCitta()+"', Nazione ='"+prod.getNazione()+"'" +
-                "WHERE d.idservice=(SELECT idservice from service INNER JOIN articolo AS us ON articolo_idarticolo=us.idarticolo  WHERE Name='"+p.getName()+"' AND description ='"+p.getDescr()+"'  );";
-        JOptionPane.showMessageDialog(null, prodfin);
-        DbConnection.getInstance().eseguiAggiornamento(prodfin);
+            }else {
+                //insert produttore
+                String prodfin = "INSERT INTO Fornitore (Name,Website,citta,Nazione) VALUES ('" + prod.getNome() + "', '" + prod.getSitoweb() + "', '" + prod.getCitta() + "',  '" + prod.getNazione() + "');" ;
+                JOptionPane.showMessageDialog(null, prodfin);
+                DbConnection.getInstance().eseguiAggiornamento(prodfin);
+                //insert prodotto
+                String mngs = "INSERT INTO service (articolo_idarticolo, Fornitore_idFornitore) VALUES " +
+                        "( (SELECT idarticolo from articolo WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "'  )," +
+                        "(SELECT idFornitore from Fornitore where Name='"+prod.getNome()+"' AND Website='"+prod.getSitoweb()+"' AND citta='"+prod.getCitta()+"' AND Nazione='"+prod.getNazione()+"' ) );";
+                JOptionPane.showMessageDialog(null, mngs);
+                DbConnection.getInstance().eseguiAggiornamento(mngs);
 
-        //conferma salvataggio
-        ArrayList<String[]> id = DbConnection.getInstance().eseguiQuery("SELECT idarticolo FROM articolo INNER JOIN service AS ar ON idarticolo=ar.articolo_idarticolo " +
-                "WHERE Name='"+p.getName()+"' AND category='"+p.getCategory()+"' AND description='"+p.getDescr()+"' ");
 
-        if(id.size()==1) {
-            String[] riga = id.get(0);
-            JOptionPane.showMessageDialog(null,"SERVIZIO INSERITO CON MATRICOLA ==> "+Integer.parseInt(riga[0])+"");
-        }else{
-            JOptionPane.showMessageDialog(null,"SERVIZIO NON INSERITO CORRETTAMENTE");
+            }
+            //conferma salvataggio
+            ArrayList<String[]> id = DbConnection.getInstance().eseguiQuery("SELECT idarticolo FROM articolo INNER JOIN service AS p ON idarticolo=p.articolo_idarticolo " +
+                    "WHERE name='" + p.getName() + "' AND category='" + p.getCategory() + "' ");
+
+            if (id.size() == 1) {
+                String[] riga = id.get(0);
+                JOptionPane.showMessageDialog(null, "PRODOTTO INSERITO CON MATRICOLA ==> " + Integer.parseInt(riga[0]) + "");
+            } else {
+                JOptionPane.showMessageDialog(null, "PRODOTTO NON INSERITO CORRETTAMENTE");
+            }
         }
-
 
     }
 
     @Override
     //elimina article (prodotto,servizio)
-    public void erase_article(String name, String category){
-        articleDAO a=new articleDAO();
-        String res3 = "DELETE from articolo WHERE Name='" + name + "' AND category ='" + category + "' ; ";
+    public void erase_article(int id){
+        articleDAO ar=new articleDAO();
+        article a=ar.findById(id);
+        String res3 = "DELETE from articolo WHERE Name='" +a.getName() + "' AND description= '"+a.getDescr()+"' AND category ='" + a.getCategory() + "' ; ";
         JOptionPane.showMessageDialog(null,res3);
         ArrayList<String[]> erase_article = DbConnection.getInstance().eseguiQuery(res3);
     }
@@ -180,7 +253,7 @@ public class AdminDAO implements IAdminDAO{
         String res = "UPDATE articolo INNER JOIN product as p ON p.articolo_idarticolo = idarticolo  " +
                 "SET Name='"+p.getName()+"',description='"+p.getDescr()+"',costo='"+p.getCosto()+"',category='"+p.getCategory()+"' , p.subcategory='"+p.getSottocategoria()+"', p.corsia='"+p.getCorsia()+"',p.scaffale='"+p.getScaffale()+"'" ;
         DbConnection.getInstance().eseguiAggiornamento(res);
-        String del_image = "DELETE FROM articolo_photo WHERE (`idarticolo_photo` = '7');" ;
+        String del_image = "DELETE FROM articolo_photo WHERE articolo_idarticolo='"+lastid_prod+"';" ;
         DbConnection.getInstance().eseguiAggiornamento(del_image);
         //aggiunta foto
         String img2="INSERT INTO articolo_photo (Image_descr,articolo_idarticolo) VALUES (?,(SELECT idarticolo from articolo WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "'  ) )  ;";
@@ -197,7 +270,7 @@ public class AdminDAO implements IAdminDAO{
                 "SET Name='"+p.getName()+"',description'"+p.getDescr()+"',costo='"+p.getCosto()+"',category ='"+p.getCategory()+"'" +
                 "WHERE d.idservice=(SELECT idservice from service INNER JOIN articolo AS us ON articolo_idarticolo=us.idarticolo  WHERE us.idarticolo='"+lastid_serv+"' );";
         DbConnection.getInstance().eseguiAggiornamento(res);
-        String del_image = "DELETE FROM articolo_photo  WHERE articolo_idarticolo='"+lastid_serv+"';" ;
+        String del_image = "DELETE FROM articolo_photo WHERE articolo_idarticolo='"+lastid_serv+"';" ;
         DbConnection.getInstance().eseguiAggiornamento(del_image);
         //aggiunta foto
         String img2="INSERT INTO articolo_photo (Image_descr,articolo_idarticolo) VALUES (?,(SELECT idarticolo from articolo WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "'  ) )  ;";

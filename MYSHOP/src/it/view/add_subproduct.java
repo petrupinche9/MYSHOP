@@ -129,7 +129,9 @@ public class add_subproduct extends JFrame {
         ImageIcon image = new ImageIcon(newImg);
         return image;
     }
-
+public void setidprod(int id){
+        idprod.setText(String.valueOf(id));
+}
 }
 
 

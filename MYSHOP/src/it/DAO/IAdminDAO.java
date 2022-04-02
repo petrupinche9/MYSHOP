@@ -11,7 +11,7 @@ public interface IAdminDAO extends IBaseDAO<Admin>{
     void newservice(service p, Fornitore prod, byte[] img);
 
     //elimina article (prodotto,servizio)
-    void erase_article(String name, String category);
+    void erase_article(int id);
 
     //modifica prodotti,servizi
     void mod_prodotti(Product p, int i);
