@@ -241,9 +241,55 @@ public class AdminDAO implements IAdminDAO{
     public void erase_article(int id){
         articleDAO ar=new articleDAO();
         article a=ar.findById(id);
-        String res3 = "DELETE from articolo WHERE Name='" +a.getName() + "' AND description= '"+a.getDescr()+"' AND category ='" + a.getCategory() + "' ; ";
-        JOptionPane.showMessageDialog(null,res3);
-        ArrayList<String[]> erase_article = DbConnection.getInstance().eseguiQuery(res3);
+        //conferma salvataggio
+        ArrayList<String[]> art = DbConnection.getInstance().eseguiQuery("SELECT idarticolo FROM articolo WHERE name='" + a.getName() + "' AND category='" + a.getCategory() + "' ");
+
+        if (art.size() == 1) {
+            String[] riga = art.get(0);
+            JOptionPane.showMessageDialog(null, "ARTICOLO PRESENTE CON MATRICOLA ==> " + Integer.parseInt(riga[0]) + "");
+
+            ArrayList<String[]> pro = DbConnection.getInstance().eseguiQuery("SELECT idproduct FROM product INNER JOIN articolo AS a ON a.idarticolo=articolo_idarticolo  WHERE a.idarticolo='" + Integer.parseInt(riga[0]) + "'");
+            if (pro.size() == 1) {
+                JOptionPane.showMessageDialog(null, "PRODOTTO PRESENTE ");
+
+                String[] prodi = art.get(0);
+                String res2 = "DELETE from product WHERE idproduct='" + Integer.parseInt(prodi[0]) + "' ; ";
+                JOptionPane.showMessageDialog(null, res2);
+                DbConnection.getInstance().eseguiAggiornamento(res2);
+                String res3 = "DELETE from articolo_photo INNER JOIN articolo AS a ON articolo_idarticolo=a.idarticolo WHERE articolo_idarticolo='"+Integer.parseInt(riga[0])+"' " ;
+                        //"WHERE a.Name='" + a.getName() + "' AND a.description= '" + a.getDescr() + "' AND a.category ='" + a.getCategory() + "' ; ";
+                JOptionPane.showMessageDialog(null, res3);
+                DbConnection.getInstance().eseguiAggiornamento(res3);
+                String res = "DELETE from articolo WHERE idarticolo='"+Integer.parseInt(riga[0])+"' ";
+                        //"a.Name='" + a.getName() + "' AND a.description= '" + a.getDescr() + "' AND a.category ='" + a.getCategory() + "' ; ";
+                JOptionPane.showMessageDialog(null, res);
+                DbConnection.getInstance().eseguiAggiornamento(res);
+            } else {
+                ArrayList<String[]> serv = DbConnection.getInstance().eseguiQuery("SELECT idservice FROM service INNER JOIN articolo AS a ON a.idarticolo=articolo_idarticolo  WHERE a.idarticolo='" + Integer.parseInt(riga[0]) + "'");
+
+                if(serv.size()==1){
+                    JOptionPane.showMessageDialog(null, "SERVIZIO PRESENTE ");
+
+                    String[] servi = serv.get(0);
+                    String res2 = "DELETE from service WHERE idservice='" + Integer.parseInt(servi[0]) + "' ; ";
+                    JOptionPane.showMessageDialog(null, res2);
+                    DbConnection.getInstance().eseguiAggiornamento(res2);
+                    String res3 = "DELETE from articolo_photo INNER JOIN articolo AS a ON articolo_idarticolo=a.idarticolo  a.idarticolo='"+Integer.parseInt(riga[0])+"' " ;
+                            //"WHERE a.Name='" + a.getName() + "' AND a.description= '" + a.getDescr() + "' AND a.category ='" + a.getCategory() + "' ; ";
+                    JOptionPane.showMessageDialog(null, res3);
+                    DbConnection.getInstance().eseguiAggiornamento(res3);
+                    String res = "DELETE from articolo WHERE a.Name='" + a.getName() + "' AND a.description= '" + a.getDescr() + "' AND a.category ='" + a.getCategory() + "' ; ";
+                    JOptionPane.showMessageDialog(null, res);
+                    DbConnection.getInstance().eseguiAggiornamento(res);
+                }else{
+                    JOptionPane.showMessageDialog(null, "PRODOTTO NON TROVATO O INESISTENTE");
+                }
+
+            }
+
+        }else{
+            JOptionPane.showMessageDialog(null, "ARTICOLO NON TROVATO O INESISTENTE");
+        }
     }
 
     @Override
