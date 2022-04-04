@@ -18,10 +18,9 @@ public class articleDAO implements IarticleDAO{
             c = new Product();
             c.setId(Integer.parseInt(riga[0]));
             c.setName(riga[1]);
-            c.setCosto(Double.parseDouble(riga[2]));
-            byte[] img = riga[3].getBytes();  //parsing from string to byte
-            c.setImg(img);
-            c.setDescr(riga[4]);
+            c.setDescr(riga[2]);
+            c.setCosto(Double.parseDouble(riga[3]));
+            c.setCategory(riga[4]);
           /*  c.setSottocategoria(riga[5]);
             c.setCorsia(Integer.parseInt(riga[6]));
             c.setScaffale(Integer.parseInt(riga[7]));*/

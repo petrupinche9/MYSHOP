@@ -4,6 +4,9 @@
     <list default="true" id="71d110a1-c0bc-4f14-8051-33f62b96ad40" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/DAO/AdminDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/DAO/AdminDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/DAO/articleDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/DAO/articleDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/DAO/AdminDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/DAO/AdminDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/DAO/articleDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/DAO/articleDAO.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -181,7 +184,7 @@
       <workItem from="1645880302727" duration="101000" />
       <workItem from="1645883541906" duration="4453000" />
       <workItem from="1645903646019" duration="290833000" />
-      <workItem from="1648584791472" duration="43806000" />
+      <workItem from="1648584791472" duration="47308000" />
     </task>
     <task id="LOCAL-00001" summary="GUI INIT">
       <created>1645147530607</created>
@@ -512,7 +515,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648899031725</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="articoli finiti not tested">
+      <created>1648913613606</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1648913613606</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -614,7 +624,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="DEF classe AdminDAO" />
     <MESSAGE value="AdminDAO ended&#10;managerDAO ended" />
     <MESSAGE value="last task:&#10;comments adn user guest" />
     <MESSAGE value="nuovo db" />
@@ -639,7 +648,8 @@
     <MESSAGE value="modifica articoli ended" />
     <MESSAGE value="modifica articoli update" />
     <MESSAGE value="update vari" />
-    <option name="LAST_COMMIT_MESSAGE" value="update vari" />
+    <MESSAGE value="articoli finiti not tested" />
+    <option name="LAST_COMMIT_MESSAGE" value="articoli finiti not tested" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

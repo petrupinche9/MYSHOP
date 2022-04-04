@@ -249,14 +249,16 @@ public class AdminDAO implements IAdminDAO{
             JOptionPane.showMessageDialog(null, "ARTICOLO PRESENTE CON MATRICOLA ==> " + Integer.parseInt(riga[0]) + "");
 
             ArrayList<String[]> pro = DbConnection.getInstance().eseguiQuery("SELECT idproduct FROM product INNER JOIN articolo AS a ON a.idarticolo=articolo_idarticolo  WHERE a.idarticolo='" + Integer.parseInt(riga[0]) + "'");
+            ArrayList<String[]> serv = DbConnection.getInstance().eseguiQuery("SELECT idservice FROM service INNER JOIN articolo AS a ON a.idarticolo=articolo_idarticolo  WHERE a.idarticolo='" + Integer.parseInt(riga[0]) + "'");
+
             if (pro.size() == 1) {
                 JOptionPane.showMessageDialog(null, "PRODOTTO PRESENTE ");
 
-                String[] prodi = art.get(0);
+                String[] prodi = pro.get(0);
                 String res2 = "DELETE from product WHERE idproduct='" + Integer.parseInt(prodi[0]) + "' ; ";
                 JOptionPane.showMessageDialog(null, res2);
                 DbConnection.getInstance().eseguiAggiornamento(res2);
-                String res3 = "DELETE from articolo_photo INNER JOIN articolo AS a ON articolo_idarticolo=a.idarticolo WHERE articolo_idarticolo='"+Integer.parseInt(riga[0])+"' " ;
+                String res3 = "DELETE from articolo_photo  WHERE articolo_idarticolo=(SELECT idarticolo FROM  articolo WHERE idarticolo='"+Integer.parseInt(riga[0])+"'); " ;
                         //"WHERE a.Name='" + a.getName() + "' AND a.description= '" + a.getDescr() + "' AND a.category ='" + a.getCategory() + "' ; ";
                 JOptionPane.showMessageDialog(null, res3);
                 DbConnection.getInstance().eseguiAggiornamento(res3);
@@ -264,9 +266,7 @@ public class AdminDAO implements IAdminDAO{
                         //"a.Name='" + a.getName() + "' AND a.description= '" + a.getDescr() + "' AND a.category ='" + a.getCategory() + "' ; ";
                 JOptionPane.showMessageDialog(null, res);
                 DbConnection.getInstance().eseguiAggiornamento(res);
-            } else {
-                ArrayList<String[]> serv = DbConnection.getInstance().eseguiQuery("SELECT idservice FROM service INNER JOIN articolo AS a ON a.idarticolo=articolo_idarticolo  WHERE a.idarticolo='" + Integer.parseInt(riga[0]) + "'");
-
+            }
                 if(serv.size()==1){
                     JOptionPane.showMessageDialog(null, "SERVIZIO PRESENTE ");
 
@@ -281,11 +281,8 @@ public class AdminDAO implements IAdminDAO{
                     String res = "DELETE from articolo WHERE a.Name='" + a.getName() + "' AND a.description= '" + a.getDescr() + "' AND a.category ='" + a.getCategory() + "' ; ";
                     JOptionPane.showMessageDialog(null, res);
                     DbConnection.getInstance().eseguiAggiornamento(res);
-                }else{
-                    JOptionPane.showMessageDialog(null, "PRODOTTO NON TROVATO O INESISTENTE");
                 }
 
-            }
 
         }else{
             JOptionPane.showMessageDialog(null, "ARTICOLO NON TROVATO O INESISTENTE");
