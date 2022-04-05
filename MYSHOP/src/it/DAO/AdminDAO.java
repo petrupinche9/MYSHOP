@@ -283,7 +283,6 @@ public class AdminDAO implements IAdminDAO{
                     DbConnection.getInstance().eseguiAggiornamento(res);
                 }
 
-
         }else{
             JOptionPane.showMessageDialog(null, "ARTICOLO NON TROVATO O INESISTENTE");
         }

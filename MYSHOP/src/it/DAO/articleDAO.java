@@ -21,6 +21,7 @@ public class articleDAO implements IarticleDAO{
             c.setDescr(riga[2]);
             c.setCosto(Double.parseDouble(riga[3]));
             c.setCategory(riga[4]);
+            c.setImg(DbConnection.getInstance().getFoto("SELECT Image_descr FROM articolo_photo INNER JOIN articolo AS f ON articolo_idarticolo=f.idarticolo WHERE f.Name='"+riga[1]+"' AND f.description='"+riga[2]+"';"));
           /*  c.setSottocategoria(riga[5]);
             c.setCorsia(Integer.parseInt(riga[6]));
             c.setScaffale(Integer.parseInt(riga[7]));*/

@@ -38,21 +38,6 @@
           <text value="CATALOGO"/>
         </properties>
       </component>
-      <scrollpane id="bccac">
-        <constraints>
-          <grid row="3" column="0" row-span="1" col-span="6" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties/>
-        <border type="none"/>
-        <children>
-          <component id="6f0d8" class="javax.swing.JTable" binding="TableModelarticoli">
-            <constraints/>
-            <properties>
-              <autoCreateRowSorter value="false"/>
-            </properties>
-          </component>
-        </children>
-      </scrollpane>
       <component id="e6ad4" class="javax.swing.JButton" binding="LOGOUTButton" default-binding="true">
         <constraints>
           <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
@@ -86,6 +71,32 @@
           <text value="PUNTI VENDITA"/>
         </properties>
       </component>
+      <grid id="be624" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="6" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <scrollpane id="5ccdb" binding="scrollpane">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="27461" class="javax.swing.JTable" binding="TableModelarticoli">
+                <constraints/>
+                <properties>
+                  <autoCreateRowSorter value="true"/>
+                  <dragEnabled value="false"/>
+                </properties>
+              </component>
+            </children>
+          </scrollpane>
+        </children>
+      </grid>
     </children>
   </grid>
 </form>

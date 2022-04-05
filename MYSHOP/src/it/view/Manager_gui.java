@@ -26,33 +26,42 @@ public class Manager_gui extends JFrame
         aggiungiUnArticoloAlButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 Addarticlemanager addproduct = new Addarticlemanager();
             }
         });
+
         eliminaUnArticoloDaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Deletearticlemanager deleteproduct = new Deletearticlemanager();
             }
         });
+
         aggiungiUtenteAlPuntoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 Addusermanager adduser = new Addusermanager();
             }
         });
+
         eliminaUtenteDaUnButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 Deleteusermanager deleteuser = new Deleteusermanager();
             }
         });
+
         inviaEMailButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 sendemailmanager send = new sendemailmanager();
             }
         });
+
         LOGOUTButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

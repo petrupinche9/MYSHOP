@@ -1,21 +1,20 @@
 package it.view;
 
 import it.DAO.ShopDAO;
-import it.DAO.articleDAO;
 import it.DAO.managerDAO;
 import it.DAO.productDAO;
 import it.model.Point_shop;
 import it.model.Product;
-import it.model.article;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Addarticlemanager extends JFrame{
-    private JTextField textField1;
+    private JTextField idarticle;
     private JTextField textField2;
     private JButton CONFERMAButton;
+    private JComboBox shops;
     private JPanel addarticlePanel;
 
     public Addarticlemanager()
@@ -27,7 +26,7 @@ public class Addarticlemanager extends JFrame{
         CONFERMAButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String id = textField1.getText();
+                String id = idarticle.getText();
                 int idarticle = Integer.parseInt(id);
                 String id2 = textField2.getText();
                 int idpoint = Integer.parseInt(id2);
@@ -41,4 +40,6 @@ public class Addarticlemanager extends JFrame{
             }
         });
     }
+
+
 }

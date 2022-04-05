@@ -32,7 +32,7 @@
           <text value="Inserisci l'ID dell'articolo da inserire nel Punto Vendita"/>
         </properties>
       </component>
-      <component id="f8095" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+      <component id="f8095" class="javax.swing.JTextField" binding="idarticle">
         <constraints>
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -49,20 +49,20 @@
           <text value="Inserisci l'ID del Punto Vendita desiderato"/>
         </properties>
       </component>
-      <component id="866ea" class="javax.swing.JTextField" binding="textField2" default-binding="true">
-        <constraints>
-          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
-          </grid>
-        </constraints>
-        <properties/>
-      </component>
       <component id="437df" class="javax.swing.JButton" binding="CONFERMAButton" default-binding="true">
         <constraints>
           <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="CONFERMA"/>
+        </properties>
+      </component>
+      <component id="d21f8" class="javax.swing.JComboBox" binding="shops">
+        <constraints>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="Calibri" size="12"/>
         </properties>
       </component>
     </children>
