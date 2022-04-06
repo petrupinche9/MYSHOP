@@ -4,17 +4,28 @@ import it.DAO.IarticleDAO;
 import it.DAO.articleDAO;
 import it.model.article;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableModel;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 
-public class HomePage_guest extends JFrame{
+public class HomePage_guest extends JFrame {
     private JPanel panel1;
     private JButton LOGINButton;
     private JButton SIGNUPButton;
     private JTable TableModelarticoli;
+    private JComboBox comboBox_shop;
+    private JComboBox comboBox_cat;
+    private JScrollPane scrollpane;
     private JSplitPane rootpanel;
     private JComboBox shop;
     private JComboBox comboBox1;
@@ -22,47 +33,102 @@ public class HomePage_guest extends JFrame{
 
     // da aggiungere il metodo per aggiornare da database
     public HomePage_guest() {
-        setContentPane(panel1);
-        setTitle("MYSHOP");
-        setSize(300,300);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setVisible(true);
-          //  ArrayList<String[]> res = DbConnection.getInstance().eseguiQuery("SELECT * FROM ARTICLE;");
-       /*IarticleDAO ar=new articleDAO();
-        ArrayList<article> res=ar.findAll();
-        JOptionPane.showMessageDialog(null,res);
-            String columns[] = { "ID", "Name", "Age" };
-        String[][] data = new String[100][10];
 
-        for(int i=0;i<res.size();i++) {
-                int id=res.get(i).getId();
-                String nom = res.get(i).getName();
-                String descr = res.get(i).getDescr();
-                double costo=res.get(i).getCosto();
-                data[i][0] = id + "";
-                data[i][1] = nom;
-                data[i][2] = descr;
-                data[i][3] = String.valueOf(costo);
-                i++;
+        setContentPane(panel1);
+        TableCellRenderer tableRenderer;
+        tableRenderer = TableModelarticoli.getDefaultRenderer(JButton.class);
+        TableModelarticoli.setDefaultRenderer(JButton.class, new it.view.JTableButtonRenderer(tableRenderer));
+        // TableModelarticoli.add(scrollpane);
+        TableModel model = new it.view.JTableButtonModel() {
+
+            IarticleDAO arte = new articleDAO();
+            ArrayList<article> articolo = arte.findAll();
+
+            final String[] COLUMN_NAMES = new String[]{"Nome", "Foto", "descrizione", "Costo", "Categoria", "Stars", ""};
+            final Class<?>[] COLUMN_TYPES = new Class<?>[]{String.class, ImageIcon.class, String.class, double.class, String.class, Integer.class, JButton.class};
+
+            @Override
+            public int getColumnCount() {
+                return COLUMN_NAMES.length;
             }
 
-            DefaultTableModel model = new DefaultTableModel(data, columns);
-            JTable table = new JTable(model);
-      table.setShowGrid(true);
-      table.setShowVerticalLines(true);
-            JScrollPane pane = new JScrollPane();
-            JFrame f = new JFrame("Populate JTable from Database");
-            JPanel panel = new JPanel();
+            @Override
+            public int getRowCount() {
+                return articolo.size();
+            }
 
-      panel.add(pane);
-      f.add(panel);
-      f.setSize(500, 250);
-      f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-      f.setVisible(true);
-*/
+            @Override
+            public String getColumnName(int columnIndex) {
+                return COLUMN_NAMES[columnIndex];
+            }
+
+            @Override
+            public Class<?> getColumnClass(int columnIndex) {
+                return COLUMN_TYPES[columnIndex];
+            }
+
+            @Override
+
+            public Object getValueAt(int rowIndex, final int columnIndex) {
+                //Adding components
 
 
-      //go to login page
+                article ar = articolo.get(rowIndex);
+                switch (columnIndex) {
+                    case 0:
+                        return ar.getName();
+                    case 1:
+                        byte[] img = ar.getImg();
+                        final JLabel foto = new JLabel(COLUMN_NAMES[columnIndex]);
+                        foto.setSize(100, 100);
+                        InputStream in = new ByteArrayInputStream(img);
+                        try {
+                            BufferedImage imgFromDb = ImageIO.read(in);
+                            ImageIcon image = new ImageIcon(imgFromDb);
+                            Image im = image.getImage();
+                            Image myImg = im.getScaledInstance(foto.getWidth(), foto.getHeight(), Image.SCALE_SMOOTH);
+                            ImageIcon newImage = new ImageIcon(myImg);
+                            foto.setIcon(newImage);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        return foto.getIcon();
+                    case 2:
+                        return ar.getDescr();
+                    case 3:
+                        return ar.getCosto();
+                    case 4:
+                        return ar.getCategory();
+                    case 5:
+                        return ar.getEval();
+                    //Adding button and creating click listener
+                    case 6:
+                        final JButton button = new JButton(COLUMN_NAMES[columnIndex]);
+                        button.addActionListener(new ActionListener() {
+                            public void actionPerformed(ActionEvent arg0) {
+                                JOptionPane.showMessageDialog(JOptionPane.getFrameForComponent(button),
+                                        "Button clicked for row ");
+                            }
+                        });
+                        return button;
+                    default:
+                        return "Error";
+                }
+            }
+        };
+        TableModelarticoli.setRowHeight(100);
+        TableModelarticoli.setModel(model);
+//    Comment this code to add table dynamically
+
+
+        // scrollpane = new JScrollPane(TableModelarticoli);
+        setTitle("MYSHOP");
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        pack();
+        setLocationRelativeTo(null);
+        setVisible(true);
+
+        //go to login page
         LOGINButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -86,68 +152,86 @@ public class HomePage_guest extends JFrame{
 
 
     }
-     class TableModelarticoli extends AbstractTableModel {
 
-        IarticleDAO ar=new articleDAO();
-        ArrayList<article> articoli=ar.findAll();
+    class JTableButtonRenderer implements TableCellRenderer {
+        private TableCellRenderer defaultRenderer;
 
-        public TableModelarticoli(ArrayList<article> articoli) {
-            this.articoli = articoli;
+        public JTableButtonRenderer(TableCellRenderer renderer) {
+            defaultRenderer = renderer;
+        }
+
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+            if (value instanceof Component)
+                return (Component) value;
+            return defaultRenderer.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+        }
+    }
+
+    class JTableButtonModel extends AbstractTableModel implements TableModel {
+        IarticleDAO arte = new articleDAO();
+        private ArrayList<article> articolo = arte.findAll();
+
+         final String[] COLUMN_NAMES = new String[]{"Nome", "Foto", "descrizione", "Costo", "Categoria", "Stars", ""};
+         final Class<?>[] COLUMN_TYPES = new Class<?>[]{String.class, BufferedImage.class, String.class, double.class, String.class, Integer.class, JButton.class};
+
+        @Override
+        public int getColumnCount() {
+            return COLUMN_NAMES.length;
         }
 
         @Override
         public int getRowCount() {
-            return articoli.size();
-        }
-
-        @Override
-        public int getColumnCount() {
-                        return 7;
-        }
-
-        @Override
-        public Object getValueAt(int rowIndex, int columnIndex) {
-
-            article p = articoli.get(rowIndex);
-
-            //BINDING
-            switch(columnIndex) {
-                case 0: return p.getName();
-                case 1: return p.getImg();
-                case 2: return p.getDescr();
-                case 3: return p.getCosto();
-                case 4: return p.getCategory();
-                case 5: return p.getEval();
-            }
-
-            return "-";
-        }
-
-        @Override
-        public boolean isCellEditable(int rowIndex, int columnIndex) {
-            return (columnIndex > 4);
-        }
-
-        @Override
-        public void setValueAt(Object value, int rowIndex, int columnIndex) {
-            article p = articoli.get(rowIndex);
-
-           /* switch (columnIndex) {
-                case 5: p.setDataInizio(DateUtil.dateTimeFromString((String)value)); break;
-                case 6: p.setDataFine(DateUtil.dateTimeFromString((String)value)); break;
-            }*/
-
-            //TODO richiamare il metodo di business modificaPrenotazione che chiamera il DAO per update sql
-
+            return articolo.size();
         }
 
         @Override
         public String getColumnName(int columnIndex) {
-            String[] colonne = {"Nome","Foto","descrizione","Costo","Categoria","Stars"};
-            return colonne[columnIndex];
+            return COLUMN_NAMES[columnIndex];
+        }
+
+        @Override
+        public Class<?> getColumnClass(int columnIndex) {
+            return COLUMN_TYPES[columnIndex];
+        }
+
+        @Override
+
+        public Object getValueAt(int rowIndex, final int columnIndex) {
+            //Adding components
+
+
+            article ar = articolo.get(rowIndex);
+            switch (columnIndex) {
+                case 0:
+                    return ar.getName();
+                case 1:
+                    return ar.getImg();
+                case 2:
+                    return ar.getDescr();
+                case 3:
+                    return ar.getCosto();
+                case 4:
+                    return ar.getCategory();
+                case 5:
+                    return ar.getEval();
+                //Adding button and creating click listener
+                case 6:
+                    final JButton button = new JButton(COLUMN_NAMES[columnIndex]);
+                    button.addActionListener(new ActionListener() {
+                        public void actionPerformed(ActionEvent arg0) {
+                            JOptionPane.showMessageDialog(JOptionPane.getFrameForComponent(button),
+                                    "Button clicked for row ");
+                        }
+                    });
+                    return button;
+                default:
+                    return "Error";
+            }
         }
     }
-    }
+}
+
+
 
 
 

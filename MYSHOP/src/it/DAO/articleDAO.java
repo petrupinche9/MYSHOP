@@ -30,13 +30,14 @@ public class articleDAO implements IarticleDAO{
 
         return c;
     }
+
     @Override
     //trova tutti i prodotti
     public ArrayList<article> findAll() {
 
         ArrayList<article> c =new ArrayList<article>() ;
 
-        ArrayList<String[]> res1 = DbConnection.getInstance().eseguiQuery("SELECT * FROM product ;");
+        ArrayList<String[]> res1 = DbConnection.getInstance().eseguiQuery("SELECT * FROM articolo ;");
         for(String[] riga : res1) {
             article p = findById(Integer.parseInt(riga[0]));
             c.add(p);

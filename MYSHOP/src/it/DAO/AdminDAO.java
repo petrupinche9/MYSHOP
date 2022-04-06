@@ -266,8 +266,7 @@ public class AdminDAO implements IAdminDAO{
                         //"a.Name='" + a.getName() + "' AND a.description= '" + a.getDescr() + "' AND a.category ='" + a.getCategory() + "' ; ";
                 JOptionPane.showMessageDialog(null, res);
                 DbConnection.getInstance().eseguiAggiornamento(res);
-            }
-                if(serv.size()==1){
+            }else if(serv.size()==1){
                     JOptionPane.showMessageDialog(null, "SERVIZIO PRESENTE ");
 
                     String[] servi = serv.get(0);
