@@ -104,6 +104,7 @@ public class MENU extends JFrame
                     Session.getInstance().setClienteLoggato(c);
 
                     Catalogue mf = new Catalogue();
+                    mf.setSize(700,700);
                     mf.setVisible(true);
                     mf.pack();
                     mf.setLocationRelativeTo(null);
@@ -123,6 +124,7 @@ public class MENU extends JFrame
             public void actionPerformed(ActionEvent e) {
                 HomePage_guest mf = new HomePage_guest();
                 mf.setVisible(true);
+                mf.setSize(700,700);
                 mf.pack();
                 mf.setLocationRelativeTo(null);
                 mf.setExtendedState(JFrame.DISPOSE_ON_CLOSE);

@@ -12,15 +12,13 @@ import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableModel;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.EventObject;
 
 public class Catalogue extends JFrame{
     private JPanel panel1;
@@ -36,6 +34,7 @@ public class Catalogue extends JFrame{
             public Catalogue() {
 
                               // TableModelarticoli = new JTable(rowData, colonne);
+
                 cliente.setText(Session.getInstance().getClienteLoggato().getUsername());
                 setContentPane(panel1);
                 TableCellRenderer tableRenderer;
@@ -63,6 +62,11 @@ public class Catalogue extends JFrame{
                     @Override
                     public String getColumnName(int columnIndex) {
                         return COLUMN_NAMES[columnIndex];
+                    }
+
+                    @Override
+                    public boolean isCellEditable(EventObject e) {
+                        return true;
                     }
 
                     @Override
@@ -97,6 +101,54 @@ public class Catalogue extends JFrame{
                                 }
                                 return foto.getIcon();
                             case 2:
+                                final JLabel desc = new JLabel(COLUMN_NAMES[columnIndex]);
+                                desc.setText(ar.getDescr());
+                                desc.addMouseListener(new MouseListener() {
+                                    @Override
+                                    public void mouseClicked(MouseEvent e) {
+                                        JOptionPane pane = new JOptionPane(ar.getDescr(), JOptionPane.INFORMATION_MESSAGE);
+                                        JDialog dialog = pane.createDialog(null, "Title");
+                                        dialog.setModal(false);
+                                        dialog.setVisible(true);
+
+                                        new Timer(3000, new ActionListener() {
+                                            @Override
+                                            public void actionPerformed(ActionEvent e) {
+                                                dialog.setVisible(false);
+                                            }
+                                        }).start();
+                                    }
+
+                                    @Override
+                                    public void mousePressed(MouseEvent e) {
+
+                                    }
+
+                                    @Override
+                                    public void mouseReleased(MouseEvent e) {
+
+                                    }
+
+                                    @Override
+                                    public void mouseEntered(MouseEvent e) {
+                                        JOptionPane pane = new JOptionPane(ar.getDescr(), JOptionPane.INFORMATION_MESSAGE);
+                                        JDialog dialog = pane.createDialog(null, "Title");
+                                        dialog.setModal(false);
+                                        dialog.setVisible(true);
+
+                                        new Timer(3000, new ActionListener() {
+                                            @Override
+                                            public void actionPerformed(ActionEvent e) {
+                                                dialog.setVisible(false);
+                                            }
+                                        }).start();
+                                    }
+
+                                    @Override
+                                    public void mouseExited(MouseEvent e) {
+
+                                    }
+                                });
                                 return ar.getDescr();
                             case 3:
                                 return ar.getCosto();
@@ -106,13 +158,23 @@ public class Catalogue extends JFrame{
                                 return ar.getEval();
                             //Adding button and creating click listener
                             case 6:
-                                final JButton button = new JButton(COLUMN_NAMES[columnIndex]);
-                                button.addActionListener(new ActionListener() {
+                               JButton button = new JButton(COLUMN_NAMES[columnIndex]);
+                                button.setText("COMPRA");
+                                /* button.addActionListener(new ActionListener() {
                                     public void actionPerformed(ActionEvent arg0) {
                                         JOptionPane.showMessageDialog(JOptionPane.getFrameForComponent(button),
-                                                "Button clicked for row ");
+                                                "Button clicked for row "+rowIndex);
                                     }
-                                });
+                                });*/
+                                button.addActionListener(new ActionListener() {
+                                    @Override
+                                    public void actionPerformed(ActionEvent e) {
+                                        JOptionPane.showMessageDialog(null,"PORCODIO");
+
+                                    }});
+
+                                ButtonColumn buttonColumn = new ButtonColumn(TableModelarticoli, button.getAction(), 6);
+                                buttonColumn.setMnemonic(KeyEvent.VK_D);
                                 return button;
                             default:
                                 return "Error";
@@ -120,12 +182,14 @@ public class Catalogue extends JFrame{
                     }
                 };
                 TableModelarticoli.setRowHeight(100);
+
                 TableModelarticoli.setModel(model);
 //    Comment this code to add table dynamically
 
 
                // scrollpane = new JScrollPane(TableModelarticoli);
                 setTitle("MYSHOP");
+                setSize(700,700);
                 setDefaultCloseOperation(DISPOSE_ON_CLOSE);
                 pack();
                 setLocationRelativeTo(null);
@@ -178,7 +242,7 @@ public class Catalogue extends JFrame{
             }
         }
 
-        class JTableButtonModel extends AbstractTableModel implements TableModel {
+        abstract class JTableButtonModel extends AbstractTableModel implements TableModel {
             IarticleDAO arte = new articleDAO();
             private ArrayList<article> articolo = arte.findAll();
 
@@ -200,6 +264,8 @@ public class Catalogue extends JFrame{
                 return COLUMN_NAMES[columnIndex];
             }
 
+            public abstract boolean isCellEditable(EventObject e);
+
             @Override
             public Class<?> getColumnClass(int columnIndex) {
                 return COLUMN_TYPES[columnIndex];
@@ -217,7 +283,44 @@ public class Catalogue extends JFrame{
                         return ar.getName();
                     case 1:
                         return ar.getImg();
-                    case 2:
+                    case 2:final JLabel desc = new JLabel(COLUMN_NAMES[columnIndex]);
+                        desc.setText(ar.getDescr());
+                        desc.addMouseListener(new MouseListener() {
+                            @Override
+                            public void mouseClicked(MouseEvent e) {
+
+                            }
+
+                            @Override
+                            public void mousePressed(MouseEvent e) {
+
+                            }
+
+                            @Override
+                            public void mouseReleased(MouseEvent e) {
+
+                            }
+
+                            @Override
+                            public void mouseEntered(MouseEvent e) {
+                                JOptionPane pane = new JOptionPane(ar.getDescr(), JOptionPane.INFORMATION_MESSAGE);
+                                JDialog dialog = pane.createDialog(null, "Title");
+                                dialog.setModal(false);
+                                dialog.setVisible(true);
+
+                                new Timer(3000, new ActionListener() {
+                                    @Override
+                                    public void actionPerformed(ActionEvent e) {
+                                        dialog.setVisible(false);
+                                    }
+                                }).start();
+                            }
+
+                            @Override
+                            public void mouseExited(MouseEvent e) {
+
+                            }
+                        });
                         return ar.getDescr();
                     case 3:
                         return ar.getCosto();
@@ -227,11 +330,12 @@ public class Catalogue extends JFrame{
                         return ar.getEval();
                     //Adding button and creating click listener
                     case 6:
-                        final JButton button = new JButton(COLUMN_NAMES[columnIndex]);
+                        JButton button = new JButton(COLUMN_NAMES[columnIndex]);
+                        button.setText("COMPRA");
                         button.addActionListener(new ActionListener() {
                             public void actionPerformed(ActionEvent arg0) {
                                 JOptionPane.showMessageDialog(JOptionPane.getFrameForComponent(button),
-                                        "Button clicked for row ");
+                                        "Button clicked for row "+rowIndex);
                             }
                         });
                         return button;

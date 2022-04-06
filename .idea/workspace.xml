@@ -2,22 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="71d110a1-c0bc-4f14-8051-33f62b96ad40" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/ButtonColumn.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/DAO/AdminDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/DAO/AdminDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/DAO/articleDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/DAO/articleDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/Catalogue.form" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/Catalogue.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/Catalogue.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/Catalogue.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/HomePage_guest.form" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/HomePage_guest.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/HomePage_guest.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/HomePage_guest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/DAO/AdminDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/DAO/AdminDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/DAO/articleDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/DAO/articleDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/MENU.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/MENU.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/Catalogue$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/Catalogue$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/Catalogue.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/Catalogue.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/HomePage_guest$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/HomePage_guest$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/HomePage_guest$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/HomePage_guest$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/HomePage_guest$TableModelarticoli.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/HomePage_guest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/HomePage_guest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/MENU$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/MENU$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/MENU$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/MENU$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/MENU$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/MENU$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/MENU.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/MENU.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -198,14 +198,7 @@
       <workItem from="1645880302727" duration="101000" />
       <workItem from="1645883541906" duration="4453000" />
       <workItem from="1645903646019" duration="290833000" />
-      <workItem from="1648584791472" duration="71566000" />
-    </task>
-    <task id="LOCAL-00002" summary="INIZIO GUI&#10;definizione classi product &amp; service">
-      <created>1645313642215</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1645313642215</updated>
+      <workItem from="1648584791472" duration="82220000" />
     </task>
     <task id="LOCAL-00003" summary="Merge remote-tracking branch 'origin/main' into main&#10;&#10;# Conflicts:&#10;#&#9;MYSHOP/src/Admin.java&#10;#&#9;MYSHOP/src/Principale.java&#10;#&#9;MYSHOP/src/Product.java&#10;#&#9;MYSHOP/src/guest.java">
       <created>1645399984118</created>
@@ -543,7 +536,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649196028302</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="table articoli funge">
+      <created>1649255504162</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1649255504162</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -645,7 +645,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="last task:&#10;comments adn user guest" />
     <MESSAGE value="nuovo db" />
     <MESSAGE value="Inizio design catalogo" />
     <MESSAGE value="commenti ended" />
@@ -670,7 +669,8 @@
     <MESSAGE value="update vari" />
     <MESSAGE value="articoli finiti not tested" />
     <MESSAGE value="admin ended&#10;inizio user" />
-    <option name="LAST_COMMIT_MESSAGE" value="admin ended&#10;inizio user" />
+    <MESSAGE value="table articoli funge" />
+    <option name="LAST_COMMIT_MESSAGE" value="table articoli funge" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
