@@ -2,6 +2,7 @@ package it.view;
 
 import it.DAO.IarticleDAO;
 import it.DAO.articleDAO;
+import it.DbConnection;
 import it.model.article;
 
 import javax.imageio.ImageIO;
@@ -185,6 +186,18 @@ public class HomePage_guest extends JFrame {
         });
 
 
+        comboBox_shop.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                comboBox_shop.removeAllItems();
+                ArrayList<String[]> res = DbConnection.getInstance().eseguiQuery("SELECT Shopname FROM Point_shop");
+
+                for (String[] riga : res) {
+                    comboBox_shop.addItem(riga[0]);
+                }
+            }
+        });
     }
     static class ButtonRenderer extends JButton implements TableCellRenderer
     {
@@ -232,7 +245,7 @@ public class HomePage_guest extends JFrame {
     }*/
 
 }
-
+// TODO: CREARE LISTENER PER ZOOM DESCRIZIONE E INIZIARE DEVELOP DELLA LISTA DELLA SPESA
 
 
 

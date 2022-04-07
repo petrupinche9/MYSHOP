@@ -225,8 +225,10 @@ public class ButtonColumn extends AbstractCellEditor
     }
 
     public void mouseClicked(MouseEvent e) {
-
-        JOptionPane.showMessageDialog(null,"Search action for row: " + table.getSelectedRow());
+        int row = table.rowAtPoint(e.getPoint());//get mouse-selected row
+        int col = table.columnAtPoint(e.getPoint());//get mouse-selected col
+        //int[] newEntry = new int[]{row,col};//{row,col}=selected cell
+        JOptionPane.showMessageDialog(null,"Search action for row: " + row+" & col "+col);
 
     }
     public void mouseEntered(MouseEvent e) {setFocusBorder( new LineBorder(Color.BLUE) );}

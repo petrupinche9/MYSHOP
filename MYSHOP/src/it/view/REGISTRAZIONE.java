@@ -6,9 +6,10 @@ import it.model.user;
 import it.util.Session;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 public class REGISTRAZIONE extends JFrame
@@ -59,21 +60,20 @@ public class REGISTRAZIONE extends JFrame
 
             }
         });
-        comboBox1.addActionListener(new ActionListener() {
+
+
+
+        comboBox1.addMouseListener(new MouseAdapter() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                EventQueue.invokeLater(new Runnable() {
-                public void run() {// updates to the Swing GUI must be done on EDT
-                    ArrayList<String[]> res = DbConnection.getInstance().eseguiQuery("SELECT Shopname FROM Point_shop");
-                    if(res.size()==1) {
-                        for (int i = 0; i < res.size(); ++i) {
-                            String[] riga = res.get(0);
-                            comboBox1.addItem(riga[i]);
-                        }
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                comboBox1.removeAllItems();
+                ArrayList<String[]> res = DbConnection.getInstance().eseguiQuery("SELECT Shopname FROM Point_shop");
+
+                     for (String[] riga : res) {
+                                comboBox1.addItem(riga[0]);
                     }
                 }
-            });
-            }
         });
     }
 }

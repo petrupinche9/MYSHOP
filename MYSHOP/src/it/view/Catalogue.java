@@ -194,17 +194,11 @@ public class Catalogue extends JFrame{
                     @Override
                     public void mouseClicked(MouseEvent e) {
                         super.mouseClicked(e);
+                        comboBox_shop.removeAllItems();
                         ArrayList<String[]> res = DbConnection.getInstance().eseguiQuery("SELECT Shopname FROM Point_shop");
-                        if(res.size()==1) {
-                            for (int i = 0; i < res.size(); ++i) {
-                                String[] riga = res.get(0);
-                                for (int j = 0; j < comboBox_shop.getItemCount(); ++j) {
-                                    if (riga[i] != comboBox_shop.getItemAt(j)) {
-                                        comboBox_shop.addItem(riga[i]);
-                                    }
 
-                                }
-                            }
+                        for (String[] riga : res) {
+                            comboBox_shop.addItem(riga[0]);
                         }
                     }
                 });
@@ -326,6 +320,7 @@ public class Catalogue extends JFrame{
                 }
             }
         }
+// TODO: CREARE LISTENER PER ZOOM DESCRIZIONE E INIZIARE DEVELOP DELLA LISTA DELLA SPESA
 
 
 
