@@ -12,10 +12,9 @@ import java.awt.event.ActionListener;
 
 public class Addarticlemanager extends JFrame{
     private JTextField idarticle;
-    private JTextField textField2;
     private JButton CONFERMAButton;
-    private JComboBox shops;
     private JPanel addarticlePanel;
+    private JTextField textField1;
 
     public Addarticlemanager()
     {
@@ -28,7 +27,7 @@ public class Addarticlemanager extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 String id = idarticle.getText();
                 int idarticle = Integer.parseInt(id);
-                String id2 = textField2.getText();
+                String id2 = textField1.getText();
                 int idpoint = Integer.parseInt(id2);
                 productDAO add = new productDAO();
                 Product addarticle = add.findById(idarticle);
