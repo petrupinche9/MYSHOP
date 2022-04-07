@@ -1,7 +1,7 @@
 package it.model;
 
 import java.util.ArrayList;
-import java.util.Date;
+
 public class Shop_list {
     private int id;
     private user cliente;
@@ -10,9 +10,9 @@ public class Shop_list {
     private Point_shop shop;
 private String stato ;
 private double total_price;
-private Date data;
+private String data;
 
-public Shop_list(int id, user cliente, ArrayList<article> articoli,manager mng, String stato, double total_price, Date data){
+public Shop_list(int id, user cliente, ArrayList<article> articoli, manager mng, String stato, double total_price, String data){
     this.id=id;
     this.cliente=cliente;
     this.articoli=articoli;
@@ -58,6 +58,6 @@ public Shop_list(int id, user cliente, ArrayList<article> articoli,manager mng, 
     }
     public Point_shop getShop() {   return shop;    }
     public void setShop(Point_shop shop) {  this.shop = shop;    }
-    public Date getData() {  return data;    }
-    public void setData(Date data) {   this.data = data;    }
+    public String getData() {  return data;    }
+    public void setData(String data) {   this.data = data;    }
 }

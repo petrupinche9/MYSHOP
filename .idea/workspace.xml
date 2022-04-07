@@ -3,15 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="71d110a1-c0bc-4f14-8051-33f62b96ad40" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/business/ShoplistBusiness.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/business/ShoplistBusiness.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/ButtonColumn.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/ButtonColumn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/Catalogue.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/Catalogue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/HomePage_guest.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/HomePage_guest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/Catalogue$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/Catalogue$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/Catalogue.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/Catalogue.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/HomePage_guest$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/HomePage_guest$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/HomePage_guest$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/HomePage_guest$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/HomePage_guest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/HomePage_guest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/DAO/IShop_listDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/DAO/IShop_listDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/DAO/Shop_listDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/DAO/Shop_listDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/model/Shop_list.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/model/Shop_list.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -192,14 +186,7 @@
       <workItem from="1645880302727" duration="101000" />
       <workItem from="1645883541906" duration="4453000" />
       <workItem from="1645903646019" duration="290833000" />
-      <workItem from="1648584791472" duration="85903000" />
-    </task>
-    <task id="LOCAL-00004" summary="INTRODOTTE GUI DELLE VARIE UTENZE E CLASSE DI CONNESSIONE AL DATABASE">
-      <created>1645573551901</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1645573551901</updated>
+      <workItem from="1648584791472" duration="87625000" />
     </task>
     <task id="LOCAL-00005" summary="INTRODOTTE GUI DELLE VARIE UTENZE E CLASSE DI CONNESSIONE AL DATABASE">
       <created>1645573582370</created>
@@ -537,7 +524,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649266839220</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="button compra  funge">
+      <created>1649327670491</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1649327670491</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -639,7 +633,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Inizio design catalogo" />
     <MESSAGE value="commenti ended" />
     <MESSAGE value="update Homepage" />
     <MESSAGE value="inizia a fungere" />
@@ -664,7 +657,8 @@
     <MESSAGE value="admin ended&#10;inizio user" />
     <MESSAGE value="table articoli funge" />
     <MESSAGE value="button compra non funge" />
-    <option name="LAST_COMMIT_MESSAGE" value="button compra non funge" />
+    <MESSAGE value="button compra  funge" />
+    <option name="LAST_COMMIT_MESSAGE" value="button compra  funge" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
