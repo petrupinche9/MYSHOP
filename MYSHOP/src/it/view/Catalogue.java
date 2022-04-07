@@ -36,18 +36,13 @@ public class Catalogue extends JFrame{
                               // TableModelarticoli = new JTable(rowData, colonne);
 
                 cliente.setText(Session.getInstance().getClienteLoggato().getUsername());
-                setContentPane(panel1);
-                TableCellRenderer tableRenderer;
-                tableRenderer = TableModelarticoli.getDefaultRenderer(JButton.class);
-                TableModelarticoli.setDefaultRenderer(JButton.class, new JTableButtonRenderer(tableRenderer));
-               // TableModelarticoli.add(scrollpane);
-                TableModel model = new JTableButtonModel(){
+                TableModel model = new it.view.JTableButtonModel() {
 
                     IarticleDAO arte = new articleDAO();
                     ArrayList<article> articolo = arte.findAll();
 
-                    final String[] COLUMN_NAMES = new String[]{"Nome", "Foto", "descrizione", "Costo", "Categoria", "Stars", ""};
-                    final Class<?>[] COLUMN_TYPES = new Class<?>[]{String.class, ImageIcon.class, String.class, double.class, String.class, Integer.class, JButton.class};
+                    public final String[] COLUMN_NAMES = new String[]{"Nome", "Foto", "descrizione", "Costo", "Categoria", "Stars", "BUY"};
+                    public final Class<?>[] COLUMN_TYPES = new Class<?>[]{String.class, ImageIcon.class, String.class, double.class, String.class, Integer.class, String.class};
 
                     @Override
                     public int getColumnCount() {
@@ -63,12 +58,10 @@ public class Catalogue extends JFrame{
                     public String getColumnName(int columnIndex) {
                         return COLUMN_NAMES[columnIndex];
                     }
-
                     @Override
-                    public boolean isCellEditable(EventObject e) {
+                    public boolean isCellEditable(EventObject e){
                         return true;
                     }
-
                     @Override
                     public Class<?> getColumnClass(int columnIndex) {
                         return COLUMN_TYPES[columnIndex];
@@ -85,15 +78,15 @@ public class Catalogue extends JFrame{
                             case 0:
                                 return ar.getName();
                             case 1:
-                                byte[] img=ar.getImg();
+                                byte[] img = ar.getImg();
                                 final JLabel foto = new JLabel(COLUMN_NAMES[columnIndex]);
-                                foto.setSize(100,100);
+                                foto.setSize(100, 100);
                                 InputStream in = new ByteArrayInputStream(img);
                                 try {
                                     BufferedImage imgFromDb = ImageIO.read(in);
                                     ImageIcon image = new ImageIcon(imgFromDb);
                                     Image im = image.getImage();
-                                    Image myImg = im.getScaledInstance(foto.getWidth(), foto.getHeight(),Image.SCALE_SMOOTH);
+                                    Image myImg = im.getScaledInstance(foto.getWidth(), foto.getHeight(), Image.SCALE_SMOOTH);
                                     ImageIcon newImage = new ImageIcon(myImg);
                                     foto.setIcon(newImage);
                                 } catch (IOException e) {
@@ -101,10 +94,9 @@ public class Catalogue extends JFrame{
                                 }
                                 return foto.getIcon();
                             case 2:
-                                final JLabel desc = new JLabel(COLUMN_NAMES[columnIndex]);
+                                final JLabel desc = new JLabel();
                                 desc.setText(ar.getDescr());
                                 desc.addMouseListener(new MouseListener() {
-                                    @Override
                                     public void mouseClicked(MouseEvent e) {
                                         JOptionPane pane = new JOptionPane(ar.getDescr(), JOptionPane.INFORMATION_MESSAGE);
                                         JDialog dialog = pane.createDialog(null, "Title");
@@ -117,6 +109,7 @@ public class Catalogue extends JFrame{
                                                 dialog.setVisible(false);
                                             }
                                         }).start();
+
                                     }
 
                                     @Override
@@ -131,23 +124,14 @@ public class Catalogue extends JFrame{
 
                                     @Override
                                     public void mouseEntered(MouseEvent e) {
-                                        JOptionPane pane = new JOptionPane(ar.getDescr(), JOptionPane.INFORMATION_MESSAGE);
-                                        JDialog dialog = pane.createDialog(null, "Title");
-                                        dialog.setModal(false);
-                                        dialog.setVisible(true);
 
-                                        new Timer(3000, new ActionListener() {
-                                            @Override
-                                            public void actionPerformed(ActionEvent e) {
-                                                dialog.setVisible(false);
-                                            }
-                                        }).start();
                                     }
 
                                     @Override
                                     public void mouseExited(MouseEvent e) {
 
                                     }
+
                                 });
                                 return ar.getDescr();
                             case 3:
@@ -158,37 +142,35 @@ public class Catalogue extends JFrame{
                                 return ar.getEval();
                             //Adding button and creating click listener
                             case 6:
-                               JButton button = new JButton(COLUMN_NAMES[columnIndex]);
-                                button.setText("COMPRA");
-                                /* button.addActionListener(new ActionListener() {
-                                    public void actionPerformed(ActionEvent arg0) {
-                                        JOptionPane.showMessageDialog(JOptionPane.getFrameForComponent(button),
-                                                "Button clicked for row "+rowIndex);
-                                    }
-                                });*/
-                                button.addActionListener(new ActionListener() {
-                                    @Override
-                                    public void actionPerformed(ActionEvent e) {
-                                        JOptionPane.showMessageDialog(null,"PORCODIO");
+                                final JLabel compra = new JLabel("BUY");
+                                return compra.getText();
 
-                                    }});
-
-                                ButtonColumn buttonColumn = new ButtonColumn(TableModelarticoli, button.getAction(), 6);
-                                buttonColumn.setMnemonic(KeyEvent.VK_D);
-                                return button;
                             default:
                                 return "Error";
                         }
                     }
                 };
-                TableModelarticoli.setRowHeight(100);
 
+                TableModelarticoli.setRowHeight(100);
                 TableModelarticoli.setModel(model);
-//    Comment this code to add table dynamically
+
+                Action search = new AbstractAction() {
+                    public void actionPerformed(ActionEvent e) {
+                        // JTable table = (JTable) e.getSource();
+                        int modelRow = Integer.parseInt(e.getActionCommand());
+                        JOptionPane.showMessageDialog(null,"Search action for row: " + modelRow);
+
+                        // do some processing here
+                        // tb.searchMore(modelRow);
+                    }
+                };
+                ButtonColumn buttonColumn = new ButtonColumn(TableModelarticoli, search, TableModelarticoli.getColumnCount()-1);
+                buttonColumn.setMnemonic(KeyEvent.VK_D);
 
 
                // scrollpane = new JScrollPane(TableModelarticoli);
                 setTitle("MYSHOP");
+                setContentPane(panel1);
                 setSize(700,700);
                 setDefaultCloseOperation(DISPOSE_ON_CLOSE);
                 pack();

@@ -24,11 +24,11 @@ public class ShoplistBusiness {
 
         // 1. inviare mail al manager
         String dest1 = p.getMng().getEmail();
-        MailHelper.getInstance().send(dest1, "Nuova prenotazione", "Il giorno...");
+        MailHelper.getInstance().send(dest1, "Nuova Shoplist", "Il giorno...");
 
         // 2. inviare mail di conferma all'utente
         String dest2 = p.getCliente().getEmail();
-        MailHelper.getInstance().send(dest1, "Prenotazione confermata!", "Il giorno...");
+        MailHelper.getInstance().send(dest1, "Shoplist confermata!", "Il giorno...");
 
         // 3. generare pdf per l'utente
         ArrayList<String> testo = new ArrayList<String>();

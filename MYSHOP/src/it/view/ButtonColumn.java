@@ -57,7 +57,7 @@ public class ButtonColumn extends AbstractCellEditor
         editButton.setFocusPainted( false );
         editButton.addActionListener( this );
         originalBorder = editButton.getBorder();
-        setFocusBorder( new LineBorder(Color.RED) );
+        setFocusBorder( new LineBorder(Color.BLUE) );
 
         TableColumnModel columnModel = table.getColumnModel();
         columnModel.getColumn(column).setCellRenderer( this );
@@ -224,7 +224,11 @@ public class ButtonColumn extends AbstractCellEditor
         isButtonColumnEditor = false;
     }
 
-    public void mouseClicked(MouseEvent e) {}
-    public void mouseEntered(MouseEvent e) {}
-    public void mouseExited(MouseEvent e) {}
+    public void mouseClicked(MouseEvent e) {
+
+        JOptionPane.showMessageDialog(null,"Search action for row: " + table.getSelectedRow());
+
+    }
+    public void mouseEntered(MouseEvent e) {setFocusBorder( new LineBorder(Color.BLUE) );}
+    public void mouseExited(MouseEvent e) {setFocusBorder( new LineBorder(Color.WHITE) );}
 }

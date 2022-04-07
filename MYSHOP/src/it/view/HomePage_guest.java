@@ -33,18 +33,16 @@ public class HomePage_guest extends JFrame {
     // da aggiungere il metodo per aggiornare da database
     public HomePage_guest() {
 
+
         setSize(700,700);
         setContentPane(panel1);
-        //TableCellRenderer tableRenderer = TableModelarticoli.getDefaultRenderer(JButton.class);
-       // TableModelarticoli.setDefaultRenderer(JButton.class, new JTableButtonRenderer(tableRenderer));
-        // TableModelarticoli.add(scrollpane);
         TableModel model = new it.view.JTableButtonModel() {
 
             IarticleDAO arte = new articleDAO();
             ArrayList<article> articolo = arte.findAll();
 
-           public final String[] COLUMN_NAMES = new String[]{"Nome", "Foto", "descrizione", "Costo", "Categoria", "Stars", "BUY"};
-           public final Class<?>[] COLUMN_TYPES = new Class<?>[]{String.class, ImageIcon.class, String.class, double.class, String.class, Integer.class, String.class};
+           public final String[] COLUMN_NAMES = new String[]{"Nome", "Foto", "descrizione", "Costo", "Categoria", "Stars"};
+           public final Class<?>[] COLUMN_TYPES = new Class<?>[]{String.class, ImageIcon.class, String.class, double.class, String.class, Integer.class};
 
             @Override
             public int getColumnCount() {
@@ -143,22 +141,6 @@ public class HomePage_guest extends JFrame {
                     case 5:
                         return ar.getEval();
                     //Adding button and creating click listener
-                    case 6:
-                        Action search = new AbstractAction() {
-
-                            public void actionPerformed(ActionEvent e) {
-                                JTable table = (JTable) e.getSource();
-                                int modelRow = Integer.parseInt(e.getActionCommand());
-                                System.out.println("Search action for row: " + modelRow);
-
-                                // do some processing here
-                                // tb.searchMore(modelRow);
-                            }
-                        };
-                        button.setAction(search);
-                        button.setText("COMPRA");
-                        return button;
-
                     default:
                         return "Error";
                 }
@@ -167,8 +149,6 @@ public class HomePage_guest extends JFrame {
 
         TableModelarticoli.setRowHeight(100);
         TableModelarticoli.setModel(model);
-        ButtonColumn buttonColumn = new ButtonColumn(TableModelarticoli, button.getAction(), TableModelarticoli.getColumnCount()-1);
-        buttonColumn.setMnemonic(KeyEvent.VK_D);
 
 //    Comment this code to add table dynamically
 
@@ -189,6 +169,7 @@ public class HomePage_guest extends JFrame {
                 mf.pack();
                 mf.setLocationRelativeTo(null);
                 mf.setExtendedState(JFrame.DO_NOTHING_ON_CLOSE);
+                dispose();
             }
         });
         SIGNUPButton.addActionListener(new ActionListener() {
@@ -199,6 +180,7 @@ public class HomePage_guest extends JFrame {
                 rf.pack();
                 rf.setLocationRelativeTo(null);
                 rf.setExtendedState(JFrame.DO_NOTHING_ON_CLOSE);
+                dispose();
             }
         });
 
