@@ -40,6 +40,7 @@ public class productDAO implements IproductDAO {
             p.setNome(dio[1]);
             p.setSitoweb(dio[2]);
             p.setNazione(dio[3]);
+            p.setCitta(dio[4]);
             c.setProduttore(p);
         }else{
             JOptionPane.showMessageDialog(null, "PRODUTTORE NON TROVATO O INESISTENTE");
