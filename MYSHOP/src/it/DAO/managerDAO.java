@@ -1,11 +1,9 @@
 package it.DAO;
 
 import it.DbConnection;
-import it.model.Point_shop;
-import it.model.Product;
-import it.model.manager;
-import it.model.user;
+import it.model.*;
 import it.util.MailHelper;
+
 import javax.swing.*;
 import java.util.ArrayList;
 //azioni manager
@@ -40,22 +38,24 @@ public class managerDAO implements ImanagerDAO{
         return c;
     }
     @Override
-    public void add_product_to_shop(Product p, Point_shop shop){
+    public void add_article_to_shop(article p, Point_shop shop){
         boolean res = DbConnection.getInstance().eseguiAggiornamento("UPDATE articolo SET Point_shop_idPoint_shop='"+shop.getId()+"'WHERE idarticolo='"+p.getId()+"';");
         JOptionPane.showMessageDialog(null, res);
 
     }
     @Override
-    public void erase_product_from_shop(Product p, Point_shop shop){
-        productDAO s=new productDAO();
-        ArrayList<String[]> res = DbConnection.getInstance().eseguiQuery("UPDATE articolo INNER JOIN Point_shop as shop ON Point_shop_idPoint_shop=shop.idPoint_shop  WHERE  idarticolo= "+s.findById(p.getId()).getId()+" " +
-                "SET Point_shop_idPoint_shop=NULL , corsia='"+p.getCorsia()+"',scaffale='"+p.getScaffale()+"';");
-        JOptionPane.showInputDialog(res);
+    public void erase_article_from_shop(article p, Point_shop shop){
+       articleDAO s=new articleDAO();
+        boolean res = DbConnection.getInstance().eseguiAggiornamento("UPDATE articolo INNER JOIN Point_shop as shop ON Point_shop_idPoint_shop=shop.idPoint_shop  WHERE  idarticolo= "+p.getId()+" " +
+                "SET Point_shop_idPoint_shop=NULL , corsia=null ,scaffale=null;");
+        JOptionPane.showMessageDialog(null,res);
     }
+
     @Override
     public void send_email_to_client(user c,String obj,String mex){
         new MailHelper().send(c.getEmail(), obj, mex);
     }
+
     @Override
     public void add_user_to_shop(user p, Point_shop shop){
         userDAO s=new userDAO();
