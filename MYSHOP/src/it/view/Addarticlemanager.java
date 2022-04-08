@@ -22,6 +22,7 @@ public class Addarticlemanager extends JFrame{
         setTitle("AGGIUNGI ARTICOLO MANAGER");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
+
         CONFERMAButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -31,6 +32,7 @@ public class Addarticlemanager extends JFrame{
                     articleDAO add = new articleDAO();
                     article addarticle = add.findById(idarticle);
                     managerDAO manager = new managerDAO();
+
                     manager.add_article_to_shop(addarticle, manager.findById(Session.getInstance().getClienteLoggato().getId()));
                     JOptionPane.showMessageDialog(null, "Articolo Aggiunto");
 

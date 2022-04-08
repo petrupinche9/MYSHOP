@@ -29,8 +29,9 @@ public class Deletearticlemanager extends JFrame{
                 articleDAO add = new articleDAO();
                 article addarticle = add.findById(idarticle);
                 managerDAO manager = new managerDAO();
+
                 manager.erase_article_from_shop(addarticle, manager.findById(Session.getInstance().getClienteLoggato().getId()));
-                JOptionPane.showMessageDialog(null, "Articolo Aggiunto");
+                JOptionPane.showMessageDialog(null, "Articolo eliminato");
 
             }
         });

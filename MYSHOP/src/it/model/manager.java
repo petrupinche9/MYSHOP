@@ -13,6 +13,7 @@ public class manager extends user
 
     }
 
+
     public Point_shop getShop() {
         return shop;
     }

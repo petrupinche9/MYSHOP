@@ -27,7 +27,11 @@ public class Manager_gui extends JFrame
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                Addarticlemanager addproduct = new Addarticlemanager();
+                Addarticlemanager addarticle = new Addarticlemanager();
+                addarticle.setVisible(true);
+                addarticle.pack();
+                addarticle.setLocationRelativeTo(null);
+                addarticle.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             }
         });
 
@@ -35,6 +39,10 @@ public class Manager_gui extends JFrame
             @Override
             public void actionPerformed(ActionEvent e) {
                 Deletearticlemanager deleteproduct = new Deletearticlemanager();
+                deleteproduct.setVisible(true);
+                deleteproduct.pack();
+                deleteproduct.setLocationRelativeTo(null);
+                deleteproduct.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             }
         });
 
@@ -43,6 +51,10 @@ public class Manager_gui extends JFrame
             public void actionPerformed(ActionEvent e) {
 
                 Addusermanager adduser = new Addusermanager();
+                adduser.setVisible(true);
+                adduser.pack();
+                adduser.setLocationRelativeTo(null);
+                adduser.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             }
         });
 
@@ -51,6 +63,10 @@ public class Manager_gui extends JFrame
             public void actionPerformed(ActionEvent e) {
 
                 Deleteusermanager deleteuser = new Deleteusermanager();
+                deleteuser.setVisible(true);
+                deleteuser.pack();
+                deleteuser.setLocationRelativeTo(null);
+                deleteuser.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             }
         });
 
@@ -59,6 +75,10 @@ public class Manager_gui extends JFrame
             public void actionPerformed(ActionEvent e) {
 
                 sendemailmanager send = new sendemailmanager();
+                send.setVisible(true);
+                send.pack();
+                send.setLocationRelativeTo(null);
+                send.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             }
         });
 

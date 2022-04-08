@@ -10,30 +10,35 @@ import java.util.ArrayList;
 public class managerDAO implements ImanagerDAO{
     @Override
     public manager findById(int id) {
-        manager a = null;
-        Point_shop s =null;
-        ArrayList<String[]> res = DbConnection.getInstance().eseguiQuery("SELECT A.user_iduser, U.username, U.passwd, U.email FROM manager AS A INNER JOIN user as U  ON U.iduser = A.user_iduser WHERE A.user_iduser = "+id+";");
+
+
+        ArrayList<String[]> res = DbConnection.getInstance().eseguiQuery("SELECT idmanager FROM manager  INNER JOIN user as U  ON U.iduser = user_iduser WHERE user_iduser = '"+id+"';");
 
         if(res.size()==1) {
             String[] riga = res.get(0);
-            a = new manager();
-            a.setId(Integer.parseInt(riga[0]));
-            a.setUsername(riga[1]);
-            a.setPassword(riga[2]);
-            a.setEmail(riga[3]);
+           // a = new manager();
+            userDAO us = new userDAO();
+           user user= us.findById(id);
+           JOptionPane.showMessageDialog(null,id);
+            manager a = new manager(Integer.parseInt(riga[0]),user.getUsername(), user.getPassword(), user.getName(), user.getSurname(), user.getAge(), user.getEmail(), user.getTelephone(), user.getOccupation(), null);
+            JOptionPane.showMessageDialog(null,a.getId());
 
-            ArrayList<String[]> shop = DbConnection.getInstance().eseguiQuery("SELECT * FROM Point_shop WHERE Manager_idManager='"+riga[0]+"'");
+            ArrayList<String[]> shop = DbConnection.getInstance().eseguiQuery("SELECT * FROM Point_shop WHERE Manager_idManager='"+a.getId()+"';");
             if(shop.size()==1){
+                Point_shop s =new Point_shop();
                 String[] rigo = shop.get(0);
                 s.setId(Integer.parseInt(rigo[0]));
                 s.setShopname(rigo[1]);
                 s.setCity(rigo[2]);
                 s.setArticle_type(rigo[3]);
+                a.setShop(s);
                 s.setMng(a);
+                return a;
             }
         }
 
-        return a;
+        //return a;
+        return null;
     }
     @Override
     public ArrayList<manager> findAll() {
@@ -49,8 +54,8 @@ public class managerDAO implements ImanagerDAO{
     }
     @Override
     public void add_article_to_shop(article p,manager m){
-        boolean res = DbConnection.getInstance().eseguiAggiornamento("UPDATE articolo SET Point_shop_idPoint_shop='"+m.getShop().getId()+"'WHERE idarticolo='"+p.getId()+"';");
-        JOptionPane.showMessageDialog(null, res);
+        DbConnection.getInstance().eseguiAggiornamento("UPDATE articolo SET Point_shop_idPoint_shop='"+m.getShop().getId()+"'WHERE idarticolo='"+p.getId()+"';");
+        //JOptionPane.showMessageDialog(null, "update agg");
 
     }
     @Override

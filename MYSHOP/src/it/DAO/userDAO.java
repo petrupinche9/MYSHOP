@@ -13,14 +13,20 @@ public class userDAO implements IuserDAO {
     public user findById(int id) {
         user c = null;
 
-        ArrayList<String[]> res = DbConnection.getInstance().eseguiQuery("SELECT C.user_iduser, U.username, U.passwd, U.Email FROM Cliente AS C INNER JOIN user as U  ON U.iduser = C.user_iduser WHERE C.user_iduser = "+id+";");
+        ArrayList<String[]> res = DbConnection.getInstance().eseguiQuery("SELECT * FROM user WHERE iduser='"+id+"' ;");
 
         if(res.size()==1) {
             String[] riga = res.get(0);
             c = new user();
             c.setId(Integer.parseInt(riga[0]));
             c.setUsername(riga[1]);
-            c.setEmail(riga[3]);
+            c.setPassword(riga[2]);
+            c.setName(riga[3]);
+            c.setSurname(riga[4]);
+            c.setAge(Integer.parseInt(riga[5]));
+            c.setEmail(riga[6]);
+            c.setTelephone(Integer.parseInt(riga[7]));
+            c.setOccupation(riga[8]);
         }
 
         return c;
