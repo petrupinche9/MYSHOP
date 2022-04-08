@@ -41,10 +41,8 @@ public class managerDAO implements ImanagerDAO{
     }
     @Override
     public void add_product_to_shop(Product p, Point_shop shop){
-        productDAO s=new productDAO();
-        ArrayList<String[]> res = DbConnection.getInstance().eseguiQuery("UPDATE articolo INNER JOIN Point_shop as shop ON Point_shop_idPoint_shop=shop.idPoint_shop INNER JOIN product AS p ON p.idproduct=product_idproduct  WHERE idarticolo= "+s.findById(p.getId()).getId()+" " +
-                "SET Point_shop_idPoint_shop='"+shop.getId()+"', corsia='"+p.getCorsia()+"',scaffale='"+p.getScaffale()+"';");
-        JOptionPane.showInputDialog(res);
+        boolean res = DbConnection.getInstance().eseguiAggiornamento("UPDATE articolo SET Point_shop_idPoint_shop='"+shop.getId()+"'WHERE idarticolo='"+p.getId()+"';");
+        JOptionPane.showMessageDialog(null, res);
 
     }
     @Override
