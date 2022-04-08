@@ -26,15 +26,15 @@ public class Addarticlemanager extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 String id = idarticle.getText();
-                int idarticle = Integer.parseInt(id);
+                int idproduct = Integer.parseInt(id);
                 String id2 = textField1.getText();
                 int idpoint = Integer.parseInt(id2);
                 productDAO add = new productDAO();
-                Product addarticle = add.findById(idarticle);
+                Product addproduct = add.findById(idproduct);
                 ShopDAO shop = new ShopDAO();
                 Point_shop puntovendita = shop.findById(idpoint);
                 managerDAO manager = new managerDAO();
-                manager.add_product_to_shop(addarticle, puntovendita);
+                manager.add_product_to_shop(addproduct, puntovendita);
                 JOptionPane.showMessageDialog(null, "Prodotto Aggiunto");
             }
         });
