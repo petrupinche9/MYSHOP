@@ -11,7 +11,7 @@ public class managerDAO implements ImanagerDAO{
     @Override
     public manager findById(int id) {
         manager a = null;
-
+        Point_shop s =null;
         ArrayList<String[]> res = DbConnection.getInstance().eseguiQuery("SELECT A.user_iduser, U.username, U.passwd, U.email FROM manager AS A INNER JOIN user as U  ON U.iduser = A.user_iduser WHERE A.user_iduser = "+id+";");
 
         if(res.size()==1) {
@@ -21,6 +21,16 @@ public class managerDAO implements ImanagerDAO{
             a.setUsername(riga[1]);
             a.setPassword(riga[2]);
             a.setEmail(riga[3]);
+
+            ArrayList<String[]> shop = DbConnection.getInstance().eseguiQuery("SELECT * FROM Point_shop WHERE Manager_idManager='"+riga[0]+"'");
+            if(shop.size()==1){
+                String[] rigo = shop.get(0);
+                s.setId(Integer.parseInt(rigo[0]));
+                s.setShopname(rigo[1]);
+                s.setCity(rigo[2]);
+                s.setArticle_type(rigo[3]);
+                s.setMng(a);
+            }
         }
 
         return a;
@@ -38,15 +48,15 @@ public class managerDAO implements ImanagerDAO{
         return c;
     }
     @Override
-    public void add_article_to_shop(article p, Point_shop shop){
-        boolean res = DbConnection.getInstance().eseguiAggiornamento("UPDATE articolo SET Point_shop_idPoint_shop='"+shop.getId()+"'WHERE idarticolo='"+p.getId()+"';");
+    public void add_article_to_shop(article p,manager m){
+        boolean res = DbConnection.getInstance().eseguiAggiornamento("UPDATE articolo SET Point_shop_idPoint_shop='"+m.getShop().getId()+"'WHERE idarticolo='"+p.getId()+"';");
         JOptionPane.showMessageDialog(null, res);
 
     }
     @Override
-    public void erase_article_from_shop(article p, Point_shop shop){
+    public void erase_article_from_shop(article p,manager m){
        articleDAO s=new articleDAO();
-        boolean res = DbConnection.getInstance().eseguiAggiornamento("UPDATE articolo INNER JOIN Point_shop as shop ON Point_shop_idPoint_shop=shop.idPoint_shop  WHERE  idarticolo= "+p.getId()+" " +
+        boolean res = DbConnection.getInstance().eseguiAggiornamento("UPDATE articolo INNER JOIN Point_shop as shop ON Point_shop_idPoint_shop=shop.idPoint_shop  WHERE  idarticolo= "+p.getId()+" && shop.idPoint_shop='"+m.getShop().getId()+"' " +
                 "SET Point_shop_idPoint_shop=NULL , corsia=null ,scaffale=null;");
         JOptionPane.showMessageDialog(null,res);
     }

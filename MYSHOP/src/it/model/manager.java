@@ -13,6 +13,10 @@ public class manager extends user
 
     }
 
+    public Point_shop getShop() {
+        return shop;
+    }
+
     public void setShop(Point_shop shop) {
         this.shop = shop;
     }

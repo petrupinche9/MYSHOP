@@ -1,18 +1,13 @@
 package it.view;
 
-import it.DAO.ShopDAO;
 import it.DAO.articleDAO;
 import it.DAO.managerDAO;
-import it.DbConnection;
-import it.model.Point_shop;
 import it.model.article;
+import it.util.Session;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 
 public class Addarticlemanager extends JFrame{
     private JTextField idarticle;
@@ -32,41 +27,14 @@ public class Addarticlemanager extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 String id = idarticle.getText();
                 int idarticle = Integer.parseInt(id);
-                String  name_shop= (String) comboBox1.getSelectedItem();
-                ArrayList<String[]> res = DbConnection.getInstance().eseguiQuery("SELECT idPoint_shop FROM Point_shop WHERE Shopname='"+name_shop+"'");
-
-                if(res.size()==1){
-                    String[] riga=res.get(0);
-                    int idpoint = Integer.parseInt(riga[0]);
+                //aggiungi articolo
                     articleDAO add = new articleDAO();
                     article addarticle = add.findById(idarticle);
-                    ShopDAO shop = new ShopDAO();
-                    Point_shop puntovendita = shop.findById(idpoint);
                     managerDAO manager = new managerDAO();
-                    manager.add_article_to_shop(addarticle, puntovendita);
+                    manager.add_article_to_shop(addarticle, manager.findById(Session.getInstance().getClienteLoggato().getId()));
                     JOptionPane.showMessageDialog(null, "Articolo Aggiunto");
-                }else{
-                    JOptionPane.showMessageDialog(null, "ERRORE");
-
-                }
 
 
-
-
-
-
-            }
-        });
-        comboBox1.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
-                comboBox1.removeAllItems();
-                ArrayList<String[]> res = DbConnection.getInstance().eseguiQuery("SELECT Shopname FROM Point_shop");
-
-                for (String[] riga : res) {
-                    comboBox1.addItem(riga[0]);
-                }
             }
         });
     }

@@ -9,9 +9,9 @@ public interface ImanagerDAO {
 
     ArrayList<manager> findAll();
 
-    void add_article_to_shop(article p, Point_shop shop);
+    void add_article_to_shop(article p,manager m);
 
-    void erase_article_from_shop(article p, Point_shop shop);
+    void erase_article_from_shop(article p,manager m);
 
     void send_email_to_client(user c, String obj, String mex);
 
