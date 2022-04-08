@@ -8,8 +8,6 @@ import it.util.Session;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.table.AbstractTableModel;
-import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableModel;
 import java.awt.*;
 import java.awt.event.*;
@@ -28,7 +26,8 @@ public class Catalogue extends JFrame{
     private JButton LOGOUTButton;
     private JTable TableModelarticoli;
     private JScrollPane scrollpane;
-
+    private IarticleDAO arte = new articleDAO();
+    private ArrayList<article> articolo = arte.findAll();
 
 
             public Catalogue() {
@@ -37,9 +36,6 @@ public class Catalogue extends JFrame{
 
                 cliente.setText(Session.getInstance().getClienteLoggato().getUsername());
                 TableModel model = new it.view.JTableButtonModel() {
-
-                    IarticleDAO arte = new articleDAO();
-                    ArrayList<article> articolo = arte.findAll();
 
                     public final String[] COLUMN_NAMES = new String[]{"Nome", "Foto", "descrizione", "Costo", "Categoria", "Stars", "BUY"};
                     public final Class<?>[] COLUMN_TYPES = new Class<?>[]{String.class, ImageIcon.class, String.class, double.class, String.class, Integer.class, String.class};
@@ -96,43 +92,6 @@ public class Catalogue extends JFrame{
                             case 2:
                                 final JLabel desc = new JLabel();
                                 desc.setText(ar.getDescr());
-                                desc.addMouseListener(new MouseListener() {
-                                    public void mouseClicked(MouseEvent e) {
-                                        JOptionPane pane = new JOptionPane(ar.getDescr(), JOptionPane.INFORMATION_MESSAGE);
-                                        JDialog dialog = pane.createDialog(null, "Title");
-                                        dialog.setModal(false);
-                                        dialog.setVisible(true);
-
-                                        new Timer(3000, new ActionListener() {
-                                            @Override
-                                            public void actionPerformed(ActionEvent e) {
-                                                dialog.setVisible(false);
-                                            }
-                                        }).start();
-
-                                    }
-
-                                    @Override
-                                    public void mousePressed(MouseEvent e) {
-
-                                    }
-
-                                    @Override
-                                    public void mouseReleased(MouseEvent e) {
-
-                                    }
-
-                                    @Override
-                                    public void mouseEntered(MouseEvent e) {
-
-                                    }
-
-                                    @Override
-                                    public void mouseExited(MouseEvent e) {
-
-                                    }
-
-                                });
                                 return ar.getDescr();
                             case 3:
                                 return ar.getCosto();
@@ -204,20 +163,31 @@ public class Catalogue extends JFrame{
                 });
             }
 
+    public void showdescr(int row,int col){
+        String descr= (String) TableModelarticoli.getValueAt(row, col);
+        JOptionPane.showMessageDialog(null,descr);
 
+    }
+
+    public void add_to_shoplist(int row){
+                article newart=new article();
+                articleDAO dao=new articleDAO();
+        String descr= (String) TableModelarticoli.getValueAt(row, 2);
+        String name= (String) TableModelarticoli.getValueAt(row, 0);
+        ArrayList<String[]> res = DbConnection.getInstance().eseguiQuery("SELECT idarticolo FROM articolo WHERE Name='"+name+"' && description='"+descr+"' ;");
+if(res.size()==1){
+    String[] riga= res.get(0);
+    newart=dao.findById(Integer.parseInt(riga[0]));
+    listaspesa c=new listaspesa();
+    c.setVisible(false);
+    c.dispose();
+    c.add_to_list(newart);
 }
-        class JTableButtonRenderer implements TableCellRenderer {
-            private TableCellRenderer defaultRenderer;
-            public JTableButtonRenderer(TableCellRenderer renderer) {
-                defaultRenderer = renderer;
-            }
-            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-                if(value instanceof Component)
-                    return (Component)value;
-                return defaultRenderer.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-            }
-        }
 
+    }
+}
+
+/*
         abstract class JTableButtonModel extends AbstractTableModel implements TableModel {
             IarticleDAO arte = new articleDAO();
             private ArrayList<article> articolo = arte.findAll();
@@ -261,42 +231,6 @@ public class Catalogue extends JFrame{
                         return ar.getImg();
                     case 2:final JLabel desc = new JLabel(COLUMN_NAMES[columnIndex]);
                         desc.setText(ar.getDescr());
-                        desc.addMouseListener(new MouseListener() {
-                            @Override
-                            public void mouseClicked(MouseEvent e) {
-
-                            }
-
-                            @Override
-                            public void mousePressed(MouseEvent e) {
-
-                            }
-
-                            @Override
-                            public void mouseReleased(MouseEvent e) {
-
-                            }
-
-                            @Override
-                            public void mouseEntered(MouseEvent e) {
-                                JOptionPane pane = new JOptionPane(ar.getDescr(), JOptionPane.INFORMATION_MESSAGE);
-                                JDialog dialog = pane.createDialog(null, "Title");
-                                dialog.setModal(false);
-                                dialog.setVisible(true);
-
-                                new Timer(3000, new ActionListener() {
-                                    @Override
-                                    public void actionPerformed(ActionEvent e) {
-                                        dialog.setVisible(false);
-                                    }
-                                }).start();
-                            }
-
-                            @Override
-                            public void mouseExited(MouseEvent e) {
-
-                            }
-                        });
                         return ar.getDescr();
                     case 3:
                         return ar.getCosto();
@@ -319,7 +253,7 @@ public class Catalogue extends JFrame{
                         return "Error";
                 }
             }
-        }
+*/
 // TODO: CREARE LISTENER PER ZOOM DESCRIZIONE E INIZIARE DEVELOP DELLA LISTA DELLA SPESA
 
 

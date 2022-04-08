@@ -225,11 +225,19 @@ public class ButtonColumn extends AbstractCellEditor
     }
 
     public void mouseClicked(MouseEvent e) {
+        Catalogue c=new Catalogue();
+         c.setVisible(false);
+         c.dispose();
         int row = table.rowAtPoint(e.getPoint());//get mouse-selected row
         int col = table.columnAtPoint(e.getPoint());//get mouse-selected col
         //int[] newEntry = new int[]{row,col};//{row,col}=selected cell
-        JOptionPane.showMessageDialog(null,"Search action for row: " + row+" & col "+col);
+        //JOptionPane.showMessageDialog(null,"Search action for row: " + row+" & col "+col);
 
+        if(col==2)
+        c.showdescr(row,col);
+
+        if(col==6)
+            c.add_to_shoplist(row);
     }
     public void mouseEntered(MouseEvent e) {setFocusBorder( new LineBorder(Color.BLUE) );}
     public void mouseExited(MouseEvent e) {setFocusBorder( new LineBorder(Color.WHITE) );}
