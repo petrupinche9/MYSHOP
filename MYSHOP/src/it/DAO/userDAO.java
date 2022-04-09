@@ -50,7 +50,7 @@ public class userDAO implements IuserDAO {
         String res = "INSERT INTO user (iduser,username,passwd,Name,Surname,Age,Email,telephone,occupation) VALUES ('"+p.getId()+"','"+p.getUsername()+"', '"+p.getPassword()+"', '"+p.getName()+"','"+p.getSurname()+"','"+p.getAge()+"','"+p.getEmail()+"','"+p.getTelephone()+"', '"+p.getOccupation()+"'); ";
         JOptionPane.showMessageDialog(null,res);
         DbConnection.getInstance().eseguiAggiornamento(res);
-         String cliente="INSERT INTO Cliente (user_iduser) VALUES (SELECT iduser FROM user WHERE username='"+p.getUsername()+"' && passwd='"+p.getPassword()+"')"
+         String cliente="INSERT INTO Cliente (user_iduser) VALUES (SELECT iduser FROM user WHERE username='"+p.getUsername()+"' && passwd='"+p.getPassword()+"')";
         JOptionPane.showMessageDialog(null,cliente);
         DbConnection.getInstance().eseguiAggiornamento(cliente);
     }
