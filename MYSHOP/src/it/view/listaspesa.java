@@ -13,7 +13,6 @@ import javax.swing.table.TableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -26,15 +25,17 @@ public class listaspesa  extends JFrame {
     private JLabel cliente;
     private JPanel panel1;
     private JButton FINALIZZASPESAButton;
+    private JButton CLEARArticlesButton;
     private Shop_list lista;
+    private int row,col;
     private ArrayList<article> articolo=new ArrayList<article>();
     public listaspesa() {
         cliente.setText(Session.getInstance().getClienteLoggato().getUsername());
         TableModel model = new it.view.JTableButtonModel() {
 
 
-            public final String[] COLUMN_NAMES = new String[]{"Nome", "Foto", "descrizione", "Costo", "Categoria"};
-            public final Class<?>[] COLUMN_TYPES = new Class<?>[]{String.class, ImageIcon.class, String.class, double.class, String.class};
+            public final String[] COLUMN_NAMES = new String[]{"Nome", "Foto", "descrizione", "Costo", "Categoria", "DELETE"};
+            public final Class<?>[] COLUMN_TYPES = new Class<?>[]{String.class, ImageIcon.class, String.class, double.class, String.class,String.class};
 
             @Override
             public int getColumnCount() {
@@ -95,6 +96,8 @@ public class listaspesa  extends JFrame {
                         return ar.getCosto();
                     case 4:
                         return ar.getCategory();
+                    case 5:
+                        return "DELETE";
 
                     default:
                         return "Error";
@@ -105,18 +108,7 @@ public class listaspesa  extends JFrame {
         TableModelarticoli.setRowHeight(100);
         TableModelarticoli.setModel(model);
 
-        Action search = new AbstractAction() {
-            public void actionPerformed(ActionEvent e) {
-                // JTable table = (JTable) e.getSource();
-                int modelRow = Integer.parseInt(e.getActionCommand());
-                JOptionPane.showMessageDialog(null, "Search action for row: " + modelRow);
 
-                // do some processing here
-                // tb.searchMore(modelRow);
-            }
-        };
-        ButtonColumn buttonColumn = new ButtonColumn(TableModelarticoli, search, TableModelarticoli.getColumnCount() - 1);
-        buttonColumn.setMnemonic(KeyEvent.VK_D);
 
 
         // scrollpane = new JScrollPane(TableModelarticoli);
@@ -128,16 +120,33 @@ public class listaspesa  extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
 
+        CLEARArticlesButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                articolo.clear();
+                refresh_list(articolo);
+            }
+        });
+        FINALIZZASPESAButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+           //TODO METODO BUSINESS PER:
+                //TODO 1-GENERAZIONE LISTA IN PDF E INVIO PER EMAIL
+                //TODO 2-UPDATE STATO LISTA IN PAGATA
+                //TODO 3-SALVATAGGIO LISTE DI ACQUISTO
+            }
+        });
     }
+
     public void showdescr ( int row, int col){
         String descr = (String) TableModelarticoli.getValueAt(row, col);
         JOptionPane.showMessageDialog(null, descr);
-
     }
-    public void add_to_list(article p){
-        articolo.add(p);
-        TableModel mod = new it.view.JTableButtonModel() {
 
+    //AGGIUNGE/RIMUOVE ARTICOLO DALLA LISTA
+    public void refresh_list(ArrayList<article> articolonew){
+          articolo=articolonew;
+        TableModel model = new it.view.JTableButtonModel() {
 
             public final String[] COLUMN_NAMES = new String[]{"Nome", "Foto", "descrizione", "Costo", "Categoria"};
             public final Class<?>[] COLUMN_TYPES = new Class<?>[]{String.class, ImageIcon.class, String.class, double.class, String.class};
@@ -168,7 +177,14 @@ public class listaspesa  extends JFrame {
             }
 
             @Override
+            public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
+                //     super.setValueAt(aValue, rowIndex, columnIndex); by default empty implementation is not necesary if direct parent is AbstractTableModel
+                Object Value=TableModelarticoli.getValueAt(rowIndex,columnIndex) ;
+                aValue=Value;
+                fireTableCellUpdated(rowIndex, columnIndex);// notify listeners
+            }
 
+            @Override
             public Object getValueAt(int rowIndex, final int columnIndex) {
                 //Adding components
 
@@ -207,8 +223,27 @@ public class listaspesa  extends JFrame {
                 }
             }
         };
-        TableModelarticoli.setModel(mod);
+
+
+        TableModelarticoli.setRowHeight(100);
+        TableModelarticoli.setModel(model);
+
+
+
     }
+
+    //ELIMINA ARTICOLO DALLA LISTA
+    public void erase_from_list(int row){
+       /* article newart=TableModelarticoli.;
+        articleDAO dao=new articleDAO();
+        String descr= (String) TableModelarticoli.getValueAt(row, 2);
+        String name= (String) TableModelarticoli.getValueAt(row, 0);*/
+        article erase=articolo.get(row);
+        articolo.remove(erase);
+        refresh_list(articolo);
+
+    }
+
 }
 
 abstract class JTableButtonModel extends AbstractTableModel implements TableModel {

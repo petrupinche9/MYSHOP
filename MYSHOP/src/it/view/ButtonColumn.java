@@ -57,7 +57,7 @@ public class ButtonColumn extends AbstractCellEditor
         editButton.setFocusPainted( false );
         editButton.addActionListener( this );
         originalBorder = editButton.getBorder();
-        setFocusBorder( new LineBorder(Color.BLUE) );
+        setFocusBorder( new LineBorder(Color.RED) );
 
         TableColumnModel columnModel = table.getColumnModel();
         columnModel.getColumn(column).setCellRenderer( this );
@@ -225,9 +225,7 @@ public class ButtonColumn extends AbstractCellEditor
     }
 
     public void mouseClicked(MouseEvent e) {
-        Catalogue c=new Catalogue();
-         c.setVisible(false);
-         c.dispose();
+        /*
         int row = table.rowAtPoint(e.getPoint());//get mouse-selected row
         int col = table.columnAtPoint(e.getPoint());//get mouse-selected col
         //int[] newEntry = new int[]{row,col};//{row,col}=selected cell
@@ -237,8 +235,19 @@ public class ButtonColumn extends AbstractCellEditor
         c.showdescr(row,col);
 
         if(col==6)
-            c.add_to_shoplist(row);
+            c.add_to_shoplist(row);*/
+        //int row = table.convertRowIndexToModel( table.getEditingRow() );
+        int row = table.getSelectedRow();
+        fireEditingStopped();
+
+        //  Invoke the Action
+
+        ActionEvent event = new ActionEvent(
+                table,
+                ActionEvent.ACTION_PERFORMED,
+                "" + row);
+        action.actionPerformed(event);
     }
-    public void mouseEntered(MouseEvent e) {setFocusBorder( new LineBorder(Color.BLUE) );}
-    public void mouseExited(MouseEvent e) {setFocusBorder( new LineBorder(Color.WHITE) );}
+    public void mouseEntered(MouseEvent e) {}
+    public void mouseExited(MouseEvent e) {}
 }

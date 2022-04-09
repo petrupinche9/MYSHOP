@@ -28,12 +28,15 @@ public class Catalogue extends JFrame{
     private JScrollPane scrollpane;
     private IarticleDAO arte = new articleDAO();
     private ArrayList<article> articolo = arte.findAll();
-
+    private ArrayList<article> lista=new ArrayList<article>();
+    public listaspesa c=new listaspesa();
 
             public Catalogue() {
 
                               // TableModelarticoli = new JTable(rowData, colonne);
-
+               c.setVisible(true);
+               c.setSize(600,600);
+               c.setLocation(90,100);
                 cliente.setText(Session.getInstance().getClienteLoggato().getUsername());
                 TableModel model = new it.view.JTableButtonModel() {
 
@@ -115,12 +118,16 @@ public class Catalogue extends JFrame{
 
                 Action search = new AbstractAction() {
                     public void actionPerformed(ActionEvent e) {
-                        // JTable table = (JTable) e.getSource();
-                        int modelRow = Integer.parseInt(e.getActionCommand());
-                        JOptionPane.showMessageDialog(null,"Search action for row: " + modelRow);
+                        int row = TableModelarticoli.getSelectedRow();//get mouse-selected row
+                        int col = TableModelarticoli.getSelectedColumn();//get mouse-selected col
+                        //int[] newEntry = new int[]{row,col};//{row,col}=selected cell
+                      // JOptionPane.showMessageDialog(null,"Search action for row: " + row+" & col "+col);
 
-                        // do some processing here
-                        // tb.searchMore(modelRow);
+                        if(col==2)
+                            showdescr(row,col);
+
+                        if(col==6)
+                            add_to_shoplist(row);
                     }
                 };
                 ButtonColumn buttonColumn = new ButtonColumn(TableModelarticoli, search, TableModelarticoli.getColumnCount()-1);
@@ -145,6 +152,7 @@ public class Catalogue extends JFrame{
                         mf.pack();
                         mf.setLocationRelativeTo(null);
                         mf.setExtendedState(JFrame.EXIT_ON_CLOSE);
+                        c.dispose();
                         dispose();
 
                     }
@@ -178,14 +186,18 @@ public class Catalogue extends JFrame{
 if(res.size()==1){
     String[] riga= res.get(0);
     newart=dao.findById(Integer.parseInt(riga[0]));
-    listaspesa c=new listaspesa();
-    c.setVisible(false);
-    c.dispose();
-    c.add_to_list(newart);
+    lista.add(newart);
+
+        c.refresh_list(lista);
+        c.revalidate();
+        c.repaint();
+    }
+
+
 }
 
     }
-}
+
 
 /*
         abstract class JTableButtonModel extends AbstractTableModel implements TableModel {
