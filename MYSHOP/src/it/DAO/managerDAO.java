@@ -72,10 +72,12 @@ public class managerDAO implements ImanagerDAO{
     }
 
     @Override
-    public void add_user_to_shop(user p, Point_shop shop){
-        userDAO s=new userDAO();
-        ArrayList<String[]> res = DbConnection.getInstance().eseguiQuery("UPDATE Point_shop_has_Cliente SET Cliente_idCliente='"+p.getId()+"' Point_shop_idPoint_shop='"+shop.getId()+"';");
-        JOptionPane.showInputDialog(res);
+    public void add_user_to_shop(user p, manager m){
+        DbConnection.getInstance().eseguiAggiornamento("UPDATE point_shop_has_cliente" +
+                "SET primarykey='"+m.getShop().getId()+"',Point_shop_idPoint_shop='"+m.getShop().getId()+"'," +
+                "Cliente_idCliente='(SELECT idCliente FROM cliente INNER JOIN user ON user.iduser=cliente.user_iduser)'" +
+                "WHERE user.iduser='"+p.getId()+"';");
+
 
     }
     @Override

@@ -15,7 +15,7 @@ public interface ImanagerDAO {
 
     void send_email_to_client(user c, String obj, String mex);
 
-    void add_user_to_shop(user p, Point_shop shop);
+    void add_user_to_shop(user p, manager m);
 
     void erase_user_from_shop(user p, Point_shop shop);
 }
