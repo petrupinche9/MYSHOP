@@ -5,6 +5,8 @@ import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 
+import javax.swing.*;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -36,7 +38,7 @@ public class PdfHelper {
 
             //Setting the font to the Content stream
 
-            contentStream.setFont(PDType1Font.TIMES_ROMAN, 12);
+            contentStream.setFont(PDType1Font.HELVETICA, 16);
 
             //Setting the position for the line
             contentStream.newLineAtOffset(25, 700);
@@ -58,16 +60,28 @@ public class PdfHelper {
             contentStream.close();
 
             //Saving the document
-            document.save("/Users/roberto/Desktop/my_doc.pdf");
+            JFileChooser file = new JFileChooser();
+            file.setCurrentDirectory(new File(System.getProperty("user.home")));
+            //filtering files
+            //FileNameExtensionFilter filter = new FileNameExtensionFilter("*.Document","pdf");
+            //file.addChoosableFileFilter(filter);
+            file.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+            int res = file.showSaveDialog(null);
+            //if the user clicks on save in Jfilechooser
+            if(res == JFileChooser.APPROVE_OPTION) {
+                File selFile = file.getSelectedFile();
+                String path = selFile.getAbsolutePath();
+                document.save(path);
+            }
 
             //Closing the document
             document.close();
 
-            System.out.println("PDF created");
+            JOptionPane.showMessageDialog(null, "PDF created");
         } catch (IOException e) {
             e.printStackTrace();
 
-            System.out.println("PDF NOT created");
+            JOptionPane.showMessageDialog(null, "PDF not created");
         }
     }
 

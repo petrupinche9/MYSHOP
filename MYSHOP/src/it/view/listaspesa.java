@@ -1,9 +1,15 @@
 package it.view;
 
 import it.DAO.IarticleDAO;
+import it.DAO.ShopDAO;
 import it.DAO.articleDAO;
+import it.DbConnection;
+import it.business.ShoplistBusiness;
+import it.model.Point_shop;
 import it.model.Shop_list;
 import it.model.article;
+import it.model.user;
+import it.util.DateUtil;
 import it.util.Session;
 
 import javax.imageio.ImageIO;
@@ -18,6 +24,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.EventObject;
 
 public class listaspesa  extends JFrame {
@@ -26,6 +33,7 @@ public class listaspesa  extends JFrame {
     private JPanel panel1;
     private JButton FINALIZZASPESAButton;
     private JButton CLEARArticlesButton;
+    private JLabel pointshop;
     private Shop_list lista;
     private int row,col;
     private ArrayList<article> articolo=new ArrayList<article>();
@@ -132,8 +140,31 @@ public class listaspesa  extends JFrame {
             public void actionPerformed(ActionEvent e) {
            //TODO METODO BUSINESS PER:
                 //TODO 1-GENERAZIONE LISTA IN PDF E INVIO PER EMAIL
-                //TODO 2-UPDATE STATO LISTA IN PAGATA
-                //TODO 3-SALVATAGGIO LISTE DI ACQUISTO
+                user cliente=Session.getInstance().getClienteLoggato();
+                ArrayList<String[]> search = DbConnection.getInstance().eseguiQuery("SELECT idPoint_shop FROM Point shop WHERE Shopname='"+pointshop.getText()+"';");
+
+                if(search.size()==1) {
+                    String[] riga = search.get(0);
+                    ShopDAO dao = new ShopDAO();
+                    Point_shop shoppo=dao.findById(Integer.parseInt(riga[0]));
+                    int total_price=0;
+                    for (int i = 0; i < articolo.size(); i++) {
+                        total_price+=articolo.get(i).getCosto();
+                    }
+                    Date today = new Date();
+                    String data= DateUtil.stringFromDate(today);
+
+                    Shop_list lista_della_spesa= new Shop_list(0,cliente,shoppo,articolo,"non pagata",total_price,data);
+                    ShoplistBusiness.getInstance().inviashoplist(lista_della_spesa);
+                }else {
+                    JOptionPane.showMessageDialog(null,"ERROR ");
+                }
+
+                //Shop_list listaspesa=new Shop_list(,,articolo,);
+               // ShoplistBusiness.getInstance().inviashoplist();
+                //TODO 3-UPDATE STATO LISTA IN PAGATA
+
+
             }
         });
     }
@@ -143,6 +174,9 @@ public class listaspesa  extends JFrame {
         JOptionPane.showMessageDialog(null, descr);
     }
 
+    public void setshop(String shop){
+        pointshop.setText(shop);
+    }
     //AGGIUNGE/RIMUOVE ARTICOLO DALLA LISTA
     public void refresh_list(ArrayList<article> articolonew){
           articolo=articolonew;

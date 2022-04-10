@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="71d110a1-c0bc-4f14-8051-33f62b96ad40" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/MYSHOP/DB/Myshop22DB.mwb" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/DB/Myshop22DB.mwb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MYSHOP/DB/Myshop22DB.mwb.bak" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/DB/Myshop22DB.mwb.bak" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MYSHOP/DB/script.sql" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/DB/script.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/DAO/userDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/DAO/userDAO.java" afterDir="false" />
+    <list default="true" id="71d110a1-c0bc-4f14-8051-33f62b96ad40" name="Default Changelist" comment="corretto cliente">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/business/ShoplistBusiness.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/business/ShoplistBusiness.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/model/Shop_list.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/model/Shop_list.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/util/PdfHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/util/PdfHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/Catalogue.form" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/Catalogue.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/Catalogue.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/Catalogue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/REGISTRAZIONE.form" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/REGISTRAZIONE.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/listaspesa.form" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/listaspesa.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/listaspesa.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/listaspesa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/DAO/managerDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/DAO/managerDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/DAO/userDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/DAO/userDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/business/ShoplistBusiness.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/business/ShoplistBusiness.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/model/Shop_list.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/model/Shop_list.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/Catalogue$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/Catalogue$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/Catalogue.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/Catalogue.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/REGISTRAZIONE.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/REGISTRAZIONE.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +137,7 @@
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW" value="true" />
-    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW" value="true" />
+    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="create.test.in.the.same.root" value="true" />
@@ -186,21 +198,7 @@
       <workItem from="1645880302727" duration="101000" />
       <workItem from="1645883541906" duration="4453000" />
       <workItem from="1645903646019" duration="290833000" />
-      <workItem from="1648584791472" duration="130535000" />
-    </task>
-    <task id="LOCAL-00012" summary="update petru">
-      <created>1646079954940</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1646079954940</updated>
-    </task>
-    <task id="LOCAL-00013" summary="update classi &amp; interface DAO">
-      <created>1646095969461</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1646095969461</updated>
+      <workItem from="1648584791472" duration="136547000" />
     </task>
     <task id="LOCAL-00014" summary="DEF classe AdminDAO">
       <created>1646184014533</created>
@@ -531,7 +529,21 @@
       <option name="project" value="LOCAL" />
       <updated>1649531888067</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="corretto cliente">
+      <created>1649532160572</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1649532160572</updated>
+    </task>
+    <task id="LOCAL-00062" summary="corretto cliente">
+      <created>1649532226017</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1649532226017</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -633,7 +645,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="(no testato) add product" />
     <MESSAGE value="(no testato) add service" />
     <MESSAGE value="avanzo generale" />
     <MESSAGE value="update modifica articoli img" />
@@ -658,7 +669,8 @@
     <MESSAGE value="correzione manager" />
     <MESSAGE value="not tested shoplist" />
     <MESSAGE value="shoplist funge" />
-    <option name="LAST_COMMIT_MESSAGE" value="shoplist funge" />
+    <MESSAGE value="corretto cliente" />
+    <option name="LAST_COMMIT_MESSAGE" value="corretto cliente" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -667,6 +679,11 @@
           <url>file://$USER_HOME$/AppData/Local/Temp/Rar$DIa18828.45477/IPrenotazioneDAO.java</url>
           <line>11</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/MYSHOP/src/it/view/listaspesa.java</url>
+          <line>139</line>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.NullPointerException" package="java.lang" />

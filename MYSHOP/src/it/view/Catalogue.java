@@ -26,6 +26,7 @@ public class Catalogue extends JFrame{
     private JButton LOGOUTButton;
     private JTable TableModelarticoli;
     private JScrollPane scrollpane;
+    private JButton UPDATEButton;
     private IarticleDAO arte = new articleDAO();
     private ArrayList<article> articolo = arte.findAll();
     private ArrayList<article> lista=new ArrayList<article>();
@@ -161,12 +162,22 @@ public class Catalogue extends JFrame{
                     @Override
                     public void mouseClicked(MouseEvent e) {
                         super.mouseClicked(e);
+
                         comboBox_shop.removeAllItems();
                         ArrayList<String[]> res = DbConnection.getInstance().eseguiQuery("SELECT Shopname FROM Point_shop");
 
                         for (String[] riga : res) {
                             comboBox_shop.addItem(riga[0]);
                         }
+                        //JOptionPane.showMessageDialog(null,comboBox_shop.getSelectedItem().toString());
+
+                    }
+                });
+                UPDATEButton.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        c.setshop(comboBox_shop.getSelectedItem().toString());
+                        //TODO 1-UPDATE TABLE CON FILTRI
                     }
                 });
             }
@@ -193,9 +204,94 @@ if(res.size()==1){
         c.repaint();
     }
 
-
 }
+    public void refresh_list(ArrayList<article> articolonew){
+        articolo=articolonew;
+        TableModel model = new it.view.JTableButtonModel() {
 
+            public final String[] COLUMN_NAMES = new String[]{"Nome", "Foto", "descrizione", "Costo", "Categoria"};
+            public final Class<?>[] COLUMN_TYPES = new Class<?>[]{String.class, ImageIcon.class, String.class, double.class, String.class};
+
+            @Override
+            public int getColumnCount() {
+                return COLUMN_NAMES.length;
+            }
+
+            @Override
+            public int getRowCount() {
+                return articolo.size();
+            }
+
+            @Override
+            public String getColumnName(int columnIndex) {
+                return COLUMN_NAMES[columnIndex];
+            }
+
+            @Override
+            public boolean isCellEditable(EventObject e) {
+                return true;
+            }
+
+            @Override
+            public Class<?> getColumnClass(int columnIndex) {
+                return COLUMN_TYPES[columnIndex];
+            }
+
+            @Override
+            public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
+                //     super.setValueAt(aValue, rowIndex, columnIndex); by default empty implementation is not necesary if direct parent is AbstractTableModel
+                Object Value=TableModelarticoli.getValueAt(rowIndex,columnIndex) ;
+                aValue=Value;
+                fireTableCellUpdated(rowIndex, columnIndex);// notify listeners
+            }
+
+            @Override
+            public Object getValueAt(int rowIndex, final int columnIndex) {
+                //Adding components
+
+
+                article ar = articolo.get(rowIndex);
+                switch (columnIndex) {
+                    case 0:
+                        return ar.getName();
+                    case 1:
+                        byte[] img = ar.getImg();
+                        final JLabel foto = new JLabel(COLUMN_NAMES[columnIndex]);
+                        foto.setSize(100, 100);
+                        InputStream in = new ByteArrayInputStream(img);
+                        try {
+                            BufferedImage imgFromDb = ImageIO.read(in);
+                            ImageIcon image = new ImageIcon(imgFromDb);
+                            Image im = image.getImage();
+                            Image myImg = im.getScaledInstance(foto.getWidth(), foto.getHeight(), Image.SCALE_SMOOTH);
+                            ImageIcon newImage = new ImageIcon(myImg);
+                            foto.setIcon(newImage);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        return foto.getIcon();
+                    case 2:
+                        final JLabel desc = new JLabel();
+                        desc.setText(ar.getDescr());
+                        return ar.getDescr();
+                    case 3:
+                        return ar.getCosto();
+                    case 4:
+                        return ar.getCategory();
+
+                    default:
+                        return "Error";
+                }
+            }
+        };
+
+
+        TableModelarticoli.setRowHeight(100);
+        TableModelarticoli.setModel(model);
+
+
+
+    }
     }
 
 

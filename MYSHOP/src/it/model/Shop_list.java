@@ -5,18 +5,17 @@ import java.util.ArrayList;
 public class Shop_list {
     private int id;
     private user cliente;
-    private manager mng;
-    private ArrayList<article> articoli;
     private Point_shop shop;
-private String stato ;
+    private ArrayList<article> articoli;
+    private String stato ;
 private double total_price;
 private String data;
 
-public Shop_list(int id, user cliente, ArrayList<article> articoli, manager mng, String stato, double total_price, String data){
+public Shop_list(int id, user cliente, Point_shop shop, ArrayList<article> articoli, String stato, double total_price, String data){
     this.id=id;
     this.cliente=cliente;
     this.articoli=articoli;
-    this.mng=mng;
+    this.shop=shop;
     this.stato=stato;
     this.total_price=total_price;
     this.data=data;
@@ -38,8 +37,6 @@ public Shop_list(int id, user cliente, ArrayList<article> articoli, manager mng,
     public void setArticoli( ArrayList<article> articoli) {
         this.articoli = articoli;
     }
-    public manager getMng() {    return mng;    }
-    public void setMng(manager mng) {this.mng = mng;    }
     public double getTotal_price() {
         return total_price;
     }
