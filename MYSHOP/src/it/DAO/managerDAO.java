@@ -75,16 +75,16 @@ public class managerDAO implements ImanagerDAO{
     public void add_user_to_shop(user p, manager m){
         DbConnection.getInstance().eseguiAggiornamento("UPDATE point_shop_has_cliente" +
                 "SET primarykey='"+m.getShop().getId()+"',Point_shop_idPoint_shop='"+m.getShop().getId()+"'," +
-                "Cliente_idCliente='(SELECT idCliente FROM cliente INNER JOIN user ON user.iduser=cliente.user_iduser)'" +
-                "WHERE user.iduser='"+p.getId()+"';");
+                "Cliente_idCliente='(SELECT idCliente FROM cliente INNER JOIN user ON user.iduser=cliente.user_iduser'" +
+                "WHERE user.iduser='"+p.getId()+"');");
 
 
     }
     @Override
     public void erase_user_from_shop(user p, manager m){
         userDAO s=new userDAO();
-        DbConnection.getInstance().eseguiAggiornamento("UPDATE point_shop_has_cliente INNER JOIN cliente ON cliente.idCliente=point_shop_has_cliente.Cliente_idCliente" +
-                "SET primarykey=null, Point_shop_idPoint_shop=null, Cliente_idCliente=null " +
-                "WHERE Point_shop_idPoint_shop='"+m.getShop().getId()+"' AND cliente.idCliente=(SELECT idCliente FROM cliente INNER JOIN user ON cliente.user_iduser=user.iduser WHERE user.iduser='"+p.getId()+"')");
+        DbConnection.getInstance().eseguiAggiornamento("DELETE FROM point_shop_has_cliente" +
+                "WHERE Point_shop_idPoint_shop='"+m.getShop().getId()+"'" +
+                "AND Cliente_idCliente='(SELECT idCliente FROM cliente INNER JOIN user ON user.iduser=cliente.user_iduser WHERE user.iduser='"+p.getId()+"')';");
     }
 }
