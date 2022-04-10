@@ -13,6 +13,7 @@ public class Addusermanager extends JFrame{
     private JTextField textField1;
     private JButton CONFERMAButton;
     private JPanel adduserPanel;
+    private JButton CHIUDIButton;
 
     public Addusermanager()
     {
@@ -30,6 +31,12 @@ public class Addusermanager extends JFrame{
                 managerDAO manager = new managerDAO();
                 manager.add_user_to_shop(adduser, manager.findById(Session.getInstance().getClienteLoggato().getId()));
                 JOptionPane.showMessageDialog(null, "Utente Aggiunto");
+            }
+        });
+        CHIUDIButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
             }
         });
     }

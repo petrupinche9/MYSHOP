@@ -13,6 +13,7 @@ public class Addarticlemanager extends JFrame{
     private JTextField idarticle;
     private JButton CONFERMAButton;
     private JPanel addarticlePanel;
+    private JButton CHIUDIButton;
     private JComboBox comboBox1;
     private JTextField textField1;
 
@@ -37,6 +38,12 @@ public class Addarticlemanager extends JFrame{
                     JOptionPane.showMessageDialog(null, "Articolo Aggiunto");
 
 
+            }
+        });
+        CHIUDIButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
             }
         });
     }
