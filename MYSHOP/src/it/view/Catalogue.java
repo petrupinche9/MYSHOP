@@ -37,7 +37,7 @@ public class Catalogue extends JFrame{
                               // TableModelarticoli = new JTable(rowData, colonne);
                c.setVisible(true);
                c.setSize(600,600);
-               c.setLocation(90,100);
+               c.setLocation(5,100);
                 cliente.setText(Session.getInstance().getClienteLoggato().getUsername());
                 TableModel model = new it.view.JTableButtonModel() {
 

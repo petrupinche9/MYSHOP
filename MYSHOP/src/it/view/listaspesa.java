@@ -42,8 +42,8 @@ public class listaspesa  extends JFrame {
         TableModel model = new it.view.JTableButtonModel() {
 
 
-            public final String[] COLUMN_NAMES = new String[]{"Nome", "Foto", "descrizione", "Costo", "Categoria", "DELETE"};
-            public final Class<?>[] COLUMN_TYPES = new Class<?>[]{String.class, ImageIcon.class, String.class, double.class, String.class,String.class};
+            public final String[] COLUMN_NAMES = new String[]{"Nome", "Foto", "descrizione", "Costo", "Categoria"};
+            public final Class<?>[] COLUMN_TYPES = new Class<?>[]{String.class, ImageIcon.class, String.class, double.class, String.class};
 
             @Override
             public int getColumnCount() {
@@ -104,8 +104,6 @@ public class listaspesa  extends JFrame {
                         return ar.getCosto();
                     case 4:
                         return ar.getCategory();
-                    case 5:
-                        return "DELETE";
 
                     default:
                         return "Error";
