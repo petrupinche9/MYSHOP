@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 public class Deletearticlemanager extends JFrame{
     private JTextField idarticle;
     private JButton CONFERMAButton;
+    private JButton CHIUDIButton;
     private JPanel deletearticlePanel;
 
     public Deletearticlemanager()
@@ -33,6 +34,12 @@ public class Deletearticlemanager extends JFrame{
                 manager.erase_article_from_shop(addarticle, manager.findById(Session.getInstance().getClienteLoggato().getId()));
                 JOptionPane.showMessageDialog(null, "Articolo eliminato");
 
+            }
+        });
+        CHIUDIButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
             }
         });
     }

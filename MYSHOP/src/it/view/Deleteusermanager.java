@@ -13,6 +13,7 @@ public class Deleteusermanager extends JFrame{
     private JTextField textField1;
     private JButton CONFERMAButton;
     private JPanel deleteuserPanel;
+    private JButton CHIUDIButton;
 
     public Deleteusermanager()
     {
@@ -30,6 +31,12 @@ public class Deleteusermanager extends JFrame{
                 managerDAO manager = new managerDAO();
                 manager.erase_user_from_shop(deleteuser, manager.findById(Session.getInstance().getClienteLoggato().getId()));
                 JOptionPane.showMessageDialog(null, "Utente Eliminato");
+            }
+        });
+        CHIUDIButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
             }
         });
     }

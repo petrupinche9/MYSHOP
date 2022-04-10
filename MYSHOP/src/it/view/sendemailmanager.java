@@ -17,6 +17,7 @@ public class sendemailmanager extends JFrame{
     private JButton CONFERMAButton;
     private JTextArea textArea1;
     private JPanel sendmailPanel;
+    private JButton CHIUDIButton;
 
     public boolean utentetrovato(int number)
     {
@@ -54,6 +55,12 @@ public class sendemailmanager extends JFrame{
                 } else {
                     JOptionPane.showMessageDialog(null, "Utente non trovato", "User not Found", 2);
                 }
+            }
+        });
+        CHIUDIButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
             }
         });
     }
