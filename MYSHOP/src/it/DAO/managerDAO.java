@@ -60,10 +60,7 @@ public class managerDAO implements ImanagerDAO{
     }
     @Override
     public void erase_article_from_shop(article p,manager m){
-       articleDAO s=new articleDAO();
-        boolean res = DbConnection.getInstance().eseguiAggiornamento("UPDATE articolo INNER JOIN Point_shop as shop ON Point_shop_idPoint_shop=shop.idPoint_shop  WHERE  idarticolo= "+p.getId()+" && shop.idPoint_shop='"+m.getShop().getId()+"' " +
-                "SET Point_shop_idPoint_shop=NULL , corsia=null ,scaffale=null;");
-        JOptionPane.showMessageDialog(null,res);
+         DbConnection.getInstance().eseguiAggiornamento("UPDATE articolo SET Point_shop_idPoint_shop=NULL WHERE idarticolo='"+p.getId()+"' AND Point_shop_idPoint_shop='"+m.getShop().getId()+"';");
     }
 
     @Override
