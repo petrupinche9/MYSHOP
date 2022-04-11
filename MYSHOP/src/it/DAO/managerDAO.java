@@ -73,12 +73,10 @@ public class managerDAO implements ImanagerDAO{
 
     @Override
     public void add_user_to_shop(user p, manager m){
-        DbConnection.getInstance().eseguiAggiornamento("UPDATE point_shop_has_cliente" +
-                "SET primarykey='"+m.getShop().getId()+"',Point_shop_idPoint_shop='"+m.getShop().getId()+"'," +
-                "Cliente_idCliente='(SELECT idCliente FROM cliente INNER JOIN user ON user.iduser=cliente.user_iduser'" +
-                "WHERE user.iduser='"+p.getId()+"')';");
-
-
+        ArrayList<String[]> res = DbConnection.getInstance().eseguiQuery("SELECT * FROM cliente INNER JOIN user ON cliente.user_iduser=user.iduser WHERE user.iduser='"+p.getId()+"';");
+        String[] tabellacliente = res.get(0);
+        int idcliente = Integer.parseInt(tabellacliente[0]);
+        DbConnection.getInstance().eseguiAggiornamento("INSERT INTO point_shop_has_cliente (Point_shop_idPoint_shop, Cliente_idCliente) VALUES ('"+m.getShop().getId()+"', '"+idcliente+"');");
     }
     @Override
     public void erase_user_from_shop(user p, manager m){
