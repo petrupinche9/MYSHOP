@@ -80,9 +80,9 @@ public class managerDAO implements ImanagerDAO{
     }
     @Override
     public void erase_user_from_shop(user p, manager m){
-        userDAO s=new userDAO();
-        DbConnection.getInstance().eseguiAggiornamento("DELETE FROM point_shop_has_cliente" +
-                "WHERE Point_shop_idPoint_shop='"+m.getShop().getId()+"'" +
-                "AND Cliente_idCliente='(SELECT idCliente FROM cliente INNER JOIN user ON user.iduser=cliente.user_iduser WHERE user.iduser='"+p.getId()+"')';");
+        ArrayList<String[]> res = DbConnection.getInstance().eseguiQuery("SELECT * FROM cliente INNER JOIN user ON cliente.user_iduser=user.iduser WHERE user.iduser='"+p.getId()+"';");
+        String[] tabellacliente = res.get(0);
+        int idcliente = Integer.parseInt(tabellacliente[0]);
+        DbConnection.getInstance().eseguiAggiornamento("DELETE FROM point_shop_has_cliente WHERE Point_shop_idPoint_shop='"+m.getShop().getId()+"' AND Cliente_idCliente='"+idcliente+"';");
     }
 }
