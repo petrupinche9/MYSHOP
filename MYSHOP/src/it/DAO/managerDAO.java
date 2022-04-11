@@ -76,7 +76,7 @@ public class managerDAO implements ImanagerDAO{
         DbConnection.getInstance().eseguiAggiornamento("UPDATE point_shop_has_cliente" +
                 "SET primarykey='"+m.getShop().getId()+"',Point_shop_idPoint_shop='"+m.getShop().getId()+"'," +
                 "Cliente_idCliente='(SELECT idCliente FROM cliente INNER JOIN user ON user.iduser=cliente.user_iduser'" +
-                "WHERE user.iduser='"+p.getId()+"');");
+                "WHERE user.iduser='"+p.getId()+"')';");
 
 
     }
