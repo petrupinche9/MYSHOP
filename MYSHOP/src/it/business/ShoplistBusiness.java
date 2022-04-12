@@ -1,6 +1,7 @@
 package it.business;
 
 import it.DAO.Shop_listDAO;
+import it.DbConnection;
 import it.model.Shop_list;
 import it.util.DateUtil;
 import it.util.MailHelper;
@@ -35,12 +36,15 @@ public class ShoplistBusiness {
         MailHelper.getInstance().send(dest1, "Shoplist confermata!", "Prenotazione articoli avvenuta con successo il giorn: "+ DateUtil.stringFromDate(today)+"");
 
         // 3. generare pdf per l'utente
-        ArrayList<String> testo = new ArrayList<String>();
-        testo.add("Codice prenotazione: "+p.getId());
-        testo.add("Effettuata il: "+ DateUtil.stringFromDate(today)+"");
-        testo.add("Stampa questo file e presentati al punto vendita designato per finalizzare l'acquisto :)");
-        PdfHelper.getInstance().creaPdf(testo);
-
+        ArrayList<String[]> search = DbConnection.getInstance().eseguiQuery("SELECT idShop_List FROM Shop_List WHERE Point_shop_idPoint_shop='"+p.getShop().getId()+"' AND Cliente_idCliente='"+p.getCliente().getId()+"';");
+        if(search.size()==1) {
+            String[] riga = search.get(0);
+            ArrayList<String> testo = new ArrayList<String>();
+            testo.add("Codice prenotazione: " + Integer.parseInt(riga[0]));
+            testo.add("Effettuata il: " + DateUtil.stringFromDate(today) + "");
+            testo.add("Stampa questo file e presentati al punto vendita designato per finalizzare l'acquisto :)");
+            PdfHelper.getInstance().creaPdf(testo);
+        }
         return true;
     }
 }

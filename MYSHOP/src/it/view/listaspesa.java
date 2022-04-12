@@ -1,8 +1,6 @@
 package it.view;
 
-import it.DAO.IarticleDAO;
-import it.DAO.ShopDAO;
-import it.DAO.articleDAO;
+import it.DAO.*;
 import it.DbConnection;
 import it.business.ShoplistBusiness;
 import it.model.Point_shop;
@@ -34,6 +32,7 @@ public class listaspesa  extends JFrame {
     private JButton FINALIZZASPESAButton;
     private JButton CLEARArticlesButton;
     private JLabel pointshop;
+    private JButton RECUPERASHOPLISTButton;
     private Shop_list lista;
     private int row,col;
     private ArrayList<article> articolo=new ArrayList<article>();
@@ -136,8 +135,8 @@ public class listaspesa  extends JFrame {
         FINALIZZASPESAButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-           //TODO METODO BUSINESS PER:
-                //TODO 1-GENERAZIONE LISTA IN PDF E INVIO PER EMAIL
+           // METODO BUSINESS PER:
+                // 1-GENERAZIONE LISTA IN PDF E INVIO PER EMAIL
                 user cliente=Session.getInstance().getClienteLoggato();
                 ArrayList<String[]> search = DbConnection.getInstance().eseguiQuery("SELECT idPoint_shop FROM Point shop WHERE Shopname='"+pointshop.getText()+"';");
 
@@ -163,6 +162,15 @@ public class listaspesa  extends JFrame {
                 //TODO 3-UPDATE STATO LISTA IN PAGATA
 
 
+            }
+        });
+        RECUPERASHOPLISTButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String m = JOptionPane.showInputDialog("INSERISCA LA MATRICOLA DELLA SHOPLIST DESIDERATA", 0);
+                Shop_listDAO daolist=new Shop_listDAO();
+                Shop_list newlist=daolist.findById(Integer.parseInt(m));
+                refresh_list(newlist.getArticoli());
             }
         });
     }

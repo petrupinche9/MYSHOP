@@ -3,21 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="71d110a1-c0bc-4f14-8051-33f62b96ad40" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/Catalogue.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/Catalogue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/business/ShoplistBusiness.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/business/ShoplistBusiness.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/listaspesa.form" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/listaspesa.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/listaspesa.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/listaspesa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/util/PdfHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/util/PdfHelper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/Addarticlemanager$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/Addarticlemanager$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/Addarticlemanager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/Addarticlemanager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/Addusermanager$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/Addusermanager$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/Addusermanager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/Addusermanager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/Catalogue.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/Catalogue.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/Deletearticlemanager$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/Deletearticlemanager$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/Deletearticlemanager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/Deletearticlemanager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/Deleteusermanager$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/Deleteusermanager$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/Deleteusermanager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/Deleteusermanager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/sendemailmanager$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/sendemailmanager$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/sendemailmanager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/sendemailmanager.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -198,14 +186,7 @@
       <workItem from="1645880302727" duration="101000" />
       <workItem from="1645883541906" duration="4453000" />
       <workItem from="1645903646019" duration="290833000" />
-      <workItem from="1648584791472" duration="137223000" />
-    </task>
-    <task id="LOCAL-00015" summary="AdminDAO ended&#10;managerDAO ended">
-      <created>1646245698776</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1646245698776</updated>
+      <workItem from="1648584791472" duration="140457000" />
     </task>
     <task id="LOCAL-00016" summary="AdminDAO ended&#10;managerDAO ended">
       <created>1646263807501</created>
@@ -543,7 +524,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649630778457</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="varie migliorie">
+      <created>1649631347263</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1649631347263</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -645,7 +633,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="avanzo generale" />
     <MESSAGE value="update modifica articoli img" />
     <MESSAGE value="insert prodotti finito" />
     <MESSAGE value="insert subprodotto finito" />
@@ -670,7 +657,8 @@
     <MESSAGE value="shoplist funge" />
     <MESSAGE value="corretto cliente" />
     <MESSAGE value="not tested shoplist&#10;varie migliorie" />
-    <option name="LAST_COMMIT_MESSAGE" value="not tested shoplist&#10;varie migliorie" />
+    <MESSAGE value="varie migliorie" />
+    <option name="LAST_COMMIT_MESSAGE" value="varie migliorie" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -679,11 +667,6 @@
           <url>file://$USER_HOME$/AppData/Local/Temp/Rar$DIa18828.45477/IPrenotazioneDAO.java</url>
           <line>11</line>
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/MYSHOP/src/it/view/listaspesa.java</url>
-          <line>138</line>
-          <option name="timeStamp" value="5" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.NullPointerException" package="java.lang" />
