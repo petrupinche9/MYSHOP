@@ -35,7 +35,7 @@
         <properties>
           <font name="Calibri" size="16"/>
           <labelFor value="cbe2b"/>
-          <text value="Inserisci il NOME VENDITORE"/>
+          <text value="Inserisci il NOME DEL PUNTO VENDITA"/>
         </properties>
       </component>
       <component id="cbe2b" class="javax.swing.JTextField" binding="shopname">
