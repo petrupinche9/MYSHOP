@@ -27,6 +27,7 @@ public class Catalogue extends JFrame{
     private JTable TableModelarticoli;
     private JScrollPane scrollpane;
     private JButton UPDATEButton;
+    private JButton ILMIOPROFILOButton;
     private IarticleDAO arte = new articleDAO();
     private ArrayList<article> articolo = arte.findAll();
     private ArrayList<article> lista=new ArrayList<article>();
@@ -169,7 +170,6 @@ public class Catalogue extends JFrame{
                         for (String[] riga : res) {
                             comboBox_shop.addItem(riga[0]);
                         }
-                        //JOptionPane.showMessageDialog(null,comboBox_shop.getSelectedItem().toString());
 
                     }
                 });
@@ -177,7 +177,23 @@ public class Catalogue extends JFrame{
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         c.setshop(comboBox_shop.getSelectedItem().toString());
-                        //TODO 1-UPDATE TABLE CON FILTRI
+                        article artico=new article();
+
+                        articolo.clear();
+                        ArrayList<String[]> art = DbConnection.getInstance().eseguiQuery("SELECT * FROM articolo WHERE Point_shop_idPoint_shop=(SELECT idPoint_shop FROM Point_shop WHERE Shopname='"+comboBox_shop.getSelectedItem().toString()+"'); ");
+                        for (String[] riga : art) {
+                            artico=arte.findById(Integer.parseInt(riga[0]));
+                            articolo.add(artico);
+                        }
+                        refresh_list(articolo);
+
+                    }
+                });
+
+                ILMIOPROFILOButton.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        userprofile cf=new userprofile();
                     }
                 });
             }
@@ -197,7 +213,27 @@ public class Catalogue extends JFrame{
 if(res.size()==1){
     String[] riga= res.get(0);
     newart=dao.findById(Integer.parseInt(riga[0]));
-    lista.add(newart);
+    ArrayList<String[]> shop = DbConnection.getInstance().eseguiQuery("SELECT idarticolo FROM articolo WHERE Name='"+name+"' && description='"+descr+"' && Point_shop_idPoint_shop=null ;");
+
+    if(shop.size()==1){
+        Object[] options = {"SI",
+                "NO",
+        };
+        int n = JOptionPane.showOptionDialog(null,
+                "ARTICOLO NON DISPONIBILE IN MAGAZZINO "
+                        + "PREFERISCI PRENOTARLO?",
+                "MYSHOP",
+                JOptionPane.YES_NO_CANCEL_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                options,
+                options[2]);
+        if(n==1)
+            lista.add(newart);
+
+}else{
+        lista.add(newart);
+    }
 
         c.refresh_list(lista);
         c.revalidate();
@@ -362,8 +398,6 @@ if(res.size()==1){
                 }
             }
 */
-// TODO: CREARE LISTENER PER ZOOM DESCRIZIONE E INIZIARE DEVELOP DELLA LISTA DELLA SPESA
-
 
 
 

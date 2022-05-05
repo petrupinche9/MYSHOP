@@ -5,6 +5,7 @@ import it.model.*;
 public interface IAdminDAO extends IBaseDAO<Admin>{
     void newproduct(Product p, Produttore prod, byte[] img);
 
+
     //aggiunta nuovo sottoprodotto
     void newsubproduct(SubProduct p, Produttore prod, byte[] img, Product p2);
 

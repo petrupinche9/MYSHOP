@@ -20,8 +20,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class administracionaggiungiprodotto extends JFrame {
-    private JTextField category;
-    private JTextField subcategory;
+
     private JTextField costo;
     private JTextField corsia;
     private JTextField scaffale;
@@ -37,6 +36,8 @@ public class administracionaggiungiprodotto extends JFrame {
     private JTextArea descr;
     private JPanel adminprodottoPanel;
     private JButton CHIUDIButton;
+    private JComboBox<String> category;
+    private JComboBox<String> subcategory;
 
     public administracionaggiungiprodotto()
     {
@@ -45,6 +46,18 @@ public class administracionaggiungiprodotto extends JFrame {
         setSize(500, 500);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setVisible(true);
+        category.addItem("MOBILI");
+        category.addItem("ILLUMINAZIONE");
+        category.addItem("TESSILI");
+
+        subcategory.addItem("CUCINA");
+        subcategory.addItem("SOGGIORNO");
+        subcategory.addItem("CAMERA");
+        subcategory.addItem("CUCINA");
+        subcategory.addItem("TAPPETI");
+        subcategory.addItem("TENDE");
+        subcategory.addItem("LAMPADARI");
+        subcategory.addItem("LAMPADARI DA ESTERNO");
 
         CONFERMAButton.addActionListener(new ActionListener() {
             @Override
@@ -54,8 +67,8 @@ public class administracionaggiungiprodotto extends JFrame {
                 Produttore p = new Produttore();
                 prod.setName(name.getText());
                 prod.setDescr(descr.getText());
-                prod.setCategory(category.getText());
-                prod.setSottocategoria(subcategory.getText());
+                prod.setCategory(category.getSelectedItem().toString());
+                prod.setSottocategoria(subcategory.getSelectedItem().toString());
                 prod.setCosto(Double.parseDouble(costo.getText()));
                 prod.setScaffale(Integer.parseInt(scaffale.getText()));
                 prod.setCorsia(Integer.parseInt(corsia.getText()));
@@ -108,8 +121,8 @@ public class administracionaggiungiprodotto extends JFrame {
                 Produttore p = new Produttore();
                 prod.setName(name.getText());
                 prod.setDescr(descr.getText());
-                prod.setCategory(category.getText());
-                prod.setSottocategoria(subcategory.getText());
+                prod.setCategory(category.getSelectedItem().toString());
+                prod.setSottocategoria(subcategory.getSelectedItem().toString());
                 prod.setCosto(Double.parseDouble(costo.getText()));
                 prod.setScaffale(Integer.parseInt(scaffale.getText()));
                 prod.setCorsia(Integer.parseInt(corsia.getText()));

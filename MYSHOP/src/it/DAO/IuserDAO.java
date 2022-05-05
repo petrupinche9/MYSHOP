@@ -12,7 +12,6 @@ public interface IuserDAO {
 
     //registrazione nuovo utente
     void newuser(user p);
-
-
+    void mod_user(user p);
     //ArrayList<Cliente> findAll();
 }

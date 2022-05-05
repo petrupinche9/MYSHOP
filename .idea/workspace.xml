@@ -2,10 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="71d110a1-c0bc-4f14-8051-33f62b96ad40" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/listaspesauser.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/listaspesauser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/userinfo.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/userinfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/userprofile.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/userprofile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/business/ShoplistBusiness.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/business/ShoplistBusiness.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/listaspesa.form" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/listaspesa.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/listaspesa.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/listaspesa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/DAO/IAdminDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/DAO/IAdminDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/DAO/IuserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/DAO/IuserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/DAO/userDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/DAO/userDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/Catalogue.form" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/Catalogue.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/Catalogue.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/Catalogue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/REGISTRAZIONE.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/REGISTRAZIONE.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/administracionaggiungiprodotto.form" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/administracionaggiungiprodotto.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/administracionaggiungiprodotto.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/administracionaggiungiprodotto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/DAO/managerDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/DAO/managerDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/business/ShoplistBusiness.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/business/ShoplistBusiness.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/REGISTRAZIONE$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/REGISTRAZIONE$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/REGISTRAZIONE$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/REGISTRAZIONE.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/REGISTRAZIONE.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/administracionpuntivendita.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/administracionpuntivendita.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,11 +142,11 @@
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW" value="true" />
-    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW" value="false" />
+    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="create.test.in.the.same.root" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/MYSHOP/src/it/view" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/MYSHOP/src/it/util" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Libraries" />
@@ -143,6 +160,7 @@
       <recent name="it.model" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\petru\OneDrive\Desktop\MYSHOP\MYSHOP\src\it\util" />
       <recent name="C:\Users\petru\OneDrive\Desktop\MYSHOP\MYSHOP\src\it\view" />
       <recent name="C:\Users\petru\OneDrive\Desktop\MYSHOP\MYSHOP\src\it\view\finto" />
     </key>
@@ -186,14 +204,8 @@
       <workItem from="1645880302727" duration="101000" />
       <workItem from="1645883541906" duration="4453000" />
       <workItem from="1645903646019" duration="290833000" />
-      <workItem from="1648584791472" duration="140457000" />
-    </task>
-    <task id="LOCAL-00016" summary="AdminDAO ended&#10;managerDAO ended">
-      <created>1646263807501</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1646263807501</updated>
+      <workItem from="1648584791472" duration="141668000" />
+      <workItem from="1649927925255" duration="124826000" />
     </task>
     <task id="LOCAL-00017" summary="last task:&#10;comments adn user guest">
       <created>1646319184088</created>
@@ -531,7 +543,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649631347263</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="varie migliorie">
+      <created>1649800838912</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1649800838972</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TimeTrackingManager">

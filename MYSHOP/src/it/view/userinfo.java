@@ -8,7 +8,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class REGISTRAZIONE extends JFrame
+public class userinfo extends JFrame
 {
     private JTextField Name;
     private JTextField Surname;
@@ -20,10 +20,9 @@ public class REGISTRAZIONE extends JFrame
     private JTextField Age;
     private JTextField username;
     private JPasswordField passwd;
-    private JComboBox<String> comboBox1;
-    private JTextField idtext;
 
-    public REGISTRAZIONE()
+
+    public userinfo()
     {
         setContentPane(RegistrazionePannello);
         setTitle("REGISTRAZIONE MYSHOP");
@@ -56,20 +55,38 @@ public class REGISTRAZIONE extends JFrame
 
             }
         });
-
-
-/*
-        comboBox1.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
-                comboBox1.removeAllItems();
-                ArrayList<String[]> res = DbConnection.getInstance().eseguiQuery("SELECT Shopname FROM Point_shop");
-
-                     for (String[] riga : res) {
-                                comboBox1.addItem(riga[0]);
-                    }
-                }
-        });*/
     }
+
+    public void setName(String name) {
+        Name.setText(name);
+    }
+
+    public void setSurname(String surname) {
+        Surname.setText(surname);
+    }
+
+    public void setEmail(String email) {
+        Email.setText(email);
+    }
+
+    public void setAge(String age) {
+        Age.setText(age);
+    }
+
+    public void setUsername(String Username) {
+        username.setText(Username);
+    }
+
+    public void setOccupation(String Occupation) {
+        occupation.setText(Occupation);
+    }
+
+    public void setTelephone(String telephone) {
+        Telephone.setText(telephone);
+    }
+
+    public void setPasswd(String Passwd) {
+        passwd.setText(Passwd);
+    }
+
 }

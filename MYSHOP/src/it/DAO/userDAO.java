@@ -47,12 +47,19 @@ public class userDAO implements IuserDAO {
     @Override
     //registrazione nuovo utente
     public void newuser(user p){
-        String res = "INSERT INTO user (iduser,username,passwd,Name,Surname,Age,Email,telephone,occupation) VALUES ('"+p.getId()+"','"+p.getUsername()+"', '"+p.getPassword()+"', '"+p.getName()+"','"+p.getSurname()+"','"+p.getAge()+"','"+p.getEmail()+"','"+p.getTelephone()+"', '"+p.getOccupation()+"'); ";
+        String res = "INSERT INTO user (username,passwd,Name,Surname,Age,Email,telephone,occupation) VALUES ('"+p.getUsername()+"', '"+p.getPassword()+"', '"+p.getName()+"','"+p.getSurname()+"','"+p.getAge()+"','"+p.getEmail()+"','"+p.getTelephone()+"', '"+p.getOccupation()+"'); ";
         JOptionPane.showMessageDialog(null,res);
         DbConnection.getInstance().eseguiAggiornamento(res);
-         String cliente="INSERT INTO Cliente (user_iduser) VALUES (SELECT iduser FROM user WHERE username='"+p.getUsername()+"' && passwd='"+p.getPassword()+"')";
+         String cliente="INSERT INTO Cliente (user_iduser) VALUES ((SELECT iduser FROM user WHERE username='"+p.getUsername()+"' && passwd='"+p.getPassword()+"'))";
         JOptionPane.showMessageDialog(null,cliente);
         DbConnection.getInstance().eseguiAggiornamento(cliente);
+    }
+    @Override
+    public void mod_user(user p){
+        String res = "UPDATE user SET username='"+p.getUsername()+"' , passwd='"+p.getPassword()+"', Name='"+p.getName()+"',Surname='"+p.getSurname()+"',Age='"+p.getAge()+"',Email='"+p.getEmail()+"',telephone='"+p.getTelephone()+"', occupation='"+p.getOccupation()+"' WHERE username='"+p.getUsername()+"' && passwd='"+p.getPassword()+"'";
+        JOptionPane.showMessageDialog(null,res);
+        DbConnection.getInstance().eseguiAggiornamento(res);
+
     }
 
     //commenta
