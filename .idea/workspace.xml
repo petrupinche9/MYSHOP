@@ -1,28 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="71d110a1-c0bc-4f14-8051-33f62b96ad40" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/listaspesauser.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/listaspesauser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/userinfo.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/userinfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/userprofile.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/userprofile.java" afterDir="false" />
+    <list default="true" id="71d110a1-c0bc-4f14-8051-33f62b96ad40" name="Default Changelist" comment="final commit (not tested)">
+      <change afterPath="$PROJECT_DIR$/MYSHOP/src/it/DAO/IcommentsDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MYSHOP/src/it/DAO/commentsDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/comments.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/comments.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/DAO/IAdminDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/DAO/IAdminDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/DAO/IuserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/DAO/IuserDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/DAO/userDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/DAO/userDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/Catalogue.form" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/Catalogue.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/model/article.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/model/article.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/Catalogue.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/Catalogue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/REGISTRAZIONE.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/REGISTRAZIONE.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/administracionaggiungiprodotto.form" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/administracionaggiungiprodotto.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/administracionaggiungiprodotto.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/administracionaggiungiprodotto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/DAO/managerDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/DAO/managerDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/business/ShoplistBusiness.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/business/ShoplistBusiness.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/REGISTRAZIONE$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/REGISTRAZIONE$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/REGISTRAZIONE$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/REGISTRAZIONE.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/REGISTRAZIONE.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/administracionpuntivendita.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/administracionpuntivendita.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/add_subproduct.form" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/add_subproduct.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/add_subproduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/add_subproduct.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/administracionaggiungiservizio.form" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/administracionaggiungiservizio.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/administracionaggiungiservizio.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/administracionaggiungiservizio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/administracionpuntivendita.form" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/administracionpuntivendita.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/administracionpuntivendita.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/administracionpuntivendita.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/listaspesa.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/listaspesa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/listaspesauser.form" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/listaspesauser.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/listaspesauser.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/listaspesauser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/userprofile.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/userprofile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/DAO/IuserDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/DAO/IuserDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/DAO/userDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/DAO/userDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/Catalogue$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/Catalogue$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/Catalogue.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/Catalogue.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/administracionaggiungiprodotto$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/administracionaggiungiprodotto$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/administracionaggiungiprodotto$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/administracionaggiungiprodotto$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/administracionaggiungiprodotto$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/administracionaggiungiprodotto$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/administracionaggiungiprodotto.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/administracionaggiungiprodotto.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,8 +43,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -205,14 +210,7 @@
       <workItem from="1645883541906" duration="4453000" />
       <workItem from="1645903646019" duration="290833000" />
       <workItem from="1648584791472" duration="141668000" />
-      <workItem from="1649927925255" duration="124826000" />
-    </task>
-    <task id="LOCAL-00017" summary="last task:&#10;comments adn user guest">
-      <created>1646319184088</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1646319184088</updated>
+      <workItem from="1649927925255" duration="144811000" />
     </task>
     <task id="LOCAL-00018" summary="nuovo db">
       <created>1646319370216</created>
@@ -550,7 +548,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649800838972</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="final commit (not tested)">
+      <created>1651791343190</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1651791343190</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -652,7 +657,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="update modifica articoli img" />
     <MESSAGE value="insert prodotti finito" />
     <MESSAGE value="insert subprodotto finito" />
     <MESSAGE value="insert servizio finito" />
@@ -677,7 +681,8 @@
     <MESSAGE value="corretto cliente" />
     <MESSAGE value="not tested shoplist&#10;varie migliorie" />
     <MESSAGE value="varie migliorie" />
-    <option name="LAST_COMMIT_MESSAGE" value="varie migliorie" />
+    <MESSAGE value="final commit (not tested)" />
+    <option name="LAST_COMMIT_MESSAGE" value="final commit (not tested)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

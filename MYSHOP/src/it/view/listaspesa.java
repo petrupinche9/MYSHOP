@@ -164,6 +164,7 @@ public class listaspesa  extends JFrame {
 
             }
         });
+
         RECUPERASHOPLISTButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -183,6 +184,7 @@ public class listaspesa  extends JFrame {
     public void setshop(String shop){
         pointshop.setText(shop);
     }
+
     //AGGIUNGE/RIMUOVE ARTICOLO DALLA LISTA
     public void refresh_list(ArrayList<article> articolonew){
           articolo=articolonew;

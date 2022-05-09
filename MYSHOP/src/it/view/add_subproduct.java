@@ -20,8 +20,8 @@ import java.io.File;
 import java.io.IOException;
 
 public class add_subproduct extends JFrame {
-    private JTextField category;
-    private JTextField subcategory;
+    private JComboBox category;
+    private JComboBox subcategory;
     private JTextField costo;
     private JTextField prod_name;
     private JTextField website;
@@ -44,6 +44,18 @@ public class add_subproduct extends JFrame {
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setVisible(true);
 
+        category.addItem("MOBILI");
+        category.addItem("ILLUMINAZIONE");
+        category.addItem("TESSILI");
+
+        subcategory.addItem("CUCINA");
+        subcategory.addItem("SOGGIORNO");
+        subcategory.addItem("CAMERA");
+        subcategory.addItem("CUCINA");
+        subcategory.addItem("TAPPETI");
+        subcategory.addItem("TENDE");
+        subcategory.addItem("LAMPADARI");
+        subcategory.addItem("LAMPADARI DA ESTERNO");
         CONFERMAButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -52,8 +64,8 @@ public class add_subproduct extends JFrame {
                 Produttore p = new Produttore();
                 prod.setName(name.getText());
                 prod.setDescr(descr.getText());
-                prod.setCategory(category.getText());
-                prod.setSottocategoria(subcategory.getText());
+                prod.setCategory(category.getSelectedItem().toString());
+                prod.setSottocategoria(subcategory.getSelectedItem().toString());
                 prod.setCosto(Double.parseDouble(costo.getText()));
 
 

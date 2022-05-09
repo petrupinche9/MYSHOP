@@ -35,5 +35,11 @@ public class userprofile {
                 cf.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
             }
         });
+        VISUALIZZAACQUISTIButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                listaspesauser c=new listaspesauser();
+            }
+        });
     }
 }

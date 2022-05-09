@@ -1,16 +1,9 @@
 package it.view;
 
-import it.DAO.IarticleDAO;
-import it.DAO.ShopDAO;
-import it.DAO.Shop_listDAO;
-import it.DAO.articleDAO;
+import it.DAO.*;
 import it.DbConnection;
-import it.business.ShoplistBusiness;
-import it.model.Point_shop;
 import it.model.Shop_list;
 import it.model.article;
-import it.model.user;
-import it.util.DateUtil;
 import it.util.Session;
 
 import javax.imageio.ImageIO;
@@ -20,12 +13,12 @@ import javax.swing.table.TableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.EventObject;
 
 public class listaspesauser  extends JFrame {
@@ -43,6 +36,7 @@ public class listaspesauser  extends JFrame {
     private IarticleDAO arte;
 
     public listaspesauser() {
+
         ArrayList<String[]> art = DbConnection.getInstance().eseguiQuery("SELECT * FROM articolo INNER JOIN Shop_list AS shop ON Shop_list_idShop_list=shop.idShop_list" +
                 "INNER JOIN Cliente AS cl ON shop.Cliente_idCliente=cl.idCliente " +
                 "INNER JOIN user as us ON cl.user_iduser=us.iduser " +
@@ -56,7 +50,7 @@ public class listaspesauser  extends JFrame {
         TableModel model = new JTableButtonModel() {
 
 
-            public final String[] COLUMN_NAMES = new String[]{"Nome", "Foto", "descrizione", "Costo", "Categoria", "Review", "Commenta"};
+            public final String[] COLUMN_NAMES = new String[]{"Nome", "Foto", "descrizione", "Costo", "Categoria", "Stars", "Commenta"};
             public final Class<?>[] COLUMN_TYPES = new Class<?>[]{String.class, ImageIcon.class, String.class, double.class, String.class};
 
             @Override
@@ -133,7 +127,25 @@ public class listaspesauser  extends JFrame {
         TableModelarticoli.setRowHeight(100);
         TableModelarticoli.setModel(model);
 
+        Action search = new AbstractAction() {
+            public void actionPerformed(ActionEvent e) {
+                int row = TableModelarticoli.getSelectedRow();//get mouse-selected row
+                int col = TableModelarticoli.getSelectedColumn();//get mouse-selected col
+                //int[] newEntry = new int[]{row,col};//{row,col}=selected cell
+                // JOptionPane.showMessageDialog(null,"Search action for row: " + row+" & col "+col);
 
+                if(col==2)
+                    showdescr(row,col);
+                if(col==5)
+                    showcomm(row);
+
+                if(col==6)
+                    comment(row);
+
+            }
+        };
+        ButtonColumn buttonColumn = new ButtonColumn(TableModelarticoli, search, TableModelarticoli.getColumnCount()-1);
+        buttonColumn.setMnemonic(KeyEvent.VK_D);
 
 
         // scrollpane = new JScrollPane(TableModelarticoli);
@@ -149,9 +161,18 @@ public class listaspesauser  extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 articolo.clear();
+                ArrayList<String[]> art = DbConnection.getInstance().eseguiQuery("SELECT * FROM articolo INNER JOIN Shop_list AS shop ON Shop_list_idShop_list=shop.idShop_list" +
+                        "INNER JOIN Cliente AS cl ON shop.Cliente_idCliente=cl.idCliente " +
+                        "INNER JOIN user as us ON cl.user_iduser=us.iduser " +
+                        "WHERE us.username='"+Session.getInstance().getClienteLoggato().getUsername()+"' && us.passwd='"+Session.getInstance().getClienteLoggato().getPassword()+"'; ");
+                for (String[] riga : art) {
+                    artico=arte.findById(Integer.parseInt(riga[0]));
+                    articolo.add(artico);
+                }
                 refresh_list(articolo);
             }
         });
+        /*
         FINALIZZASPESAButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -183,7 +204,8 @@ public class listaspesauser  extends JFrame {
 
 
             }
-        });
+        });*/
+
         RECUPERASHOPLISTButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -200,6 +222,18 @@ public class listaspesauser  extends JFrame {
         JOptionPane.showMessageDialog(null, descr);
     }
 
+    public void showcomm(int row){
+        article newart=new article();
+        articleDAO dao=new articleDAO();
+        String descr= (String) TableModelarticoli.getValueAt(row, 2);
+        String name= (String) TableModelarticoli.getValueAt(row, 0);
+        ArrayList<String[]> res = DbConnection.getInstance().eseguiQuery("SELECT idarticolo FROM articolo WHERE Name='"+name+"' && description='"+descr+"' ;");
+        if(res.size()==1) {
+            String[] riga = res.get(0);
+            comments c=new comments();
+            c.setId_article(Integer.parseInt(riga[0]));
+        }
+    }
     public void setshop(String shop){
         pointshop.setText(shop);
     }
@@ -208,7 +242,8 @@ public class listaspesauser  extends JFrame {
           articolo=articolonew;
         TableModel model = new JTableButtonModel() {
 
-            public final String[] COLUMN_NAMES = new String[]{"Nome", "Foto", "descrizione", "Costo", "Categoria"};
+
+            public final String[] COLUMN_NAMES = new String[]{"Nome", "Foto", "descrizione", "Costo", "Categoria", "Stars", "Commenta"};
             public final Class<?>[] COLUMN_TYPES = new Class<?>[]{String.class, ImageIcon.class, String.class, double.class, String.class};
 
             @Override
@@ -237,14 +272,7 @@ public class listaspesauser  extends JFrame {
             }
 
             @Override
-            public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-                //     super.setValueAt(aValue, rowIndex, columnIndex); by default empty implementation is not necesary if direct parent is AbstractTableModel
-                Object Value=TableModelarticoli.getValueAt(rowIndex,columnIndex) ;
-                aValue=Value;
-                fireTableCellUpdated(rowIndex, columnIndex);// notify listeners
-            }
 
-            @Override
             public Object getValueAt(int rowIndex, final int columnIndex) {
                 //Adding components
 
@@ -277,6 +305,11 @@ public class listaspesauser  extends JFrame {
                         return ar.getCosto();
                     case 4:
                         return ar.getCategory();
+                    case 5:
+                        return ar.getEval();
+                    case 6:
+                        final JLabel commenta = new JLabel("COMMENTA");
+                        return commenta.getText();
 
                     default:
                         return "Error";
@@ -284,34 +317,79 @@ public class listaspesauser  extends JFrame {
             }
         };
 
-
         TableModelarticoli.setRowHeight(100);
         TableModelarticoli.setModel(model);
 
+        Action search = new AbstractAction() {
+            public void actionPerformed(ActionEvent e) {
+                int row = TableModelarticoli.getSelectedRow();//get mouse-selected row
+                int col = TableModelarticoli.getSelectedColumn();//get mouse-selected col
+                //int[] newEntry = new int[]{row,col};//{row,col}=selected cell
+                // JOptionPane.showMessageDialog(null,"Search action for row: " + row+" & col "+col);
+
+                if(col==2)
+                    showdescr(row,col);
+
+                if(col==6)
+                    comment(row);
+            }
+        };
+        ButtonColumn buttonColumn = new ButtonColumn(TableModelarticoli, search, TableModelarticoli.getColumnCount()-1);
+        buttonColumn.setMnemonic(KeyEvent.VK_D);
 
 
     }
 
-    //ELIMINA ARTICOLO DALLA LISTA
-    public void erase_from_list(int row){
-       /* article newart=TableModelarticoli.;
+    public void comment(int row){
         articleDAO dao=new articleDAO();
+        userDAO cliente=new userDAO();
         String descr= (String) TableModelarticoli.getValueAt(row, 2);
-        String name= (String) TableModelarticoli.getValueAt(row, 0);*/
-        article erase=articolo.get(row);
-        articolo.remove(erase);
-        refresh_list(articolo);
+        String name= (String) TableModelarticoli.getValueAt(row, 0);
+        /*String s = (String)JOptionPane.showInputDialog(
+                null,
+                "INSERISCI UN COMMENTO",
+                "REVIEW",
+                JOptionPane.PLAIN_MESSAGE,
+               null,
+                null,
+                "commenta..");*/
+        JFrame frame =new JFrame();
+        String[] items = {"1", "2", "3", "4", "5"};
+        JComboBox<String> combo = new JComboBox<>(items);
+        JTextField comm = new JTextField();
+        JPanel panel = new JPanel(new GridLayout(0, 1));
+        panel.add(combo);
+        panel.add(new JLabel("Inserisci Commento:"));
+        panel.add(comm);
+        int result = JOptionPane.showConfirmDialog(frame, panel, "REVIEW",
+                JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+        if (result == JOptionPane.OK_OPTION) {
+            ArrayList<String[]> res = DbConnection.getInstance().eseguiQuery("SELECT idarticolo FROM articolo WHERE Name='"+name+"' && description='"+descr+"' ;");
+            if(res.size()==1){
+                String[] riga= res.get(0);
+                article newart=dao.findById(Integer.parseInt(riga[0]));
+                article.comments review=new article.comments();
+                review.setFeedback(Integer.parseInt(combo.getSelectedItem().toString()));
+                review.setText(comm.getText());
+                review.setArticle_id(Integer.parseInt(riga[0]));
+                review.setUser(Session.getInstance().getClienteLoggato());
+                cliente.newcomment(newart,review.getUser(), review);
+                //cliente.newcomment(newart,Session.getInstance().getClienteLoggato(), review.getFeedback(), comm.getText());
+            }
+        } else {
+            System.out.println("Cancelled");
+        }
 
-    }
 
 }
+
 
 abstract class JTableButtonModel2 extends AbstractTableModel implements TableModel {
     IarticleDAO arte = new articleDAO();
     private ArrayList<article> articolo = arte.findAll();
 
-    public static final String[] COLUMN_NAMES = new String[]{"Nome", "Foto", "descrizione", "Costo", "Categoria", "Stars", ""};
-    public static final Class<?>[] COLUMN_TYPES = new Class<?>[]{String.class, BufferedImage.class, String.class, double.class, String.class, Integer.class, JButton.class};
+    public final String[] COLUMN_NAMES = new String[]{"Nome", "Foto", "descrizione", "Costo", "Categoria", "Stars", ""};
+    public final Class<?>[] COLUMN_TYPES = new Class<?>[]{String.class, BufferedImage.class, String.class, double.class, String.class, Integer.class, JButton.class};
 
     @Override
     public int getColumnCount() {
@@ -372,6 +450,6 @@ abstract class JTableButtonModel2 extends AbstractTableModel implements TableMod
                 return "Error";
         }
     }
-}
+}}
 
 

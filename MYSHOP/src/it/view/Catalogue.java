@@ -130,6 +130,9 @@ public class Catalogue extends JFrame{
 
                         if(col==6)
                             add_to_shoplist(row);
+
+                        if(col==5)
+                            show_comments(row);
                     }
                 };
                 ButtonColumn buttonColumn = new ButtonColumn(TableModelarticoli, search, TableModelarticoli.getColumnCount()-1);
@@ -203,7 +206,16 @@ public class Catalogue extends JFrame{
         JOptionPane.showMessageDialog(null,descr);
 
     }
-
+public void show_comments(int row){
+    article newart=new article();
+    articleDAO dao=new articleDAO();
+    String descr= (String) TableModelarticoli.getValueAt(row, 2);
+    String name= (String) TableModelarticoli.getValueAt(row, 0);
+    ArrayList<String[]> res = DbConnection.getInstance().eseguiQuery("SELECT idarticolo FROM articolo WHERE Name='"+name+"' && description='"+descr+"' ;");
+    if(res.size()==1) {
+        String[] riga = res.get(0);
+    }
+}
     public void add_to_shoplist(int row){
                 article newart=new article();
                 articleDAO dao=new articleDAO();

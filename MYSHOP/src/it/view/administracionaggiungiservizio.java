@@ -24,12 +24,12 @@ public class administracionaggiungiservizio extends JFrame {
     private JTextField Nazione;
     private JButton CONFERMAButton;
     private JTextField costo;
-    private JTextField categoria;
     private JButton sfogliaButton;
     private JTextArea descrizione;
     private JLabel foto;
     private JTextField name;
     private JPanel aggiungiservicePanel;
+    private JComboBox categoria;
 
     public administracionaggiungiservizio()
     {
@@ -37,6 +37,9 @@ public class administracionaggiungiservizio extends JFrame {
         setTitle("AGGIUNGI SERVIZIO");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
+        categoria.addItem("MONTAGGIO");
+        categoria.addItem("TRASPORTO");
+
         CONFERMAButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -47,7 +50,7 @@ public class administracionaggiungiservizio extends JFrame {
                 String nome=name.getText();
                 double denaro= Double.parseDouble(costo.getText());
                 String descr= descrizione.getText();
-                String category=categoria.getText();
+                String category=categoria.getSelectedItem().toString();
 
                 Fornitore newfornitore = new Fornitore(0, namefornitore, siteweb, city, nation);
                 service serv=new service(0,  nome, denaro, descr,  null, 404, null, category, newfornitore);

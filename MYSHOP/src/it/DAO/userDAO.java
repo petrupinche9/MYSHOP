@@ -63,11 +63,11 @@ public class userDAO implements IuserDAO {
     }
 
     //commenta
-    public void newcomment(user p, article ar, String text){
-        String res = "INSERT INTO comments VALUES ('"+text+"','"+ar.getEval()+"','"+p.getId()+"','"+ar.getId()+"'); ";
-        JOptionPane.showMessageDialog(null,res);
+    public void newcomment(article ar, user p, article.comments new_comm){
+        ar.setComment(p,new_comm);
+        String res = "INSERT INTO comments VALUES ('"+new_comm.getText()+"','"+new_comm.getFeedback()+"','"+p.getId()+"','"+ar.getId()+"'); ";
         DbConnection.getInstance().eseguiAggiornamento(res);
-
+        JOptionPane.showMessageDialog(null,"commento inviato");
     }
     /*public void erase_user( user p){
         String res = "DELETE FROM user WHERE iduser='"+p.getId()+"' ";

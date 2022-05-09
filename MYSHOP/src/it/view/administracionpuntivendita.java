@@ -14,7 +14,6 @@ public class administracionpuntivendita extends JFrame {
     private JTextField shopname;
     private JButton CONFERMAButton;
     private JTextField city;
-    private JTextField article_type;
     private JTextField passwd;
     private JTextField surname;
     private JTextField age;
@@ -26,6 +25,7 @@ public class administracionpuntivendita extends JFrame {
     private JPanel managerPanel;
     private JTextField name;
     private JButton GOBACKButton;
+    private JComboBox article_type;
 
     public administracionpuntivendita()
     {
@@ -34,6 +34,8 @@ public class administracionpuntivendita extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
 
+        article_type.addItem("prodotti");
+        article_type.addItem("servizi");
         CONFERMAButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -42,7 +44,7 @@ public class administracionpuntivendita extends JFrame {
                 //setta shop
                 shop.setShopname(shopname.getText());
                 shop.setCity(city.getText());
-                shop.setArticle_type(article_type.getText());
+                shop.setArticle_type(article_type.getSelectedItem().toString());
                 //setta manager
                 mng.setUsername(username.getText());
                 mng.setPassword(passwd.getText());
