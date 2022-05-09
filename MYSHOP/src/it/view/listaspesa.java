@@ -1,9 +1,6 @@
 package it.view;
 
-import it.DAO.IarticleDAO;
-import it.DAO.ShopDAO;
-import it.DAO.Shop_listDAO;
-import it.DAO.articleDAO;
+import it.DAO.*;
 import it.DbConnection;
 import it.business.ShoplistBusiness;
 import it.model.Point_shop;
@@ -145,11 +142,11 @@ public class listaspesa  extends JFrame {
            // METODO BUSINESS PER:
                 // 1-GENERAZIONE LISTA IN PDF E INVIO PER EMAIL
                 user cliente=Session.getInstance().getClienteLoggato();
-                ArrayList<String[]> search = DbConnection.getInstance().eseguiQuery("SELECT idPoint_shop FROM Point shop WHERE Shopname='"+pointshop.getText()+"';");
+                ArrayList<String[]> search = DbConnection.getInstance().eseguiQuery("SELECT idPoint_shop FROM Point_shop WHERE Shopname='"+pointshop.getText()+"';");
 
                 if(search.size()==1) {
                     String[] riga = search.get(0);
-                    ShopDAO dao = new ShopDAO();
+                    IShopDAO dao = new ShopDAO();
                     Point_shop shoppo=dao.findById(Integer.parseInt(riga[0]));
                     int total_price=0;
                     for (int i = 0; i < articolo.size(); i++) {
@@ -158,7 +155,17 @@ public class listaspesa  extends JFrame {
                     Date today = new Date();
                     String data= DateUtil.stringFromDate(today);
 
-                    Shop_list lista_della_spesa= new Shop_list(0,cliente,shoppo,articolo,"non pagata",total_price,data);
+                    Shop_list lista_della_spesa = new Shop_list();
+                    //= new Shop_list(0,cliente,shoppo.getMng(),shoppo,articolo,"non pagata",total_price,data);
+                    lista_della_spesa.setShop(shoppo);
+                    lista_della_spesa.setCliente(cliente);
+                    lista_della_spesa.setData(data);
+                    lista_della_spesa.setTotal_price(total_price);
+                    lista_della_spesa.setArticoli(articolo);
+                   // lista_della_spesa.setManager(dao.getmng(Integer.parseInt(riga[0])));
+                    //System.out.println(dao.getmng(Integer.parseInt(riga[0])).getUsername());
+                    System.out.println(shoppo.getMng().getUsername());
+                    lista_della_spesa.setStato("non pagata");
                     ShoplistBusiness.getInstance().inviashoplist(lista_della_spesa);
                 }else {
                     JOptionPane.showMessageDialog(null,"ERROR ");

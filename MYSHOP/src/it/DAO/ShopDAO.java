@@ -2,6 +2,7 @@ package it.DAO;
 
 import it.DbConnection;
 import it.model.Point_shop;
+import it.model.manager;
 
 import java.util.ArrayList;
 
@@ -38,6 +39,20 @@ public class ShopDAO implements IShopDAO{
         }
 
         return c;
+    }
+
+    @Override
+    public manager getmng(int id){
+        manager c=null;
+        ArrayList<String[]> res = DbConnection.getInstance().eseguiQuery("SELECT Manager_idManager FROM Point_shop WHERE idPoint_shop = "+id+";");
+        // byte[] img = DbConnection.getInstance().getFoto("SELECT C.articolo_idarticolo, U.Image_descr FROM product AS C INNER JOIN articolo as U  ON U.idprodotto = C.articolo_idarticolo WHERE C.articolo_idarticolo = "+id+";");
+        if(res.size()==1) {
+            String[] riga = res.get(0);
+            c = new manager();
+            ImanagerDAO mDAO=new managerDAO();
+           c= mDAO.findById(Integer.parseInt(riga[0]));
+        }
+    return c;
     }
 
 }

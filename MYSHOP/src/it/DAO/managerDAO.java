@@ -8,21 +8,33 @@ import javax.swing.*;
 import java.util.ArrayList;
 //azioni manager
 public class managerDAO implements ImanagerDAO{
+
     @Override
     public manager findById(int id) {
 
 
-        ArrayList<String[]> res = DbConnection.getInstance().eseguiQuery("SELECT idmanager FROM manager  INNER JOIN user as U  ON U.iduser = user_iduser WHERE user_iduser = '"+id+"';");
-
+        ArrayList<String[]> res = DbConnection.getInstance().eseguiQuery("SELECT U.iduser FROM Manager  INNER JOIN user as U  ON U.iduser = user_iduser WHERE idManager = '"+id+"';");
+        manager a = new manager();
         if(res.size()==1) {
             String[] riga = res.get(0);
            // a = new manager();
             userDAO us = new userDAO();
            user user= us.findById(id);
            JOptionPane.showMessageDialog(null,id);
-            manager a = new manager(Integer.parseInt(riga[0]),user.getUsername(), user.getPassword(), user.getName(), user.getSurname(), user.getAge(), user.getEmail(), user.getTelephone(), user.getOccupation(), null);
+
+            a.setId(id);
+            a.setUsername(user.getUsername());
+            a.setPassword(user.getPassword());
+            a.setName(user.getName());
+            a.setSurname(user.getSurname());
+            a.setAge(user.getAge());
+            a.setEmail(user.getEmail());
+            a.setTelephone(user.getTelephone());
+            a.setOccupation(user.getOccupation());
+
             JOptionPane.showMessageDialog(null,a.getId());
 
+/*
             ArrayList<String[]> shop = DbConnection.getInstance().eseguiQuery("SELECT * FROM Point_shop WHERE Manager_idManager='"+a.getId()+"';");
             if(shop.size()==1){
                 Point_shop s =new Point_shop();
@@ -34,11 +46,11 @@ public class managerDAO implements ImanagerDAO{
                 a.setShop(s);
                 s.setMng(a);
                 return a;
-            }
+            }*/
         }
 
-        //return a;
-        return null;
+        return a;
+        //return null;
     }
     @Override
     public ArrayList<manager> findAll() {

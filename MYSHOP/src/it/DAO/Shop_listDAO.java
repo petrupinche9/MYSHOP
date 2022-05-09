@@ -57,7 +57,7 @@ public class Shop_listDAO implements IShop_listDAO{
         Date date = new Date();
         String strDataPrenotazione = DateUtil.stringFromDate(date);
         p.setData(strDataPrenotazione);
-        String sql = "INSERT INTO Shop_list (Stato,total_price,Date,Point_shop_idPoint_shop,Cliente_idCliente) VALUES ('"+p.getStato()+"',"+p.getTotal_price()+","+p.getData()+","+p.getShop().getId()+","+p.getCliente().getId()+");";
+        String sql = "INSERT INTO Shop_list (Stato,total_price,Date,Point_shop_idPoint_shop,Cliente_idCliente) VALUES ('"+p.getStato()+"','"+p.getTotal_price()+"','"+p.getData()+"','"+p.getShop().getId()+"','"+p.getCliente().getId()+"');";
         System.out.println(sql);
         DbConnection.getInstance().eseguiAggiornamento(sql);
 
