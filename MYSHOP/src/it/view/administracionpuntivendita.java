@@ -14,7 +14,7 @@ public class administracionpuntivendita extends JFrame {
     private JTextField shopname;
     private JButton CONFERMAButton;
     private JTextField city;
-    private JTextField passwd;
+    private JPasswordField passwd;
     private JTextField surname;
     private JTextField age;
     private JTextField mail;

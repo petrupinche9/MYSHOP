@@ -19,7 +19,6 @@ import javax.swing.table.TableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -45,7 +44,7 @@ public class listaspesa  extends JFrame {
     public listaspesa() {
         articolo.clear();
         TableModel model = new JTableButtonModel() {
-            public final String[] COLUMN_NAMES = new String[]{"Nome", "Foto", "descrizione", "Costo", "Categoria","ELIMINA"};
+            public final String[] COLUMN_NAMES = new String[]{"Nome", "Foto", "descrizione", "Costo", "Categoria","Category"};
             public final Class<?>[] COLUMN_TYPES = new Class<?>[]{String.class, ImageIcon.class, String.class, double.class, String.class};
 
             @Override
@@ -120,22 +119,6 @@ public class listaspesa  extends JFrame {
 
         TableModelarticoli.setModel(model);
         TableModelarticoli.setRowHeight(100);
-
-        Action search = new AbstractAction() {
-            public void actionPerformed(ActionEvent e) {
-                int row = TableModelarticoli.getSelectedRow();//get mouse-selected row
-                int col = TableModelarticoli.getSelectedColumn();//get mouse-selected col
-                //int[] newEntry = new int[]{row,col};//{row,col}=selected cell
-                // JOptionPane.showMessageDialog(null,"Search action for row: " + row+" & col "+col);
-
-                if(col==2)
-                    showdescr(row,col);
-                if(col==5)
-                    erase_from_list(row);
-            }
-        };
-        ButtonColumn buttonColumn = new ButtonColumn(TableModelarticoli, search, TableModelarticoli.getColumnCount()-1);
-        buttonColumn.setMnemonic(KeyEvent.VK_D);
 
 
 
@@ -213,8 +196,7 @@ public class listaspesa  extends JFrame {
     public void refresh_list(ArrayList<article> articolonew){
           articolo=articolonew;
         TableModel model = new JTableButtonModel() {
-
-            public final String[] COLUMN_NAMES = new String[]{"Nome", "Foto", "descrizione", "Costo", "Categoria"};
+            public final String[] COLUMN_NAMES = new String[]{"Nome", "Foto", "descrizione", "Costo", "Category"};
             public final Class<?>[] COLUMN_TYPES = new Class<?>[]{String.class, ImageIcon.class, String.class, double.class, String.class};
 
             @Override
@@ -243,14 +225,7 @@ public class listaspesa  extends JFrame {
             }
 
             @Override
-            public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-                //     super.setValueAt(aValue, rowIndex, columnIndex); by default empty implementation is not necesary if direct parent is AbstractTableModel
-                Object Value=TableModelarticoli.getValueAt(rowIndex,columnIndex) ;
-                aValue=Value;
-                fireTableCellUpdated(rowIndex, columnIndex);// notify listeners
-            }
 
-            @Override
             public Object getValueAt(int rowIndex, final int columnIndex) {
                 //Adding components
 
@@ -298,18 +273,21 @@ public class listaspesa  extends JFrame {
 
     }
 
-    //ELIMINA ARTICOLO DALLA LISTA
+   /* //ELIMINA ARTICOLO DALLA LISTA
     public void erase_from_list(int row){
-       /* article newart=TableModelarticoli.;
         articleDAO dao=new articleDAO();
         String descr= (String) TableModelarticoli.getValueAt(row, 2);
-        String name= (String) TableModelarticoli.getValueAt(row, 0);*/
-        article erase=articolo.get(row);
-        articolo.remove(erase);
-        refresh_list(articolo);
+        String name= (String) TableModelarticoli.getValueAt(row, 0);
+        ArrayList<String[]> res = DbConnection.getInstance().eseguiQuery("SELECT idarticolo FROM articolo WHERE Name='"+name+"' && description='"+descr+"' ;");
+        if(res.size()==1) {
+            String[] riga = res.get(0);
+            article erase=dao.findById(Integer.parseInt(riga[0]));
+            articolo.remove(erase);
+            refresh_list(articolo);
+        }
 
     }
-
+*/
     public void setArticolo(ArrayList<article> articolo) {
         this.articolo = articolo;
     }

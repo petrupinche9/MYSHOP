@@ -125,6 +125,12 @@ public class article {
         for(int i=0;i<rev.size();i++){
             eval+=rev.get(i).getFeedback();
         }
-        return eval/rev.size();
+        if (rev.size()!=0){
+            return eval/rev.size();
+        }
+        else{
+            return 0;
+        }
+
     }
 }

@@ -259,10 +259,10 @@ if(res.size()==1){
 }
     public void refresh_list(ArrayList<article> articolonew){
         articolo=articolonew;
-        TableModel model = new it.view.JTableButtonModel() {
+        TableModel model = new JTableButtonModel() {
 
-            public final String[] COLUMN_NAMES = new String[]{"Nome", "Foto", "descrizione", "Costo", "Categoria"};
-            public final Class<?>[] COLUMN_TYPES = new Class<?>[]{String.class, ImageIcon.class, String.class, double.class, String.class};
+            public final String[] COLUMN_NAMES = new String[]{"Nome", "Foto", "descrizione", "Costo", "Categoria", "Stars", "BUY"};
+            public final Class<?>[] COLUMN_TYPES = new Class<?>[]{String.class, ImageIcon.class, String.class, double.class, String.class, Integer.class, String.class};
 
             @Override
             public int getColumnCount() {
@@ -278,26 +278,17 @@ if(res.size()==1){
             public String getColumnName(int columnIndex) {
                 return COLUMN_NAMES[columnIndex];
             }
-
             @Override
-            public boolean isCellEditable(EventObject e) {
+            public boolean isCellEditable(EventObject e){
                 return true;
             }
-
             @Override
             public Class<?> getColumnClass(int columnIndex) {
                 return COLUMN_TYPES[columnIndex];
             }
 
             @Override
-            public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-                //     super.setValueAt(aValue, rowIndex, columnIndex); by default empty implementation is not necesary if direct parent is AbstractTableModel
-                Object Value=TableModelarticoli.getValueAt(rowIndex,columnIndex) ;
-                aValue=Value;
-                fireTableCellUpdated(rowIndex, columnIndex);// notify listeners
-            }
 
-            @Override
             public Object getValueAt(int rowIndex, final int columnIndex) {
                 //Adding components
 
@@ -330,6 +321,12 @@ if(res.size()==1){
                         return ar.getCosto();
                     case 4:
                         return ar.getCategory();
+                    case 5:
+                        return ar.getEval();
+                    //Adding button and creating click listener
+                    case 6:
+                        final JLabel compra = new JLabel("BUY");
+                        return compra.getText();
 
                     default:
                         return "Error";
@@ -337,9 +334,28 @@ if(res.size()==1){
             }
         };
 
-
         TableModelarticoli.setRowHeight(100);
         TableModelarticoli.setModel(model);
+
+        Action search = new AbstractAction() {
+            public void actionPerformed(ActionEvent e) {
+                int row = TableModelarticoli.getSelectedRow();//get mouse-selected row
+                int col = TableModelarticoli.getSelectedColumn();//get mouse-selected col
+                //int[] newEntry = new int[]{row,col};//{row,col}=selected cell
+                // JOptionPane.showMessageDialog(null,"Search action for row: " + row+" & col "+col);
+
+                if(col==2)
+                    showdescr(row,col);
+
+              //  if(col==6)
+                 //   add_to_shoplist(row);
+
+                if(col==5)
+                    show_comments(row);
+            }
+        };
+        ButtonColumn buttonColumn = new ButtonColumn(TableModelarticoli, null, TableModelarticoli.getColumnCount()-1);
+        buttonColumn.setMnemonic(KeyEvent.VK_D);
 
 
 

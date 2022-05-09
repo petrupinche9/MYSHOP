@@ -1,31 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="71d110a1-c0bc-4f14-8051-33f62b96ad40" name="Default Changelist" comment="">
+    <list default="true" id="71d110a1-c0bc-4f14-8051-33f62b96ad40" name="Default Changelist" comment="ok scherzo niente commit finale">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MYSHOP/DB/Myshop22DB.mwb" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/DB/Myshop22DB.mwb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MYSHOP/DB/Myshop22DB.mwb.bak" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/DB/Myshop22DB.mwb.bak" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MYSHOP/DB/script.sql" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/DB/script.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/DAO/AdminDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/DAO/AdminDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/model/service.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/model/service.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/model/article.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/model/article.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/Catalogue.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/Catalogue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/administracionaggiungiservizio.form" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/administracionaggiungiservizio.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/administracionaggiungiservizio.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/administracionaggiungiservizio.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/administracionpuntivendita.form" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/administracionpuntivendita.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/administracionpuntivendita.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/administracionpuntivendita.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/listaspesa.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/listaspesa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Myshop22DB.mwb" beforeDir="false" afterPath="$PROJECT_DIR$/Myshop22DB.mwb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Myshop22DB.mwb.bak" beforeDir="false" afterPath="$PROJECT_DIR$/Myshop22DB.mwb.bak" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/DAO/AdminDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/DAO/AdminDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/DAO/userDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/DAO/userDAO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/model/article.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/model/article.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/model/service.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/model/service.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/Catalogue$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/Catalogue$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/Catalogue.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/Catalogue.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/administracionaggiungiservizio$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/administracionaggiungiservizio$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/administracionaggiungiservizio$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/administracionaggiungiservizio$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/administracionaggiungiservizio.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/administracionaggiungiservizio.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/administracionpuntivendita$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/administracionpuntivendita$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/administracionpuntivendita$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/administracionpuntivendita$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/view/administracionpuntivendita.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/view/administracionpuntivendita.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -213,14 +198,7 @@
       <workItem from="1645903646019" duration="290833000" />
       <workItem from="1648584791472" duration="141668000" />
       <workItem from="1649927925255" duration="147351000" />
-      <workItem from="1652106468456" duration="4407000" />
-    </task>
-    <task id="LOCAL-00019" summary="Inizio design catalogo">
-      <created>1646850483792</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1646850483792</updated>
+      <workItem from="1652106468456" duration="12197000" />
     </task>
     <task id="LOCAL-00020" summary="commenti ended">
       <created>1647209729970</created>
@@ -558,7 +536,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652103746440</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="ok scherzo niente commit finale">
+      <created>1652112657041</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1652112657042</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -660,7 +645,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="insert prodotti finito" />
     <MESSAGE value="insert subprodotto finito" />
     <MESSAGE value="insert servizio finito" />
     <MESSAGE value="update modifica articoli" />
@@ -685,7 +669,8 @@
     <MESSAGE value="not tested shoplist&#10;varie migliorie" />
     <MESSAGE value="varie migliorie" />
     <MESSAGE value="final commit (not tested)" />
-    <option name="LAST_COMMIT_MESSAGE" value="final commit (not tested)" />
+    <MESSAGE value="ok scherzo niente commit finale" />
+    <option name="LAST_COMMIT_MESSAGE" value="ok scherzo niente commit finale" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
