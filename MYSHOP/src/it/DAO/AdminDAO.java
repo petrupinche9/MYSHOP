@@ -44,7 +44,7 @@ public class AdminDAO implements IAdminDAO{
 
             if(check_prod.size()==1) {
                 String[] riga = check_prod.get(0);
-                JOptionPane.showMessageDialog(null,"PRODOTTURE GIA' PRESENTE CON MATRICOLA ==> "+Integer.parseInt(riga[0])+"");
+                JOptionPane.showMessageDialog(null,"PRODUTTORE GIA' PRESENTE CON MATRICOLA ==> "+Integer.parseInt(riga[0])+"");
                 String mngs = "INSERT INTO product (articolo_idarticolo,Produttore_idProduttore) VALUES " +
                         "( (SELECT idarticolo from articolo WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "'  )," +
                         "  '"+Integer.parseInt(riga[0])+"');";

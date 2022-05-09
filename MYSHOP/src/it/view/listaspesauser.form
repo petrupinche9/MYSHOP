@@ -14,6 +14,7 @@
         </constraints>
         <properties>
           <font name="Calibri" size="26" style="1"/>
+          <labelFor value="f256b"/>
           <text value="I MIEI ARTICOLI"/>
         </properties>
       </component>

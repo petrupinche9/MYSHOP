@@ -8,9 +8,9 @@ public class service extends article {
     }
 
 
-    public service(int id, String name, double costo, String Descr, String comment, int eval, byte[] img, String category, Fornitore fornitore)
+    public service(int id, String name, double costo, String Descr, int eval, byte[] img, String category, Fornitore fornitore)
     {
-        super(id, name, costo, Descr, comment, eval, img, category);
+        super( id, name,  costo,  Descr,  img,  category);
         this.fornitore = fornitore;
     }
 

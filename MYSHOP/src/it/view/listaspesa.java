@@ -1,6 +1,9 @@
 package it.view;
 
-import it.DAO.*;
+import it.DAO.IarticleDAO;
+import it.DAO.ShopDAO;
+import it.DAO.Shop_listDAO;
+import it.DAO.articleDAO;
 import it.DbConnection;
 import it.business.ShoplistBusiness;
 import it.model.Point_shop;
@@ -12,11 +15,11 @@ import it.util.Session;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -35,13 +38,14 @@ public class listaspesa  extends JFrame {
     private JButton RECUPERASHOPLISTButton;
     private Shop_list lista;
     private int row,col;
-    private ArrayList<article> articolo=new ArrayList<article>();
+    private IarticleDAO arte = new articleDAO();
+    private ArrayList<article> articolo = arte.findAll();
+
+
     public listaspesa() {
-        cliente.setText(Session.getInstance().getClienteLoggato().getUsername());
-        TableModel model = new it.view.JTableButtonModel() {
-
-
-            public final String[] COLUMN_NAMES = new String[]{"Nome", "Foto", "descrizione", "Costo", "Categoria"};
+        articolo.clear();
+        TableModel model = new JTableButtonModel() {
+            public final String[] COLUMN_NAMES = new String[]{"Nome", "Foto", "descrizione", "Costo", "Categoria","ELIMINA"};
             public final Class<?>[] COLUMN_TYPES = new Class<?>[]{String.class, ImageIcon.class, String.class, double.class, String.class};
 
             @Override
@@ -103,6 +107,10 @@ public class listaspesa  extends JFrame {
                         return ar.getCosto();
                     case 4:
                         return ar.getCategory();
+                    case 5:
+                        final JLabel eli = new JLabel();
+                        eli.setText("ELIMINA");
+                        return ar.getDescr();
 
                     default:
                         return "Error";
@@ -110,13 +118,29 @@ public class listaspesa  extends JFrame {
             }
         };
 
-        TableModelarticoli.setRowHeight(100);
         TableModelarticoli.setModel(model);
+        TableModelarticoli.setRowHeight(100);
 
+        Action search = new AbstractAction() {
+            public void actionPerformed(ActionEvent e) {
+                int row = TableModelarticoli.getSelectedRow();//get mouse-selected row
+                int col = TableModelarticoli.getSelectedColumn();//get mouse-selected col
+                //int[] newEntry = new int[]{row,col};//{row,col}=selected cell
+                // JOptionPane.showMessageDialog(null,"Search action for row: " + row+" & col "+col);
+
+                if(col==2)
+                    showdescr(row,col);
+                if(col==5)
+                    erase_from_list(row);
+            }
+        };
+        ButtonColumn buttonColumn = new ButtonColumn(TableModelarticoli, search, TableModelarticoli.getColumnCount()-1);
+        buttonColumn.setMnemonic(KeyEvent.VK_D);
 
 
 
         // scrollpane = new JScrollPane(TableModelarticoli);
+        cliente.setText(Session.getInstance().getClienteLoggato().getUsername());
         setTitle("MYSHOP");
         setContentPane(panel1);
         setSize(700, 700);
@@ -188,7 +212,7 @@ public class listaspesa  extends JFrame {
     //AGGIUNGE/RIMUOVE ARTICOLO DALLA LISTA
     public void refresh_list(ArrayList<article> articolonew){
           articolo=articolonew;
-        TableModel model = new it.view.JTableButtonModel() {
+        TableModel model = new JTableButtonModel() {
 
             public final String[] COLUMN_NAMES = new String[]{"Nome", "Foto", "descrizione", "Costo", "Categoria"};
             public final Class<?>[] COLUMN_TYPES = new Class<?>[]{String.class, ImageIcon.class, String.class, double.class, String.class};
@@ -286,14 +310,17 @@ public class listaspesa  extends JFrame {
 
     }
 
+    public void setArticolo(ArrayList<article> articolo) {
+        this.articolo = articolo;
+    }
 }
-
+/*
 abstract class JTableButtonModel extends AbstractTableModel implements TableModel {
     IarticleDAO arte = new articleDAO();
     private ArrayList<article> articolo = arte.findAll();
 
-    public static final String[] COLUMN_NAMES = new String[]{"Nome", "Foto", "descrizione", "Costo", "Categoria", "Stars", ""};
-    public static final Class<?>[] COLUMN_TYPES = new Class<?>[]{String.class, BufferedImage.class, String.class, double.class, String.class, Integer.class, JButton.class};
+    public final String[] COLUMN_NAMES = new String[]{"Nome", "Foto", "descrizione", "Costo", "Categoria"};
+    public final Class<?>[] COLUMN_TYPES = new Class<?>[]{String.class, ImageIcon.class, String.class, double.class, String.class};
 
     @Override
     public int getColumnCount() {
@@ -309,8 +336,6 @@ abstract class JTableButtonModel extends AbstractTableModel implements TableMode
     public String getColumnName(int columnIndex) {
         return COLUMN_NAMES[columnIndex];
     }
-
-    public abstract boolean isCellEditable(EventObject e);
 
     @Override
     public Class<?> getColumnClass(int columnIndex) {
@@ -328,32 +353,35 @@ abstract class JTableButtonModel extends AbstractTableModel implements TableMode
             case 0:
                 return ar.getName();
             case 1:
-                return ar.getImg();
+                byte[] img = ar.getImg();
+                final JLabel foto = new JLabel(COLUMN_NAMES[columnIndex]);
+                foto.setSize(100, 100);
+                InputStream in = new ByteArrayInputStream(img);
+                try {
+                    BufferedImage imgFromDb = ImageIO.read(in);
+                    ImageIcon image = new ImageIcon(imgFromDb);
+                    Image im = image.getImage();
+                    Image myImg = im.getScaledInstance(foto.getWidth(), foto.getHeight(), Image.SCALE_SMOOTH);
+                    ImageIcon newImage = new ImageIcon(myImg);
+                    foto.setIcon(newImage);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                return foto.getIcon();
             case 2:
-                final JLabel desc = new JLabel(COLUMN_NAMES[columnIndex]);
+                final JLabel desc = new JLabel();
                 desc.setText(ar.getDescr());
                 return ar.getDescr();
             case 3:
                 return ar.getCosto();
             case 4:
                 return ar.getCategory();
-            case 5:
-                return ar.getEval();
-            //Adding button and creating click listener
-            case 6:
-                JButton button = new JButton(COLUMN_NAMES[columnIndex]);
-                button.setText("COMPRA");
-                button.addActionListener(new ActionListener() {
-                    public void actionPerformed(ActionEvent arg0) {
-                        JOptionPane.showMessageDialog(JOptionPane.getFrameForComponent(button),
-                                "Button clicked for row " + rowIndex);
-                    }
-                });
-                return button;
+
             default:
                 return "Error";
         }
     }
-}
+};
+}*/
 
 

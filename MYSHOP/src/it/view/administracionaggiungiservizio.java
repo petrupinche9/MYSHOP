@@ -53,7 +53,7 @@ public class administracionaggiungiservizio extends JFrame {
                 String category=categoria.getSelectedItem().toString();
 
                 Fornitore newfornitore = new Fornitore(0, namefornitore, siteweb, city, nation);
-                service serv=new service(0,  nome, denaro, descr,  null, 404, null, category, newfornitore);
+                service serv=new service(0,  nome, denaro, descr, 0, null, category, newfornitore);
                 AdminDAO aggiungiservice = new AdminDAO();
 
                 //set image

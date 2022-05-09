@@ -36,6 +36,7 @@
         </constraints>
         <properties>
           <font style="1"/>
+          <labelFor value="f256b"/>
           <text value="USER :"/>
         </properties>
       </component>

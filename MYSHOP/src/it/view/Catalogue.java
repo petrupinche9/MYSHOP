@@ -8,6 +8,7 @@ import it.util.Session;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableModel;
 import java.awt.*;
 import java.awt.event.*;
@@ -31,16 +32,19 @@ public class Catalogue extends JFrame{
     private IarticleDAO arte = new articleDAO();
     private ArrayList<article> articolo = arte.findAll();
     private ArrayList<article> lista=new ArrayList<article>();
-    public listaspesa c=new listaspesa();
+     listaspesa c=new listaspesa();
+
 
             public Catalogue() {
 
                               // TableModelarticoli = new JTable(rowData, colonne);
-               c.setVisible(true);
-               c.setSize(600,600);
-               c.setLocation(5,100);
                 cliente.setText(Session.getInstance().getClienteLoggato().getUsername());
-                TableModel model = new it.view.JTableButtonModel() {
+                c.setVisible(true);
+                c.setSize(600,600);
+                c.setLocation(5,100);
+               c.setArticolo(lista);
+
+                TableModel model = new JTableButtonModel() {
 
                     public final String[] COLUMN_NAMES = new String[]{"Nome", "Foto", "descrizione", "Costo", "Categoria", "Stars", "BUY"};
                     public final Class<?>[] COLUMN_TYPES = new Class<?>[]{String.class, ImageIcon.class, String.class, double.class, String.class, Integer.class, String.class};
@@ -343,7 +347,7 @@ if(res.size()==1){
     }
 
 
-/*
+
         abstract class JTableButtonModel extends AbstractTableModel implements TableModel {
             IarticleDAO arte = new articleDAO();
             private ArrayList<article> articolo = arte.findAll();
@@ -385,7 +389,8 @@ if(res.size()==1){
                         return ar.getName();
                     case 1:
                         return ar.getImg();
-                    case 2:final JLabel desc = new JLabel(COLUMN_NAMES[columnIndex]);
+                    case 2:
+                        final JLabel desc = new JLabel(COLUMN_NAMES[columnIndex]);
                         desc.setText(ar.getDescr());
                         return ar.getDescr();
                     case 3:
@@ -401,7 +406,7 @@ if(res.size()==1){
                         button.addActionListener(new ActionListener() {
                             public void actionPerformed(ActionEvent arg0) {
                                 JOptionPane.showMessageDialog(JOptionPane.getFrameForComponent(button),
-                                        "Button clicked for row "+rowIndex);
+                                        "Button clicked for row " + rowIndex);
                             }
                         });
                         return button;
@@ -409,7 +414,8 @@ if(res.size()==1){
                         return "Error";
                 }
             }
-*/
+        }
+
 
 
 
