@@ -15,6 +15,7 @@ public class Manager_gui extends JFrame
     private JButton eliminaUtenteDaUnButton;
     private JButton inviaEMailButton;
     private JButton LOGOUTButton;
+    private JButton aggiornaListaSpesaButton;
 
     public Manager_gui()
     {
@@ -92,6 +93,16 @@ public class Manager_gui extends JFrame
                 mf.setLocationRelativeTo(null);
                 mf.setVisible(true);
                 dispose();
+            }
+        });
+        aggiornaListaSpesaButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                AggiornaStatomanager agg = new AggiornaStatomanager();
+                agg.setVisible(true);
+                agg.pack();
+                agg.setLocationRelativeTo(null);
+                agg.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             }
         });
     }
