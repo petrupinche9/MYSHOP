@@ -94,4 +94,8 @@ public class managerDAO implements ImanagerDAO{
         int idcliente = Integer.parseInt(tabellacliente[0]);
         DbConnection.getInstance().eseguiAggiornamento("DELETE FROM point_shop_has_cliente WHERE Point_shop_idPoint_shop='"+m.getShop().getId()+"' AND Cliente_idCliente='"+idcliente+"';");
     }
+
+    public void aggiornolostato(Shop_list l){
+        DbConnection.getInstance().eseguiAggiornamento("UPDATE shop_list SET Stato='pagata' WHERE shop_list.idShop_List='"+l.getId()+"';");
+    }
 }

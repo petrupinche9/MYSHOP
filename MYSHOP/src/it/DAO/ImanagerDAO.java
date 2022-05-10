@@ -18,4 +18,6 @@ public interface ImanagerDAO {
     void add_user_to_shop(user p, manager m);
 
     void erase_user_from_shop(user p, manager m);
+
+    void aggiornolostato(Shop_list l);
 }
