@@ -19,24 +19,9 @@
       </component>
       <component id="fc10b" class="javax.swing.JComboBox" binding="comboBox_shop">
         <constraints>
-          <grid row="2" column="2" row-span="1" col-span="4" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="2" row-span="1" col-span="4" vsize-policy="0" hsize-policy="2" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties/>
-      </component>
-      <component id="6d5d2" class="javax.swing.JComboBox" binding="comboBox_cat">
-        <constraints>
-          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties/>
-      </component>
-      <component id="67e37" class="javax.swing.JLabel">
-        <constraints>
-          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <labelFor value="6d5d2"/>
-          <text value="CATALOGO"/>
-        </properties>
       </component>
       <component id="e6ad4" class="javax.swing.JButton" binding="LOGOUTButton" default-binding="true">
         <constraints>
@@ -44,31 +29,6 @@
         </constraints>
         <properties>
           <text value="LOGOUT"/>
-        </properties>
-      </component>
-      <component id="32d26" class="javax.swing.JLabel" binding="cliente">
-        <constraints>
-          <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="CLIENTE"/>
-        </properties>
-      </component>
-      <component id="c12fa" class="javax.swing.JLabel">
-        <constraints>
-          <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="BENVENUTO"/>
-        </properties>
-      </component>
-      <component id="c5bd8" class="javax.swing.JLabel">
-        <constraints>
-          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <labelFor value="fc10b"/>
-          <text value="PUNTI VENDITA"/>
         </properties>
       </component>
       <grid id="be624" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -103,7 +63,7 @@
       </grid>
       <component id="309a9" class="javax.swing.JButton" binding="UPDATEButton" default-binding="true">
         <constraints>
-          <grid row="1" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="1" use-parent-layout="false"/>
+          <grid row="1" column="4" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="1" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="UPDATE"/>
@@ -111,10 +71,35 @@
       </component>
       <component id="222fd" class="javax.swing.JButton" binding="ILMIOPROFILOButton" default-binding="true">
         <constraints>
-          <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="IL MIO PROFILO"/>
+        </properties>
+      </component>
+      <component id="c5bd8" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <labelFor value="fc10b"/>
+          <text value="PUNTI VENDITA"/>
+        </properties>
+      </component>
+      <component id="32d26" class="javax.swing.JLabel" binding="cliente">
+        <constraints>
+          <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="CLIENTE"/>
+        </properties>
+      </component>
+      <component id="c12fa" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="BENVENUTO"/>
         </properties>
       </component>
     </children>

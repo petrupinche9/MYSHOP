@@ -57,7 +57,14 @@ public class Shop_listDAO implements IShop_listDAO{
         Date date = new Date();
         String strDataPrenotazione = DateUtil.stringFromDate(date);
         p.setData(strDataPrenotazione);
-        String sql = "INSERT INTO Shop_list (Stato,total_price,Date,Point_shop_idPoint_shop,Cliente_idCliente) VALUES ('"+p.getStato()+"','"+p.getTotal_price()+"','"+p.getData()+"','"+p.getShop().getId()+"','"+p.getCliente().getId()+"');";
+        ArrayList<String[]> sea = DbConnection.getInstance().eseguiQuery("SELECT user_iduser FROM Cliente WHERE idCliente='"+p.getCliente().getId()+"'");
+        String[] riga;
+        int idcliente=0;
+        if(sea.size()==1) {
+            riga = sea.get(0);
+            idcliente= Integer.parseInt(riga[0]);
+
+        String sql = "INSERT INTO Shop_list (Stato,total_price,Date,Point_shop_idPoint_shop,Cliente_idCliente) VALUES ('"+p.getStato()+"','"+p.getTotal_price()+"','"+p.getData()+"','"+p.getShop().getId()+"','"+idcliente+"');";
         System.out.println(sql);
         DbConnection.getInstance().eseguiAggiornamento(sql);
 
@@ -67,7 +74,7 @@ public class Shop_listDAO implements IShop_listDAO{
             System.out.println(sql);
             DbConnection.getInstance().eseguiAggiornamento(sql);
         }
-
+        }
 
     }
 }

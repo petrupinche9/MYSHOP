@@ -9,7 +9,7 @@ public class MailHelper {
 
     private static MailHelper instance;
 
-    private static String FROM = "manager.MYSHOP22@gmaial.com";
+    private static String FROM = "manager.myshop22@gmail.com";
     private static String PASSWORD = "MYshop22";
 
     public static synchronized MailHelper getInstance() {

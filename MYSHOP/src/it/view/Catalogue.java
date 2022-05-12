@@ -22,7 +22,6 @@ import java.util.EventObject;
 public class Catalogue extends JFrame{
     private JPanel panel1;
     private JComboBox comboBox_shop;
-    private JComboBox comboBox_cat;
     private JLabel cliente;
     private JButton LOGOUTButton;
     private JTable TableModelarticoli;
@@ -200,7 +199,12 @@ public class Catalogue extends JFrame{
                 ILMIOPROFILOButton.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        userprofile cf=new userprofile();
+
+                        userprofile mf = new userprofile();
+                        mf.setVisible(true);
+                        mf.pack();
+                        mf.setLocationRelativeTo(null);
+                        mf.setExtendedState(JFrame.EXIT_ON_CLOSE);
                     }
                 });
             }

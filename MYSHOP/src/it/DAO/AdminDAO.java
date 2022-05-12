@@ -32,7 +32,6 @@ public class AdminDAO implements IAdminDAO{
             //insert articolo
             String res2 = "INSERT INTO articolo (Name,description,costo,category) VALUES " +
                     "('" + p.getName() + "','" + p.getDescr() + "','" + p.getCosto() + "','" + p.getCategory() + "');";
-            JOptionPane.showMessageDialog(null, res2);
             DbConnection.getInstance().eseguiAggiornamento(res2);
 //aggiunta foto
             String img2 = "INSERT INTO articolo_photo (Image_descr,articolo_idarticolo) VALUES (?," +
@@ -48,26 +47,21 @@ public class AdminDAO implements IAdminDAO{
                 String mngs = "INSERT INTO product (articolo_idarticolo,Produttore_idProduttore) VALUES " +
                         "( (SELECT idarticolo from articolo WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "'  )," +
                         "  '"+Integer.parseInt(riga[0])+"');";
-                JOptionPane.showMessageDialog(null, mngs);
                 DbConnection.getInstance().eseguiAggiornamento(mngs);
                 String uppr = "UPDATE product INNER JOIN articolo AS d ON articolo_idarticolo=d.idarticolo SET subcategory='" + p.getSottocategoria() + "', corsia='" + p.getCorsia() + "' , scaffale='" + p.getScaffale() + "'" +
                         " WHERE d.idarticolo=(SELECT idarticolo FROM articolo  WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "' );";
-                JOptionPane.showMessageDialog(null, uppr);
                 DbConnection.getInstance().eseguiAggiornamento(uppr);
             }else {
                 //insert produttore
                 String prodfin = "INSERT INTO Produttore (Name,Website,citta,Nazione) VALUES ('" + prod.getNome() + "', '" + prod.getSitoweb() + "', '" + prod.getCitta() + "',  '" + prod.getNazione() + "');" ;
-                JOptionPane.showMessageDialog(null, prodfin);
                 DbConnection.getInstance().eseguiAggiornamento(prodfin);
                 //insert prodotto
                 String mngs = "INSERT INTO product (articolo_idarticolo, Produttore_idProduttore) VALUES " +
                         "( (SELECT idarticolo from articolo WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "'  )," +
                         "(SELECT idproduttore from produttore where Name='"+prod.getNome()+"' AND Website='"+prod.getSitoweb()+"' AND citta='"+prod.getCitta()+"' AND Nazione='"+prod.getNazione()+"' ) );";
-                JOptionPane.showMessageDialog(null, mngs);
                 DbConnection.getInstance().eseguiAggiornamento(mngs);
                 String uppr = "UPDATE product INNER JOIN articolo AS d ON articolo_idarticolo=d.idarticolo SET subcategory='" + p.getSottocategoria() + "', corsia='" + p.getCorsia() + "' , scaffale='" + p.getScaffale() + "'" +
                         " WHERE d.idarticolo=(SELECT idarticolo FROM articolo  WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "' );";
-                JOptionPane.showMessageDialog(null, uppr);
                 DbConnection.getInstance().eseguiAggiornamento(uppr);
 
             }
@@ -101,7 +95,6 @@ public class AdminDAO implements IAdminDAO{
             //insert articolo subprodotto
             String res2 = "INSERT INTO articolo (Name,description,costo,category) VALUES " +
                     "('" + p.getName() + "','" + p.getDescr() + "','" + p.getCosto() + "','" + p.getCategory() + "');";
-            JOptionPane.showMessageDialog(null, res2);
             DbConnection.getInstance().eseguiAggiornamento(res2);
 //aggiunta foto
             String img2 = "INSERT INTO articolo_photo (Image_descr,articolo_idarticolo) VALUES (?," +
@@ -119,24 +112,20 @@ public class AdminDAO implements IAdminDAO{
                 String mngs = "INSERT INTO product (articolo_idarticolo,Produttore_idProduttore) VALUES " +
                         "( (SELECT idarticolo from articolo WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "'  )," +
                         "  '"+Integer.parseInt(riga[0])+"');";
-                JOptionPane.showMessageDialog(null, mngs);
                 DbConnection.getInstance().eseguiAggiornamento(mngs);
 
                 String uppr = "UPDATE product INNER JOIN articolo AS d ON articolo_idarticolo=d.idarticolo SET subcategory='" + p.getSottocategoria() + "'" +
                         " WHERE d.idarticolo=(SELECT idarticolo FROM articolo  WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "' );";
-                JOptionPane.showMessageDialog(null, uppr);
                 DbConnection.getInstance().eseguiAggiornamento(uppr);
 
                 String SUB = "INSERT INTO Subproduct (articolo_idarticolo,Product_idProduct) VALUES " +
                         "( (SELECT idarticolo from articolo WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "'  )," +
                         "  (SELECT idproduct from product INNER JOIN articolo AS a WHERE a.Name='" + p2.getName() + "' AND a.description ='" + p2.getDescr() + "' AND subcategory='"+p2.getSottocategoria()+"' AND corsia='"+p2.getCorsia()+"' AND scaffale='"+p2.getScaffale()+"'));";
-                JOptionPane.showMessageDialog(null, mngs);
                 DbConnection.getInstance().eseguiAggiornamento(mngs);
 
             }else {
                 //insert produttore
                 String prodfin = "INSERT INTO Produttore (Name,Website,citta,Nazione) VALUES ('" + prod.getNome() + "', '" + prod.getSitoweb() + "', '" + prod.getCitta() + "',  '" + prod.getNazione() + "');" ;
-                JOptionPane.showMessageDialog(null, prodfin);
                 DbConnection.getInstance().eseguiAggiornamento(prodfin);
 
                 ArrayList<String[]> prodii = DbConnection.getInstance().eseguiQuery("SELECT idproduttore FROM produttore  " +
@@ -145,18 +134,15 @@ public class AdminDAO implements IAdminDAO{
                 String mngs = "INSERT INTO product (articolo_idarticolo,Produttore_idProduttore) VALUES " +
                         "( (SELECT idarticolo from articolo WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "'  )," +
                         "  '"+Integer.parseInt(riga[0])+"');";
-                JOptionPane.showMessageDialog(null, mngs);
                 DbConnection.getInstance().eseguiAggiornamento(mngs);
 
                 String uppr = "UPDATE product INNER JOIN articolo AS d ON articolo_idarticolo=d.idarticolo SET subcategory='" + p.getSottocategoria() + "'" +
                         " WHERE d.idarticolo=(SELECT idarticolo FROM articolo  WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "' );";
-                JOptionPane.showMessageDialog(null, uppr);
                 DbConnection.getInstance().eseguiAggiornamento(uppr);
 
                 String SUB = "INSERT INTO Subproduct (articolo_idarticolo,Product_idProduct) VALUES " +
                         "( (SELECT idarticolo from articolo WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "'  )," +
                         "  (SELECT idproduct from product INNER JOIN articolo AS a WHERE a.Name='" + p2.getName() + "' AND a.description ='" + p2.getDescr() + "' AND subcategory='"+p2.getSottocategoria()+"' AND corsia='"+p2.getCorsia()+"' AND scaffale='"+p2.getScaffale()+"'));";
-                JOptionPane.showMessageDialog(null, mngs);
                 DbConnection.getInstance().eseguiAggiornamento(mngs);
 
             }
@@ -189,7 +175,6 @@ public class AdminDAO implements IAdminDAO{
             //insert articolo
             String res2 = "INSERT INTO articolo (Name,description,costo,category) VALUES " +
                     "('" + p.getName() + "','" + p.getDescr() + "','" + p.getCosto() + "','" + p.getCategory() + "');";
-            JOptionPane.showMessageDialog(null, res2);
             DbConnection.getInstance().eseguiAggiornamento(res2);
 //aggiunta foto
             String img2 = "INSERT INTO articolo_photo (Image_descr,articolo_idarticolo) VALUES (?," +
@@ -205,19 +190,16 @@ public class AdminDAO implements IAdminDAO{
                 String mngs = "INSERT INTO service (articolo_idarticolo,Fornitore_idFornitore) VALUES " +
                         "( (SELECT idarticolo from articolo WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "'  )," +
                         "  '"+Integer.parseInt(riga[0])+"');";
-                JOptionPane.showMessageDialog(null, mngs);
                 DbConnection.getInstance().eseguiAggiornamento(mngs);
 
             }else {
                 //insert produttore
                 String prodfin = "INSERT INTO Fornitore (Name,Website,citta,Nazione) VALUES ('" + prod.getNome() + "', '" + prod.getSitoweb() + "', '" + prod.getCitta() + "',  '" + prod.getNazione() + "');" ;
-                JOptionPane.showMessageDialog(null, prodfin);
                 DbConnection.getInstance().eseguiAggiornamento(prodfin);
                 //insert prodotto
                 String mngs = "INSERT INTO service (articolo_idarticolo, Fornitore_idFornitore) VALUES " +
                         "( (SELECT idarticolo from articolo WHERE Name='" + p.getName() + "' AND description ='" + p.getDescr() + "'  )," +
                         "(SELECT idFornitore from Fornitore where Name='"+prod.getNome()+"' AND Website='"+prod.getSitoweb()+"' AND citta='"+prod.getCitta()+"' AND Nazione='"+prod.getNazione()+"' ) );";
-                JOptionPane.showMessageDialog(null, mngs);
                 DbConnection.getInstance().eseguiAggiornamento(mngs);
 
 
@@ -256,29 +238,23 @@ public class AdminDAO implements IAdminDAO{
 
                 String[] prodi = pro.get(0);
                 String res2 = "DELETE from product WHERE idproduct='" + Integer.parseInt(prodi[0]) + "' ; ";
-                JOptionPane.showMessageDialog(null, res2);
                 DbConnection.getInstance().eseguiAggiornamento(res2);
                 String res3 = "DELETE from articolo_photo  WHERE articolo_idarticolo=(SELECT idarticolo FROM  articolo WHERE idarticolo='"+Integer.parseInt(riga[0])+"'); " ;
                         //"WHERE a.Name='" + a.getName() + "' AND a.description= '" + a.getDescr() + "' AND a.category ='" + a.getCategory() + "' ; ";
-                JOptionPane.showMessageDialog(null, res3);
                 DbConnection.getInstance().eseguiAggiornamento(res3);
                 String res = "DELETE from articolo WHERE idarticolo='"+Integer.parseInt(riga[0])+"' ";
                         //"a.Name='" + a.getName() + "' AND a.description= '" + a.getDescr() + "' AND a.category ='" + a.getCategory() + "' ; ";
-                JOptionPane.showMessageDialog(null, res);
                 DbConnection.getInstance().eseguiAggiornamento(res);
             }else if(serv.size()==1){
                     JOptionPane.showMessageDialog(null, "SERVIZIO PRESENTE ");
 
                     String[] servi = serv.get(0);
                     String res2 = "DELETE from service WHERE idservice='" + Integer.parseInt(servi[0]) + "' ; ";
-                    JOptionPane.showMessageDialog(null, res2);
                     DbConnection.getInstance().eseguiAggiornamento(res2);
                     String res3 = "DELETE from articolo_photo INNER JOIN articolo AS a ON articolo_idarticolo=a.idarticolo  a.idarticolo='"+Integer.parseInt(riga[0])+"' " ;
                             //"WHERE a.Name='" + a.getName() + "' AND a.description= '" + a.getDescr() + "' AND a.category ='" + a.getCategory() + "' ; ";
-                    JOptionPane.showMessageDialog(null, res3);
                     DbConnection.getInstance().eseguiAggiornamento(res3);
                     String res = "DELETE from articolo WHERE a.Name='" + a.getName() + "' AND a.description= '" + a.getDescr() + "' AND a.category ='" + a.getCategory() + "' ; ";
-                    JOptionPane.showMessageDialog(null, res);
                     DbConnection.getInstance().eseguiAggiornamento(res);
                 }
 
@@ -347,21 +323,17 @@ public class AdminDAO implements IAdminDAO{
              //crea manager
              String mng_sql = "INSERT INTO user (username,passwd,Name,Surname,Age,Email,telephone,occupation)" +
                      " VALUES ('" + mng.getUsername() + "','" + mng.getPassword() + "', '" + mng.getName() + "' , '" + mng.getSurname() + "', '" + mng.getAge() + "','" + mng.getEmail() + "','" + mng.getTelephone() + "','" + mng.getOccupation() + "')";
-             JOptionPane.showMessageDialog(null, mng_sql);
              DbConnection.getInstance().eseguiAggiornamento(mng_sql);
              String mngs = "INSERT INTO manager (user_iduser) VALUES " +
                      "( (SELECT iduser from user WHERE username='" + mng.getUsername() + "' AND passwd ='" + mng.getPassword() + "' ) )";
-             JOptionPane.showMessageDialog(null, mngs);
              DbConnection.getInstance().eseguiAggiornamento(mngs);
              //crea punto vendita
              String sh = "INSERT INTO Point_shop (Manager_idManager) VALUES " +
                      "( (SELECT idManager from Manager INNER JOIN user AS us ON us.iduser=user_iduser  WHERE us.username='" + mng.getUsername() + "' AND us.passwd ='" + mng.getPassword() + "' ) )";
-             JOptionPane.showMessageDialog(null, sh);
              DbConnection.getInstance().eseguiAggiornamento(sh);
              //,(SELECT iduser from user WHERE username='"+mng.getUsername()+"' AND passwd ='"+mng.getPassword()+"' )
              String res3 = "UPDATE Point_shop AS s INNER JOIN manager AS d ON s.Manager_idManager=d.idManager SET s.Shopname='" + shop.getShopname() + "' , s.city='" + shop.getCity() + "' , s.article_type='" + shop.getArticle_type() + "'" +
                      "WHERE d.idManager=(SELECT idManager from Manager INNER JOIN user AS us ON us.iduser=user_iduser  WHERE us.username='"+mng.getUsername()+"' AND us.passwd ='"+mng.getPassword()+"' );";
-             JOptionPane.showMessageDialog(null, res3);
              DbConnection.getInstance().eseguiAggiornamento(res3);
          }
     }

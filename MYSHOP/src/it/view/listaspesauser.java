@@ -38,9 +38,9 @@ public class listaspesauser  extends JFrame {
     public listaspesauser() {
 
         ArrayList<String[]> art = DbConnection.getInstance().eseguiQuery("SELECT * FROM articolo INNER JOIN Shop_list AS shop ON Shop_list_idShop_list=shop.idShop_list" +
-                "INNER JOIN Cliente AS cl ON shop.Cliente_idCliente=cl.idCliente " +
-                "INNER JOIN user as us ON cl.user_iduser=us.iduser " +
-                "WHERE us.username='"+Session.getInstance().getClienteLoggato().getUsername()+"' && us.passwd='"+Session.getInstance().getClienteLoggato().getPassword()+"'; ");
+                " INNER JOIN Cliente AS cl ON shop.Cliente_idCliente=cl.idCliente " +
+                " INNER JOIN user as us ON cl.user_iduser=us.iduser " +
+                " WHERE us.username='"+Session.getInstance().getClienteLoggato().getUsername()+"' && us.passwd='"+Session.getInstance().getClienteLoggato().getPassword()+"'; ");
         for (String[] riga : art) {
             artico=arte.findById(Integer.parseInt(riga[0]));
             articolo.add(artico);

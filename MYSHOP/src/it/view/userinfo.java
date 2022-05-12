@@ -26,7 +26,7 @@ public class userinfo extends JFrame
     {
         setContentPane(RegistrazionePannello);
         setTitle("REGISTRAZIONE MYSHOP");
-        setSize(500, 500);
+        setSize(700, 500);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setVisible(true);
 
