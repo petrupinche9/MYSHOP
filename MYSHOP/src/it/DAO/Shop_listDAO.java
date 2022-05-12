@@ -22,15 +22,15 @@ public class Shop_listDAO implements IShop_listDAO{
             p = new Shop_list();
             p.setId(Integer.parseInt(riga[0]));
             p.setStato(riga[1]);
-            p.setTotal_price(Integer.parseInt(riga[2]));
+            p.setTotal_price(Double.parseDouble(riga[2]));
             IuserDAO cDao = new userDAO();
             IarticleDAO aDao= new articleDAO();
             IShopDAO mDao = new ShopDAO();
-            user Cliente = cDao.findById(Integer.parseInt(riga[3]));
+            user Cliente = cDao.findById(Integer.parseInt(riga[5]));
             Point_shop shop = mDao.findById(Integer.parseInt(riga[4]));
             p.setCliente(Cliente);
             p.setShop(shop);
-            p.setData(riga[6]);
+            p.setData(riga[3]);
         }
 
         return p;
