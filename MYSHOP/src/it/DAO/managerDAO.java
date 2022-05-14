@@ -82,7 +82,7 @@ public class managerDAO implements ImanagerDAO{
 
     @Override
     public void add_user_to_shop(user p, manager m){
-        ArrayList<String[]> res = DbConnection.getInstance().eseguiQuery("SELECT * FROM cliente INNER JOIN user ON cliente.user_iduser=user.iduser WHERE user.iduser='"+p.getId()+"';");
+        ArrayList<String[]> res = DbConnection.getInstance().eseguiQuery("SELECT idcliente FROM cliente INNER JOIN user AS us ON cliente.user_iduser=us.iduser WHERE us.iduser='"+p.getId()+"';");
         String[] tabellacliente = res.get(0);
         int idcliente = Integer.parseInt(tabellacliente[0]);
         DbConnection.getInstance().eseguiAggiornamento("INSERT INTO point_shop_has_cliente (Point_shop_idPoint_shop, Cliente_idCliente) VALUES ('"+m.getShop().getId()+"', '"+idcliente+"');");
