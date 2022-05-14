@@ -20,7 +20,7 @@ public class PdfHelper {
         return instance;
     }
 
-    public void creaPdf(ArrayList<String> testo) {
+    public void creaPdf(ArrayList<String> testo,int id) {
         //Creating PDF document object
         PDDocument document = new PDDocument();
 
@@ -71,6 +71,7 @@ public class PdfHelper {
             if(res == JFileChooser.APPROVE_OPTION) {
                 File selFile = file.getSelectedFile();
                 String path = selFile.getAbsolutePath();
+                path = path+"/myshoplist"+id+".pdf";
                 document.save(path);
             }
 
@@ -80,7 +81,6 @@ public class PdfHelper {
             JOptionPane.showMessageDialog(null, "PDF created");
         } catch (IOException e) {
             e.printStackTrace();
-
             JOptionPane.showMessageDialog(null, "PDF not created");
         }
     }

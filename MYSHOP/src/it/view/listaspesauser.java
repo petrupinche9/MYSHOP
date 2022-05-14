@@ -200,7 +200,7 @@ public class listaspesauser  extends JFrame {
 
                 //Shop_list listaspesa=new Shop_list(,,articolo,);
                // ShoplistBusiness.getInstance().inviashoplist();
-                //TODO 3-UPDATE STATO LISTA IN PAGATA
+
 
 
             }

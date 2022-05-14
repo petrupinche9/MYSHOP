@@ -29,11 +29,11 @@ public class ShoplistBusiness {
         // 1. inviare mail al manager
         String dest1 = p.getShop().getMng().getEmail();
         Date today = new Date();
-        MailHelper.getInstance().send(dest1, "Nuova Shoplist", "Effettuata il: "+ DateUtil.stringFromDate(today)+", Cliente:"+p.getCliente().getName()+"");
+        MailHelper.getInstance().send(dest1, "Nuova Shoplist : "+p.getId()+"", "Effettuata il: "+ DateUtil.stringFromDate(today)+", Cliente:"+p.getCliente().getName()+"");
 
         // 2. inviare mail di conferma all'utente
         String dest2 = p.getCliente().getEmail();
-        MailHelper.getInstance().send(dest2, "Shoplist confermata!", "Prenotazione articoli avvenuta con successo il giorn: "+ DateUtil.stringFromDate(today)+"");
+        MailHelper.getInstance().send(dest2, "Shoplist confermata!", "Prenotazione articoli avvenuta con successo il giorno: "+ DateUtil.stringFromDate(today)+"");
 
         // 3. generare pdf per l'utente
         ArrayList<String[]> search = DbConnection.getInstance().eseguiQuery("SELECT idShop_List FROM Shop_List WHERE Point_shop_idPoint_shop='"+p.getShop().getId()+"' AND Cliente_idCliente='"+p.getCliente().getId()+"' AND Date='"+ DateUtil.stringFromDate(today)+"';");
@@ -41,9 +41,13 @@ public class ShoplistBusiness {
             String[] riga = search.get(0);
             ArrayList<String> testo = new ArrayList<String>();
             testo.add("Codice prenotazione: " + Integer.parseInt(riga[0]));
-            testo.add("Effettuata il: " + DateUtil.stringFromDate(today) + "");
-            testo.add("Stampa questo file e presentati al punto vendita designato per finalizzare l'acquisto :)");
-            PdfHelper.getInstance().creaPdf(testo);
+            testo.add("Effettuata il: " + p.getData() + "");
+            testo.add("Numero articoli: "+p.getArticoli().size()+"");
+            testo.add("Prezzo totale: "+p.getTotal_price()+"");
+            testo.add("");
+            testo.add("Stampa questo file e presentati al punto vendita ");
+            testo.add("designato per finalizzare l'acquisto :)\"");
+            PdfHelper.getInstance().creaPdf(testo,Integer.parseInt(riga[0]));
         }
         return true;
     }

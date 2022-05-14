@@ -136,6 +136,7 @@ public class listaspesa  extends JFrame {
                 refresh_list(articolo);
             }
         });
+
         FINALIZZASPESAButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -173,7 +174,6 @@ public class listaspesa  extends JFrame {
 
                 //Shop_list listaspesa=new Shop_list(,,articolo,);
                // ShoplistBusiness.getInstance().inviashoplist();
-                //TODO 3-UPDATE STATO LISTA IN PAGATA
 
 
             }

@@ -62,18 +62,24 @@ public class Shop_listDAO implements IShop_listDAO{
         int idcliente=0;
         if(sea.size()==1) {
             riga = sea.get(0);
-            idcliente= Integer.parseInt(riga[0]);
+            idcliente = Integer.parseInt(riga[0]);
 
-        String sql = "INSERT INTO Shop_list (Stato,total_price,Date,Point_shop_idPoint_shop,Cliente_idCliente) VALUES ('"+p.getStato()+"','"+p.getTotal_price()+"','"+p.getData()+"','"+p.getShop().getId()+"','"+idcliente+"');";
-        System.out.println(sql);
-        DbConnection.getInstance().eseguiAggiornamento(sql);
-
-
-        for (int i = 0; i<p.getArticoli().size(); i++) {
-            String articolo = "UPDATE articolo SET Shop_List_idShop_List='" + p.getId() + "' WHERE idarticolo='"+p.getArticoli().get(i).getId()+"';";
+            String sql = "INSERT INTO Shop_list (Stato,total_price,Date,Point_shop_idPoint_shop,Cliente_idCliente) VALUES ('" + p.getStato() + "','" + p.getTotal_price() + "','" + p.getData() + "','" + p.getShop().getId() + "','" + idcliente + "');";
             System.out.println(sql);
             DbConnection.getInstance().eseguiAggiornamento(sql);
-        }
+
+            ArrayList<String[]> point = DbConnection.getInstance().eseguiQuery("SELECT idShop_List FROM Shop_list WHERE Cliente_idCliente='" + p.getCliente().getId() + "' && Date='" + p.getData() + "'");
+            String[] rig;
+            int idlista = 0;
+            if (sea.size() == 1) {
+                rig = point.get(0);
+                idlista = Integer.parseInt(rig[0]);
+                for (int i = 0; i < p.getArticoli().size(); i++) {
+                    String articolo = "UPDATE articolo SET Shop_List_idShop_List='" + idlista + "' WHERE idarticolo='" + p.getArticoli().get(i).getId() + "';";
+                    System.out.println(articolo);
+                    DbConnection.getInstance().eseguiAggiornamento(articolo);
+                }
+            }
         }
 
     }
