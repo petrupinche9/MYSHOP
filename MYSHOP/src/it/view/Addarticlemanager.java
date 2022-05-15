@@ -40,12 +40,7 @@ public class Addarticlemanager extends JFrame{
 
             }
         });
-        CHIUDIButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dispose();
-            }
-        });
+
     }
 
 

@@ -33,11 +33,6 @@ public class Addusermanager extends JFrame{
                 JOptionPane.showMessageDialog(null, "Utente Aggiunto");
             }
         });
-        CHIUDIButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dispose();
-            }
-        });
+
     }
 }

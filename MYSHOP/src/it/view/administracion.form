@@ -19,7 +19,7 @@
         <properties>
           <font name="Adobe Caslon Pro Bold" size="22"/>
           <foreground color="-4499695"/>
-          <text value="BENVENUTO NELLA CLASSE DI MODIFICA"/>
+          <text value="BENVENUTO NEL GESTIONALE"/>
         </properties>
       </component>
       <component id="7f148" class="javax.swing.JButton" binding="aggiungiProdottoButton">

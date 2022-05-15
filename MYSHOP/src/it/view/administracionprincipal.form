@@ -43,7 +43,7 @@
         </constraints>
         <properties>
           <font name="Calibri" size="16"/>
-          <text value="Vai alla Classe di Modifica"/>
+          <text value="Vai al Gestionale"/>
         </properties>
       </component>
       <component id="edd94" class="javax.swing.JButton" binding="creaPuntiVenditaButton" default-binding="true">

@@ -3,14 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="71d110a1-c0bc-4f14-8051-33f62b96ad40" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/DAO/Shop_listDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/DAO/Shop_listDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/DAO/managerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/DAO/managerDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/DAO/serviceDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/DAO/serviceDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/business/ShoplistBusiness.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/business/ShoplistBusiness.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/listaspesa.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/listaspesa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/DAO/Shop_listDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/DAO/Shop_listDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/DAO/managerDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/DAO/managerDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MYSHOP/it/business/ShoplistBusiness.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MYSHOP/it/business/ShoplistBusiness.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/Addarticlemanager.form" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/Addarticlemanager.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/Addarticlemanager.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/Addarticlemanager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/Addusermanager.form" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/Addusermanager.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/Addusermanager.java" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/Addusermanager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/administracion.form" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/administracion.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/administracionelimina.form" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/administracionelimina.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/administracionprincipal.form" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/administracionprincipal.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/adminmod_prod.form" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/adminmod_prod.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/adminmod_serv.form" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/adminmod_serv.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYSHOP/src/it/view/listaspesa.form" beforeDir="false" afterPath="$PROJECT_DIR$/MYSHOP/src/it/view/listaspesa.form" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -198,14 +200,7 @@
       <workItem from="1648584791472" duration="141668000" />
       <workItem from="1649927925255" duration="147351000" />
       <workItem from="1652106468456" duration="24261000" />
-      <workItem from="1652529312668" duration="5876000" />
-    </task>
-    <task id="LOCAL-00024" summary="inizia a fungere">
-      <created>1647475652217</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1647475652217</updated>
+      <workItem from="1652529312668" duration="6574000" />
     </task>
     <task id="LOCAL-00025" summary="crea point_shop end">
       <created>1647478864185</created>
@@ -543,7 +538,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652549961958</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="commit finale(sul serio)">
+      <created>1652609160060</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1652609160060</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -645,7 +647,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="update modifica articoli" />
     <MESSAGE value="update puntivenditane manager" />
     <MESSAGE value="modifica articoli" />
     <MESSAGE value="modifica articoli ended" />
@@ -670,7 +671,8 @@
     <MESSAGE value="ok scherzo niente commit finale" />
     <MESSAGE value="commit finale(funziona pdf)" />
     <MESSAGE value="commit finale(corretto aggiunta user da mng)" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit finale(corretto aggiunta user da mng)" />
+    <MESSAGE value="commit finale(sul serio)" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit finale(sul serio)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
