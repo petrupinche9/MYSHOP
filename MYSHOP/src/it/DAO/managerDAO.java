@@ -20,7 +20,6 @@ public class managerDAO implements ImanagerDAO{
            // a = new manager();
             userDAO us = new userDAO();
            user user= us.findById(id);
-           JOptionPane.showMessageDialog(null,id);
 
             a.setId(id);
             a.setUsername(user.getUsername());
@@ -31,8 +30,6 @@ public class managerDAO implements ImanagerDAO{
             a.setEmail(user.getEmail());
             a.setTelephone(user.getTelephone());
             a.setOccupation(user.getOccupation());
-
-            JOptionPane.showMessageDialog(null,a.getId());
 
 /*
             ArrayList<String[]> shop = DbConnection.getInstance().eseguiQuery("SELECT * FROM Point_shop WHERE Manager_idManager='"+a.getId()+"';");
@@ -50,8 +47,9 @@ public class managerDAO implements ImanagerDAO{
         }
 
         return a;
-        //return null;
+
     }
+
     @Override
     public ArrayList<manager> findAll() {
         ArrayList<manager> c =new ArrayList<manager>() ;
@@ -67,8 +65,6 @@ public class managerDAO implements ImanagerDAO{
     @Override
     public void add_article_to_shop(article p,manager m){
         DbConnection.getInstance().eseguiAggiornamento("UPDATE articolo SET Point_shop_idPoint_shop='"+m.getShop().getId()+"'WHERE idarticolo='"+p.getId()+"';");
-        //JOptionPane.showMessageDialog(null, "update agg");
-
     }
     @Override
     public void erase_article_from_shop(article p,manager m){

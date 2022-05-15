@@ -59,5 +59,4 @@ public class serviceDAO implements IserviceDAO{
 
         return c;
     }
-    // TODO metodi estensione per funzionalità utenti con prodotti e servizi
 }

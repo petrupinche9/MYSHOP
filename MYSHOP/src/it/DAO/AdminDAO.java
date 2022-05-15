@@ -311,9 +311,6 @@ public class AdminDAO implements IAdminDAO{
                 "WHERE Name='"+f.getNome()+"'; ";
         DbConnection.getInstance().eseguiAggiornamento(forn);
     }
-     public void add_article_to_catalogue(article ar){
-
-     }
 
          @Override
     //crea punto vendita e manager

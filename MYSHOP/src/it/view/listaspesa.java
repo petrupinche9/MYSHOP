@@ -183,7 +183,7 @@ public class listaspesa  extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String m = JOptionPane.showInputDialog("INSERISCA LA MATRICOLA DELLA SHOPLIST DESIDERATA", 0);
-                Shop_listDAO daolist=new Shop_listDAO();
+                IShop_listDAO daolist=new Shop_listDAO();
                 Shop_list newlist=daolist.findById(Integer.parseInt(m));
                 refresh_list(newlist.getArticoli());
             }

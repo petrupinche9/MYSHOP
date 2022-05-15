@@ -41,12 +41,18 @@ public class ShoplistBusiness {
             String[] riga = search.get(0);
             ArrayList<String> testo = new ArrayList<String>();
             testo.add("Codice prenotazione: " + Integer.parseInt(riga[0]));
-            testo.add("Effettuata il: " + p.getData() + "");
-            testo.add("Numero articoli: "+p.getArticoli().size()+"");
-            testo.add("Prezzo totale: "+p.getTotal_price()+"");
+            testo.add("Effettuata il: " + p.getData() );
+            testo.add("Numero articoli: "+p.getArticoli().size());
+            testo.add("");
+            for(int i=0;i<p.getArticoli().size();i++)
+                testo.add("Nome: "+p.getArticoli().get(i).getName()+"     "+p.getArticoli().get(i).getCosto()+"€");
+
+            testo.add("Totale Complessivo: "+p.getTotal_price()+"");
             testo.add("");
             testo.add("Stampa questo file e presentati al punto vendita ");
-            testo.add("designato per finalizzare l'acquisto :)\"");
+            testo.add("designato per finalizzare l'acquisto :)");
+            testo.add("");
+            testo.add("      MYSHOP22");
             PdfHelper.getInstance().creaPdf(testo,Integer.parseInt(riga[0]));
         }
         return true;
