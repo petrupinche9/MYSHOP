@@ -8,7 +8,7 @@ public class Principale
 {
     public static void main(String[] args)throws Exception
     {
-        JOptionPane.showMessageDialog(null, DbConnection.getInstance().isConnesso());
+        JOptionPane.showMessageDialog(null, "DB connection: "+DbConnection.getInstance().isConnesso());
         MENU rf = new MENU();
         rf.pack();
         rf.setLocationRelativeTo(null);
