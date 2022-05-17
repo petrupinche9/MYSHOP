@@ -63,11 +63,10 @@ public class PdfHelper {
             JFileChooser file = new JFileChooser();
             file.setCurrentDirectory(new File(System.getProperty("user.home")));
             //filtering files
-            //FileNameExtensionFilter filter = new FileNameExtensionFilter("*.Document","pdf");
-            //file.addChoosableFileFilter(filter);
             file.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
             int res = file.showSaveDialog(null);
             //if the user clicks on save in Jfilechooser
+
             if(res == JFileChooser.APPROVE_OPTION) {
                 File selFile = file.getSelectedFile();
                 String path = selFile.getAbsolutePath();

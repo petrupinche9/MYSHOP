@@ -163,7 +163,7 @@ public class listaspesa  extends JFrame {
                     lista_della_spesa.setData(data);
                     lista_della_spesa.setTotal_price(total_price);
                     lista_della_spesa.setArticoli(articolo);
-                   // lista_della_spesa.setManager(dao.getmng(Integer.parseInt(riga[0])));
+                    lista_della_spesa.setManager(dao.getmng(Integer.parseInt(riga[0])));
                     //System.out.println(dao.getmng(Integer.parseInt(riga[0])).getUsername());
                     System.out.println(shoppo.getMng().getUsername());
                     lista_della_spesa.setStato("non pagata");

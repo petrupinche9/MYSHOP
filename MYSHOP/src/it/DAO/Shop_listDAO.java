@@ -65,17 +65,16 @@ public class Shop_listDAO implements IShop_listDAO{
         Date date = new Date();
         String strDataPrenotazione = DateUtil.stringFromDate(date);
         p.setData(strDataPrenotazione);
-        ArrayList<String[]> sea = DbConnection.getInstance().eseguiQuery("SELECT user_iduser FROM Cliente WHERE idCliente='"+p.getCliente().getId()+"'");
+        ArrayList<String[]> sea = DbConnection.getInstance().eseguiQuery("SELECT idCliente FROM Cliente INNER JOIN user AS p ON p.iduser=user_iduser WHERE p.username='"+p.getCliente().getUsername()+"'");
         String[] riga;
         int idcliente=0;
         if(sea.size()==1) {
             riga = sea.get(0);
             idcliente = Integer.parseInt(riga[0]);
-
             String sql = "INSERT INTO Shop_list (Stato,total_price,Date,Point_shop_idPoint_shop,Cliente_idCliente) VALUES ('" + p.getStato() + "','" + p.getTotal_price() + "','" + p.getData() + "','" + p.getShop().getId() + "','" + idcliente + "');";
             DbConnection.getInstance().eseguiAggiornamento(sql);
 
-            ArrayList<String[]> point = DbConnection.getInstance().eseguiQuery("SELECT idShop_List FROM Shop_list WHERE Cliente_idCliente='" + p.getCliente().getId() + "' && Date='" + p.getData() + "'");
+            ArrayList<String[]> point = DbConnection.getInstance().eseguiQuery("SELECT idShop_List FROM Shop_list WHERE Cliente_idCliente='" + idcliente + "' && Date='" + p.getData() + "';");
             String[] rig;
             int idlista = 0;
             if (sea.size() == 1) {
