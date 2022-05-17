@@ -32,7 +32,7 @@ public class productDAO implements IproductDAO {
             JOptionPane.showMessageDialog(null, "PRODOTTO NON TROVATO O INESISTENTE");
         }
         ArrayList<String[]> prod = DbConnection.getInstance().eseguiQuery("SELECT * FROM Produttore INNER JOIN Product AS p " +
-                "ON  Product_idProduct=p.idProduct WHERE p.articolo_idarticolo='"+id+"'");
+                "ON  p.Produttore_idProduttore=idProduttore WHERE p.articolo_idarticolo='"+id+"'");
         if(prod.size()==1){
             Produttore p=new Produttore();
             String[] dio = prod.get(0);

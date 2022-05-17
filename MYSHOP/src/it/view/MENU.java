@@ -185,7 +185,8 @@ public class MENU extends JFrame
         ArrayList<String[]> res_mng = DbConnection.getInstance().eseguiQuery(mng);
         if(res_mng.size()==1){
             return true;
-        }else{return false;}
+        }else
+        {return false;}
     }
 
 }

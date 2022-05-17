@@ -134,7 +134,7 @@ public class administracionaggiungiprodotto extends JFrame {
                 p.setSitoweb(website.getText());
 
                 ArrayList<String[]> check = DbConnection.getInstance().eseguiQuery("SELECT idarticolo FROM articolo INNER JOIN product AS p ON idarticolo=p.articolo_idarticolo " +
-                        "WHERE name='"+prod.getName()+"'  AND p.corsia='"+prod.getCorsia()+"' AND p.scaffale='"+prod.getScaffale()+"');");
+                        "WHERE name='"+prod.getName()+"'  AND p.corsia='"+prod.getCorsia()+"' AND p.scaffale='"+prod.getScaffale()+"';");
 
                 if(check.size()==1) {
                     String[] riga = check.get(0);
@@ -143,6 +143,7 @@ public class administracionaggiungiprodotto extends JFrame {
                     cf.setLocationRelativeTo(null);
                     cf.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
                     cf.setidprod(Integer.parseInt(riga[1]));
+                    cf.setSize(600,600);
                 }else {
                     JOptionPane.showMessageDialog(null,"PRODOTTO PRINCIPALE NON TROVATO ");
                 }

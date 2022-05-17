@@ -210,9 +210,9 @@ public class AdminDAO implements IAdminDAO{
 
             if (id.size() == 1) {
                 String[] riga = id.get(0);
-                JOptionPane.showMessageDialog(null, "PRODOTTO INSERITO CON MATRICOLA ==> " + Integer.parseInt(riga[0]) + "");
+                JOptionPane.showMessageDialog(null, "SERVIZIO INSERITO CON MATRICOLA ==> " + Integer.parseInt(riga[0]) + "");
             } else {
-                JOptionPane.showMessageDialog(null, "PRODOTTO NON INSERITO CORRETTAMENTE");
+                JOptionPane.showMessageDialog(null, "SERVIZIO NON INSERITO CORRETTAMENTE");
             }
         }
 
@@ -332,6 +332,7 @@ public class AdminDAO implements IAdminDAO{
              String res3 = "UPDATE Point_shop AS s INNER JOIN manager AS d ON s.Manager_idManager=d.idManager SET s.Shopname='" + shop.getShopname() + "' , s.city='" + shop.getCity() + "' , s.article_type='" + shop.getArticle_type() + "'" +
                      "WHERE d.idManager=(SELECT idManager from Manager INNER JOIN user AS us ON us.iduser=user_iduser  WHERE us.username='"+mng.getUsername()+"' AND us.passwd ='"+mng.getPassword()+"' );";
              DbConnection.getInstance().eseguiAggiornamento(res3);
+             JOptionPane.showMessageDialog(null,"PUNTO VENDITA E MANAGER CREATI CON SUCCESSO");
          }
     }
 

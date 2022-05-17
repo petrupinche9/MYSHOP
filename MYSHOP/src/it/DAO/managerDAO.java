@@ -4,7 +4,6 @@ import it.DbConnection;
 import it.model.*;
 import it.util.MailHelper;
 
-import javax.swing.*;
 import java.util.ArrayList;
 //azioni manager
 public class managerDAO implements ImanagerDAO{
@@ -31,7 +30,7 @@ public class managerDAO implements ImanagerDAO{
             a.setTelephone(user.getTelephone());
             a.setOccupation(user.getOccupation());
 
-/*
+
             ArrayList<String[]> shop = DbConnection.getInstance().eseguiQuery("SELECT * FROM Point_shop WHERE Manager_idManager='"+a.getId()+"';");
             if(shop.size()==1){
                 Point_shop s =new Point_shop();
@@ -43,7 +42,7 @@ public class managerDAO implements ImanagerDAO{
                 a.setShop(s);
                 s.setMng(a);
                 return a;
-            }*/
+            }
         }
 
         return a;

@@ -28,12 +28,11 @@ public class Addarticlemanager extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 String id = idarticle.getText();
-                int idarticle = Integer.parseInt(id);
+                int idart = Integer.parseInt(id);
                 //aggiungi articolo
                     articleDAO add = new articleDAO();
-                    article addarticle = add.findById(idarticle);
+                    article addarticle = add.findById(idart);
                     managerDAO manager = new managerDAO();
-
                     manager.add_article_to_shop(addarticle, manager.findById(Session.getInstance().getClienteLoggato().getId()));
                     JOptionPane.showMessageDialog(null, "Articolo Aggiunto");
 
